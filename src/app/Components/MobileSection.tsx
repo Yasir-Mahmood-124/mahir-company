@@ -1,105 +1,167 @@
-// components/MobileAppSectionLeftImage.tsx
+"use client";
+
 import React from "react";
 import Image from "next/image";
-import { Box, Typography, Button, Container } from "@mui/material";
+import { Box, Container, Typography, Button } from "@mui/material";
+import becomeMahir from "./Images/become-mahir.webp"; // ✅ Correct import
 
-interface MobileAppSectionLeftImageProps {
-  appImage: string; // URL of the app screenshot image
-}
-
-const MobileAppSectionLeftImage: React.FC<MobileAppSectionLeftImageProps> = ({ appImage }) => {
+const BecomeMahirSection = () => {
   return (
     <Box
       component="section"
       sx={{
         py: { xs: 6, md: 12 },
-        backgroundColor: "#000", // black background
-        color: "#fff", // white text
+        backgroundColor: "#f5f5f5", // 🌤️ Light grey background
+        color: "#000", // black text
+        position: "relative",
+        overflow: "hidden",
       }}
+      className="become-mahir"
     >
       <Container maxWidth="lg">
         <Box
+          className="line"
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             alignItems: "center",
-            gap: { xs: 4, md: 8 },
+            justifyContent: "space-between",
+            gap: { xs: 6, md: 8 },
           }}
         >
           {/* Left Image */}
-          <Box sx={{ flex: 1, textAlign: "center" }}>
-            <Image
-              src={appImage}
-              alt="Book a Mahir App Screenshot"
-              width={400}
-              height={800} // approximate aspect ratio
-              style={{
-                width: '80%',
-                maxWidth: 400,
-                borderRadius: '16px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+          <Box
+            sx={{
+              flex: 1,
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Box
+              sx={{
+                position: "relative",
+                width: { xs: 300, md: 450 },
+                height: { xs: 400, md: 550 },
+                borderRadius: 4,
+                overflow: "hidden",
+                // boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
               }}
-            />
+            >
+              {/* subtle fade (top & bottom) */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(to bottom, rgba(245,245,245,1) 0%, rgba(255,255,255,0) 25%, rgba(255,255,255,0) 75%, rgba(245,245,245,1) 100%)",
+                  zIndex: 2,
+                  pointerEvents: "none",
+                }}
+              />
+
+              <Image
+                src={becomeMahir}
+                alt="Become Mahir"
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  transition: "transform 0.5s ease",
+                }}
+                className="hover:scale-105"
+                priority
+              />
+            </Box>
           </Box>
 
           {/* Right Content */}
-          <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
-            <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
-              Get the Book a Mahir App
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 4 }}>
-              Download our app and get trusted professionals at your doorstep in just a few clicks. Join <strong>100,000+</strong> active users!
+          <Box sx={{ flex: 1 }}>
+            <Typography
+              variant="h3"
+              sx={{
+                fontWeight: 700,
+                mb: 2,
+                fontSize: { xs: "2rem", md: "2.8rem" },
+                color: "#000",
+              }}
+            >
+              Become a Mahir
             </Typography>
 
-            <Box sx={{ display: "flex", gap: 2, justifyContent: { xs: "center", md: "flex-start" }, flexWrap: "wrap" }}>
-              {/* Apple App Store Button */}
-              <Button
-                component="a"
-                href="https://apps.apple.com/pk/app/mr-mahir-home-maintenance/id1576178647"
-                target="_blank"
-                sx={{
-                  p: 1.5,
-                  minWidth: 160,
-                  borderRadius: 2,
-                  backgroundColor: "#1a1a1a",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                  "&:hover": { backgroundColor: "#333" },
-                }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <path d="M16.365 1.43c0 1.6-1.29 3.43-3.004 3.43-0.376 0-1.038-0.372-1.71-0.372-1.06 0-2.127 0.58-2.71 1.58-1.036 1.78-0.885 4.31 0.51 5.72 0.64 0.65 1.24 1.48 2.12 1.48 0.82 0 1.07-0.43 2-0.43 0.93 0 1.57 0.43 2.12 0.43 0.86 0 1.44-0.83 2.08-1.48 0.72-0.73 1.16-1.73 1.46-2.63-1.86-0.74-2.64-3.24-2.64-4.92z" fill="#fff"/>
+            <Typography
+              sx={{
+                mb: 3,
+                fontSize: "1.1rem",
+                color: "#333",
+                lineHeight: 1.7,
+                maxWidth: 500,
+              }}
+            >
+              Join Pakistan’s fastest-growing platform for skilled professionals.
+              Get access to thousands of customers, earn on your own terms, and
+              grow your business with the <strong>Book a Mahir</strong> app.
+            </Typography>
+
+            <Typography sx={{ mb: 1.5, fontSize: "1.2rem", color: "#000" }}>
+              <strong>161+</strong> Home Maintenance Services
+            </Typography>
+            <Typography sx={{ mb: 4, fontSize: "1.2rem", color: "#000" }}>
+              <strong>38+</strong> Personal Care Services
+            </Typography>
+
+            {/* Arrow + Button */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                flexWrap: "wrap",
+              }}
+            >
+              {/* Arrow */}
+              <Box sx={{ width: 160, display: "flex" }}>
+                <svg
+                  width="160"
+                  height="40"
+                  viewBox="0 0 313 46"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M78.4717 22.1659C59.9452 21.4494 41.2821 20.3306 22.5239 18.4178C21.4737 18.3196 20.2956 18.6559 19.3366 17.5478C19.3138 16.8416 19.8506 16.5509 20.229 16.2149C23.3427 13.4847 26.5024 10.7811 29.57 8.0243C31.8806 5.93934 31.8802 3.49035 29.7359 1.5593C27.6177 -0.310475 24.7237 -0.410425 22.2486 1.53336C15.1217 7.16743 8.91544 13.6565 1.90685 19.4051C-1.04674 21.8581 0.640104 25.3269 5.20941 27.3182C7.37875 28.2472 9.4959 29.0537 11.6452 30.0175C16.7741 32.4242 21.8829 34.8655 27.1396 36.8378C28.3926 37.3302 29.6918 37.8493 30.9849 38.2724C32.4824 38.7674 33.9294 38.8174 34.6357 37.7005C35.3621 36.5489 34.5092 35.3635 33.3517 34.2794C32.1482 33.1687 30.7784 32.2393 29.3287 31.4485C27.1671 30.2929 25.0317 29.1986 22.7779 27.9898C23.6332 27.4671 24.6095 27.7998 25.4352 27.8607C33.4743 28.5286 41.4994 29.3271 49.4802 29.7765C75.0216 31.124 100.472 32.0958 126.006 33.6699C158.053 35.678 249.407 44.9307 280.975 44.9991C289.996 45.0323 299.054 45.3187 307.801 44.5472C308.906 44.4455 309.984 44.2824 311.062 44.1194C311.677 44.0125 312.101 43.7032 312.105 43.0583C312.056 42.2908 311.51 41.7448 310.686 41.3614C308.9 40.5148 307.044 40.3211 305.234 40.1541C291.924 39.0302 278.633 37.8716 265.472 37.342C247.058 36.6441 169.136 27.9849 150.567 26.5969C126.462 24.7851 102.409 23.0957 78.4717 22.1659Z"
+                    fill="#000"
+                  />
                 </svg>
-                <Typography variant="button" sx={{ fontWeight: 700, fontSize: "0.875rem" }}>
-                  App Store
-                </Typography>
-              </Button>
+              </Box>
 
               {/* Google Play Button */}
               <Button
                 component="a"
-                href="https://play.google.com/store/apps/details?id=com.example.app"
+                href="https://play.google.com/store/apps/details?id=com.mrmahir.technician"
                 target="_blank"
                 sx={{
-                  p: 1.5,
-                  minWidth: 160,
-                  borderRadius: 2,
-                  backgroundColor: "#1a1a1a",
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 3,
+                  fontWeight: 700,
+                  fontSize: "1.1rem",
+                  backgroundColor: "#000",
                   color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
+                  minWidth: 220,
                   "&:hover": { backgroundColor: "#333" },
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <path d="M3 2l15 10-15 10V2z" fill="#fff"/>
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M3 2l15 10-15 10V2z" />
                 </svg>
-                <Typography variant="button" sx={{ fontWeight: 700, fontSize: "0.875rem" }}>
-                  Google Play
-                </Typography>
+                &nbsp; Google Play
               </Button>
             </Box>
           </Box>
@@ -109,4 +171,4 @@ const MobileAppSectionLeftImage: React.FC<MobileAppSectionLeftImageProps> = ({ a
   );
 };
 
-export default MobileAppSectionLeftImage;
+export default BecomeMahirSection;

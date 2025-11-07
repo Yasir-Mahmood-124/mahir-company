@@ -13,7 +13,7 @@ import solar from "./Images/solar.webp";
 import inspection from "./Images/home-inspection.webp";
 import banner1 from "./Images/banner-homeservice.webp";
 import banner3 from "./Images/banner-homecare.webp";
-import Logoes from "./Images/navlogo.png"
+import Logoes from "./Images/navlogo.png";
 
 type City = {
   value: string;
@@ -75,11 +75,11 @@ const allServices: Service[] = [
     image: solar,
   },
   { value: "home-inspection", name: "Home Inspection", image: inspection },
-  { 
-    value: "mbm", 
-    name: "Maintained by Mahir", 
-    image: handyman, 
-    chipLabel: "New" 
+  {
+    value: "mbm",
+    name: "Maintained by Mahir",
+    image: handyman,
+    chipLabel: "New",
   },
 ];
 
@@ -125,67 +125,82 @@ export default function WelcomePage() {
       style={{
         background: "linear-gradient(135deg, #f5f7fa 0%, #e8ecef 100%)",
         minHeight: "100vh",
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        overflowX: "hidden", // ✅ removes horizontal scroll
+        width: "100%",
       }}
     >
-      <div
-      style={{
-        background: "#fff",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
-        position: "sticky",
-        top: 0,
-        zIndex: 100,
-      }}
-    >
+      {/* Navbar */}
       <div
         style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: isMobile ? "16px 20px" : "20px 40px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          background: "#fff",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
         }}
       >
-        {/* Logo Image */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Image
-            src={Logoes}// Replace with your logo path in /public folder
-            alt="Mahir Company Logo"
-            width={isMobile ? 10 : 180} // Adjust width for responsiveness
-            height={isMobile ? 40 : 60}  // Adjust height for responsiveness
-          />
-        </div>
-
-        {/* Login Button */}
-        <button
+        <div
           style={{
-            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-            color: "#fff",
-            border: "none",
-            padding: isMobile ? "10px 24px" : "12px 32px",
-            borderRadius: "25px",
-            cursor: "pointer",
-            fontWeight: "600",
-            fontSize: "1rem",
-            boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
-            transition: "all 0.3s ease",
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = "translateY(-2px)";
-            e.currentTarget.style.boxShadow = "0 6px 20px rgba(102, 126, 234, 0.5)";
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "0 4px 15px rgba(102, 126, 234, 0.4)";
+            maxWidth: "1280px",
+            margin: "0 auto",
+            padding: isMobile ? "16px 20px" : "20px 40px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            boxSizing: "border-box",
           }}
         >
-          Login
-        </button>
+          {/* Logo */}
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Image
+              src={Logoes}
+              alt="Mahir Company Logo"
+              width={isMobile ? 140 : 180}
+              height={isMobile ? 40 : 60}
+            />
+          </div>
+
+          {/* Login Button */}
+          <button
+            style={{
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              color: "#fff",
+              border: "none",
+              padding: isMobile ? "10px 24px" : "12px 32px",
+              borderRadius: "25px",
+              cursor: "pointer",
+              fontWeight: "600",
+              fontSize: "1rem",
+              boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow =
+                "0 6px 20px rgba(102, 126, 234, 0.5)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "0 4px 15px rgba(102, 126, 234, 0.4)";
+            }}
+          >
+            Login
+          </button>
+        </div>
       </div>
-    </div>
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 20px" }}>
-        {/* MAIN CONTENT */}
+
+      {/* Hero Section */}
+      <div
+        style={{
+          maxWidth: "1280px", // ✅ reduced width
+          margin: "0 auto",
+          padding: "0 16px",
+          boxSizing: "border-box",
+        }}
+      >
         <div
           style={{
             display: "grid",
@@ -195,7 +210,7 @@ export default function WelcomePage() {
             alignItems: "center",
           }}
         >
-          {/* LEFT - Services Grid */}
+          {/* LEFT - Services */}
           <div style={{ order: isMobile ? 2 : 1 }}>
             <h1
               style={{
@@ -216,10 +231,10 @@ export default function WelcomePage() {
                 lineHeight: 1.6,
               }}
             >
-              Connecting customers and technicians for quick, safe, and affordable services.
+              Connecting customers and technicians for quick, safe, and
+              affordable services.
             </p>
 
-            {/* Services Grid */}
             <div
               style={{
                 display: "grid",
@@ -243,11 +258,13 @@ export default function WelcomePage() {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-8px)";
-                    e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.12)";
+                    e.currentTarget.style.boxShadow =
+                      "0 8px 30px rgba(0,0,0,0.12)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
+                    e.currentTarget.style.boxShadow =
+                      "0 4px 20px rgba(0,0,0,0.08)";
                   }}
                 >
                   {service.chipLabel && (
@@ -328,8 +345,8 @@ export default function WelcomePage() {
             <div
               style={{
                 width: "100%",
-                maxWidth: isMobile ? "100%" : "450px",
-                height: isMobile ? "280px" : "450px",
+                maxWidth: isMobile ? "100%" : "420px",
+                height: isMobile ? "280px" : "440px",
                 borderRadius: "30px",
                 overflow: "hidden",
                 boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
@@ -340,8 +357,8 @@ export default function WelcomePage() {
                 key={currentIndex}
                 src={banners[currentIndex]}
                 alt={`Banner ${currentIndex}`}
-                width={450}
-                height={450}
+                width={420}
+                height={440}
                 priority
                 style={{
                   width: "100%",
@@ -351,7 +368,7 @@ export default function WelcomePage() {
                 }}
               />
 
-              {/* Navigation Buttons */}
+              {/* Buttons */}
               <IconButton
                 onClick={handlePrev}
                 sx={{
@@ -388,7 +405,7 @@ export default function WelcomePage() {
                 <ArrowForwardIos />
               </IconButton>
 
-              {/* Indicator Dots */}
+              {/* Dots */}
               <div
                 style={{
                   position: "absolute",
@@ -409,7 +426,8 @@ export default function WelcomePage() {
                       height: "12px",
                       borderRadius: "6px",
                       border: "none",
-                      backgroundColor: currentIndex === index ? "#fff" : "#ffffff60",
+                      backgroundColor:
+                        currentIndex === index ? "#fff" : "#ffffff60",
                       cursor: "pointer",
                       transition: "all 0.3s ease",
                     }}

@@ -1,105 +1,267 @@
-import React from "react";
-import Image from "next/image"; // Next.js Image import
-import { Box, Typography, Button, Container } from "@mui/material";
-interface MobileAppSectionProps {
-  appImage: string; // URL of the app screenshot image
-}
+"use client";
+import Image from "next/image";
+import { Box, Typography, Container } from "@mui/material";
+import appView from "./Images/app-view.webp";
+import appStoreIcon from "./Images/AppleStore.svg";
+import playStoreIcon from "./Images/playstore.svg";
 
-const MobileAppSection: React.FC<MobileAppSectionProps> = ({ appImage }) => {
+const MobileAppSection = () => {
   return (
     <Box
       component="section"
       sx={{
-        py: { xs: 6, md: 12 },
-        backgroundColor: "#000", // black background
-        color: "#fff", // white text
+        background: "linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%)", // 🌤 light background
+        py: { xs: 6, md: 10 },
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Box
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", md: "row" },
+            flexDirection: { xs: "column", lg: "row" },
             alignItems: "center",
-            gap: { xs: 4, md: 8 },
+            gap: { xs: 6, lg: 10 },
+            position: "relative",
           }}
         >
-          {/* Left Content */}
-          <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
-            <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
-              Get the Book a Mahir App
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 4 }}>
-              Download our app and get trusted professionals at your doorstep in just a few clicks. Join <strong>100,000+</strong> active users!
+          {/* Left Side - Text Content */}
+          <Box
+            sx={{
+              borderRadius: "36px",
+              px: { xs: 3, md: 5, lg: 6 },
+              maxWidth: { lg: "850px" },
+              width: "100%",
+              position: "relative",
+            }}
+          >
+            {/* Heading */}
+            <Typography
+              sx={{
+                fontSize: { xs: "3.2rem", md: "5rem", lg: "6rem" },
+                fontWeight: 700,
+                color: "#000",
+                mb: 3,
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Book a Mahir
             </Typography>
 
-            <Box sx={{ display: "flex", gap: 2, justifyContent: { xs: "center", md: "flex-start" }, flexWrap: "wrap" }}>
-              {/* Apple App Store Button */}
-              <Button
+            {/* Short Paragraph */}
+            <Typography
+              sx={{
+                fontSize: { xs: "1.1rem", md: "1.3rem", lg: "1.4rem" },
+                color: "#444",
+                mb: 3, // 🔹 reduced from 4 to 3 (brings buttons closer)
+                maxWidth: "600px",
+                lineHeight: 1.6,
+              }}
+            >
+              Experience convenience like never before! Download the Mahir App
+              to book trusted professionals for your home maintenance, repairs,
+              and services — anytime, anywhere.
+            </Typography>
+
+            {/* Subtitle */}
+            <Typography
+              sx={{
+                fontSize: { xs: "1.8rem", md: "2.2rem", lg: "2.5rem" },
+                fontWeight: 500,
+                color: "#000",
+                mb: 4, // 🔹 reduced spacing before buttons
+                letterSpacing: "0.02em",
+              }}
+            >
+              100,000 + Active Users
+            </Typography>
+
+            {/* Buttons Row with Arrow */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 3,
+                flexWrap: { xs: "wrap", xl: "nowrap" },
+              }}
+            >
+              {/* Apple App Store Badge */}
+              <Box
                 component="a"
                 href="https://apps.apple.com/pk/app/mr-mahir-home-maintenance/id1576178647"
                 target="_blank"
                 sx={{
-                  p: 1.5,
-                  minWidth: 160,
-                  borderRadius: 2,
-                  backgroundColor: "#1a1a1a",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                  "&:hover": { backgroundColor: "#333" },
+                  display: "block",
+                  cursor: "pointer",
+                  textDecoration: "none", // 🔹 no underline
+                  transition: "transform 0.2s",
+                  "&:hover": { transform: "scale(1.05)" },
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <path d="M16.365 1.43c0 1.6-1.29 3.43-3.004 3.43-0.376 0-1.038-0.372-1.71-0.372-1.06 0-2.127 0.58-2.71 1.58-1.036 1.78-0.885 4.31 0.51 5.72 0.64 0.65 1.24 1.48 2.12 1.48 0.82 0 1.07-0.43 2-0.43 0.93 0 1.57 0.43 2.12 0.43 0.86 0 1.44-0.83 2.08-1.48 0.72-0.73 1.16-1.73 1.46-2.63-1.86-0.74-2.64-3.24-2.64-4.92z" fill="#fff"/>
-                </svg>
-                <Typography variant="button" sx={{ fontWeight: 700, fontSize: "0.875rem" }}>
-                  App Store
-                </Typography>
-              </Button>
+                <Box
+                  sx={{
+                    borderRadius: "14px",
+                    px: 3,
+                    py: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    minWidth: "200px",
+                  }}
+                >
+                  <Image
+                    src={appStoreIcon}
+                    alt="App Store"
+                    width={170}
+                    height={160}
+                  />
+                  <Box>
+                    <Typography
+                      sx={{
+                        fontSize: "11px",
+                        color: "#000",
+                        lineHeight: 1,
+                        mb: 0.5,
+                        fontWeight: 400,
+                        textDecoration: "none", // 🔹 remove underline
+                      }}
+                    >
+                      Available on the
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px",
+                        color: "#000",
+                        fontWeight: 700,
+                        lineHeight: 1,
+                        textDecoration: "none", // 🔹 remove underline
+                      }}
+                    >
+                      App Store
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
 
-              {/* Google Play Button */}
-              <Button
+              {/* Google Play Badge */}
+              <Box
                 component="a"
                 href="https://play.google.com/store/apps/details?id=com.example.app"
                 target="_blank"
                 sx={{
-                  p: 1.5,
-                  minWidth: 160,
-                  borderRadius: 2,
-                  backgroundColor: "#1a1a1a",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                  "&:hover": { backgroundColor: "#333" },
+                  display: "block",
+                  cursor: "pointer",
+                  textDecoration: "none", // 🔹 no underline
+                  transition: "transform 0.2s",
+                  "&:hover": { transform: "scale(1.05)" },
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <path d="M3 2l15 10-15 10V2z" fill="#fff"/>
+                <Box
+                  sx={{
+                    borderRadius: "14px",
+                    px: 3,
+                    py: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    minWidth: "200px",
+                  }}
+                >
+                  <Image
+                    src={playStoreIcon}
+                    alt="Google Play"
+                    width={150}
+                    height={150}
+                  />
+                  <Box>
+                    <Typography
+                      sx={{
+                        fontSize: "11px",
+                        color: "#000",
+                        lineHeight: 1,
+                        mb: 0.5,
+                        fontWeight: 400,
+                        textDecoration: "none", // 🔹 remove underline
+                      }}
+                    >
+                      GET IT ON
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px",
+                        color: "#000",
+                        fontWeight: 700,
+                        lineHeight: 1,
+                        textDecoration: "none", // 🔹 remove underline
+                      }}
+                    >
+                      Google Play
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+
+              {/* Curved Arrow */}
+              <Box
+                sx={{
+                  display: { xs: "none", xl: "block" },
+                  ml: 2,
+                }}
+              >
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                  <defs>
+                    <marker
+                      id="arrowhead-black"
+                      markerWidth="16"
+                      markerHeight="16"
+                      refX="14"
+                      refY="8"
+                      orient="auto"
+                    >
+                      <polygon points="0 0, 16 8, 0 16" fill="black" />
+                    </marker>
+                  </defs>
+                  <path
+                    d="M 10 40 Q 125 10, 235 40"
+                    stroke="black"
+                    strokeWidth="5"
+                    fill="none"
+                    markerEnd="url(#arrowhead-black)"
+                  />
                 </svg>
-                <Typography variant="button" sx={{ fontWeight: 700, fontSize: "0.875rem" }}>
-                  Google Play
-                </Typography>
-              </Button>
+              </Box>
             </Box>
           </Box>
 
-          {/* Right Image */}
-          <Box sx={{ flex: 1, textAlign: "center" }}>
-            <Image
-              src={appImage}
-              alt="Book a Mahir App Screenshot"
-              width={400}
-              height={800} // approximate aspect ratio
-              style={{
-                width: '80%',
-                maxWidth: 400,
-                borderRadius: '16px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+          {/* Right Side - Phone Mockup */}
+          <Box
+            sx={{
+              flex: 1,
+              display: "flex",
+              justifyContent: { xs: "center", lg: "flex-end" },
+              alignItems: "center",
+              mt: { xs: 4, lg: 0 },
+            }}
+          >
+            <Box
+              sx={{
+                position: "relative",
+                width: { xs: 300, sm: 350, md: 400, lg: 420 },
+                height: { xs: 600, sm: 700, md: 800, lg: 840 },
+                borderRadius: "32px",
+                overflow: "hidden",
               }}
-            />
+            >
+              <Image
+                src={appView}
+                alt="Book a Mahir App"
+                fill
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </Box>
           </Box>
         </Box>
       </Container>

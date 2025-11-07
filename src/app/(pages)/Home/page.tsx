@@ -8,6 +8,7 @@ import Autocarasuel from "../../Components/Autocarasuel";
 import MobileAppSection from "@/app/Components/MobileAppsection";
 import MobileAppSectionLeftImage from "@/app/Components/MobileSection";
 import Footer from "@/app/Components/Footer";
+import image from "../../Components/Images/become-mahir.webp"
 export default function Home() {
   return (
     <div>
