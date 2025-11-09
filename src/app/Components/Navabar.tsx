@@ -75,7 +75,7 @@ const NavBar: React.FC = () => {
             gap: 3,
           }}
         >
-          <Button component={Link} href="/handyman" sx={{ color: "black" }}>
+          <Button component={Link} href="/Home/handyman" sx={{ color: "black" }}>
             Home
           </Button>
           <Button component={Link} href="/about-us" sx={{ color: "black" }}>
@@ -108,7 +108,7 @@ const NavBar: React.FC = () => {
             ].map((service) => (
               <MenuItem key={service} onClick={handleClose}>
                 <Link
-                  href={`/${service.toLowerCase().replace(/ /g, "-")}`}
+                  href={`/Home/${service.toLowerCase().replace(/ /g, "-")}`}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   {service}
@@ -180,9 +180,11 @@ const NavBar: React.FC = () => {
             pb: 2,
           }}
         >
-          <Button component={Link} href="/handyman" sx={{ color: "black" }}>
-            Home
-          </Button>
+   <Button component={Link} href="/Home/handymain/" sx={{ color: "black" }}>
+  Home
+</Button>
+
+
           <Button component={Link} href="/about-us" sx={{ color: "black" }}>
             About Us
           </Button>

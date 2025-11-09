@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { IconButton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
@@ -14,6 +15,9 @@ import inspection from "./Images/home-inspection.webp";
 import banner1 from "./Images/banner-homeservice.webp";
 import banner3 from "./Images/banner-homecare.webp";
 import Logoes from "./Images/navlogo.png";
+
+// ❌ Remove this old import (it breaks routing)
+// import home from "../(pages)/Home/handyman";
 
 type City = {
   value: string;
@@ -127,7 +131,7 @@ export default function WelcomePage() {
         minHeight: "100vh",
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-        overflowX: "hidden", // ✅ removes horizontal scroll
+        overflowX: "hidden",
         width: "100%",
       }}
     >
@@ -153,49 +157,41 @@ export default function WelcomePage() {
           }}
         >
           {/* Logo */}
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center" }}>
             <Image
               src={Logoes}
               alt="Mahir Company Logo"
               width={isMobile ? 140 : 180}
               height={isMobile ? 40 : 60}
             />
-          </div>
+          </Link>
 
           {/* Login Button */}
-          <button
-            style={{
-              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-              color: "#fff",
-              border: "none",
-              padding: isMobile ? "10px 24px" : "12px 32px",
-              borderRadius: "25px",
-              cursor: "pointer",
-              fontWeight: "600",
-              fontSize: "1rem",
-              boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
-              transition: "all 0.3s ease",
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 6px 20px rgba(102, 126, 234, 0.5)";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 15px rgba(102, 126, 234, 0.4)";
-            }}
-          >
-            Login
-          </button>
+          <Link href="/login">
+            <button
+              style={{
+                background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                color: "#fff",
+                border: "none",
+                padding: isMobile ? "10px 24px" : "12px 32px",
+                borderRadius: "25px",
+                cursor: "pointer",
+                fontWeight: "600",
+                fontSize: "1rem",
+                boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+                transition: "all 0.3s ease",
+              }}
+            >
+              Login
+            </button>
+          </Link>
         </div>
       </div>
 
       {/* Hero Section */}
       <div
         style={{
-          maxWidth: "1280px", // ✅ reduced width
+          maxWidth: "1280px",
           margin: "0 auto",
           padding: "0 16px",
           boxSizing: "border-box",
@@ -231,8 +227,7 @@ export default function WelcomePage() {
                 lineHeight: 1.6,
               }}
             >
-              Connecting customers and technicians for quick, safe, and
-              affordable services.
+              Connecting customers and technicians for quick, safe, and affordable services.
             </p>
 
             <div
@@ -243,90 +238,85 @@ export default function WelcomePage() {
               }}
             >
               {availableServices.map((service) => (
-                <div
+                <Link
                   key={service.value}
-                  style={{
-                    background: "#fff",
-                    borderRadius: "20px",
-                    padding: isMobile ? "20px 15px" : "30px 20px",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                    textAlign: "center",
-                    transition: "all 0.3s ease",
-                    cursor: "pointer",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-8px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 8px 30px rgba(0,0,0,0.12)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow =
-                      "0 4px 20px rgba(0,0,0,0.08)";
-                  }}
+                  href={`/Home/${service.value}`}
+                  style={{ textDecoration: "none" }}
                 >
-                  {service.chipLabel && (
-                    <span
-                      style={{
-                        position: "absolute",
-                        top: 10,
-                        right: 10,
-                        background: "#4CAF50",
-                        color: "#fff",
-                        padding: "4px 12px",
-                        borderRadius: "12px",
-                        fontSize: "0.75rem",
-                        fontWeight: "600",
-                      }}
-                    >
-                      {service.chipLabel}
-                    </span>
-                  )}
                   <div
                     style={{
-                      width: isMobile ? "70px" : "90px",
-                      height: isMobile ? "70px" : "90px",
-                      margin: "0 auto 15px",
+                      background: "#fff",
+                      borderRadius: "20px",
+                      padding: isMobile ? "20px 15px" : "30px 20px",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                      textAlign: "center",
+                      transition: "all 0.3s ease",
+                      cursor: "pointer",
                       position: "relative",
+                      overflow: "hidden",
                     }}
                   >
-                    <Image
-                      src={service.image}
-                      alt={service.name}
-                      width={90}
-                      height={90}
+                    {service.chipLabel && (
+                      <span
+                        style={{
+                          position: "absolute",
+                          top: 10,
+                          right: 10,
+                          background: "#4CAF50",
+                          color: "#fff",
+                          padding: "4px 12px",
+                          borderRadius: "12px",
+                          fontSize: "0.75rem",
+                          fontWeight: "600",
+                        }}
+                      >
+                        {service.chipLabel}
+                      </span>
+                    )}
+                    <div
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </div>
-                  <h4
-                    style={{
-                      margin: 0,
-                      fontWeight: "700",
-                      fontSize: isMobile ? "0.95rem" : "1.05rem",
-                      color: "#1a1a1a",
-                    }}
-                  >
-                    {service.name}
-                  </h4>
-                  {service.tag && (
-                    <p
-                      style={{
-                        margin: "8px 0 0 0",
-                        fontSize: "0.85rem",
-                        color: "#667eea",
-                        fontWeight: "600",
+                        width: isMobile ? "70px" : "90px",
+                        height: isMobile ? "70px" : "90px",
+                        margin: "0 auto 15px",
+                        position: "relative",
                       }}
                     >
-                      {service.tag}
-                    </p>
-                  )}
-                </div>
+                      <Image
+                        src={service.image}
+                        alt={service.name}
+                        width={90}
+                        height={90}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+                    <h4
+                      style={{
+                        margin: 0,
+                        fontWeight: "700",
+                        fontSize: isMobile ? "0.95rem" : "1.05rem",
+                        color: "#1a1a1a",
+                      }}
+                    >
+                      {service.name}
+                    </h4>
+                    {service.tag && (
+                      <p
+                        style={{
+                          margin: "8px 0 0 0",
+                          fontSize: "0.85rem",
+                          color: "#667eea",
+                          fontWeight: "600",
+                        }}
+                      >
+                        {service.tag}
+                      </p>
+                    )}
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
