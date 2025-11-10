@@ -1311,7 +1311,880 @@ const initialState: ServiceState = {
       "repair": false,
       "inspection": true
     }
-  }
+  },
+  {
+    "id": 190,
+    "title": "House Paint (outdoor)",
+    "slug": "house-paint-outdoor",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/5d69bb37-5803-4cb8-959f-655125658114.png",
+    "imageAlt": "House Paint (outdoor)",
+    "meta": {
+      "rated": 4.1,
+      "done": 1049,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 500, "appPrice": 0, "webDiscount": 500, "mbmDiscount": 500 },
+        "karachi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 500 },
+        "islamabad": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 191,
+    "title": "House Paint (indoor)",
+    "slug": "house-paint-indoor",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/95bca824-158b-48f9-9088-1947d9b02c3a.png",
+    "imageAlt": "House Paint (indoor)",
+    "meta": {
+      "rated": 4.4,
+      "done": 1146,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 500, "appPrice": 0, "webDiscount": 500, "mbmDiscount": 500 },
+        "karachi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 500 },
+        "islamabad": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 192,
+    "title": "Furniture Polishing",
+    "slug": "furniture-polishing",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/f2377898-cf60-4987-be72-e615e1390cbd.png",
+    "imageAlt": "Furniture Polishing",
+    "meta": {
+      "rated": 3.8,
+      "done": 624,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 500, "appPrice": 0, "webDiscount": 500, "mbmDiscount": 100 },
+        "karachi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 500 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 262,
+    "title": "Gray structure Paint",
+    "slug": "gray-structure-paint",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 100,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/21534635-fe5a-4315-8c83-9d97a4ed0fbe.png",
+    "imageAlt": "Gray structure Paint",
+    "meta": {
+      "rated": 4.2,
+      "done": 42,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 500, "appPrice": 0, "webDiscount": 500, "mbmDiscount": 100 },
+        "karachi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 500 },
+        "islamabad": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 263,
+    "title": "Door Polish",
+    "slug": "door-polish",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/142ec1fd-f78c-4222-8895-e970b1dae109.png",
+    "imageAlt": "Door Polish",
+    "meta": {
+      "rated": 4.6,
+      "done": 127,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 500, "appPrice": 0, "webDiscount": 500, "mbmDiscount": 500 },
+        "karachi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 500 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 264,
+    "title": "Tables Polish",
+    "slug": "tables-polish",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/108f620b-c25b-462e-99d8-91efe0325c9c.png",
+    "imageAlt": "Tables Polish",
+    "meta": {
+      "rated": 4.2,
+      "done": 31,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 500, "appPrice": 0, "webDiscount": 500, "mbmDiscount": 0 },
+        "karachi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 265,
+    "title": "Window Paint",
+    "slug": "window-paint",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/04e8bf32-c7f0-4504-acbb-477d6c3b5d26.png",
+    "imageAlt": "Window Paint",
+    "meta": {
+      "rated": 4.2,
+      "done": 22,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 500, "appPrice": 0, "webDiscount": 500, "mbmDiscount": 0 },
+        "karachi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 266,
+    "title": "Wooden Door Paint",
+    "slug": "wooden-door-paint",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/1ccd68c2-7d81-498a-b9b0-265008b4adf1.png",
+    "imageAlt": "Wooden Door Paint",
+    "meta": {
+      "rated": 4.8,
+      "done": 54,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 500, "appPrice": 0, "webDiscount": 500, "mbmDiscount": 0 },
+        "karachi": { "price": 500, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+
+  {
+    "id": 282,
+    "title": "General Fumigation",
+    "slug": "general-fumigation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 5000,
+    "appPrice": 0,
+    "priceComment": "Starting From",
+    "image": "https://cdn.mrmahir.com/uploads/bd4b091c-28f5-4eaf-98ff-4a2370a4300c.jpg",
+    "imageAlt": "General Fumigation ",
+    "meta": {
+      "rated": 4.9,
+      "done": 0,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 4500, "appPrice": 3500, "webDiscount": 3500, "mbmDiscount": 0 },
+        "islamabad": { "price": 5500, "appPrice": 4500, "webDiscount": 4500, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": false
+    }
+  },
+  {
+    "id": 283,
+    "title": "Cockroach Treatment",
+    "slug": "cockroach-treatment",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 5000,
+    "appPrice": 0,
+    "priceComment": "Starting From",
+    "image": "https://cdn.mrmahir.com/uploads/6f8bf935-1a46-4b4a-8770-96206181185e.jpg",
+    "imageAlt": "Cockroach Treatment",
+    "meta": {
+      "rated": 4.7,
+      "done": 0,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 4500, "appPrice": 3500, "webDiscount": 3500, "mbmDiscount": 0 },
+        "islamabad": { "price": 5000, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 5000, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": false
+    }
+  },
+  {
+    "id": 284,
+    "title": "Bed Bugs Treatment",
+    "slug": "bed-bugs-treatment",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 10000,
+    "appPrice": 0,
+    "priceComment": "Starting From",
+    "image": "https://cdn.mrmahir.com/uploads/d26bdafd-964e-4826-865e-0fc8e3417c83.jpg",
+    "imageAlt": "Bed Bugs Treatment",
+    "meta": {
+      "rated": 4.8,
+      "done": 0,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 7500, "appPrice": 6000, "webDiscount": 6000, "mbmDiscount": 0 },
+        "islamabad": { "price": 10000, "appPrice": 0, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": false
+    }
+  },
+  {
+    "id": 286,
+    "title": "Dengue Spray",
+    "slug": "dengue-spray",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 5000,
+    "appPrice": 5000,
+    "priceComment": "Starting From",
+    "image": "https://cdn.mrmahir.com/uploads/203ec02d-268a-40b7-875e-92985a104745.jfif",
+    "imageAlt": "Dengue Spray",
+    "meta": {
+      "rated": 4.9,
+      "done": 0,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 6000, "appPrice": 5000, "webDiscount": 5000, "mbmDiscount": 0 },
+        "islamabad": { "price": 6000, "appPrice": 5000, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 6000, "appPrice": 5000, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": false
+    }
+  },
+  {
+    "id": 289,
+    "title": "Disinfection Services",
+    "slug": "disinfection-services",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 5000,
+    "appPrice": 0,
+    "priceComment": "Starting From",
+    "image": "https://cdn.mrmahir.com/uploads/3b0fb97e-6d99-4fa4-9ec9-6c356c3cd49d.jpg",
+    "imageAlt": "Disinfection Services",
+    "meta": {
+      "rated": 4.6,
+      "done": 0,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 6000, "appPrice": 5000, "webDiscount": 5000, "mbmDiscount": 0 },
+        "islamabad": { "price": 6000, "appPrice": 5000, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": false
+    }
+  },
+
+
+  {
+    "id": 73,
+    "title": "Mixer Tap Installation",
+    "slug": "mixer-tap-installation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 850,
+    "appPrice": 0,
+    "priceComment": "Per Tap",
+    "image": "https://cdn.mrmahir.com/uploads/412cbaf4-08c9-4d2e-a465-d461f2e95f9d.png",
+    "imageAlt": "Mixer tap Installation",
+    "meta": {
+      "rated": 4.7,
+      "done": 535,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many taps need to be fixed",
+      "prefix": "taps",
+      "cities": {
+        "lahore": { "price": 950, "appPrice": 850, "webDiscount": 850, "mbmDiscount": 770 },
+        "karachi": { "price": 950, "appPrice": 850, "webDiscount": 850, "mbmDiscount": 0 },
+        "islamabad": { "price": 950, "appPrice": 850, "webDiscount": 850, "mbmDiscount": 770 },
+        "rawalpindi": { "price": 950, "appPrice": 850, "webDiscount": 850, "mbmDiscount": 770 },
+        "multan": { "price": 950, "appPrice": 850, "webDiscount": 850, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 74,
+    "title": "Single tap Installation",
+    "slug": "single-tap-installation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 700,
+    "appPrice": 700,
+    "priceComment": "Per Tap (Discount on more than 2)",
+    "image": "https://cdn.mrmahir.com/uploads/34067dbc-36a4-4223-9a36-6b848c5e62c9.png",
+    "imageAlt": "Single tap Installation",
+    "meta": {
+      "rated": 4.5,
+      "done": 811,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many taps need to be fixed",
+      "prefix": "taps",
+      "cities": {
+        "lahore": { "price": 900, "appPrice": 700, "webDiscount": 700, "mbmDiscount": 720 },
+        "karachi": { "price": 900, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 900, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 720 },
+        "rawalpindi": { "price": 900, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 720 },
+        "multan": { "price": 900, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 75,
+    "title": "Sink Spindle Change",
+    "slug": "sink-spindle-change",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 700,
+    "appPrice": 700,
+    "priceComment": "Starting From",
+    "image": "https://cdn.mrmahir.com/uploads/5ca61cd1-35e9-4880-8943-1bead8696f3c.png",
+    "imageAlt": "Sink spindle change",
+    "meta": {
+      "rated": 4.7,
+      "done": 401,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many spindles need to be changed",
+      "prefix": "spindles",
+      "cities": {
+        "lahore": { "price": 900, "appPrice": 700, "webDiscount": 700, "mbmDiscount": 720 },
+        "karachi": { "price": 900, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 900, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 720 },
+        "rawalpindi": { "price": 900, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 720 },
+        "multan": { "price": 900, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 76,
+    "title": "Muslim Shower Replacement",
+    "slug": "muslim-shower-replacement",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 850,
+    "appPrice": 0,
+    "priceComment": "Per Muslim Shower",
+    "image": "https://cdn.mrmahir.com/uploads/81f9a623-a94a-428d-9247-272c73447fb9.png",
+    "imageAlt": "Muslim shower replacement",
+    "meta": {
+      "rated": 4.4,
+      "done": 934,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many showers need to be replaced",
+      "prefix": "showers",
+      "cities": {
+        "lahore": { "price": 950, "appPrice": 850, "webDiscount": 850, "mbmDiscount": 770 },
+        "karachi": { "price": 950, "appPrice": 850, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 950, "appPrice": 850, "webDiscount": 0, "mbmDiscount": 770 },
+        "rawalpindi": { "price": 950, "appPrice": 850, "webDiscount": 0, "mbmDiscount": 770 },
+        "multan": { "price": 950, "appPrice": 850, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 77,
+    "title": "Water Motor Installation",
+    "slug": "water-motor-installation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 1200,
+    "appPrice": 0,
+    "priceComment": "Vary After Inspection",
+    "image": "https://cdn.mrmahir.com/uploads/156d25fc-210c-4280-a1ca-0b607b393cad.png",
+    "imageAlt": "Water motor Installation",
+    "meta": {
+      "rated": 4,
+      "done": 193,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many motors need to be installed",
+      "prefix": "motors",
+      "cities": {
+        "lahore": { "price": 1350, "appPrice": 1200, "webDiscount": 1200, "mbmDiscount": 1080 },
+        "karachi": { "price": 1350, "appPrice": 1200, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1350, "appPrice": 1200, "webDiscount": 0, "mbmDiscount": 1080 },
+        "rawalpindi": { "price": 1350, "appPrice": 1200, "webDiscount": 0, "mbmDiscount": 1080 },
+        "multan": { "price": 1350, "appPrice": 1200, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 78,
+    "title": "Kitchen Leakage Repairing",
+    "slug": "kitchen-leakage-repairing",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Visit and Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/1a85d07e-e358-4e66-8d43-53eabb70b5f7.png",
+    "imageAlt": "Kitchen Leakage Repairing",
+    "meta": {
+      "rated": 4.6,
+      "done": 273,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 600, "appPrice": 500, "webDiscount": 500, "mbmDiscount": 450 },
+        "karachi": { "price": 600, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 600, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 720 },
+        "rawalpindi": { "price": 600, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 720 },
+        "multan": { "price": 600, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 79,
+    "title": "Commode Tank Machine Repairing",
+    "slug": "commode-tank-machine-repairing",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 1200,
+    "appPrice": 0,
+    "priceComment": "Per Tank",
+    "image": "https://cdn.mrmahir.com/uploads/f3d52ad2-325f-44bd-a97f-b3cd3c73983b.png",
+    "imageAlt": "Commode Tank Machine repairing",
+    "meta": {
+      "rated": 4.2,
+      "done": 955,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many buttons need to be repaired",
+      "prefix": "buttons",
+      "cities": {
+        "lahore": { "price": 1350, "appPrice": 1200, "webDiscount": 1200, "mbmDiscount": 1080 },
+        "karachi": { "price": 1350, "appPrice": 1200, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1350, "appPrice": 1200, "webDiscount": 0, "mbmDiscount": 1080 },
+        "rawalpindi": { "price": 1350, "appPrice": 1200, "webDiscount": 0, "mbmDiscount": 1080 },
+        "multan": { "price": 1350, "appPrice": 1200, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 80,
+    "title": "Hot or Cold Water Piping",
+    "slug": "hot-or-cold-water-piping",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 800,
+    "appPrice": 0,
+    "priceComment": "Visit and Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/9cff8356-ae11-441e-9a9e-5b084bb8377b.png",
+    "imageAlt": "Hot or Cold Water Piping",
+    "meta": {
+      "rated": 4.4,
+      "done": 331,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 1000, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 720 },
+        "karachi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 720 },
+        "rawalpindi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 720 },
+        "multan": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 81,
+    "title": "Washroom Accessory Installation",
+    "slug": "washroom-accessory-installation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 1800,
+    "appPrice": 0,
+    "priceComment": "Bathroom Shelves, Soap Dispensers, Towel Rails, Toothbrush Holders",
+    "image": "https://cdn.mrmahir.com/uploads/d9cbc8de-c68e-4a54-8d10-b2d237148476.png",
+    "imageAlt": "Washroom Accessory Installation",
+    "meta": {
+      "rated": 4.8,
+      "done": 271,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 2000, "appPrice": 1800, "webDiscount": 1800, "mbmDiscount": 1620 },
+        "karachi": { "price": 2000, "appPrice": 1800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 2000, "appPrice": 1800, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 2000, "appPrice": 1800, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 2000, "appPrice": 1800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 82,
+    "title": "Kitchen Drain Blockage",
+    "slug": "kitchen-drain-blockage",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 1000,
+    "appPrice": 0,
+    "priceComment": "Vary After Inspection",
+    "image": "https://cdn.mrmahir.com/uploads/070cc67e-0e04-437e-b30a-522eef1f4402.png",
+    "imageAlt": "Kitchen Drain Blockage",
+    "meta": {
+      "rated": 4.2,
+      "done": 873,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 1200, "appPrice": 1000, "webDiscount": 1000, "mbmDiscount": 900 },
+        "karachi": { "price": 1200, "appPrice": 1000, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1200, "appPrice": 1000, "webDiscount": 0, "mbmDiscount": 900 },
+        "rawalpindi": { "price": 1200, "appPrice": 1000, "webDiscount": 0, "mbmDiscount": 900 },
+        "multan": { "price": 1200, "appPrice": 1000, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 83,
+    "title": "Automatic Washing Machine Installation (With Wiring)",
+    "slug": "automatic-washing-machine-installation-with-wiring",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 2500,
+    "appPrice": 2000,
+    "priceComment": "Vary After inspection",
+    "image": "https://cdn.mrmahir.com/uploads/7370a93d-2270-4742-9607-eae1e07a2a1a.png",
+    "imageAlt": "Automatic Washing Machine Installation (With Wiring)",
+    "meta": {
+      "rated": 4.6,
+      "done": 625,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many machines need to be installed",
+      "prefix": "machines",
+      "cities": {
+        "lahore": { "price": 2800, "appPrice": 2500, "webDiscount": 2500, "mbmDiscount": 2250 },
+        "karachi": { "price": 2800, "appPrice": 2500, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 2800, "appPrice": 2500, "webDiscount": 0, "mbmDiscount": 2250 },
+        "rawalpindi": { "price": 2800, "appPrice": 2500, "webDiscount": 0, "mbmDiscount": 2250 },
+        "multan": { "price": 2800, "appPrice": 2500, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 110,
+    "title": "Commode Tank Machine Replacement",
+    "slug": "commode-tank-machine-replacement",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 1000,
+    "appPrice": 0,
+    "priceComment": "Per Tank",
+    "image": "https://cdn.mrmahir.com/uploads/754d24b5-e22f-4410-bb24-f71df54f4e1e.png",
+    "imageAlt": "Commode Tank Machine Replacement",
+    "meta": {
+      "rated": 4.7,
+      "done": 182,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many walls need to be repaired",
+      "prefix": "walls",
+      "cities": {
+        "lahore": { "price": 1200, "appPrice": 1000, "webDiscount": 1000, "mbmDiscount": 900 },
+        "karachi": { "price": 1200, "appPrice": 1000, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1200, "appPrice": 1000, "webDiscount": 0, "mbmDiscount": 900 },
+        "rawalpindi": { "price": 1200, "appPrice": 1000, "webDiscount": 0, "mbmDiscount": 900 },
+        "multan": { "price": 1200, "appPrice": 1000, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 111,
+    "title": "Water Motor Repairing",
+    "slug": "water-motor-repairing",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 800,
+    "appPrice": 0,
+    "priceComment": "Visit and Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/732c37e0-c8a4-4361-8c72-d50de244385b.png",
+    "imageAlt": "Water Motor Repairing",
+    "meta": {
+      "rated": 4.3,
+      "done": 870,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many motors need to be repaired",
+      "prefix": "motors",
+      "cities": {
+        "lahore": { "price": 1000, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 720 },
+        "karachi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 720 },
+        "rawalpindi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 720 },
+        "multan": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 112,
+    "title": "Oven Range Service",
+    "slug": "oven-range-service",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 1500,
+    "appPrice": 1500,
+    "priceComment": "Per Oven Range",
+    "image": "https://cdn.mrmahir.com/uploads/c8ddd521-dde6-4b7c-b349-e1dc4422885f.png",
+    "imageAlt": "Oven Range Service",
+    "meta": {
+      "rated": 4.2,
+      "done": 413,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many ovens need to be serviced",
+      "prefix": "ovens",
+      "cities": {
+        "lahore": { "price": 1800, "appPrice": 1500, "webDiscount": 1500, "mbmDiscount": 1350 },
+        "islamabad": { "price": 1800, "appPrice": 1500, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 1800, "appPrice": 1500, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 116,
+    "title": "Water Tank Supply Issue",
+    "slug": "water-tank-supply-issue",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 800,
+    "appPrice": 0,
+    "priceComment": "Visit and Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/26e1fded-458a-471c-b16e-4fe4eabcbb92.png",
+    "imageAlt": "Water Tank Supply Issue",
+    "meta": {
+      "rated": 4.3,
+      "done": 586,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 900, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 0 },
+        "karachi": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 120,
+    "title": "Gas Pipe Wiring",
+    "slug": "gas-pipe-wiring",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 800,
+    "appPrice": 0,
+    "priceComment": "Visit and Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/c655fa5e-ba54-4702-8278-cfc32ef17aa0.png",
+    "imageAlt": "Gas Pipe Wiring",
+    "meta": {
+      "rated": 4.4,
+      "done": 305,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 900, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 0 },
+        "karachi": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 128,
+    "title": "House Plumbing Work",
+    "slug": "house-plumbing-work",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 800,
+    "appPrice": 0,
+    "priceComment": "Visit and Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/00efac99-e38f-48d8-ae0e-160a04191e5e.jpg",
+    "imageAlt": "Plumbing Work",
+    "meta": {
+      "rated": 4.4,
+      "done": 8028,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 900, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 0 },
+        "karachi": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 144,
+    "title": "Commode Installation",
+    "slug": "commode-installation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 2500,
+    "appPrice": 2500,
+    "priceComment": "Vary After inspection",
+    "image": "https://cdn.mrmahir.com/uploads/ebc5be54-bfff-4c14-8bf1-8e76028e48c5.png",
+    "imageAlt": "Commode installation",
+    "meta": {
+      "rated": 4.4,
+      "done": 607,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many commodes need to be installed",
+      "prefix": "commodes",
+      "cities": {
+        "lahore": { "price": 2800, "appPrice": 2500, "webDiscount": 2500, "mbmDiscount": 0 },
+        "karachi": { "price": 2800, "appPrice": 2500, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 2800, "appPrice": 2500, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 2800, "appPrice": 2500, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 2800, "appPrice": 2500, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+
+
+
+  
   ],
 };
 
