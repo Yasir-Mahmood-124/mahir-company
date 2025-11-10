@@ -344,6 +344,72 @@ const initialState: ServicesState = {
     "image": "https://cdn.mrmahir.com/uploads/011a5157-b598-4583-a878-2c9f9512ccc3.png",
     "rating": 4.5,
     "done": 619
+  },
+   {
+    "id": 95,
+    "title": "Curtain Rod Installation",
+    "slug": "curtain-rod-installation",
+    "price": 650,
+    "appPrice": 800,
+    "priceComment": "Per Rod",
+    "image": "https://cdn.mrmahir.com/uploads/6363c48d-efe4-4d9b-a937-024bdd7fc06f.png",
+    "rating": 4.2,
+    "done": 383
+  },
+  {
+    "id": 98,
+    "title": "Art Hanging",
+    "slug": "art-hanging",
+    "price": 600,
+    "appPrice": 800,
+    "priceComment": "Per Piece",
+    "image": "https://cdn.mrmahir.com/uploads/5aed8ae2-72ea-4df0-a9ea-cb869d8928fc.png",
+    "rating": 5,
+    "done": 113
+  },
+  {
+    "id": 99,
+    "title": "Mirror hanging",
+    "slug": "mirror-hanging",
+    "price": 600,
+    "appPrice": 800,
+    "priceComment": "Vary After Inspection",
+    "image": "https://cdn.mrmahir.com/uploads/9ff87bf4-22b2-46eb-afc4-90e6e2bf51bd.png",
+    "rating": 4.5,
+    "done": 72
+  },
+  {
+    "id": 100,
+    "title": "Picture Hanging",
+    "slug": "picture-hanging",
+    "price": 600,
+    "appPrice": 800,
+    "priceComment": "Per Picture",
+    "image": "https://cdn.mrmahir.com/uploads/0eaddc02-f9ee-470e-b9ae-f8417e0d8503.png",
+    "rating": 5,
+    "done": 42
+  },
+  {
+    "id": 101,
+    "title": "Shelf Hanging",
+    "slug": "shelf-hanging",
+    "price": 700,
+    "appPrice": 800,
+    "priceComment": "Vary After Inspection",
+    "image": "https://cdn.mrmahir.com/uploads/55b7e97e-9e7e-4889-8a76-3773e2db438d.png",
+    "rating": 5,
+    "done": 51
+  },
+  {
+    "id": 249,
+    "title": "Room Clock Hanging",
+    "slug": "room-clock-hanging",
+    "price": 650,
+    "appPrice": 800,
+    "priceComment": "Per Clock",
+    "image": "https://cdn.mrmahir.com/uploads/cf7bda28-4e6a-4a58-84b8-a6f44ac9847e.jpg",
+    "rating": 4.2,
+    "done": 15
   }
   ],
   cart: {},

@@ -870,6 +870,180 @@ const initialState: ServiceState = {
       "repair": true,
       "inspection": false
     }
+  },
+  {
+    "id": 95,
+    "title": "Curtain Rod Installation",
+    "slug": "curtain-rod-installation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 650,
+    "appPrice": 0,
+    "priceComment": "Per Rod",
+    "image": "https://cdn.mrmahir.com/uploads/6363c48d-efe4-4d9b-a937-024bdd7fc06f.png",
+    "imageAlt": "Curtain Rod Installation",
+    "meta": {
+      "rated": 4.2,
+      "done": 383,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many rods need to be installed",
+      "prefix": "rods",
+      "cities": {
+        "lahore": { "price": 800, "appPrice": 650, "webDiscount": 650, "mbmDiscount": 580 },
+        "karachi": { "price": 800, "appPrice": 650, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 800, "appPrice": 650, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 800, "appPrice": 650, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 800, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 98,
+    "title": "Art Hanging",
+    "slug": "art-hanging",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 600,
+    "appPrice": 0,
+    "priceComment": "Per Piece",
+    "image": "https://cdn.mrmahir.com/uploads/5aed8ae2-72ea-4df0-a9ea-cb869d8928fc.png",
+    "imageAlt": "Art Hanging",
+    "meta": {
+      "rated": 5,
+      "done": 113,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many arts need to be hanged",
+      "prefix": "arts",
+      "cities": {
+        "lahore": { "price": 800, "appPrice": 600, "webDiscount": 600, "mbmDiscount": 360 },
+        "karachi": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 800, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 99,
+    "title": "Mirror hanging",
+    "slug": "mirror-hanging",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 600,
+    "appPrice": 0,
+    "priceComment": "Vary After Inspection",
+    "image": "https://cdn.mrmahir.com/uploads/9ff87bf4-22b2-46eb-afc4-90e6e2bf51bd.png",
+    "imageAlt": "Mirror hanging",
+    "meta": {
+      "rated": 4.5,
+      "done": 72,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many sofas need to be cleaned",
+      "prefix": "seats",
+      "cities": {
+        "lahore": { "price": 800, "appPrice": 600, "webDiscount": 600, "mbmDiscount": 0 },
+        "karachi": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 800, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 100,
+    "title": "Picture Hanging",
+    "slug": "picture-hanging",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 600,
+    "appPrice": 0,
+    "priceComment": "Per Picture",
+    "image": "https://cdn.mrmahir.com/uploads/0eaddc02-f9ee-470e-b9ae-f8417e0d8503.png",
+    "imageAlt": "Picture Hanging",
+    "meta": {
+      "rated": 5,
+      "done": 42,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many pictures need to be hanged",
+      "prefix": "pictures",
+      "cities": {
+        "lahore": { "price": 800, "appPrice": 600, "webDiscount": 600, "mbmDiscount": 360 },
+        "karachi": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 800, "appPrice": 600, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 101,
+    "title": "Shelf Hanging",
+    "slug": "shelf-hanging",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 700,
+    "appPrice": 650,
+    "priceComment": "Vary After Inspection",
+    "image": "https://cdn.mrmahir.com/uploads/55b7e97e-9e7e-4889-8a76-3773e2db438d.png",
+    "imageAlt": "Shelf Hanging",
+    "meta": {
+      "rated": 5,
+      "done": 51,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many shelves need to be hanged",
+      "prefix": "shelfs",
+      "cities": {
+        "lahore": { "price": 800, "appPrice": 700, "webDiscount": 700, "mbmDiscount": 0 },
+        "karachi": { "price": 800, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 800, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 800, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 800, "appPrice": 700, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 249,
+    "title": "Room Clock Hanging",
+    "slug": "room-clock-hanging",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 650,
+    "appPrice": 0,
+    "priceComment": "Per Clock ",
+    "image": "https://cdn.mrmahir.com/uploads/cf7bda28-4e6a-4a58-84b8-a6f44ac9847e.jpg",
+    "imageAlt": "Room Clock Hanging",
+    "meta": {
+      "rated": 4.2,
+      "done": 15,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 800, "appPrice": 650, "webDiscount": 650, "mbmDiscount": 0 },
+        "karachi": { "price": 800, "appPrice": 650, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 800, "appPrice": 650, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 800, "appPrice": 650, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 800, "appPrice": 650, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
   }
   ],
 };
