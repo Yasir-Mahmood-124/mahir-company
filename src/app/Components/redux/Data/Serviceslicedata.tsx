@@ -1044,6 +1044,273 @@ const initialState: ServiceState = {
       "repair": true,
       "inspection": false
     }
+  },
+
+  {
+    "id": 208,
+    "title": "Cooking Range Repairing",
+    "slug": "cooking-range-repairing",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 500,
+    "appPrice": 500,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/e27f22ac-826a-4c19-aa5a-ce42d435eb55.png",
+    "imageAlt": "Cooking Range Repairing",
+    "meta": {
+      "rated": 4.2,
+      "done": 1010,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many cooking ranges need to be repaired",
+      "prefix": "range",
+      "cities": {
+        "lahore": { "price": 800, "appPrice": 500, "webDiscount": 500, "mbmDiscount": 0 },
+        "karachi": { "price": 800, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 281,
+    "title": "Automatic Washing Machine Repairing",
+    "slug": "automatic-washing-machine-repairing",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 800,
+    "appPrice": 800,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/c7ff1262-ab1a-4813-9ced-540d48e6032f.png",
+    "imageAlt": "Automatic Washing Machine Repairing",
+    "meta": {
+      "rated": 4.6,
+      "done": 0,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 1000, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 0 },
+        "karachi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "multan": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 1633,
+    "title": "Oven Range Services",
+    "slug": "oven-range-services",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 2000,
+    "appPrice": 1800,
+    "priceComment": "Per Oven Range",
+    "image": "https://cdn.mrmahir.com/uploads/380feccd-201f-43f9-9888-a83542a31548.jpg",
+    "imageAlt": "Oven Range Service",
+    "meta": {
+      "rated": 4.6,
+      "done": 0,
+      "hours": 0,
+      "multiple": true,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 2000, "appPrice": 1600, "webDiscount": 1600, "mbmDiscount": 1440 },
+        "islamabad": { "price": 2000, "appPrice": 1800, "webDiscount": 1800, "mbmDiscount": 1620 },
+        "rawalpindi": { "price": 2000, "appPrice": 1600, "webDiscount": 1600, "mbmDiscount": 1620 }
+      },
+      "repair": false,
+      "inspection": false
+    }
+  },
+  {
+    "id": 1654,
+    "title": "Kitchen Hood Installation",
+    "slug": "kitchen-hood-installation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 800,
+    "appPrice": 0,
+    "priceComment": "Visit and Inspection charges",
+    "image": "https://cdn.mrmahir.com/uploads/94e427be-6bf8-4426-8b28-a91f77c39e8c.png",
+    "imageAlt": "Kitchen Hood Installation",
+    "meta": {
+      "rated": 4.5,
+      "done": 0,
+      "hours": 0,
+      "multiple": false,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 1000, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 0 },
+        "karachi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": false
+    }
+  },
+  {
+    "id": 1655,
+    "title": "Kitchen Hood Repairing",
+    "slug": "kitchen-hood-repairing",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 800,
+    "appPrice": 0,
+    "priceComment": "Visit and Inspection charges",
+    "image": "https://cdn.mrmahir.com/uploads/6ac3b11c-48b8-418b-ae0f-f35773343ff5.png",
+    "imageAlt": "Kitchen Hood Repairing",
+    "meta": {
+      "rated": 4.5,
+      "done": 0,
+      "hours": 0,
+      "multiple": false,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 1000, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 0 },
+        "karachi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 1000, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 1656,
+    "title": "Automatic Washing Machine General Service",
+    "slug": "automatic-washing-machine-general-service",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 5000,
+    "appPrice": 0,
+    "priceComment": "Top-Loaded ( Per Washing Machine )\n",
+    "image": "https://cdn.mrmahir.com/uploads/0cba6403-3c1e-4501-82df-ade117140aaf.png",
+    "imageAlt": "Automatic Washing Machine General Service",
+    "meta": {
+      "rated": 4.8,
+      "done": 0,
+      "hours": 0,
+      "multiple": false,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 4000, "appPrice": 3000, "webDiscount": 3000, "mbmDiscount": 2800 },
+        "karachi": { "price": 5000, "appPrice": 4000, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 5000, "appPrice": 4000, "webDiscount": 4000, "mbmDiscount": 0 },
+        "rawalpindi": { "price": 5000, "appPrice": 4000, "webDiscount": 4000, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": false
+    }
+  },
+  {
+    "id": 1641,
+    "title": "3 to 5 Marlas",
+    "slug": "3-to-5-marlas",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 10000,
+    "appPrice": 6000,
+    "priceComment": "Discounted Price",
+    "image": "https://cdn.mrmahir.com/uploads/073a63ef-c016-41f3-9efa-b655ca15d667.png",
+    "imageAlt": "3 to 5 Marlas",
+    "meta": {
+      "rated": 4.8,
+      "done": 987,
+      "hours": 0,
+      "multiple": false,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 10000, "appPrice": 6000, "webDiscount": 6000, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": true
+    }
+  },
+  {
+    "id": 1642,
+    "title": "7 to 10 Marlas",
+    "slug": "7-to-10-marlas",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 15000,
+    "appPrice": 9000,
+    "priceComment": "Discounted Price",
+    "image": "https://cdn.mrmahir.com/uploads/be3b11d4-8281-40ba-a99e-c9c5ba7a96b6.png",
+    "imageAlt": "7 to 10 Marlas",
+    "meta": {
+      "rated": 4.7,
+      "done": 597,
+      "hours": 0,
+      "multiple": false,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 15000, "appPrice": 9000, "webDiscount": 9000, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": true
+    }
+  },
+  {
+    "id": 1643,
+    "title": "1 Kanal",
+    "slug": "1-kanal",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 20000,
+    "appPrice": 12000,
+    "priceComment": "Discounted Price",
+    "image": "https://cdn.mrmahir.com/uploads/755be818-921c-4561-a244-33f892714833.png",
+    "imageAlt": "1 Kanal",
+    "meta": {
+      "rated": 4.9,
+      "done": 375,
+      "hours": 0,
+      "multiple": false,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 20000, "appPrice": 12000, "webDiscount": 12000, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": true
+    }
+  },
+  {
+    "id": 1644,
+    "title": "2 Kanals",
+    "slug": "2-kanals",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 34000,
+    "appPrice": 20000,
+    "priceComment": "Discounted Price",
+    "image": "https://cdn.mrmahir.com/uploads/59924826-a557-437a-82d5-30b0c385f603.png",
+    "imageAlt": "2 Kanals",
+    "meta": {
+      "rated": 4.8,
+      "done": 480,
+      "hours": 0,
+      "multiple": false,
+      "title": "",
+      "prefix": "",
+      "cities": {
+        "lahore": { "price": 34000, "appPrice": 20000, "webDiscount": 20000, "mbmDiscount": 0 }
+      },
+      "repair": false,
+      "inspection": true
+    }
   }
   ],
 };

@@ -12,8 +12,8 @@ interface ACServicesSectionProps {
 
 const CarpanterServicesSection: React.FC<ACServicesSectionProps> = ({ 
   serviceIds,
-  title = "AC Services",
-  subtitle = "Professional AC services at your doorstep"
+  title = "Carpanter Services",
+  subtitle = "Professional CarpanterServices"
 }) => {
   // Agar serviceIds pass nahi kiye toh default AC service IDs use karo
   const defaultACServiceIds = [164,

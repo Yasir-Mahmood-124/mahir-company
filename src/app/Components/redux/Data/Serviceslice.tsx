@@ -410,6 +410,116 @@ const initialState: ServicesState = {
     "image": "https://cdn.mrmahir.com/uploads/cf7bda28-4e6a-4a58-84b8-a6f44ac9847e.jpg",
     "rating": 4.2,
     "done": 15
+  },
+   {
+    "id": 208,
+    "title": "Cooking Range Repairing",
+    "slug": "cooking-range-repairing",
+    "price": 500,
+    "appPrice": 800,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/e27f22ac-826a-4c19-aa5a-ce42d435eb55.png",
+    "rating": 4.2,
+    "done": 1010
+  },
+  {
+    "id": 281,
+    "title": "Automatic Washing Machine Repairing",
+    "slug": "automatic-washing-machine-repairing",
+    "price": 800,
+    "appPrice": 1000,
+    "priceComment": "Visit & Inspection Charges",
+    "image": "https://cdn.mrmahir.com/uploads/c7ff1262-ab1a-4813-9ced-540d48e6032f.png",
+    "rating": 4.6,
+    "done": 0
+  },
+  {
+    "id": 1633,
+    "title": "Oven Range Services",
+    "slug": "oven-range-services",
+    "price": 1600,
+    "appPrice": 2000,
+    "priceComment": "Per Oven Range",
+    "image": "https://cdn.mrmahir.com/uploads/380feccd-201f-43f9-9888-a83542a31548.jpg",
+    "rating": 4.6,
+    "done": 0
+  },
+  {
+    "id": 1654,
+    "title": "Kitchen Hood Installation",
+    "slug": "kitchen-hood-installation",
+    "price": 800,
+    "appPrice": 1000,
+    "priceComment": "Visit and Inspection charges",
+    "image": "https://cdn.mrmahir.com/uploads/94e427be-6bf8-4426-8b28-a91f77c39e8c.png",
+    "rating": 4.5,
+    "done": 0
+  },
+  {
+    "id": 1655,
+    "title": "Kitchen Hood Repairing",
+    "slug": "kitchen-hood-repairing",
+    "price": 800,
+    "appPrice": 1000,
+    "priceComment": "Visit and Inspection charges",
+    "image": "https://cdn.mrmahir.com/uploads/6ac3b11c-48b8-418b-ae0f-f35773343ff5.png",
+    "rating": 4.5,
+    "done": 0
+  },
+  {
+    "id": 1656,
+    "title": "Automatic Washing Machine General Service",
+    "slug": "automatic-washing-machine-general-service",
+    "price": 3000,
+    "appPrice": 4000,
+    "priceComment": "Top-Loaded ( Per Washing Machine )",
+    "image": "https://cdn.mrmahir.com/uploads/0cba6403-3c1e-4501-82df-ade117140aaf.png",
+    "rating": 4.8,
+    "done": 0
+  },
+  {
+    "id": 1641,
+    "title": "3 to 5 Marlas",
+    "slug": "3-to-5-marlas",
+    "price": 6000,
+    "appPrice": 10000,
+    "priceComment": "Discounted Price",
+    "image": "https://cdn.mrmahir.com/uploads/073a63ef-c016-41f3-9efa-b655ca15d667.png",
+    "rating": 4.8,
+    "done": 987
+  },
+  {
+    "id": 1642,
+    "title": "7 to 10 Marlas",
+    "slug": "7-to-10-marlas",
+    "price": 9000,
+    "appPrice": 15000,
+    "priceComment": "Discounted Price",
+    "image": "https://cdn.mrmahir.com/uploads/be3b11d4-8281-40ba-a99e-c9c5ba7a96b6.png",
+    "rating": 4.7,
+    "done": 597
+  },
+  {
+    "id": 1643,
+    "title": "1 Kanal",
+    "slug": "1-kanal",
+    "price": 12000,
+    "appPrice": 20000,
+    "priceComment": "Discounted Price",
+    "image": "https://cdn.mrmahir.com/uploads/755be818-921c-4561-a244-33f892714833.png",
+    "rating": 4.9,
+    "done": 375
+  },
+  {
+    "id": 1644,
+    "title": "2 Kanals",
+    "slug": "2-kanals",
+    "price": 20000,
+    "appPrice": 34000,
+    "priceComment": "Discounted Price",
+    "image": "https://cdn.mrmahir.com/uploads/59924826-a557-437a-82d5-30b0c385f603.png",
+    "rating": 4.8,
+    "done": 480
   }
   ],
   cart: {},

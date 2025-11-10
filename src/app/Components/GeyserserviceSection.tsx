@@ -12,8 +12,8 @@ interface ACServicesSectionProps {
 
 const GeyserServicesSection: React.FC<ACServicesSectionProps> = ({ 
   serviceIds,
-  title = "AC Services",
-  subtitle = "Professional AC services at your doorstep"
+  title = "Geyser Services",
+  subtitle = "Professional Geyser Services"
 }) => {
   // Agar serviceIds pass nahi kiye toh default AC service IDs use karo
   const defaultACServiceIds = [1, 2, 3, 4,5,6,7,8,9,10,11];

@@ -10,13 +10,13 @@ interface ACServicesSectionProps {
   subtitle?: string;
 }
 
-const ElectrionServicesSection: React.FC<ACServicesSectionProps> = ({ 
+const HomeAppliancesServices: React.FC<ACServicesSectionProps> = ({ 
   serviceIds,
-  title = "Electrion Services",
-  subtitle = "Professional Electrion services at your home"
+  title = "HomeAppliances Services",
+  subtitle = "Professional HomeAppliances Services at your home"
 }) => {
   // Agar serviceIds pass nahi kiye toh default AC service IDs use karo
-  const defaultACServiceIds = [23,24,25];
+  const defaultACServiceIds = [208,281,1633,1654,1655,1656];
   const displayServiceIds = serviceIds || defaultACServiceIds;
 
   return (
@@ -52,4 +52,4 @@ const ElectrionServicesSection: React.FC<ACServicesSectionProps> = ({
   );
 };
 
-export default ElectrionServicesSection;
+export default HomeAppliancesServices;
