@@ -782,7 +782,95 @@ const initialState: ServiceState = {
     repair: false,
     inspection: false,
   },
-}
+
+},
+  {
+    "id": 23,
+    "title": "Ceiling Fan Installation",
+    "slug": "ceiling-fan-installation",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 800,
+    "appPrice": 0,
+    "priceComment": "Per Fan",
+    "image": "https://cdn.mrmahir.com/uploads/38064e7c-485c-4370-a775-973893017aad.png",
+    "imageAlt": "ceiling fan installation",
+    "meta": {
+      "rated": 4.5,
+      "done": 1070,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many fans need to be installed",
+      "prefix": "fans",
+      "cities": {
+        "lahore": { "price": 900, "appPrice": 800, "webDiscount": 800, "mbmDiscount": 720 },
+        "karachi": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 720 },
+        "rawalpindi": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 720 },
+        "multan": { "price": 900, "appPrice": 800, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 24,
+    "title": "SMD Lights Installation (Without Wiring)",
+    "slug": "smd-lights-installation-without-wiring",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 500,
+    "appPrice": 0,
+    "priceComment": "Per Light (Discount on more then 2)",
+    "image": "https://cdn.mrmahir.com/uploads/e6d052be-e08f-40dd-ad83-8e9f3136451a.png",
+    "imageAlt": "SMD lights Installation",
+    "meta": {
+      "rated": 4.8,
+      "done": 519,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many lights need to be installed",
+      "prefix": "lights",
+      "cities": {
+        "lahore": { "price": 800, "appPrice": 500, "webDiscount": 500, "mbmDiscount": 450 },
+        "karachi": { "price": 800, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 800, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 450 },
+        "rawalpindi": { "price": 800, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 450 },
+        "multan": { "price": 800, "appPrice": 500, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 25,
+    "title": "32-42 Inch LED TV or LCD Mounting",
+    "slug": "32-42-inch-led-tv-or-lcd-mounting",
+    "earningSplit": 20,
+    "discount": null,
+    "price": 1250,
+    "appPrice": 0,
+    "priceComment": "Very After Inspection",
+    "image": "https://cdn.mrmahir.com/uploads/011a5157-b598-4583-a878-2c9f9512ccc3.png",
+    "imageAlt": "LED TV or LCD Mounting",
+    "meta": {
+      "rated": 4.5,
+      "done": 619,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many TVs need to be mounted",
+      "prefix": "TVs",
+      "cities": {
+        "lahore": { "price": 1500, "appPrice": 1250, "webDiscount": 1250, "mbmDiscount": 1125 },
+        "karachi": { "price": 1500, "appPrice": 1250, "webDiscount": 0, "mbmDiscount": 0 },
+        "islamabad": { "price": 1500, "appPrice": 1250, "webDiscount": 0, "mbmDiscount": 1125 },
+        "rawalpindi": { "price": 1500, "appPrice": 1250, "webDiscount": 0, "mbmDiscount": 1125 },
+        "multan": { "price": 1500, "appPrice": 1250, "webDiscount": 0, "mbmDiscount": 0 }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  }
   ],
 };
 

@@ -311,6 +311,39 @@ const initialState: ServicesState = {
     "image": "https://cdn.mrmahir.com/uploads/bf7b8c84-f380-4808-a73c-1d57e1995ff5.jpg",
     "rating": 0,
     "done": 0
+  },
+  {
+    "id": 23,
+    "title": "Ceiling Fan Installation",
+    "slug": "ceiling-fan-installation",
+    "price": 800,
+    "appPrice": 900,
+    "priceComment": "Per Fan",
+    "image": "https://cdn.mrmahir.com/uploads/38064e7c-485c-4370-a775-973893017aad.png",
+    "rating": 4.5,
+    "done": 1070
+  },
+  {
+    "id": 24,
+    "title": "SMD Lights Installation (Without Wiring)",
+    "slug": "smd-lights-installation-without-wiring",
+    "price": 500,
+    "appPrice": 800,
+    "priceComment": "Per Light (Discount on more then 2)",
+    "image": "https://cdn.mrmahir.com/uploads/e6d052be-e08f-40dd-ad83-8e9f3136451a.png",
+    "rating": 4.8,
+    "done": 519
+  },
+  {
+    "id": 25,
+    "title": "32-42 Inch LED TV or LCD Mounting",
+    "slug": "32-42-inch-led-tv-or-lcd-mounting",
+    "price": 1250,
+    "appPrice": 1500,
+    "priceComment": "Very After Inspection",
+    "image": "https://cdn.mrmahir.com/uploads/011a5157-b598-4583-a878-2c9f9512ccc3.png",
+    "rating": 4.5,
+    "done": 619
   }
   ],
   cart: {},
