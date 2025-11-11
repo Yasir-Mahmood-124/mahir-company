@@ -21,19 +21,21 @@ type Service = {
 };
 
 const services: Service[] = [
-  { id: "ac", name: "AC Services", href: "/Home/ac-services", img: "https://cdn.mrmahir.com/services/ac.svg", alt: "AC Services" },
-  { id: "plumber", name: "Plumber", href: "/Home/plumbing-services", img: "https://cdn.mrmahir.com/services/plumber.svg", alt: "Plumber" },
-  { id: "electrician", name: "Electrician", href: "/Home/electrician-services", img: "https://cdn.mrmahir.com/services/electrician.svg", alt: "Electrician" },
-  { id: "handyman", name: "Handyman", href: "/Home/handyman-services", img: "https://cdn.mrmahir.com/services/handyman.svg", alt: "Handyman" },
-  { id: "carpenter", name: "Carpenter", href: "/Home/carpenter-services", img: "https://cdn.mrmahir.com/services/carpenter.svg", alt: "Carpenter" },
-  { id: "painter", name: "Painter", href: "/Home/painter-services", img: "https://cdn.mrmahir.com/services/painter.svg", alt: "Painter" },
-  { id: "appliances", name: "Home Appliances", href: "/Home/home-appliances-repair", img: "https://cdn.mrmahir.com/services/appliance-repair.svg", alt: "Home Appliances" },
-  { id: "geyser", name: "Geyser", href: "/Home/geyser-services", img: "https://cdn.mrmahir.com/services/geyser.svg", alt: "Geyser" },
-  { id: "pest", name: "Pest Control", href: "/Home/pest-control-services", img: "https://cdn.mrmahir.com/svgs/pest-control.svg", alt: "Pest Control" },
-  { id: "inspection", name: "Home Inspection", href: "/Home/home-inspection-services", img: "https://cdn.mrmahir.com/svgs/house_inspection_updated.svg", alt: "Home Inspection" },
+  { id: "sofa-cleaning", name: "Sofa Cleaning", href: "/Home/sofa-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/sofa.svg", alt: "Sofa Cleaning Service" },
+  { id: "chair-cleaning", name: "Chair Cleaning", href: "/Home/chair-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/chair.svg", alt: "Chair Cleaning" },
+  { id: "carpet-cleaning", name: "Carpet Cleaning", href: "/Home/carpet-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/carpet.svg", alt: "Carpet Cleaning" },
+  { id: "curtain-cleaning", name: "Curtain Cleaning", href: "/Home/curtain-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/curtain.svg", alt: "Curtain Cleaning" },
+  { id: "mattress-cleaning", name: "Mattress Cleaning", href: "/Home/mattress-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/mattress.svg", alt: "Mattress Cleaning" },
+  { id: "plastic-water-tank-cleaning", name: "Plastic Water Tank Cleaning", href: "/Home/plastic-water-tank-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_plastic.svg", alt: "Plastic Water Tank Cleaning" },
+  { id: "cement-water-tank-cleaning", name: "Cement Water Tank Cleaning", href: "/Home/cement-water-tank-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_cement.svg", alt: "Cement Water Tank Cleaning" },
+  { id: "deep-cleaning", name: "Deep Cleaning", href: "/Home/house-deep-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg", alt: "Deep Cleaning" },
+  { id: "car-detailing", name: "Car Detailing", href: "/Home/car-detailing-services", img: "https://cdn.mrmahir.com/svgs/detailing.svg", alt: "Car Detailing" },
+  { id: "commercial-deep-cleaning", name: "Commercial Deep Cleaning", href: "/Home/commercial-deep-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg", alt: "Commercial Deep Cleaning" },
+  { id: "solar-panel-cleaning", name: "Solar Panel Cleaning", href: "/Home/solar-panel-cleaning-services", img: "https://cdn.mrmahir.com/svgs/solar_cleaning.svg", alt: "Solar Panel Cleaning" },
 ];
 
-const ServicesSection: React.FC = () => {
+
+const CleaningServices: React.FC = () => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -129,4 +131,4 @@ const ServicesSection: React.FC = () => {
   );
 };
 
-export default ServicesSection;
+export default CleaningServices;

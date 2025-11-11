@@ -20,7 +20,7 @@ export default function HandymanHome() {
         <TrendingServices></TrendingServices>
         <WhyChooseUsSection mockupImage={image.src}></WhyChooseUsSection>
         <FullVideoSection></FullVideoSection>
-        {/* <CustomerTestimonials></CustomerTestimonials> */}
+        <CustomerTestimonials></CustomerTestimonials>
         <ComplaintFormSection></ComplaintFormSection>
         <TopServicesSection></TopServicesSection>
         <Footer></Footer>
