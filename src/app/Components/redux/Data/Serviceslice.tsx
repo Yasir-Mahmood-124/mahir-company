@@ -12,6 +12,11 @@ interface Service {
   rating: number;
   done: number;
   tag?: string;
+  earningSplit?: number;
+  hours?: number;
+  webDiscount?: number;
+  mbmDiscount?: number;
+  description?: string[];
 }
 
 interface ServicesState {
@@ -894,6 +899,147 @@ const initialState: ServicesState = {
     "rating": 4.8,
     "done": 409
   },
+  
+  {
+    "id": 198,
+    "title": "Car Detailing Hatchback",
+    "slug": "car-detailing-hatchback",
+    "price": 10000,
+    "appPrice": 6500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/51444db1-1f74-4372-bab7-e3cfa9a4b2aa.jpg",
+    "rating": 4.4,
+    "done": 1111,
+    "tag": "Popular",
+    "earningSplit": 23,
+    "hours": 2,
+    "webDiscount": 6500,
+    "mbmDiscount": 5850,
+    "description": [
+      "Seats removing and cleaning",
+      "Interior cleaning",
+      "Dash board polishing",
+      "Engine cleaning",
+      "Shampoo body wash",
+      "Compound polishing"
+    ]
+  },
+  {
+    "id": 199,
+    "title": "Car Detailing Sedan",
+    "slug": "car-detailing-sedan",
+    "price": 12000,
+    "appPrice": 7500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/4c0155f6-d779-4f52-b580-cf55ce4d08a1.png",
+    "rating": 4.4,
+    "done": 11163,
+    "earningSplit": 23,
+    "hours": 2,
+    "webDiscount": 7500,
+    "mbmDiscount": 6750,
+    "description": [
+      "Seats removing and cleaning",
+      "Interior cleaning",
+      "Dash board polishing",
+      "Engine cleaning",
+      "Shampoo body wash",
+      "Compound polishing"
+    ]
+  },
+  {
+    "id": 200,
+    "title": "Car Detailing Luxury Sedan",
+    "slug": "car-detailing-luxury-sedan",
+    "price": 12000,
+    "appPrice": 7500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/943c74e9-2474-4593-9c6c-97884c488df1.jpg",
+    "rating": 4.4,
+    "done": 89,
+    "earningSplit": 23,
+    "hours": 2,
+    "webDiscount": 7500,
+    "mbmDiscount": 6750,
+    "description": [
+      "Seats removing and cleaning",
+      "Interior cleaning",
+      "Dash board polishing",
+      "Engine cleaning",
+      "Shampoo body wash",
+      "Compound polishing"
+    ]
+  },
+  {
+    "id": 201,
+    "title": "Car Detailing Crossover",
+    "slug": "car-detailing-crossover",
+    "price": 14000,
+    "appPrice": 9000,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/d003c96c-aea8-4bd4-9018-20b0bf7a5cbf.png",
+    "rating": 4.1,
+    "done": 121,
+    "earningSplit": 23,
+    "hours": 2,
+    "webDiscount": 9000,
+    "mbmDiscount": 8100,
+    "description": [
+      "Seats removing and cleaning",
+      "Interior cleaning",
+      "Dash board polishing",
+      "Engine cleaning",
+      "Shampoo body wash",
+      "Compound polishing"
+    ]
+  },
+  {
+    "id": 202,
+    "title": "Car Detailing SUV",
+    "slug": "car-detailing-suv",
+    "price": 15000,
+    "appPrice": 12500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/d0e9a963-c2c6-4b30-9c56-c59e628983d2.png",
+    "rating": 4.5,
+    "done": 161,
+    "earningSplit": 23,
+    "hours": 2,
+    "webDiscount": 12500,
+    "mbmDiscount": 11250,
+    "description": [
+      "Seats removing and cleaning",
+      "Interior cleaning",
+      "Dash board polishing",
+      "Engine cleaning",
+      "Shampoo body wash",
+      "Compound polishing"
+    ]
+  },
+  {
+    "id": 1614,
+    "title": "Car Detailing Minivan",
+    "slug": "car-detailing-minivan",
+    "price": 10000,
+    "appPrice": 7500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/87e10537-68af-4643-9374-8e87715623f1.png",
+    "rating": 4.8,
+    "done": 457,
+    "earningSplit": 23,
+    "hours": 0,
+    "webDiscount": 7500,
+    "mbmDiscount": 6750,
+    "description": [
+      "Seats removing and cleaning",
+      "Interior cleaning",
+      "Dash board polishing",
+      "Engine cleaning",
+      "Shampoo body wash",
+      "Compound polishing"
+    ]
+  }
+
   
 
   ],

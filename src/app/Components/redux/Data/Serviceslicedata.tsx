@@ -2182,7 +2182,186 @@ const initialState: ServiceState = {
     }
   },
 
-
+  {
+    "id": 198,
+    "title": "Car Detailing Hatchback",
+    "slug": "car-detailing-hatchback",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 10000,
+    "appPrice": 6500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/51444db1-1f74-4372-bab7-e3cfa9a4b2aa.jpg",
+    "imageAlt": "Car Detailing Hatchback",
+    "meta": {
+      "rated": 4.4,
+      "done": 1111,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many cars need to be detailed",
+      "prefix": "cars",
+      "cities": {
+        "lahore": {
+          "price": 10000,
+          "appPrice": 6500,
+          "webDiscount": 6500,
+          "mbmDiscount": 5850
+        }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 199,
+    "title": "Car Detailing Sedan",
+    "slug": "car-detailing-sedan",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 12000,
+    "appPrice": 7500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/4c0155f6-d779-4f52-b580-cf55ce4d08a1.png",
+    "imageAlt": "Car Detailing Sedan",
+    "meta": {
+      "rated": 4.4,
+      "done": 11163,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many cars need to be detailed",
+      "prefix": "cars",
+      "cities": {
+        "lahore": {
+          "price": 12000,
+          "appPrice": 7500,
+          "webDiscount": 7500,
+          "mbmDiscount": 6750
+        }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 200,
+    "title": "Car Detailing Luxury Sedan",
+    "slug": "car-detailing-luxury-sedan",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 12000,
+    "appPrice": 7500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/943c74e9-2474-4593-9c6c-97884c488df1.jpg",
+    "imageAlt": "Car Detailing Luxury Sedan",
+    "meta": {
+      "rated": 4.4,
+      "done": 89,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many cars need to be detailed",
+      "prefix": "cars",
+      "cities": {
+        "lahore": {
+          "price": 12000,
+          "appPrice": 7500,
+          "webDiscount": 7500,
+          "mbmDiscount": 6750
+        }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 201,
+    "title": "Car Detailing Crossover",
+    "slug": "car-detailing-crossover",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 14000,
+    "appPrice": 9000,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/d003c96c-aea8-4bd4-9018-20b0bf7a5cbf.png",
+    "imageAlt": "Car Detailing Crossover",
+    "meta": {
+      "rated": 4.1,
+      "done": 121,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many cars need to be detailed",
+      "prefix": "cars",
+      "cities": {
+        "lahore": {
+          "price": 14000,
+          "appPrice": 9000,
+          "webDiscount": 9000,
+          "mbmDiscount": 8100
+        }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 202,
+    "title": "Car Detailing SUV",
+    "slug": "car-detailing-suv",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 15000,
+    "appPrice": 12500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/d0e9a963-c2c6-4b30-9c56-c59e628983d2.png",
+    "imageAlt": "Car Detailing SUV",
+    "meta": {
+      "rated": 4.5,
+      "done": 161,
+      "hours": 2,
+      "multiple": true,
+      "title": "How many cars need to be detailed",
+      "prefix": "cars",
+      "cities": {
+        "lahore": {
+          "price": 15000,
+          "appPrice": 12500,
+          "webDiscount": 12500,
+          "mbmDiscount": 11250
+        }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  },
+  {
+    "id": 1614,
+    "title": "Car Detailing Minivan",
+    "slug": "car-detailing-minivan",
+    "earningSplit": 23,
+    "discount": null,
+    "price": 10000,
+    "appPrice": 7500,
+    "priceComment": "Per Car",
+    "image": "https://cdn.mrmahir.com/uploads/87e10537-68af-4643-9374-8e87715623f1.png",
+    "imageAlt": "Car Detailing Minivan",
+    "meta": {
+      "rated": 4.8,
+      "done": 457,
+      "hours": 0,
+      "multiple": true,
+      "title": "How many cars need to be detailed",
+      "prefix": "cars",
+      "cities": {
+        "lahore": {
+          "price": 10000,
+          "appPrice": 7500,
+          "webDiscount": 7500,
+          "mbmDiscount": 6750
+        }
+      },
+      "repair": true,
+      "inspection": false
+    }
+  }
 
   
   ],
