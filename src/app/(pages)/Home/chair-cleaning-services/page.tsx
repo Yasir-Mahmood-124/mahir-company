@@ -1,0 +1,16 @@
+"use client";
+
+import ChairCleaningBanner from "@/app/Components/chair_cleaning_banner";
+import ChairCleaningDescription from "@/app/Components/chair_cleaning_description";
+import NavBar from "@/app/Components/CleaningServiceNavbar";
+import Footer from "@/app/Components/HandymanFooter";
+export default function HandymanHome() {
+  return (
+    <div>
+      <NavBar></NavBar>
+      <ChairCleaningBanner></ChairCleaningBanner>
+      <ChairCleaningDescription></ChairCleaningDescription>
+      <Footer></Footer>
+    </div>
+  );
+}
