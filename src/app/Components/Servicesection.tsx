@@ -21,16 +21,16 @@ type Service = {
 };
 
 const services: Service[] = [
-  { id: "ac", name: "AC Services", href: "/Home/ac-services", img: "https://cdn.mrmahir.com/services/ac.svg", alt: "AC Services" },
-  { id: "plumber", name: "Plumber", href: "/Home/plumbing-services", img: "https://cdn.mrmahir.com/services/plumber.svg", alt: "Plumber" },
+  { id: "ac", name: "AC Services", href: "/Home/handyman/ac-services", img: "https://cdn.mrmahir.com/services/ac.svg", alt: "AC Services" },
+  { id: "plumber", name: "Plumber", href: "/Home/handyman/plumbing-services", img: "https://cdn.mrmahir.com/services/plumber.svg", alt: "Plumber" },
   { id: "electrician", name: "Electrician", href: "/Home/electrician-services", img: "https://cdn.mrmahir.com/services/electrician.svg", alt: "Electrician" },
-  { id: "handyman", name: "Handyman", href: "/Home/handyman-services", img: "https://cdn.mrmahir.com/services/handyman.svg", alt: "Handyman" },
-  { id: "carpenter", name: "Carpenter", href: "/Home/carpenter-services", img: "https://cdn.mrmahir.com/services/carpenter.svg", alt: "Carpenter" },
-  { id: "painter", name: "Painter", href: "/Home/painter-services", img: "https://cdn.mrmahir.com/services/painter.svg", alt: "Painter" },
-  { id: "appliances", name: "Home Appliances", href: "/Home/home-appliances-repair", img: "https://cdn.mrmahir.com/services/appliance-repair.svg", alt: "Home Appliances" },
-  { id: "geyser", name: "Geyser", href: "/Home/geyser-services", img: "https://cdn.mrmahir.com/services/geyser.svg", alt: "Geyser" },
-  { id: "pest", name: "Pest Control", href: "/Home/pest-control-services", img: "https://cdn.mrmahir.com/svgs/pest-control.svg", alt: "Pest Control" },
-  { id: "inspection", name: "Home Inspection", href: "/Home/home-inspection-services", img: "https://cdn.mrmahir.com/svgs/house_inspection_updated.svg", alt: "Home Inspection" },
+  { id: "handyman", name: "Handyman", href: "/Home/handyman/handyman-services", img: "https://cdn.mrmahir.com/services/handyman.svg", alt: "Handyman" },
+  { id: "carpenter", name: "Carpenter", href: "/Home/handyman/carpenter-services", img: "https://cdn.mrmahir.com/services/carpenter.svg", alt: "Carpenter" },
+  { id: "painter", name: "Painter", href: "/Home/handyman/painter-services", img: "https://cdn.mrmahir.com/services/painter.svg", alt: "Painter" },
+  { id: "appliances", name: "Home Appliances", href: "/Home/handyman/home-appliances-repair", img: "https://cdn.mrmahir.com/services/appliance-repair.svg", alt: "Home Appliances" },
+  { id: "geyser", name: "Geyser", href: "/Home/handyman/geyser-services", img: "https://cdn.mrmahir.com/services/geyser.svg", alt: "Geyser" },
+  { id: "pest", name: "Pest Control", href: "/Home/handyman/pest-control-services", img: "https://cdn.mrmahir.com/svgs/pest-control.svg", alt: "Pest Control" },
+  { id: "inspection", name: "Home Inspection", href: "/Home/handyman/home-inspection-services", img: "https://cdn.mrmahir.com/svgs/house_inspection_updated.svg", alt: "Home Inspection" },
 ];
 
 const ServicesSection: React.FC = () => {
