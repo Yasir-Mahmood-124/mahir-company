@@ -1,5 +1,6 @@
 "use client";
 
+import CarpetCleaningServicesSection from "@/app/Components/CarpetCleaningServicesCard";
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import Footer from "@/app/Components/HandymanFooter";
 import CarpetCleaningBanner from "@/app/Components/carpet_cleaning_banner";
@@ -9,6 +10,7 @@ export default function HandymanHome() {
     <div>
       <NavBar></NavBar>
       <CarpetCleaningBanner></CarpetCleaningBanner>
+      <CarpetCleaningServicesSection></CarpetCleaningServicesSection>
       <CarpetCleaningDescription></CarpetCleaningDescription>
       <Footer></Footer>
     </div>
