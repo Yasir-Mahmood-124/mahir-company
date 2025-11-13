@@ -78,7 +78,7 @@ const NavBar: React.FC = () => {
           <Button component={Link} href="/Home/handyman" sx={{ color: "black" }}>
             Home
           </Button>
-          <Button component={Link} href="/about-us" sx={{ color: "black" }}>
+          <Button component={Link} href="/about-us/handyman-about" sx={{ color: "black" }}>
             About Us
           </Button>
 
@@ -180,12 +180,12 @@ const NavBar: React.FC = () => {
             pb: 2,
           }}
         >
-   <Button component={Link} href="/Home/handymain/" sx={{ color: "black" }}>
+   <Button component={Link} href="/Home/handyman" sx={{ color: "black" }}>
   Home
 </Button>
 
 
-          <Button component={Link} href="/about-us" sx={{ color: "black" }}>
+          <Button component={Link} href="/about-us/handyman-about" sx={{ color: "black" }}>
             About Us
           </Button>
           <Button sx={{ color: "black" }} onClick={(e) => handleOpen(e, "services")}>
