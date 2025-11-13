@@ -1279,7 +1279,44 @@ const initialState: ServicesState = {
     "webDiscount": 500,
     "mbmDiscount": 0,
     "description": []
-  }
+  },
+
+
+  {
+    "id": 214,
+    "title": "Curtain Cleaning",
+    "slug": "curtain-cleaning",
+    "price": 1500,
+    "appPrice": 900,
+    "priceComment": "Per Curtain (8/6 & 8/8 Feet)",
+    "image": "https://cdn.mrmahir.com/uploads/377f4fca-2cf6-47ca-8cc4-196d8c5cedb4.jpg",
+    "rating": 4,
+    "done": 409,
+    "earningSplit": 23,
+    "hours": 2,
+    "webDiscount": 900,
+    "mbmDiscount": 810,
+    "description": []
+  },
+  {
+    "id": 215,
+    "title": "Blind Cleaning",
+    "slug": "blind-cleaning",
+    "price": 1500,
+    "appPrice": 900,
+    "priceComment": "Per Blind (8/6 & 8/8 Feet)",
+    "image": "https://cdn.mrmahir.com/uploads/88e9385e-e55f-42ee-a08b-74caec8f42f7.jpg",
+    "rating": 3.6,
+    "done": 467,
+    "earningSplit": 23,
+    "hours": 2,
+    "webDiscount": 900,
+    "mbmDiscount": 810,
+    "description": []
+  },
+
+
+  
 
   ],
   cart: {},
