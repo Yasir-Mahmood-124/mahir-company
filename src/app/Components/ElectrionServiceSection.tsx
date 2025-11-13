@@ -15,7 +15,6 @@ const ElectrionServicesSection: React.FC<ACServicesSectionProps> = ({
   title = "Electrion Services",
   subtitle = "Professional Electrion services at your home"
 }) => {
-  // Agar serviceIds pass nahi kiye toh default AC service IDs use karo
   const defaultACServiceIds = [23,24,25];
   const displayServiceIds = serviceIds || defaultACServiceIds;
 
