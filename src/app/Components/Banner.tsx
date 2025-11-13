@@ -16,15 +16,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
 
-// IMPORTANT: Images ko yahan import karo - path apne according adjust karo
 import banner1 from "./Images/banner1.jpg";
 import banner2 from "./Images/banner2.jpg";
 import banner3 from "./Images/banner3.png";
 
-// Agar import mein error aa raha hai toh yeh uncomment karo aur upar wale comment kar do:
-// const banner1 = "/images/banner1.jpg";
-// const banner2 = "/images/banner2.jpg";
-// const banner3 = "/images/banner3.jpg";
+
 
 const BannerSection: React.FC = () => {
   const [requestCallOpen, setRequestCallOpen] = useState(false);
