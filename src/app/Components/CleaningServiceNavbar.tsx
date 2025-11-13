@@ -83,7 +83,7 @@ const CleaningServiceNavBar: React.FC = () => {
           >
             Home
           </Button>
-          <Button component={Link} href="/about-us" sx={{ color: "black" }}>
+          <Button component={Link} href="/about-us/cleaning-service-about" sx={{ color: "black" }}>
             About Us
           </Button>
 
@@ -114,7 +114,7 @@ const CleaningServiceNavBar: React.FC = () => {
             ].map((service) => (
               <MenuItem key={service} onClick={handleClose}>
                 <Link
-                  href={`/Home/${service.toLowerCase().replace(/ /g, "-")}`}
+                  href={`/Home/cleaning-services/${service.toLowerCase().replace(/ /g, "-")}`}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   {service}
