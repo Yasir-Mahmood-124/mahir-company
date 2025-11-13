@@ -21,17 +21,17 @@ type Service = {
 };
 
 const services: Service[] = [
-  { id: "sofa-cleaning", name: "Sofa Cleaning", href: "/Home/sofa-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/sofa.svg", alt: "Sofa Cleaning Service" },
-  { id: "chair-cleaning", name: "Chair Cleaning", href: "/Home/chair-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/chair.svg", alt: "Chair Cleaning" },
-  { id: "carpet-cleaning", name: "Carpet Cleaning", href: "/Home/carpet-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/carpet.svg", alt: "Carpet Cleaning" },
-  { id: "curtain-cleaning", name: "Curtain Cleaning", href: "/Home/curtain-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/curtain.svg", alt: "Curtain Cleaning" },
-  { id: "mattress-cleaning", name: "Mattress Cleaning", href: "/Home/mattress-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/mattress.svg", alt: "Mattress Cleaning" },
-  { id: "plastic-water-tank-cleaning", name: "Plastic Water Tank Cleaning", href: "/Home/plastic-water-tank-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_plastic.svg", alt: "Plastic Water Tank Cleaning" },
+  { id: "sofa-cleaning", name: "Sofa Cleaning", href: "/Home/cleaning-services/sofa-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/sofa.svg", alt: "Sofa Cleaning Service" },
+  { id: "chair-cleaning", name: "Chair Cleaning", href: "/Home/cleaning-services/chair-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/chair.svg", alt: "Chair Cleaning" },
+  { id: "carpet-cleaning", name: "Carpet Cleaning", href: "/Home/cleaning-services/carpet-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/carpet.svg", alt: "Carpet Cleaning" },
+  { id: "curtain-cleaning", name: "Curtain Cleaning", href: "/Home/cleaning-services/curtain-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/curtain.svg", alt: "Curtain Cleaning" },
+  { id: "mattress-cleaning", name: "Mattress Cleaning", href: "/Home/cleaning-services/mattress-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/mattress.svg", alt: "Mattress Cleaning" },
+  { id: "plastic-water-tank-cleaning", name: "Plastic Water Tank Cleaning", href: "/Home/cleaning-services/plastic-water-tank-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_plastic.svg", alt: "Plastic Water Tank Cleaning" },
   { id: "cement-water-tank-cleaning", name: "Cement Water Tank Cleaning", href: "/Home/cement-water-tank-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_cement.svg", alt: "Cement Water Tank Cleaning" },
-  { id: "deep-cleaning", name: "Deep Cleaning", href: "/Home/house-deep-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg", alt: "Deep Cleaning" },
-  { id: "car-detailing", name: "Car Detailing", href: "/Home/car-detailing-services", img: "https://cdn.mrmahir.com/svgs/detailing.svg", alt: "Car Detailing" },
-  { id: "commercial-deep-cleaning", name: "Commercial Deep Cleaning", href: "/Home/commercial-deep-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg", alt: "Commercial Deep Cleaning" },
-  { id: "solar-panel-cleaning", name: "Solar Panel Cleaning", href: "/Home/solar-panel-cleaning-services", img: "https://cdn.mrmahir.com/svgs/solar_cleaning.svg", alt: "Solar Panel Cleaning" },
+  { id: "deep-cleaning", name: "Deep Cleaning", href: "/Home/cleaning-services/house-deep-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg", alt: "Deep Cleaning" },
+  { id: "car-detailing", name: "Car Detailing", href: "/Home/cleaning-services/car-detailing-services", img: "https://cdn.mrmahir.com/svgs/detailing.svg", alt: "Car Detailing" },
+  { id: "commercial-deep-cleaning", name: "Commercial Deep Cleaning", href: "/Home/cleaning-services/commercial-deep-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg", alt: "Commercial Deep Cleaning" },
+  { id: "solar-panel-cleaning", name: "Solar Panel Cleaning", href: "/Home/cleaning-services/solar-panel-cleaning-services", img: "https://cdn.mrmahir.com/svgs/solar_cleaning.svg", alt: "Solar Panel Cleaning" },
 ];
 
 
