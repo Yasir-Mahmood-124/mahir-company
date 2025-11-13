@@ -193,13 +193,13 @@ const CleaningServiceNavBar: React.FC = () => {
         >
           <Button
             component={Link}
-            href="/Home/handymain/"
+            href="/Home/cleaning-services"
             sx={{ color: "black" }}
           >
             Home
           </Button>
 
-          <Button component={Link} href="/about-us" sx={{ color: "black" }}>
+          <Button component={Link} href="/about-us/cleaning-service-about" sx={{ color: "black" }}>
             About Us
           </Button>
           <Button
