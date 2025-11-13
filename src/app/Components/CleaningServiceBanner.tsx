@@ -16,15 +16,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
 
-// IMPORTANT: Images ko yahan import karo - path apne according adjust karo
 import banner4 from "./Images/banner4.jpg";
 import banner5 from "./Images/banner5.jpg";
 import banner1 from "./Images/banner1.jpg";
 
-// Agar import mein error aa raha hai toh yeh uncomment karo aur upar wale comment kar do:
-// const banner1 = "/images/banner1.jpg";
-// const banner2 = "/images/banner2.jpg";
-// const banner3 = "/images/banner3.jpg";
 
 const BannerSection: React.FC = () => {
   const [requestCallOpen, setRequestCallOpen] = useState(false);
@@ -35,14 +30,12 @@ const BannerSection: React.FC = () => {
     phoneNo: "",
   });
 
-  // Banner images array
   const bannerImages = [
     { id: 1, src: banner4, alt: "Home Maintenance Service 1" },
     { id: 2, src: banner5, alt: "Home Maintenance Service 2" },
     { id: 3, src: banner1, alt: "Home Maintenance Service 3" },
   ];
 
-  // Auto slide - har 3 seconds mein change
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % bannerImages.length);
