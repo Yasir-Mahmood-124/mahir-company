@@ -30,7 +30,7 @@ const UniqueSellingPoints: React.FC = () => {
               }}
             >
               <Image
-                src={image} // <-- apni image ka path yahan lagao (public folder me)
+                src={image} 
                 alt="Reliable Service"
                 width={600}
                 height={400}
