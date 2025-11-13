@@ -15,7 +15,6 @@ const HomeAppliancesServices: React.FC<ACServicesSectionProps> = ({
   title = "HomeAppliances Services",
   subtitle = "Professional HomeAppliances Services at your home"
 }) => {
-  // Agar serviceIds pass nahi kiye toh default AC service IDs use karo
   const defaultACServiceIds = [208,281,1633,1654,1655,1656];
   const displayServiceIds = serviceIds || defaultACServiceIds;
 
