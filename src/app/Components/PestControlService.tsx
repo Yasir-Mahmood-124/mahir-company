@@ -15,7 +15,6 @@ const PestControlServices: React.FC<ACServicesSectionProps> = ({
   title = "PestControl Services ",
   subtitle = "Professional PestControl Services"
 }) => {
-  // Agar serviceIds pass nahi kiye toh default AC service IDs use karo
   const defaultACServiceIds = [282, 283, 284, 286, 289]
   const displayServiceIds = serviceIds || defaultACServiceIds;
 
