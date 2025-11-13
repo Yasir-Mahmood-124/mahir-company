@@ -2,6 +2,7 @@
 
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import Footer from "@/app/Components/HandymanFooter";
+import MattresCleaningService from "@/app/Components/MattresCLeaningServiceCard";
 import MattressCleaningBanner from "@/app/Components/mattress_cleaning_banner";
 import MattressCleaningDescription from "@/app/Components/mattress_cleaning_description";
 export default function HandymanHome() {
@@ -9,6 +10,7 @@ export default function HandymanHome() {
     <div>
       <NavBar></NavBar>
       <MattressCleaningBanner></MattressCleaningBanner>
+      <MattresCleaningService></MattresCleaningService>
       <MattressCleaningDescription></MattressCleaningDescription>
       <Footer></Footer>
     </div>
