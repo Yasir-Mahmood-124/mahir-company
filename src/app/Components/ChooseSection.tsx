@@ -120,7 +120,7 @@ const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ mockupImage }) 
               <Image
                 src={playstore}
                 alt="Google Play"
-                width={100}
+                width={130}
                 height={100}
               />
             </Stack>
