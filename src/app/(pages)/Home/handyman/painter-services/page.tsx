@@ -1,0 +1,19 @@
+"use client";
+
+import NavBar from "@/app/Components/Navabar";
+import Footer from "@/app/Components/HandymanFooter";
+import HeroSection from "@/app/Components/PainterservicesBanner";
+import PainterService from "@/app/Components/PainterServiceSection";
+import PainterServiceDescription from "@/app/Components/PainterServiceDescription";
+export default function HandymanHome() {
+  return (
+    <div>
+      <NavBar></NavBar>
+      <HeroSection></HeroSection>
+      <PainterService></PainterService>
+      <PainterServiceDescription></PainterServiceDescription>
+      <Footer></Footer>
+
+    </div>
+  );
+}
