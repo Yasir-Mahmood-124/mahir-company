@@ -1,5 +1,6 @@
 "use client";
 
+import CementTankCleaningServicesSection from "@/app/Components/CementTankServicecard";
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import Footer from "@/app/Components/HandymanFooter";
 import CementTankCleaningBanner from "@/app/Components/cement_tank_cleaning_banner";
@@ -9,6 +10,7 @@ export default function HandymanHome() {
     <div>
       <NavBar></NavBar>
       <CementTankCleaningBanner></CementTankCleaningBanner>
+      <CementTankCleaningServicesSection></CementTankCleaningServicesSection>
       <CementTankCleaningDescription></CementTankCleaningDescription>
       <Footer></Footer>
     </div>
