@@ -108,7 +108,7 @@ const NavBar: React.FC = () => {
             ].map((service) => (
               <MenuItem key={service} onClick={handleClose}>
                 <Link
-                  href={`/Home/${service.toLowerCase().replace(/ /g, "-")}`}
+                  href={`/Home/handyman/${service.toLowerCase().replace(/ /g, "-")}`}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   {service}
