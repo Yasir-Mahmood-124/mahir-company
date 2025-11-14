@@ -16,9 +16,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
 
-import banner4 from "./Images/banner4.jpg";
-import banner5 from "./Images/banner5.jpg";
-import banner1 from "./Images/banner1.jpg";
+import banner4 from "../Images/banner4.jpg";
+import banner5 from "../Images/banner5.jpg";
+import banner1 from "../Images/banner1.jpg";
 
 
 const BannerSection: React.FC = () => {
