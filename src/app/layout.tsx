@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import FloatingContactButtons from "./Components/floating_contact_buttons";
 import { StoreProvider } from "./Components/redux/StoreProvider"; // ✅ import Provider
 
 const geistSans = Geist({
@@ -28,7 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          {children}
+          <FloatingContactButtons></FloatingContactButtons>
+          </StoreProvider>
       </body>
     </html>
   );
