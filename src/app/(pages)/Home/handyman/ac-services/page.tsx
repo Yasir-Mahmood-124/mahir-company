@@ -2,11 +2,11 @@
 
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
-import BannerSection from "@/app/Components/Banner";
-import HeroSection from "@/app/Components/AcServiceBanner";
+import BannerSection from "@/app/Components/banners/Banner";
+import HeroSection from "@/app/Components/banners/AcServiceBanner";
 import ServiceCard from "@/app/Components/ServiceCard";
 import ACServicesSection from "@/app/Components/Cards/AcServiceSectionCard";
-import ACServicesDescription from "@/app/Components/ACServicesDescription";
+import ACServicesDescription from "@/app/Components/Cards_Description/ACServicesDescription";
 export default function HandymanHome() {
   return (
     <div>
