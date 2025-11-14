@@ -2,9 +2,9 @@
 
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
-import HeroSection from "@/app/Components/HandymanServiceBanner";
+import HeroSection from "@/app/Components/banners/HandymanServiceBanner";
 import HandymanServicesSection from "@/app/Components/Cards/HandymanServiceCard";
-import HandymanServiceDescription from "@/app/Components/HandymanServiceDescription";
+import HandymanServiceDescription from "@/app/Components/Cards_Description/HandymanServiceDescription";
 export default function HandymanHome() {
   return (
     <div>
