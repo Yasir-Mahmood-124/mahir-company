@@ -3,7 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { Box, Container, Typography, Button } from "@mui/material";
-import becomeMahir from "./Images/become-mahir.webp"; // ✅ Correct import
+import becomeMahir from "./Images/become-mahir.webp";
+import PlayStoreLogo from "./Images/playstore.svg"; // Add your Play Store logo here
 
 const BecomeMahirSection = () => {
   return (
@@ -11,8 +12,8 @@ const BecomeMahirSection = () => {
       component="section"
       sx={{
         py: { xs: 6, md: 12 },
-        backgroundColor: "#f5f5f5", // 🌤️ Light grey background
-        color: "#000", // black text
+        backgroundColor: "#f5f5f5",
+        color: "#000",
         position: "relative",
         overflow: "hidden",
       }}
@@ -45,7 +46,6 @@ const BecomeMahirSection = () => {
                 height: { xs: 400, md: 550 },
                 borderRadius: 4,
                 overflow: "hidden",
-                // boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
               }}
             >
               {/* subtle fade (top & bottom) */}
@@ -98,7 +98,7 @@ const BecomeMahirSection = () => {
                 maxWidth: 500,
               }}
             >
-              Join Pakistan’s fastest-growing platform for skilled professionals.
+              Join Pakistan's fastest-growing platform for skilled professionals.
               Get access to thousands of customers, earn on your own terms, and
               grow your business with the <strong>Book a Mahir</strong> app.
             </Typography>
@@ -110,7 +110,7 @@ const BecomeMahirSection = () => {
               <strong>38+</strong> Personal Care Services
             </Typography>
 
-            {/* Arrow + Button */}
+            {/* Arrow + Play Store Logo */}
             <Box
               sx={{
                 display: "flex",
@@ -135,34 +135,29 @@ const BecomeMahirSection = () => {
                 </svg>
               </Box>
 
-              {/* Google Play Button */}
-              <Button
+              {/* Play Store Logo */}
+              <Box
                 component="a"
                 href="https://play.google.com/store/apps/details?id=com.mrmahir.technician"
                 target="_blank"
+                rel="noopener noreferrer"
                 sx={{
-                  px: 3,
-                  py: 1.5,
-                  borderRadius: 3,
-                  fontWeight: 700,
-                  fontSize: "1.1rem",
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  minWidth: 220,
-                  "&:hover": { backgroundColor: "#333" },
+                  display: "block",
+                  cursor: "pointer",
+                  transition: "opacity 0.3s",
+                  '&:hover': { opacity: 0.8 }
                 }}
               >
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3 2l15 10-15 10V2z" />
-                </svg>
-                &nbsp; Google Play
-              </Button>
+                <Image
+                  src={PlayStoreLogo}
+                  alt="Get it on Google Play"
+                  width={180}
+                  height={60}
+                  style={{
+                    objectFit: "contain"
+                  }}
+                />
+              </Box>
             </Box>
           </Box>
         </Box>
