@@ -2,8 +2,8 @@
 
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import Footer from "@/app/Components/HandymanFooter";
-import SolarPanelCleaningBanner from "@/app/Components/solar_panel_cleaning_banner";
-import SolarPanelCleaningDescription from "@/app/Components/solar_panel_description";
+import SolarPanelCleaningBanner from "@/app/Components/banners/solar_panel_cleaning_banner";
+import SolarPanelCleaningDescription from "@/app/Components/Cards_Description/solar_panel_description";
 import SolarPanelCleaningServicesSection from "@/app/Components/Cards/SolarPannelCleaningServiceCard";
 export default function HandymanHome() {
   return (
