@@ -11,9 +11,12 @@ import CustomerTestimonials from "@/app/Components/Testimonial";
 import ComplaintFormSection from "@/app/Components/ComplaintSection";
 import TopServicesSection from "@/app/Components/TopServicesSection";
 import Footer from "@/app/Components/HandymanFooter";
+import BlueLoader from "@/app/Components/CustomBlueLoader";
+
 export default function HandymanHome() {
   return (
     <div>
+      <BlueLoader>
         <NavBar></NavBar>
         <BannerSection></BannerSection>
         <ServicesSection></ServicesSection>
@@ -24,6 +27,7 @@ export default function HandymanHome() {
         <ComplaintFormSection></ComplaintFormSection>
         <TopServicesSection></TopServicesSection>
         <Footer></Footer>
+        </BlueLoader>
     </div>
   );
 }
