@@ -14,28 +14,32 @@ import ComplaintsSection from "@/app/Components/BeauticianComplaintSectionForm";
 import ContentSection from "@/app/Components/BeauticianContentSection";
 import Footer from "@/app/Components/BeauticianFooter";
 import CopyrightSection from "@/app/Components/CopyrightSection";
+import CustomLoader from "@/app/Components/CustomLoader"; // ✅ Import karein
+
 export default function Home() {
   return (
-    <div>
-      <NavBar></NavBar>
-      <BeauticianBanner></BeauticianBanner>
-      <BeauticianServiceCard></BeauticianServiceCard>
-      <TrendingServicesSection></TrendingServicesSection>
-      <br></br>
-      <br></br>
-      <br></br>
-      <BeauticianApp></BeauticianApp>
-      <br></br>
-      <br></br>
+    <CustomLoader> {/* ✅ Wrap karein */}
+      <div>
+        <NavBar></NavBar>
+        <BeauticianBanner></BeauticianBanner>
+        <BeauticianServiceCard></BeauticianServiceCard>
+        <TrendingServicesSection></TrendingServicesSection>
+        <br></br>
+        <br></br>
+        <br></br>
+        <BeauticianApp></BeauticianApp>
+        <br></br>
+        <br></br>
 
-      <FullVideoSection></FullVideoSection>
-      <CustomerTestimonials></CustomerTestimonials>
-      <WhyChooseSection></WhyChooseSection>
-      <BookServicesSection></BookServicesSection>
-      <ComplaintsSection></ComplaintsSection>
-      <ContentSection></ContentSection>
-      <Footer></Footer>
-      <CopyrightSection></CopyrightSection>
-    </div>
+        <FullVideoSection></FullVideoSection>
+        <CustomerTestimonials></CustomerTestimonials>
+        <WhyChooseSection></WhyChooseSection>
+        <BookServicesSection></BookServicesSection>
+        <ComplaintsSection></ComplaintsSection>
+        <ContentSection></ContentSection>
+        <Footer></Footer>
+        <CopyrightSection></CopyrightSection>
+      </div>
+    </CustomLoader> 
   );
 }
