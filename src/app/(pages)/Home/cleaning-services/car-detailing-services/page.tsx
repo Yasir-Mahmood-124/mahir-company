@@ -1,6 +1,6 @@
 "use client";
 
-import HeroSection from "@/app/Components/CarDetalingBanner";
+import HeroSection from "@/app/Components/banners/CarDetalingBanner";
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import Footer from "@/app/Components/HandymanFooter";
 import CarDetailingServiceCard from "@/app/Components/Cards/CarDetailingServicecard"
