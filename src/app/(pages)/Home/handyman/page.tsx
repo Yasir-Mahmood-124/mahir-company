@@ -1,7 +1,7 @@
 "use client";
 
 import NavBar from "@/app/Components/Navabar";
-import BannerSection from "@/app/Components/Banner";
+import BannerSection from "@/app/Components/banners/Banner";
 import ServicesSection from "@/app/Components/Servicesection";
 import TrendingServices from "@/app/Components/TrendingService";
 import WhyChooseUsSection from "@/app/Components/ChooseSection";
