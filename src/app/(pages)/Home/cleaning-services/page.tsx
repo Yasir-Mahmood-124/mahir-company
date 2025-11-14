@@ -11,10 +11,12 @@ import FullVideoSection from "@/app/Components/FullVideoSection";
 import ComplaintFormSection from "@/app/Components/ComplaintSection";
 import CleaningTopServicesSection from "@/app/Components/CleaningTopTrendingService";
 import CustomerTestimonials from "@/app/Components/Testimonial";
+import BlueLoader from "@/app/Components/CustomBlueLoader";
 
 export default function Home() {
   return (
     <div>
+      <BlueLoader>
       <NavBar></NavBar>
       <CleaningServiceBanner></CleaningServiceBanner>
       <CleaningServiceCard></CleaningServiceCard>
@@ -25,7 +27,7 @@ export default function Home() {
       <ComplaintFormSection></ComplaintFormSection>
       <CleaningTopServicesSection></CleaningTopServicesSection>
       <Footer></Footer>
-
+</BlueLoader>
     </div>
   );
 }
