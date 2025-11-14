@@ -3,7 +3,7 @@
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import CommercialDeepCleaningBanner from "@/app/Components/commercial_deep_cleaning_banner";
 import CommercialDeepCleaningDescription from "@/app/Components/commercial_deep_cleaning_desc";
-import CommercialDeepCleaningServicesSection from "@/app/Components/CommericlDeepCleaningCard";
+import CommercialDeepCleaningServicesSection from "@/app/Components/Cards/CommericlDeepCleaningCard";
 import Footer from "@/app/Components/HandymanFooter";
 export default function HandymanHome() {
   return (

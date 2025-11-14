@@ -3,7 +3,7 @@
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
 import HeroSection from "@/app/Components/HandymanServiceBanner";
-import HandymanServicesSection from "@/app/Components/HandymanServiceSection";
+import HandymanServicesSection from "@/app/Components/Cards/HandymanServiceCard";
 import HandymanServiceDescription from "@/app/Components/HandymanServiceDescription";
 export default function HandymanHome() {
   return (

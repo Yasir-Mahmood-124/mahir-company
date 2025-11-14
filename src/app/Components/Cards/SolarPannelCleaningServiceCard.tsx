@@ -1,27 +1,30 @@
+
+
+// ============================================
+// SolarPanelCleaningServicesSection.tsx
 'use client';
 
 import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
-import ServiceCard from './ServiceCard';
+import ServiceCard from '../ServiceCard';
 
-interface ACServicesSectionProps {
-  serviceIds?: number[]; // Optional prop for specific service IDs
+interface SolarPanelCleaningServicesSectionProps {
+  serviceIds?: number[];
   title?: string;
   subtitle?: string;
 }
 
-const PestControlServices: React.FC<ACServicesSectionProps> = ({ 
+const SolarPanelCleaningServicesSection: React.FC<SolarPanelCleaningServicesSectionProps> = ({ 
   serviceIds,
-  title = "PestControl Services ",
-  subtitle = "Professional PestControl Services"
+  title = "Solar Panel Cleaning Services",
+  subtitle = "Professional solar panel cleaning for optimal efficiency"
 }) => {
-  const defaultACServiceIds = [282, 283, 284, 286, 289]
-  const displayServiceIds = serviceIds || defaultACServiceIds;
+  const defaultSolarCleaningServiceIds = [1638, 1639, 1649];
+  const displayServiceIds = serviceIds || defaultSolarCleaningServiceIds;
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
       <Container maxWidth="lg">
-        {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Typography
             variant="h4"
@@ -38,7 +41,6 @@ const PestControlServices: React.FC<ACServicesSectionProps> = ({
           </Typography>
         </Box>
 
-        {/* Services Grid */}
         <Grid container spacing={3}>
           {displayServiceIds.map((serviceId) => (
             <Grid item xs={12} sm={6} md={4} key={serviceId}>
@@ -51,4 +53,4 @@ const PestControlServices: React.FC<ACServicesSectionProps> = ({
   );
 };
 
-export default PestControlServices;
+export default SolarPanelCleaningServicesSection;

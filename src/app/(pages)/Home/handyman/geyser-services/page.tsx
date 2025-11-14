@@ -3,7 +3,7 @@
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
 import Geyserbanner from '@/app/Components/GeyserBannner'
-import GeyserServicesSection from "@/app/Components/GeyserserviceSection";
+import GeyserServicesSection from "@/app/Components/Cards/GeyserserviceCard";
 import GeyserServicesDescription from "@/app/Components/GeyserServicesDescription";
 export default function HandymanHome() {
   return (

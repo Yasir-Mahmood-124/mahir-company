@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
-import ServiceCard from './ServiceCard';
+import ServiceCard from '../ServiceCard';
 
 interface ACServicesSectionProps {
   serviceIds?: number[]; // Optional prop for specific service IDs
@@ -10,12 +10,12 @@ interface ACServicesSectionProps {
   subtitle?: string;
 }
 
-const Homeinspectionservices: React.FC<ACServicesSectionProps> = ({ 
+const GeyserServicesSection: React.FC<ACServicesSectionProps> = ({ 
   serviceIds,
-  title = "Home Inspections Services",
-  subtitle = "Luxry Home Inspection Services"
+  title = "Geyser Services",
+  subtitle = "Professional Geyser Services"
 }) => {
-  const defaultACServiceIds = [1641,1642,1643,1644];
+  const defaultACServiceIds = [1, 2, 3, 4,5,6,7,8,9,10,11];
   const displayServiceIds = serviceIds || defaultACServiceIds;
 
   return (
@@ -51,4 +51,4 @@ const Homeinspectionservices: React.FC<ACServicesSectionProps> = ({
   );
 };
 
-export default Homeinspectionservices;
+export default GeyserServicesSection;

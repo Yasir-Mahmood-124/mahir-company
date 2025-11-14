@@ -3,7 +3,7 @@
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
 import HeroSection from "@/app/Components/ElectrionServiceBanner";
-import ElectrionServicesSection from "@/app/Components/ElectrionServiceSection";
+import ElectrionServicesSection from "@/app/Components/Cards/ElectrionServiceCard";
 import ElectrionServiceDescription from "@/app/Components/ELectrionServiceDescription"
 export default function HandymanHome() {
   return (

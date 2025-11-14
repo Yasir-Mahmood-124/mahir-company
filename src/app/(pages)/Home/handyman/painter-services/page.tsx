@@ -3,7 +3,7 @@
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
 import HeroSection from "@/app/Components/PainterservicesBanner";
-import PainterService from "@/app/Components/PainterServiceSection";
+import PainterService from "@/app/Components/Cards/PainterServiceSectionCard";
 import PainterServiceDescription from "@/app/Components/PainterServiceDescription";
 export default function HandymanHome() {
   return (

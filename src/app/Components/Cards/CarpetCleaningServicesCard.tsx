@@ -2,21 +2,21 @@
 
 import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
-import ServiceCard from './ServiceCard';
+import ServiceCard from '../ServiceCard';
 
-interface ACServicesSectionProps {
+interface CarpetCleaningServicesSectionProps {
   serviceIds?: number[]; // Optional prop for specific service IDs
   title?: string;
   subtitle?: string;
 }
 
-const GeyserServicesSection: React.FC<ACServicesSectionProps> = ({ 
+const CarpetCleaningServicesSection: React.FC<CarpetCleaningServicesSectionProps> = ({ 
   serviceIds,
-  title = "Geyser Services",
-  subtitle = "Professional Geyser Services"
+  title = "Carpet Cleaning Services",
+  subtitle = "Professional carpet and rug cleaning at your doorstep"
 }) => {
-  const defaultACServiceIds = [1, 2, 3, 4,5,6,7,8,9,10,11];
-  const displayServiceIds = serviceIds || defaultACServiceIds;
+  const defaultCarpetCleaningServiceIds = [185, 1621];
+  const displayServiceIds = serviceIds || defaultCarpetCleaningServiceIds;
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -51,4 +51,4 @@ const GeyserServicesSection: React.FC<ACServicesSectionProps> = ({
   );
 };
 
-export default GeyserServicesSection;
+export default CarpetCleaningServicesSection;

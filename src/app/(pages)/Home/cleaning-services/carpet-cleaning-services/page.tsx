@@ -1,6 +1,6 @@
 "use client";
 
-import CarpetCleaningServicesSection from "@/app/Components/CarpetCleaningServicesCard";
+import CarpetCleaningServicesSection from "@/app/Components/Cards/CarpetCleaningServicesCard";
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import Footer from "@/app/Components/HandymanFooter";
 import CarpetCleaningBanner from "@/app/Components/carpet_cleaning_banner";

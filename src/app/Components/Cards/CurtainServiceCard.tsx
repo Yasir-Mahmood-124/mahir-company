@@ -2,25 +2,26 @@
 
 import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
-import ServiceCard from './ServiceCard';
+import ServiceCard from '../ServiceCard';
 
-interface ChairCleaningServicesSectionProps {
-  serviceIds?: number[];
+interface CurtainServicesSectionProps {
+  serviceIds?: number[]; // Optional prop for specific service IDs
   title?: string;
   subtitle?: string;
 }
 
-const ChairCleaningServicesSection: React.FC<ChairCleaningServicesSectionProps> = ({ 
+const CurtainServicesSection: React.FC<CurtainServicesSectionProps> = ({ 
   serviceIds,
-  title = "Chair Cleaning Services",
-  subtitle = "Professional chair cleaning for all seat configurations"
+  title = "Curtain Cleaning Services",
+  subtitle = "Professional curtain and blind cleaning at your doorstep"
 }) => {
-  const defaultChairCleaningServiceIds = [184, 301, 302, 303, 1611];
-  const displayServiceIds = serviceIds || defaultChairCleaningServiceIds;
+  const defaultCurtainServiceIds = [214, 215];
+  const displayServiceIds = serviceIds || defaultCurtainServiceIds;
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
       <Container maxWidth="lg">
+        {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Typography
             variant="h4"
@@ -37,6 +38,7 @@ const ChairCleaningServicesSection: React.FC<ChairCleaningServicesSectionProps> 
           </Typography>
         </Box>
 
+        {/* Services Grid */}
         <Grid container spacing={3}>
           {displayServiceIds.map((serviceId) => (
             <Grid item xs={12} sm={6} md={4} key={serviceId}>
@@ -49,4 +51,4 @@ const ChairCleaningServicesSection: React.FC<ChairCleaningServicesSectionProps> 
   );
 };
 
-export default ChairCleaningServicesSection;
+export default CurtainServicesSection;

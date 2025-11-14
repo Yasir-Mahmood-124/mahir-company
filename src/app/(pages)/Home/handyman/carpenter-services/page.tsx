@@ -3,7 +3,7 @@
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
 import CarpanterServiceBanner from "@/app/Components/CarpanterServiceBanner";
-import CarpanterServicesSection from "@/app/Components/CarpanterServiceSection";
+import CarpanterServicesSection from "@/app/Components/Cards/CarpanterServiceCard";
 import CarpanterDescription from "@/app/Components/CarpanterDescription";
 export default function HandymanHome() {
   return (
