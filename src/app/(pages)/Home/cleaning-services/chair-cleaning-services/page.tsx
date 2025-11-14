@@ -1,7 +1,7 @@
 "use client";
 
-import ChairCleaningBanner from "@/app/Components/chair_cleaning_banner";
-import ChairCleaningDescription from "@/app/Components/chair_cleaning_description";
+import ChairCleaningBanner from "@/app/Components/banners/chair_cleaning_banner";
+import ChairCleaningDescription from "@/app/Components/Cards_Description/chair_cleaning_description";
 import ChairCleaningServicesSection from "@/app/Components/Cards/ChairCleningServiceCard";
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import Footer from "@/app/Components/HandymanFooter";
