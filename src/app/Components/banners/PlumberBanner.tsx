@@ -5,7 +5,6 @@ import React from "react";
 import { Box, Container, Typography, Grid, Paper } from "@mui/material";
 import { Star, CheckCircle } from "@mui/icons-material";
 import Image from "next/image";
-import Download from "./Images/download.jpeg";
 
 interface StatItemProps {
   icon: React.ReactNode;
@@ -177,16 +176,7 @@ From Plumbing Installs, Repairs, and Upgrades – We Fix it All
                 bgcolor: "#333",
               }}
             >
-              <Image
-                src={Download}
-                alt="Pest Control Services"
-                fill
-                priority
-                style={{
-                  objectFit: "cover",
-                }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+          
             </Box>
           </Grid>
         </Grid>
