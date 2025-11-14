@@ -8,9 +8,12 @@ import Autocarasuel from "../../Components/Autocarasuel";
 import MobileAppSection from "@/app/Components/MobileAppsection";
 import MobileAppSectionLeftImage from "@/app/Components/MobileSection";
 import HandymanFooter from "../../Components/HandymanFooter"
+import BlueLoader from "@/app/Components/CustomBlueLoader";
+
 export default function Home() {
   return (
     <div>
+      <BlueLoader>
       <HeroSection />
       <AnnouncementSection />
       <MobileAppSection></MobileAppSection>
@@ -18,6 +21,7 @@ export default function Home() {
       <MobileAppSectionLeftImage></MobileAppSectionLeftImage>
       <Autocarasuel></Autocarasuel>
       <HandymanFooter></HandymanFooter>
+      </BlueLoader>
     </div>
   );
 }
