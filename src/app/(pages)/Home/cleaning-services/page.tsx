@@ -2,7 +2,7 @@
 
 import NavBar from "@/app/Components/CleaningServiceNavbar";
 import Footer from "@/app/Components/HandymanFooter";
-import CleaningServiceBanner from "@/app/Components/CleaningServiceBanner"
+import CleaningServiceBanner from "@/app/Components/banners/CleaningServiceBanner"
 import CleaningServiceCard from "@/app/Components/CleaningServices"
 import CleaningTrendingServices from "@/app/Components/CleaningTrendingService";
 import WhyChooseUsSection from "@/app/Components/ChooseSection";
