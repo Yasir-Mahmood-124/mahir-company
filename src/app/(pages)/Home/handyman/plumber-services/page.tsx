@@ -2,9 +2,9 @@
 
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
-import PlumberBanner from "@/app/Components/PlumberBanner"
+import PlumberBanner from "@/app/Components/banners/PlumberBanner"
 import PlumberService from "@/app/Components/Cards/PlumberServiceCard";
-import PlumberServiceDescription from "@/app/Components/PlumberServiceDescription";
+import PlumberServiceDescription from "@/app/Components/Cards_Description/PlumberServiceDescription";
 export default function HandymanHome() {
   return (
     <div>
