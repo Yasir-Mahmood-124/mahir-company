@@ -1,10 +1,10 @@
 "use client";
 
 import TrendingServicesSection from "@/app/Components/BeauticiamTopTrendingServices";
-import BeauticianBanner from "@/app/Components/beautician-banner";
+import BeauticianBanner from "@/app/Components/banners/beautician-banner";
 import NavBar from "@/app/Components/beauticianNavabr";
 import BeauticianServiceCard from "@/app/Components/BeauticianServices";
-import BeauticianApp from "@/app/Components/BeauticianApp"
+import BeauticianApp from "@/app/Components/BeauticianApp";
 import React from "react";
 import FullVideoSection from "@/app/Components/BeauticianFullVideo";
 import CustomerTestimonials from "@/app/Components/BeauticianTestimonial";
@@ -17,25 +17,25 @@ import CopyrightSection from "@/app/Components/CopyrightSection";
 export default function Home() {
   return (
     <div>
-        <NavBar></NavBar>
-        <BeauticianBanner></BeauticianBanner>
-        <BeauticianServiceCard></BeauticianServiceCard>
-        <TrendingServicesSection></TrendingServicesSection>
-        <br></br>
-        <br></br>
-        <br></br>
-        <BeauticianApp></BeauticianApp>
-        <br></br>
-        <br></br>
+      <NavBar></NavBar>
+      <BeauticianBanner></BeauticianBanner>
+      <BeauticianServiceCard></BeauticianServiceCard>
+      <TrendingServicesSection></TrendingServicesSection>
+      <br></br>
+      <br></br>
+      <br></br>
+      <BeauticianApp></BeauticianApp>
+      <br></br>
+      <br></br>
 
-        <FullVideoSection></FullVideoSection>
-        <CustomerTestimonials></CustomerTestimonials>
-        <WhyChooseSection></WhyChooseSection>
-        <BookServicesSection></BookServicesSection>
-        <ComplaintsSection></ComplaintsSection>
-        <ContentSection></ContentSection>
-        <Footer></Footer>
-        <CopyrightSection></CopyrightSection>
+      <FullVideoSection></FullVideoSection>
+      <CustomerTestimonials></CustomerTestimonials>
+      <WhyChooseSection></WhyChooseSection>
+      <BookServicesSection></BookServicesSection>
+      <ComplaintsSection></ComplaintsSection>
+      <ContentSection></ContentSection>
+      <Footer></Footer>
+      <CopyrightSection></CopyrightSection>
     </div>
   );
 }
