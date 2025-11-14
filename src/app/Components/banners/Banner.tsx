@@ -16,9 +16,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
 
-import banner1 from "./Images/banner1.jpg";
-import banner2 from "./Images/banner2.jpg";
-import banner3 from "./Images/banner3.png";
+import banner1 from "../Images/banner1.jpg";
+import banner2 from "../Images/banner2.jpg";
+import banner3 from "../Images/banner3.png";
 
 
 
