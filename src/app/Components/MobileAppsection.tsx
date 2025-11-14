@@ -10,7 +10,7 @@ const MobileAppSection = () => {
     <Box
       component="section"
       sx={{
-        background: "linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%)", // 🌤 light background
+        background: "linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%)",
         py: { xs: 6, md: 10 },
         display: "flex",
         alignItems: "center",
@@ -20,7 +20,7 @@ const MobileAppSection = () => {
         <Box
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", lg: "row" },
+            flexDirection: { xs: "column-reverse", lg: "row" }, // 🔥 column-reverse for mobile
             alignItems: "center",
             gap: { xs: 6, lg: 10 },
             position: "relative",
@@ -55,7 +55,7 @@ const MobileAppSection = () => {
               sx={{
                 fontSize: { xs: "1.1rem", md: "1.3rem", lg: "1.4rem" },
                 color: "#444",
-                mb: 3, // 🔹 reduced from 4 to 3 (brings buttons closer)
+                mb: 3,
                 maxWidth: "600px",
                 lineHeight: 1.6,
               }}
@@ -71,7 +71,7 @@ const MobileAppSection = () => {
                 fontSize: { xs: "1.8rem", md: "2.2rem", lg: "2.5rem" },
                 fontWeight: 500,
                 color: "#000",
-                mb: 4, // 🔹 reduced spacing before buttons
+                mb: 4,
                 letterSpacing: "0.02em",
               }}
             >
@@ -95,7 +95,7 @@ const MobileAppSection = () => {
                 sx={{
                   display: "block",
                   cursor: "pointer",
-                  textDecoration: "none", // 🔹 no underline
+                  textDecoration: "none",
                   transition: "transform 0.2s",
                   "&:hover": { transform: "scale(1.05)" },
                 }}
@@ -114,8 +114,8 @@ const MobileAppSection = () => {
                   <Image
                     src={appStoreIcon}
                     alt="App Store"
-                    width={170}
-                    height={160}
+                    width={150}
+                    height={150}
                   />
                   <Box>
                     <Typography
@@ -125,7 +125,7 @@ const MobileAppSection = () => {
                         lineHeight: 1,
                         mb: 0.5,
                         fontWeight: 400,
-                        textDecoration: "none", // 🔹 remove underline
+                        textDecoration: "none",
                       }}
                     >
                       Available on the
@@ -136,7 +136,7 @@ const MobileAppSection = () => {
                         color: "#000",
                         fontWeight: 700,
                         lineHeight: 1,
-                        textDecoration: "none", // 🔹 remove underline
+                        textDecoration: "none",
                       }}
                     >
                       App Store
@@ -153,7 +153,7 @@ const MobileAppSection = () => {
                 sx={{
                   display: "block",
                   cursor: "pointer",
-                  textDecoration: "none", // 🔹 no underline
+                  textDecoration: "none",
                   transition: "transform 0.2s",
                   "&:hover": { transform: "scale(1.05)" },
                 }}
@@ -183,7 +183,7 @@ const MobileAppSection = () => {
                         lineHeight: 1,
                         mb: 0.5,
                         fontWeight: 400,
-                        textDecoration: "none", // 🔹 remove underline
+                        textDecoration: "none",
                       }}
                     >
                       GET IT ON
@@ -194,7 +194,7 @@ const MobileAppSection = () => {
                         color: "#000",
                         fontWeight: 700,
                         lineHeight: 1,
-                        textDecoration: "none", // 🔹 remove underline
+                        textDecoration: "none",
                       }}
                     >
                       Google Play
@@ -242,7 +242,7 @@ const MobileAppSection = () => {
               display: "flex",
               justifyContent: { xs: "center", lg: "flex-end" },
               alignItems: "center",
-              mt: { xs: 4, lg: 0 },
+              mt: { xs: 0, lg: 0 }, // 🔥 removed top margin on mobile
             }}
           >
             <Box
