@@ -93,7 +93,7 @@ const NavBar: React.FC = () => {
             ].map((service) => (
               <MenuItem key={service.url} onClick={handleClose}>
                 <Link
-                  href={`/${service.url}`}
+                  href={`/Home/beautician/${service.url}`}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   {service.name}
