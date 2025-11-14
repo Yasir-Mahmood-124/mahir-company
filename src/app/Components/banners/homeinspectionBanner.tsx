@@ -5,7 +5,6 @@ import React from "react";
 import { Box, Container, Typography, Grid, Paper } from "@mui/material";
 import { Star, CheckCircle } from "@mui/icons-material";
 import Image from "next/image";
-import Download from "./Images/download.jpeg";
 
 interface StatItemProps {
   icon: React.ReactNode;
@@ -177,16 +176,7 @@ const HeroSection: React.FC = () => {
                 bgcolor: "#333",
               }}
             >
-              <Image
-                src={Download}
-                alt="AC Services"
-                fill
-                priority
-                style={{
-                  objectFit: "cover",
-                }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+        
             </Box>
           </Grid>
         </Grid>
