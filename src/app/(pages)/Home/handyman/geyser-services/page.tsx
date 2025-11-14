@@ -2,9 +2,9 @@
 
 import NavBar from "@/app/Components/Navabar";
 import Footer from "@/app/Components/HandymanFooter";
-import Geyserbanner from '@/app/Components/GeyserBannner'
+import Geyserbanner from '../../../../Components/banners/GeyserBannner'
 import GeyserServicesSection from "@/app/Components/Cards/GeyserserviceCard";
-import GeyserServicesDescription from "@/app/Components/GeyserServicesDescription";
+import GeyserServicesDescription from "@/app/Components/Cards_Description/GeyserServicesDescription";
 export default function HandymanHome() {
   return (
     <div>
