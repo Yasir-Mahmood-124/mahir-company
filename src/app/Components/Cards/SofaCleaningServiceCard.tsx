@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
-import ServiceCard from '../ServiceCard';
+import ServiceCard from '../Card_Details/CleaningServicesCardDetails';
 
 interface SofaCleaningServicesSectionProps {
   serviceIds?: number[];
