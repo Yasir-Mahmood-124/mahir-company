@@ -1,3 +1,9 @@
+
+
+
+// ============================================
+// ServiceCardDetail.tsx
+// ============================================
 'use client';
 import React, { useState } from 'react';
 import {
@@ -5,7 +11,6 @@ import {
   Container,
   Typography,
   Button,
-  Grid,
   Card,
   Stack,
   Chip,
@@ -29,9 +34,19 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Main Content */}
-      <Grid container spacing={4}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          gap: 4,
+        }}
+      >
         {/* Left Side - Image */}
-        <Grid item xs={12} md={6}>
+        <Box
+          sx={{
+            flex: { xs: "1 1 100%", md: "1 1 50%" },
+          }}
+        >
           <Box
             sx={{
               bgcolor: '#f5f5f5',
@@ -53,10 +68,14 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
               }}
             />
           </Box>
-        </Grid>
+        </Box>
 
         {/* Right Side - Details */}
-        <Grid item xs={12} md={6}>
+        <Box
+          sx={{
+            flex: { xs: "1 1 100%", md: "1 1 50%" },
+          }}
+        >
           <Box>
             {/* Title */}
             <Typography variant="h3" fontWeight="bold" gutterBottom>
@@ -92,8 +111,14 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
                 What users are saying about us
               </Typography>
 
-              <Grid container spacing={2}>
-                <Grid item xs={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  gap: 2,
+                }}
+              >
+                <Box sx={{ flex: 1 }}>
                   <Stack direction="row" alignItems="center" spacing={1}>
                     <StarIcon sx={{ color: '#FFC107' }} />
                     <Box>
@@ -105,9 +130,9 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
                       </Typography>
                     </Box>
                   </Stack>
-                </Grid>
+                </Box>
 
-                <Grid item xs={6}>
+                <Box sx={{ flex: 1 }}>
                   <Stack direction="row" alignItems="center" spacing={1}>
                     <CheckCircleIcon sx={{ color: 'success.main' }} />
                     <Box>
@@ -119,16 +144,16 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
                       </Typography>
                     </Box>
                   </Stack>
-                </Grid>
+                </Box>
 
-                <Grid item xs={12}>
+                <Box sx={{ width: "100%", mt: 2 }}>
                   <Typography variant="body2" color="text.secondary">
                     <strong>{service.meta.done}+ reviews</strong>
                     <br />
                     Of the services by users
                   </Typography>
-                </Grid>
-              </Grid>
+                </Box>
+              </Box>
             </Box>
 
             {/* Book Now Button */}
@@ -151,8 +176,8 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
               Book Now
             </Button>
           </Box>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
 
       {/* Description Section */}
       <Box sx={{ mt: 6 }}>
@@ -165,9 +190,16 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
         </Typography>
 
         {/* Includes / Does Not Include */}
-        <Grid container spacing={4} sx={{ mt: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            gap: 4,
+            mt: 2,
+          }}
+        >
           {/* Includes */}
-          <Grid item xs={12} md={6}>
+          <Box sx={{ flex: 1 }}>
             <Typography variant="h5" fontWeight="bold" gutterBottom>
               Includes
             </Typography>
@@ -185,10 +217,10 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
                 <Typography>AC pipe installation with in 10 feet</Typography>
               </Stack>
             </Stack>
-          </Grid>
+          </Box>
 
           {/* Does Not Include */}
-          <Grid item xs={12} md={6}>
+          <Box sx={{ flex: 1 }}>
             <Typography variant="h5" fontWeight="bold" gutterBottom>
               Does not includes
             </Typography>
@@ -214,8 +246,8 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
                 <Typography>Ladder</Typography>
               </Stack>
             </Stack>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Box>
     </Container>
   );

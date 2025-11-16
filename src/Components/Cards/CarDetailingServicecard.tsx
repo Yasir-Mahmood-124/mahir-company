@@ -1,52 +1,30 @@
+// ============================================
+// AcServiceSectionCard.tsx
+// ============================================
 'use client';
 
 import React from 'react';
-import { Container, Typography, Box, Grid } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/CleaningServicesCardDetails';
-import { useSelector } from 'react-redux';
+import { Container, Typography, Box } from '@mui/material';
+import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
 
 interface ACServicesSectionProps {
   serviceIds?: number[];
   title?: string;
   subtitle?: string;
-  description?: string[] | string;
 }
 
-const ElectricianServicesSection: React.FC<ACServicesSectionProps> = ({ 
+const CarDetailing: React.FC<ACServicesSectionProps> = ({ 
   serviceIds,
-  title = "Electrician Services",
-  subtitle = "Professional electrician services at your home",
-  description
+  title = "Car Detailing",
+  subtitle = "Professional Car Detailing Services"
 }) => {
-  const defaultServiceIds = [198, 199, 200, 201, 202, 1614];
-  const displayServiceIds = serviceIds?.length ? serviceIds : defaultServiceIds;
-
-  const allServices = useSelector((state: any) => state.services?.services || []);
-
-  const services = displayServiceIds
-    .map(id => allServices.find((s: any) => s.id === id))
-    .filter(Boolean);
-
-  // ✅ Get description for each service individually
-  const getServiceDescription = (serviceId: number): string[] => {
-    const service = allServices.find((s: any) => s.id === serviceId);
-    
-    if (description) {
-      return Array.isArray(description) ? description : [description];
-    } else if (service?.description) {
-      return Array.isArray(service.description) ? service.description : [service.description];
-    } else if (service?.meta?.description) {
-      const metaDesc = service.meta.description;
-      return Array.isArray(metaDesc) ? metaDesc : [metaDesc];
-    }
-    
-    return [];
-  };
+  const defaultACServiceIds =
+ [198, 199, 200, 201, 202, 1614];;
+  const displayServiceIds = serviceIds || defaultACServiceIds;
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
       <Container maxWidth="lg">
-        {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Typography
             variant="h4"
@@ -54,33 +32,39 @@ const ElectricianServicesSection: React.FC<ACServicesSectionProps> = ({
               fontWeight: 'bold',
               mb: 1,
               color: '#1565c0',
+              fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' },
             }}
           >
             {title}
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             {subtitle}
           </Typography>
         </Box>
 
-        {/* Service Cards */}
-        <Grid container spacing={3}>
-          {displayServiceIds.map((serviceId) => {
-            const descLines = getServiceDescription(serviceId);
-            
-            return (
-              <Grid item xs={12} sm={6} md={4} key={serviceId}>
-                <ServiceCard 
-                  serviceId={serviceId}
-                  descriptionLines={descLines}
-                />
-              </Grid>
-            );
-          })}
-        </Grid>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 3,
+          }}
+        >
+          {displayServiceIds.map((serviceId) => (
+            <Box 
+              key={serviceId}
+              sx={{
+                width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
+                minWidth: '280px',
+              }}
+            >
+              <ServiceCard serviceId={serviceId} />
+            </Box>
+          ))}
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default ElectricianServicesSection;
+export default CarDetailing;
+

@@ -11,7 +11,7 @@ const MobileAppSection = () => {
       component="section"
       sx={{
         background: "linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%)",
-        py: { xs: 6, md: 10 },
+        py: { xs: 4, md: 7 }, // smaller padding
         display: "flex",
         alignItems: "center",
       }}
@@ -20,217 +20,134 @@ const MobileAppSection = () => {
         <Box
           sx={{
             display: "flex",
-            flexDirection: { xs: "column-reverse", lg: "row" }, // 🔥 column-reverse for mobile
+            flexDirection: { xs: "column-reverse", lg: "row" },
             alignItems: "center",
-            gap: { xs: 6, lg: 10 },
-            position: "relative",
+            gap: { xs: 4, lg: 7 }, // smaller gap
           }}
         >
-          {/* Left Side - Text Content */}
+          {/* Left Side */}
           <Box
             sx={{
-              borderRadius: "36px",
-              px: { xs: 3, md: 5, lg: 6 },
-              maxWidth: { lg: "850px" },
+              px: { xs: 2, md: 4 },
+              maxWidth: { lg: "700px" }, // reduced
               width: "100%",
-              position: "relative",
             }}
           >
             {/* Heading */}
             <Typography
               sx={{
-                fontSize: { xs: "3.2rem", md: "5rem", lg: "6rem" },
+                fontSize: { xs: "2.4rem", md: "3.8rem", lg: "4.8rem" }, // smaller fonts
                 fontWeight: 700,
+                mb: 2,
                 color: "#000",
-                mb: 3,
                 lineHeight: 1.1,
-                letterSpacing: "-0.02em",
               }}
             >
               Book a Mahir
             </Typography>
 
-            {/* Short Paragraph */}
+            {/* Paragraph */}
             <Typography
               sx={{
-                fontSize: { xs: "1.1rem", md: "1.3rem", lg: "1.4rem" },
+                fontSize: { xs: "0.95rem", md: "1.1rem", lg: "1.2rem" },
                 color: "#444",
-                mb: 3,
-                maxWidth: "600px",
-                lineHeight: 1.6,
+                mb: 2,
+                maxWidth: "520px",
+                lineHeight: 1.5,
               }}
             >
-              Experience convenience like never before! Download the Mahir App
-              to book trusted professionals for your home maintenance, repairs,
-              and services — anytime, anywhere.
+              Experience convenience like never before! Download the Mahir App to
+              book trusted professionals for home maintenance, repairs, and services —
+              anytime, anywhere.
             </Typography>
 
             {/* Subtitle */}
             <Typography
               sx={{
-                fontSize: { xs: "1.8rem", md: "2.2rem", lg: "2.5rem" },
+                fontSize: { xs: "1.4rem", md: "1.8rem", lg: "2.1rem" }, // smaller
                 fontWeight: 500,
                 color: "#000",
-                mb: 4,
-                letterSpacing: "0.02em",
+                mb: 3,
               }}
             >
               100,000 + Active Users
             </Typography>
 
-            {/* Buttons Row with Arrow */}
+            {/* Store Buttons */}
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
-                gap: 3,
-                flexWrap: { xs: "wrap", xl: "nowrap" },
+                gap: 2.5,
+                flexWrap: "wrap",
               }}
             >
-              {/* Apple App Store Badge */}
+              {/* Apple Store */}
               <Box
                 component="a"
-                href="https://apps.apple.com/pk/app/mr-mahir-home-maintenance/id1576178647"
-                target="_blank"
+                href="#"
                 sx={{
                   display: "block",
-                  cursor: "pointer",
                   textDecoration: "none",
-                  transition: "transform 0.2s",
+                  transition: "0.2s",
                   "&:hover": { transform: "scale(1.05)" },
                 }}
               >
                 <Box
                   sx={{
-                    borderRadius: "14px",
-                    px: 3,
-                    py: 2,
+                    borderRadius: "12px",
+                    px: 2,
+                    py: 1.5,
                     display: "flex",
                     alignItems: "center",
-                    gap: 2,
-                    minWidth: "200px",
+                    gap: 1.5,
+                    minWidth: "160px", // smaller
                   }}
                 >
-                  <Image
-                    src={appStoreIcon}
-                    alt="App Store"
-                    width={150}
-                    height={150}
-                  />
+                  <Image src={appStoreIcon} alt="App Store" width={110} height={110} />
                   <Box>
-                    <Typography
-                      sx={{
-                        fontSize: "11px",
-                        color: "#000",
-                        lineHeight: 1,
-                        mb: 0.5,
-                        fontWeight: 400,
-                        textDecoration: "none",
-                      }}
-                    >
+                    <Typography sx={{ fontSize: "10px", color: "#000", lineHeight: 1 }}>
                       Available on the
                     </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: "20px",
-                        color: "#000",
-                        fontWeight: 700,
-                        lineHeight: 1,
-                        textDecoration: "none",
-                      }}
-                    >
+                    <Typography sx={{ fontSize: "16px", color: "#000", fontWeight: 700 }}>
                       App Store
                     </Typography>
                   </Box>
                 </Box>
               </Box>
 
-              {/* Google Play Badge */}
+              {/* Google Play */}
               <Box
                 component="a"
-                href="https://play.google.com/store/apps/details?id=com.example.app"
-                target="_blank"
+                href="#"
                 sx={{
                   display: "block",
-                  cursor: "pointer",
                   textDecoration: "none",
-                  transition: "transform 0.2s",
+                  transition: "0.2s",
                   "&:hover": { transform: "scale(1.05)" },
                 }}
               >
                 <Box
                   sx={{
-                    borderRadius: "14px",
-                    px: 3,
-                    py: 2,
+                    borderRadius: "12px",
+                    px: 2,
+                    py: 1.5,
                     display: "flex",
                     alignItems: "center",
-                    gap: 2,
-                    minWidth: "200px",
+                    gap: 1.5,
+                    minWidth: "160px",
                   }}
                 >
-                  <Image
-                    src={playStoreIcon}
-                    alt="Google Play"
-                    width={150}
-                    height={150}
-                  />
+                  <Image src={playStoreIcon} alt="Google Play" width={110} height={110} />
                   <Box>
-                    <Typography
-                      sx={{
-                        fontSize: "11px",
-                        color: "#000",
-                        lineHeight: 1,
-                        mb: 0.5,
-                        fontWeight: 400,
-                        textDecoration: "none",
-                      }}
-                    >
+                    <Typography sx={{ fontSize: "10px", color: "#000", lineHeight: 1 }}>
                       GET IT ON
                     </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: "20px",
-                        color: "#000",
-                        fontWeight: 700,
-                        lineHeight: 1,
-                        textDecoration: "none",
-                      }}
-                    >
+                    <Typography sx={{ fontSize: "16px", color: "#000", fontWeight: 700 }}>
                       Google Play
                     </Typography>
                   </Box>
                 </Box>
-              </Box>
-
-              {/* Curved Arrow */}
-              <Box
-                sx={{
-                  display: { xs: "none", xl: "block" },
-                  ml: 2,
-                }}
-              >
-                <svg width="250" height="80" viewBox="0 0 250 80">
-                  <defs>
-                    <marker
-                      id="arrowhead-black"
-                      markerWidth="16"
-                      markerHeight="16"
-                      refX="14"
-                      refY="8"
-                      orient="auto"
-                    >
-                      <polygon points="0 0, 16 8, 0 16" fill="black" />
-                    </marker>
-                  </defs>
-                  <path
-                    d="M 10 40 Q 125 10, 235 40"
-                    stroke="black"
-                    strokeWidth="5"
-                    fill="none"
-                    markerEnd="url(#arrowhead-black)"
-                  />
-                </svg>
               </Box>
             </Box>
           </Box>
@@ -241,25 +158,22 @@ const MobileAppSection = () => {
               flex: 1,
               display: "flex",
               justifyContent: { xs: "center", lg: "flex-end" },
-              alignItems: "center",
-              mt: { xs: 0, lg: 0 }, // 🔥 removed top margin on mobile
             }}
           >
             <Box
               sx={{
                 position: "relative",
-                width: { xs: 300, sm: 350, md: 400, lg: 420 },
-                height: { xs: 600, sm: 700, md: 800, lg: 840 },
-                borderRadius: "32px",
+                width: { xs: 220, sm: 260, md: 300, lg: 340 }, // 🔥 smaller width
+                height: { xs: 440, sm: 520, md: 600, lg: 640 }, // 🔥 smaller height
+                borderRadius: "26px",
                 overflow: "hidden",
               }}
             >
               <Image
                 src={appView}
-                alt="Book a Mahir App"
+                alt="App View"
                 fill
                 style={{ objectFit: "cover" }}
-                priority
               />
             </Box>
           </Box>

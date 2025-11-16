@@ -1,27 +1,31 @@
+
+// ============================================
+// CarpetCleaningServicesCard.tsx
+// ============================================
 'use client';
 
 import React from 'react';
-import { Container, Typography, Box, Grid } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/CleaningServicesCardDetails';
+import { Container, Typography, Box } from '@mui/material';
+import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
 
-interface CarpetCleaningServicesSectionProps {
-  serviceIds?: number[]; // Optional prop for specific service IDs
+interface ACServicesSectionProps {
+  serviceIds?: number[];
   title?: string;
   subtitle?: string;
 }
 
-const CarpetCleaningServicesSection: React.FC<CarpetCleaningServicesSectionProps> = ({ 
+const CarpetCleaningService: React.FC<ACServicesSectionProps> = ({ 
   serviceIds,
   title = "Carpet Cleaning Services",
-  subtitle = "Professional carpet and rug cleaning at your doorstep"
+  subtitle = "Professional Carpet Cleaning Service"
 }) => {
-  const defaultCarpetCleaningServiceIds = [185, 1621];
-  const displayServiceIds = serviceIds || defaultCarpetCleaningServiceIds;
+  const defaultACServiceIds =[185, 1621]
+;
+  const displayServiceIds = serviceIds || defaultACServiceIds;
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
       <Container maxWidth="lg">
-        {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Typography
             variant="h4"
@@ -29,26 +33,38 @@ const CarpetCleaningServicesSection: React.FC<CarpetCleaningServicesSectionProps
               fontWeight: 'bold',
               mb: 1,
               color: '#1565c0',
+              fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' },
             }}
           >
             {title}
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             {subtitle}
           </Typography>
         </Box>
 
-        {/* Services Grid */}
-        <Grid container spacing={3}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 3,
+          }}
+        >
           {displayServiceIds.map((serviceId) => (
-            <Grid item xs={12} sm={6} md={4} key={serviceId}>
+            <Box 
+              key={serviceId}
+              sx={{
+                width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
+                minWidth: '280px',
+              }}
+            >
               <ServiceCard serviceId={serviceId} />
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default CarpetCleaningServicesSection;
+export default CarpetCleaningService;

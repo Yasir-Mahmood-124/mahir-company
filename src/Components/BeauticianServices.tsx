@@ -6,7 +6,6 @@ import Link from "next/link";
 import {
   Box,
   Container,
-  Grid,
   Typography,
   useTheme,
   useMediaQuery,
@@ -68,62 +67,61 @@ const ServicesSection: React.FC = () => {
           Choose from our wide range of services
         </Typography>
 
-        {/* Service Grid */}
-        <Grid
-          container
-          spacing={{ xs: 3, sm: 4, md: 5 }}
-          justifyContent="center"
+        {/* Service Grid using CSS Grid */}
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "repeat(2, 1fr)",
+              sm: "repeat(3, 1fr)",
+              md: "repeat(4, 1fr)",
+              lg: "repeat(5, 1fr)",
+            },
+            gap: { xs: 3, sm: 4, md: 5 },
+            justifyItems: "center",
+          }}
         >
           {services.map((service) => (
-            <Grid
-              item
-              key={service.id}
-              xs={6}
-              sm={4}
-              md={3}
-              lg={2}
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-              }}
+            <Link 
+              key={service.id} 
+              href={service.href} 
+              style={{ textDecoration: "none", width: "100%" }}
             >
-              <Link href={service.href} style={{ textDecoration: "none" }}>
-                <Box
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 1.5,
+                  transition: "transform 0.25s ease, opacity 0.25s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    opacity: 0.9,
+                  },
+                }}
+              >
+                <Image
+                  src={service.img}
+                  alt={service.alt}
+                  width={69}
+                  height={69}
+                  style={{ objectFit: "contain" }}
+                />
+                <Typography
                   sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 1.5,
-                    transition: "transform 0.25s ease, opacity 0.25s ease",
-                    "&:hover": {
-                      transform: "translateY(-6px)",
-                      opacity: 0.9,
-                    },
+                    mt: 1,
+                    color: "#000",
+                    fontSize: { xs: "0.95rem", md: "1rem" },
+                    fontWeight: 600,
+                    textAlign: "center",
                   }}
                 >
-                  <Image
-                    src={service.img}
-                    alt={service.alt}
-                    width={69}
-                    height={69}
-                    style={{ objectFit: "contain" }}
-                  />
-                  <Typography
-                    sx={{
-                      mt: 1,
-                      color: "#000",
-                      fontSize: { xs: "0.95rem", md: "1rem" },
-                      fontWeight: 600,
-                      textAlign: "center",
-                    }}
-                  >
-                    {service.name}
-                  </Typography>
-                </Box>
-              </Link>
-            </Grid>
+                  {service.name}
+                </Typography>
+              </Box>
+            </Link>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );

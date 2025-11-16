@@ -1,8 +1,10 @@
-// components/MakeupServicesHero.tsx
+// ============================================
+// WaxingServicesHero.tsx
+// ============================================
 'use client';
 
 import React from 'react';
-import { Box, Container, Typography, Grid, Paper } from '@mui/material';
+import { Box, Container, Typography, Paper } from '@mui/material';
 import { Star, CheckCircle } from '@mui/icons-material';
 import Image from 'next/image';
 
@@ -71,7 +73,7 @@ const StatItem: React.FC<StatItemProps> = ({ icon, rating, label }) => {
   );
 };
 
-const MakeupServicesHero: React.FC = () => {
+const MakeupService: React.FC = () => {
   return (
     <Box
       component="section"
@@ -94,94 +96,86 @@ const MakeupServicesHero: React.FC = () => {
       }}
     >
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={7}>
-            <Box>
-              <Typography
-                variant="h1"
-                fontWeight={700}
-                gutterBottom
-                sx={{
-                  fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
-                  textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-                  mb: 2
-                }}
-              >
-                Makeup Services
-              </Typography>
-              <Typography
-                variant="h5"
-                sx={{
-                  fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
-                  mb: 4,
-                  opacity: 0.95,
-                  fontWeight: 400
-                }}
-              >
-                Book your area's best makeup services providers at home.
-              </Typography>
-
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={4}>
-                  <StatItem
-                    icon={<Star sx={{ fontSize: 28 }} />}
-                    rating="4.8/5"
-                    label="Average rating"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                  <StatItem
-                    icon={
-                      <Box
-                        sx={{
-                          position: 'relative',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center'
-                        }}
-                      >
-                        <Typography
-                          variant="h6"
-                          fontWeight={700}
-                          sx={{ fontSize: '1.25rem' }}
-                        >
-                          Rs
-                        </Typography>
-                      </Box>
-                    }
-                    rating="2500"
-                    label="Start from"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                  <StatItem
-                    icon={<CheckCircle sx={{ fontSize: 28 }} />}
-                    rating="15600"
-                    label="Done order"
-                  />
-                </Grid>
-              </Grid>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} md={5}>
-            <Box
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '7fr 5fr' },
+            gap: 4,
+            alignItems: 'center',
+          }}
+        >
+          <Box>
+            <Typography
+              variant="h1"
+              fontWeight={700}
+              gutterBottom
               sx={{
-                height: { xs: 250, md: 400 },
-                borderRadius: 3,
-                overflow: 'hidden',
-                boxShadow: '0 12px 24px rgba(0,0,0,0.3)',
-                position: 'relative',
-                bgcolor: '#333'
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
+                textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+                mb: 2
               }}
             >
-        
+                Mani Pedi
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
+                mb: 4,
+                opacity: 0.95,
+                fontWeight: 400
+              }}
+            >
+                            Book your area's best makeup services providers at home.
+            </Typography>
+
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' },
+                gap: 2,
+              }}
+            >
+              <StatItem
+                icon={<Star sx={{ fontSize: 28 }} />}
+                rating="4.6/5"
+                label="Average rating"
+              />
+              <StatItem
+                icon={
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      fontWeight={700}
+                      sx={{ fontSize: '1.25rem' }}
+                    >
+                      Rs
+                    </Typography>
+                  </Box>
+                }
+                rating="600"
+                label="Start from"
+              />
+              <StatItem
+                icon={<CheckCircle sx={{ fontSize: 28 }} />}
+                rating="28700"
+                label="Done order"
+              />
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+
+      
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default MakeupServicesHero;
+export default MakeupService;

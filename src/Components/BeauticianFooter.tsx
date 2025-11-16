@@ -7,7 +7,6 @@ import {
   Link,
   TextField,
   Button,
-  Grid,
   IconButton,
 } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -24,13 +23,13 @@ import appstoresvg from "@/assests/Images/AppleStore.svg";
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
-
+  
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Newsletter email:", email);
     setEmail("");
   };
-
+  
   const services = [
     { name: "Facial Services", href: "/facial-services" },
     { name: "Hair Styling & Hair Cut", href: "/hair-styling-and-hair-cut" },
@@ -43,13 +42,13 @@ const Footer: React.FC = () => {
     { name: "Salon Packages", href: "/salon-packages" },
     { name: "Waxing Services", href: "/waxing-services" },
   ];
-
+  
   const cities = [
     { name: "Lahore", href: "/lahore" },
     { name: "Islamabad", href: "/islamabad" },
     { name: "Rawalpindi", href: "/rawalpindi" },
   ];
-
+  
   const mainMenu = [
     { name: "Home", href: "/beautician" },
     { name: "About Us", href: "/about-us" },
@@ -60,7 +59,7 @@ const Footer: React.FC = () => {
     { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Blogs", href: "https://mahircompany.com/blog/", target: "_blank" },
   ];
-
+  
   const socialLinks = [
     { icon: <PhoneIcon />, href: "tel:+923096661919", label: "0309 6661919" },
     { icon: <TwitterIcon />, href: "https://twitter.com/MahirCompany", label: "Twitter" },
@@ -71,7 +70,7 @@ const Footer: React.FC = () => {
     { icon: <FacebookIcon />, href: "https://www.facebook.com/teammahir/", label: "Facebook" },
     { icon: <WhatsAppIcon />, href: "https://api.whatsapp.com/send?phone=+923096665959&text=Hi+Mr+Mahir%21&lang=en", label: "WhatsApp" },
   ];
-
+  
   return (
     <Box
       component="footer"
@@ -83,9 +82,20 @@ const Footer: React.FC = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 3, md: 4 }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(4, 1fr)",
+              lg: "repeat(5, 1fr)",
+            },
+            gap: { xs: 3, md: 4 },
+          }}
+        >
           {/* Services Column */}
-          <Grid item xs={12} sm={6} md={2.4}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
@@ -117,10 +127,10 @@ const Footer: React.FC = () => {
                 </Box>
               ))}
             </Box>
-          </Grid>
-
+          </Box>
+          
           {/* Available in Column */}
-          <Grid item xs={12} sm={6} md={2.4}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
@@ -152,10 +162,10 @@ const Footer: React.FC = () => {
                 </Box>
               ))}
             </Box>
-          </Grid>
-
+          </Box>
+          
           {/* Main Menu Column */}
-          <Grid item xs={12} sm={6} md={2.4}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
@@ -188,10 +198,10 @@ const Footer: React.FC = () => {
                 </Box>
               ))}
             </Box>
-          </Grid>
-
+          </Box>
+          
           {/* Connect with us Column */}
-          <Grid item xs={12} sm={6} md={2.4}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
@@ -259,10 +269,10 @@ const Footer: React.FC = () => {
                 </Box>
               ))}
             </Box>
-          </Grid>
-
+          </Box>
+          
           {/* Newsletter Column */}
-          <Grid item xs={12} md={2.4}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
@@ -335,7 +345,7 @@ const Footer: React.FC = () => {
                 Subscribe
               </Button>
             </Box>
-
+            
             {/* App Store Buttons */}
             <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
               <Link
@@ -377,9 +387,8 @@ const Footer: React.FC = () => {
                 />
               </Link>
             </Box>
-          </Grid>
-        </Grid>
-
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

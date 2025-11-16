@@ -1,7 +1,10 @@
+// ============================================
+// WhyChooseUsSection.tsx
+// ============================================
 "use client";
 
 import React from "react";
-import { Box, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Typography, Stack } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
@@ -12,6 +15,7 @@ import SecurityIcon from "@mui/icons-material/Security";
 import Image from "next/image";
 import playstore from "@/assests/Images/playstore.svg"
 import appstore from "@/assests/Images/AppleStore.svg"
+
 interface WhyChooseUsSectionProps {
   mockupImage: string;
 }
@@ -58,9 +62,16 @@ const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ mockupImage }) 
   return (
     <Box sx={{ py: { xs: 6, md: 10 }, backgroundColor: "#fafafa" }}>
       <Container maxWidth="lg">
-        <Grid container spacing={6} alignItems="center">
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+            gap: 6,
+            alignItems: "center",
+          }}
+        >
           {/* LEFT SIDE - Phone Mockup */}
-          <Grid item xs={12} md={6} sx={{ textAlign: "center" }}>
+          <Box sx={{ textAlign: "center" }}>
             <Box
               sx={{
                 position: "relative",
@@ -77,14 +88,13 @@ const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ mockupImage }) 
                   width: "100%",
                   height: "auto",
                   borderRadius: "24px",
-                //   boxShadow: "0 12px 30px rgba(0,0,0,0.15)",
                 }}
               />
             </Box>
-          </Grid>
+          </Box>
 
           {/* RIGHT SIDE - Content */}
-          <Grid item xs={12} md={6}>
+          <Box>
             <Typography
               variant="h5"
               color="primary"
@@ -124,11 +134,10 @@ const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ mockupImage }) 
                 height={100}
               />
             </Stack>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
 };
-
-export default WhyChooseUsSection;
+export default WhyChooseUsSection

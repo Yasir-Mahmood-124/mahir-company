@@ -1,22 +1,27 @@
+
+// ============================================
+// CommercialDeepCleaningCard.tsx
+// ============================================
 'use client';
 
 import React from 'react';
-import { Container, Typography, Box, Grid } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/CleaningServicesCardDetails';
+import { Container, Typography, Box } from '@mui/material';
+import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
 
-interface CommercialDeepCleaningServicesSectionProps {
+interface ACServicesSectionProps {
   serviceIds?: number[];
   title?: string;
   subtitle?: string;
 }
 
-const CommercialDeepCleaningServicesSection: React.FC<CommercialDeepCleaningServicesSectionProps> = ({ 
+const CommercialDeepCleaningService: React.FC<ACServicesSectionProps> = ({ 
   serviceIds,
   title = "Commercial Deep Cleaning Services",
-  subtitle = "Professional deep cleaning for commercial spaces"
+  subtitle = "Professional Commercial Deep Cleaning Services"
 }) => {
-  const defaultCommercialDeepCleaningServiceIds = [1622, 1623, 1624, 1625, 1626];
-  const displayServiceIds = serviceIds || defaultCommercialDeepCleaningServiceIds;
+  const defaultACServiceIds = [1622, 1623, 1624, 1625, 1626];
+;
+  const displayServiceIds = serviceIds || defaultACServiceIds;
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -28,25 +33,38 @@ const CommercialDeepCleaningServicesSection: React.FC<CommercialDeepCleaningServ
               fontWeight: 'bold',
               mb: 1,
               color: '#1565c0',
+              fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' },
             }}
           >
             {title}
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             {subtitle}
           </Typography>
         </Box>
 
-        <Grid container spacing={3}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 3,
+          }}
+        >
           {displayServiceIds.map((serviceId) => (
-            <Grid item xs={12} sm={6} md={4} key={serviceId}>
+            <Box 
+              key={serviceId}
+              sx={{
+                width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
+                minWidth: '280px',
+              }}
+            >
               <ServiceCard serviceId={serviceId} />
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default CommercialDeepCleaningServicesSection;
+export default CommercialDeepCleaningService;

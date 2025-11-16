@@ -1,3 +1,6 @@
+// ============================================
+// ServicesSection.tsx
+// ============================================
 "use client";
 
 import React from "react";
@@ -6,7 +9,6 @@ import Link from "next/link";
 import {
   Box,
   Container,
-  Grid,
   Typography,
   useTheme,
   useMediaQuery,
@@ -68,21 +70,25 @@ const ServicesSection: React.FC = () => {
           Choose from our wide range of services
         </Typography>
 
-        {/* Service Grid */}
-        <Grid
-          container
-          spacing={{ xs: 3, sm: 4, md: 5 }}
-          justifyContent="center"
+        {/* Service Grid using Flexbox */}
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: { xs: 3, sm: 4, md: 5 },
+            justifyContent: "center",
+          }}
         >
           {services.map((service) => (
-            <Grid
-              item
+            <Box
               key={service.id}
-              xs={6}
-              sm={4}
-              md={3}
-              lg={2}
               sx={{
+                width: {
+                  xs: "calc(50% - 12px)",
+                  sm: "calc(33.333% - 21.33px)",
+                  md: "calc(25% - 30px)",
+                  lg: "calc(16.666% - 33.33px)",
+                },
                 display: "flex",
                 justifyContent: "center",
               }}
@@ -121,9 +127,9 @@ const ServicesSection: React.FC = () => {
                   </Typography>
                 </Box>
               </Link>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );

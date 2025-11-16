@@ -28,71 +28,67 @@ const TopServicesSection: React.FC = () => {
       component="section"
       sx={{
         backgroundColor: "#f5f5f5",
-        py: { xs: 4, md: 6 },
-        mb: 4,
+        py: { xs: 3, md: 5 },   // smaller padding
+        mb: 3,
       }}
     >
       <Container maxWidth="xl">
         <Box
           sx={{
             backgroundColor: "#f5f5f5",
-            borderRadius: "16px",
-            p: { xs: 3, md: 4, lg: 5 },
-            boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
+            borderRadius: "14px",
+            p: { xs: 2.5, md: 3.5, lg: 4 },
+            boxShadow: "0 3px 14px rgba(0,0,0,0.05)", // softer shadow
           }}
         >
-          {/* Section Title */}
+          {/* Title */}
           <Typography
             component="h2"
             sx={{
-              fontSize: { xs: "2rem", md: "2.5rem", lg: "3rem" },
+              fontSize: { xs: "1.6rem", md: "2rem", lg: "2.3rem" }, // smaller heading
               fontWeight: 800,
               color: "#000",
-              mb: { xs: 3, md: 4 },
-              letterSpacing: "-0.02em",
+              mb: { xs: 2.5, md: 3 },
+              letterSpacing: "-0.01em",
             }}
           >
             Top Services
           </Typography>
 
-          {/* Services Tags */}
+          {/* Chips */}
           <Box
             sx={{
               display: "flex",
               flexWrap: "wrap",
-              gap: { xs: 1.5, md: 2 },
+              gap: { xs: 1, md: 1.5 }, // reduced gap
             }}
           >
             {services.map((service, index) => (
-              <Link
-                key={index}
-                href={service.slug}
-                style={{ textDecoration: "none" }}
-              >
+              <Link key={index} href={service.slug} style={{ textDecoration: "none" }}>
                 <Chip
                   label={service.title}
                   component="div"
                   clickable
                   sx={{
-                    fontSize: { xs: "0.85rem", md: "0.95rem" },
+                    fontSize: { xs: "0.75rem", md: "0.85rem" }, // smaller font
                     fontWeight: 500,
-                    px: 2,
-                    py: 2.5,
+                    px: 1.8,
+                    py: 1.5, // smaller padding
                     height: "auto",
                     backgroundColor: "#fff",
-                    border: "2px solid #e0e0e0",
-                    borderRadius: "50px",
+                    border: "1.5px solid #ddd",
+                    borderRadius: "40px", // smaller curve
                     color: "#333",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    transition: "all 0.3s ease",
                     "&:hover": {
                       backgroundColor: "#000",
                       color: "#fff",
                       borderColor: "#000",
-                      transform: "translateY(-3px)",
-                      boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 6px 16px rgba(0,0,0,0.12)",
                     },
                     "& .MuiChip-label": {
-                      padding: "0 8px",
+                      padding: "0 6px", // reduced label padding
                     },
                   }}
                 />
