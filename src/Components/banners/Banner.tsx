@@ -17,7 +17,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
 
 import banner1 from "@/assests/Images/banner1.jpg";
-import banner2 from "@/assests/Images/banner3.jpg";
+import banner2 from "@/assests/Images/banner2.jpg";
 import banner3 from "@/assests/Images/banner3.png";
 
 

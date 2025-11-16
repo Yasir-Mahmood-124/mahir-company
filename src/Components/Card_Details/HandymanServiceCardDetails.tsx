@@ -11,12 +11,12 @@ import {
   Paper,
 } from '@mui/material';
 import { Star, Add } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   addToCart,
   selectCartItemQuantity,
   selectServiceById,
-} from '../redux/Data/Serviceslice';
+} from '@/redux/Data/Serviceslice';
 
 interface ServiceCardProps {
   serviceId: number;

@@ -20,7 +20,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Image from "next/image";
 import playstoresvg from "@/assests/Images/playstore.svg";
-import appstoresvg from "@/assests/ImagesAppleStore.svg";
+import appstoresvg from "@/assests/Images/AppleStore.svg";
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");

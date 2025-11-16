@@ -13,7 +13,7 @@ import {
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import StarIcon from '@mui/icons-material/Star';
-import { ServiceItem } from './redux/Data/Serviceslicedata';
+import { ServiceItem } from '@/redux/Data/Serviceslicedata';
 
 interface Props {
   service: ServiceItem | null;

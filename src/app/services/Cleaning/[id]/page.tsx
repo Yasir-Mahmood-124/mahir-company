@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import ServiceCardDetail from '@/app/Components/ServiceCardDetail';
-import NavBar from '../../../Components/CleaningServiceNavbar';
-import Footer from '@/app/Components/HandymanFooter';
-import { useAppSelector } from '@/app/Components/redux/hooks';
-import { selectServiceDetailById } from '@/app/Components/redux/Data/Serviceslicedata';
+import ServiceCardDetail from '@/Components/ServiceCardDetail';
+import NavBar from '@/Components/CleaningServiceNavbar';
+import Footer from '@/Components/HandymanFooter';
+import { useAppSelector } from '@/redux/hooks';
+import { selectServiceDetailById } from '@/redux/Data/Serviceslicedata';
 import { Container, Button, Box } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 

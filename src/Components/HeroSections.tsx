@@ -20,7 +20,7 @@ import type { StaticImageData } from "next/image";
 // Import all your images
 import banner1 from "@/assests/Images/banner1.jpg";
 import banner2 from "@/assests/Images/banner2.jpg";
-import banner3 from "@/assests/Images/banner3.jpg";
+import banner3 from "@/assests/Images/banner3.png";
 
 interface BannerImage {
   id: number;
