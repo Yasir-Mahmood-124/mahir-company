@@ -1,20 +1,21 @@
 "use client";
 
-import NavBar from "@/app/Components/Navabar";
-import Footer from "@/app/Components/HandymanFooter";
-import BannerSection from "@/app/Components/banners/Banner";
-import HeroSection from "@/app/Components/banners/AcServiceBanner";
-import ServiceCard from "@/app/Components/Card_Details/HandymanServiceCardDetails";
-import ACServicesSection from "@/app/Components/Cards/AcServiceSectionCard";
-import ACServicesDescription from "@/app/Components/Cards_Description/ACServicesDescription";
+import NavBar from "@/Components/Navabar";
+import Footer from "@/Components/HandymanFooter";
+import BannerSection from "@/Components/banners/Banner";
+import HeroSection from "@/Components/banners/AcServiceBanner";
+import ServiceCard from "@/Components/Card_Details/HandymanServiceCardDetails";
+import ACServicesSection from "@/Components/Cards/AcServiceSectionCard";
+import ACServicesDescription from "@/Components/Cards_Description/ACServicesDescription";
+
 export default function HandymanHome() {
   return (
     <div>
-        <NavBar></NavBar>
-  <HeroSection></HeroSection>
-  <ACServicesSection ></ACServicesSection>
-  <ACServicesDescription></ACServicesDescription>
-        <Footer></Footer>
+      <NavBar />
+      <HeroSection />
+      <ACServicesSection />
+      <ACServicesDescription />
+      <Footer />
     </div>
   );
 }

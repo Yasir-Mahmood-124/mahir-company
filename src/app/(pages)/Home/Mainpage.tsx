@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import HeroSection from "../../Components/HeroSection";
-import AnnouncementSection from "@/app/Components/Annoucementsection";
-import WhyChoose from "@/app/Components/Whychooseus";
-import Autocarasuel from "../../Components/Autocarasuel";
-import MobileAppSection from "@/app/Components/MobileAppsection";
-import MobileAppSectionLeftImage from "@/app/Components/MobileSection";
-import HandymanFooter from "../../Components/HandymanFooter"
-import BlueLoader from "@/app/Components/CustomBlueLoader";
+import HeroSection from "@/Components/HeroSection";
+import AnnouncementSection from "@/Components/Annoucementsection";
+import WhyChoose from "@/Components/Whychooseus";
+import Autocarasuel from "@/Components/Autocarasuel";
+import MobileAppSection from "@/Components/MobileAppsection";
+import MobileAppSectionLeftImage from "@/Components/MobileSection";
+import HandymanFooter from "@/Components/HandymanFooter"
+import BlueLoader from "@/Components/CustomBlueLoader";
 
 export default function Home() {
   return (

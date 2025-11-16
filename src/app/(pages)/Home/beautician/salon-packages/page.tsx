@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import NavBar from "@/app/Components/beauticianNavabr";
+import NavBar from "@/Components/beauticianNavabr";
 
-import Footer from "@/app/Components/BeauticianFooter";
-import CopyrightSection from "@/app/Components/CopyrightSection";
-import Banner from "@/app/Components/banners/salon-packages-banner";
+import Footer from "@/Components/BeauticianFooter";
+import CopyrightSection from "@/Components/CopyrightSection";
+import Banner from "@/Components/banners/salon-packages-banner";
 export default function Home() {
   return (
     <div>

@@ -1,9 +1,9 @@
 "use client";
 
-import HeroSection from "@/app/Components/banners/CarDetalingBanner";
-import NavBar from "@/app/Components/CleaningServiceNavbar";
-import Footer from "@/app/Components/HandymanFooter";
-import CarDetailingServiceCard from "@/app/Components/Cards/CarDetailingServicecard"
+import HeroSection from "@/Components/banners/CarDetalingBanner";
+import NavBar from "@/Components/CleaningServiceNavbar";
+import Footer from "@/Components/HandymanFooter";
+import CarDetailingServiceCard from "@/Components/Cards/CarDetailingServicecard"
 
 export default function Home() {
   return (

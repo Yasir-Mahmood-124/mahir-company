@@ -24,9 +24,9 @@ import {
   Facebook as FacebookIcon
 } from '@mui/icons-material';
 import Image from 'next/image';
-import image from "../../../Components/Images/city-illustration.png"
-import NavBar from '@/app/Components/Navabar';
-import Footer from '@/app/Components/HandymanFooter';
+import image from "@/assests/Images/city-illustration.png"
+import NavBar from '@/Components/Navabar';
+import Footer from '@/Components/HandymanFooter';
 interface ServiceStat {
   icon: React.ReactNode;
   title: string;

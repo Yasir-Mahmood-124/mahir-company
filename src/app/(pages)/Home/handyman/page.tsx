@@ -1,33 +1,33 @@
 "use client";
 
-import NavBar from "@/app/Components/Navabar";
-import BannerSection from "@/app/Components/banners/Banner";
-import ServicesSection from "@/app/Components/Servicesection";
-import TrendingServices from "@/app/Components/TrendingService";
-import WhyChooseUsSection from "@/app/Components/ChooseSection";
-import image from "../../../Components/Images/double-iphone.webp"
-import FullVideoSection from "@/app/Components/FullVideoSection";
-import CustomerTestimonials from "@/app/Components/Testimonial";
-import ComplaintFormSection from "@/app/Components/ComplaintSection";
-import TopServicesSection from "@/app/Components/TopServicesSection";
-import Footer from "@/app/Components/HandymanFooter";
-import BlueLoader from "@/app/Components/CustomBlueLoader";
+import NavBar from "@/Components/Navabar";
+import BannerSection from "@/Components/banners/Banner";
+import ServicesSection from "@/Components/Servicesection";
+import TrendingServices from "@/Components/TrendingService";
+import WhyChooseUsSection from "@/Components/ChooseSection";
+import image from "@/assests/Images/double-iphone.webp";
+import FullVideoSection from "@/Components/FullVideoSection";
+import CustomerTestimonials from "@/Components/Testimonial";
+import ComplaintFormSection from "@/Components/ComplaintSection";
+import TopServicesSection from "@/Components/TopServicesSection";
+import Footer from "@/Components/HandymanFooter";
+import BlueLoader from "@/Components/CustomBlueLoader";
 
 export default function HandymanHome() {
   return (
     <div>
       <BlueLoader>
-        <NavBar></NavBar>
-        <BannerSection></BannerSection>
-        <ServicesSection></ServicesSection>
-        <TrendingServices></TrendingServices>
-        <WhyChooseUsSection mockupImage={image.src}></WhyChooseUsSection>
-        <FullVideoSection></FullVideoSection>
-        <CustomerTestimonials></CustomerTestimonials>
-        <ComplaintFormSection></ComplaintFormSection>
-        <TopServicesSection></TopServicesSection>
-        <Footer></Footer>
-        </BlueLoader>
+        <NavBar />
+        <BannerSection />
+        <ServicesSection />
+        <TrendingServices />
+        <WhyChooseUsSection mockupImage={image.src} />
+        <FullVideoSection />
+        <CustomerTestimonials />
+        <ComplaintFormSection />
+        <TopServicesSection />
+        <Footer />
+      </BlueLoader>
     </div>
   );
 }

@@ -1,17 +1,17 @@
 "use client";
 
-import NavBar from "@/app/Components/CleaningServiceNavbar";
-import Footer from "@/app/Components/HandymanFooter";
-import CleaningServiceBanner from "@/app/Components/banners/CleaningServiceBanner"
-import CleaningServiceCard from "@/app/Components/CleaningServices"
-import CleaningTrendingServices from "@/app/Components/CleaningTrendingService";
-import WhyChooseUsSection from "@/app/Components/ChooseSection";
-import image from "../../../Components/Images/double-iphone.webp"
-import FullVideoSection from "@/app/Components/FullVideoSection";
-import ComplaintFormSection from "@/app/Components/ComplaintSection";
-import CleaningTopServicesSection from "@/app/Components/CleaningTopTrendingService";
-import CustomerTestimonials from "@/app/Components/Testimonial";
-import BlueLoader from "@/app/Components/CustomBlueLoader";
+import NavBar from "@/Components/CleaningServiceNavbar";
+import Footer from "@/Components/HandymanFooter";
+import CleaningServiceBanner from "@/Components/banners/CleaningServiceBanner"
+import CleaningServiceCard from "@/Components/CleaningServices"
+import CleaningTrendingServices from "@/Components/CleaningTrendingService";
+import WhyChooseUsSection from "@/Components/ChooseSection";
+import image from "@/assests/Images/double-iphone (1).webp"
+import FullVideoSection from "@/Components/FullVideoSection";
+import ComplaintFormSection from "@/Components/ComplaintSection";
+import CleaningTopServicesSection from "@/Components/CleaningTopTrendingService";
+import CustomerTestimonials from "@/Components/Testimonial";
+import BlueLoader from "@/Components/CustomBlueLoader";
 
 export default function Home() {
   return (

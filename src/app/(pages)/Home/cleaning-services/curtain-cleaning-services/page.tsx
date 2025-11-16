@@ -1,10 +1,10 @@
 "use client";
 
-import NavBar from "@/app/Components/CleaningServiceNavbar";
-import CurtainCleaningBanner from "@/app/Components/banners/curtain_cleaning_banner";
-import CurtainCleaningDescription from "@/app/Components/Cards_Description/curtain_cleaning_description";
-import Footer from "@/app/Components/HandymanFooter";
-import CurtainCleaningServiceCard from "@/app/Components/Cards/CurtainServiceCard"
+import NavBar from "@/Components/CleaningServiceNavbar";
+import CurtainCleaningBanner from "@/Components/banners/curtain_cleaning_banner";
+import CurtainCleaningDescription from "@/Components/Cards_Description/curtain_cleaning_description";
+import Footer from "@/Components/HandymanFooter";
+import CurtainCleaningServiceCard from "@/Components/Cards/CurtainServiceCard"
 export default function HandymanHome() {
   return (
     <div>
