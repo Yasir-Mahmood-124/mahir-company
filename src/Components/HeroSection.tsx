@@ -10,11 +10,11 @@ import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import handyman from "@/assests/Images/handyman1.webp";
 import cleaning from "@/assests/Images/cleaning1.webp";
 import beautician from "@/assests/Images/beautician1.png";
-import solar from "./Images/solar.webp";
+import solar from "@/assests/Images/solar.webp";
 import inspection from "@/assests/Images/home-inspection.webp";
 import banner1 from "@/assests/Images/banner-homeservice.webp";
 import banner3 from "@/assests/Images/banner-homecare.webp";
-import Logoes from ".@/assests/Images/navlogo.png";
+import Logoes from "@/assests/Images/navlogo.png";
 
 // ❌ Remove this old import (it breaks routing)
 // import home from "../(pages)/Home/handyman";
