@@ -102,36 +102,8 @@ const NavBar: React.FC = () => {
             ))}
           </Menu>
 
-          <Button
-            component={Link}
-            href="https://mahircompany.com/blog"
-            target="_blank"
-            sx={{ color: "black" }}
-          >
-            Blog
-          </Button>
-
-          {/* Location Dropdown */}
-          <Button onClick={(e) => handleOpen(e, "location")} sx={{ color: "black" }}>
-            Lahore
-          </Button>
-          <Menu
-            anchorEl={anchorElLocation}
-            open={Boolean(anchorElLocation)}
-            onClose={handleClose}
-          >
-            {["Lahore", "Karachi", "Islamabad", "Rawalpindi", "Multan"].map((city) => (
-              <MenuItem key={city} onClick={handleClose}>
-                <Link
-                  href={`/${city.toLowerCase()}`}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  {city}
-                </Link>
-              </MenuItem>
-            ))}
-          </Menu>
-
+       
+         
           {/* SignIn/SignUp Button - Updated styling */}
           <Button
             component={Link}
@@ -182,9 +154,7 @@ const NavBar: React.FC = () => {
           <Button sx={{ color: "black" }} onClick={(e) => handleOpen(e, "services")}>
             Services
           </Button>
-          <Button sx={{ color: "black" }} onClick={(e) => handleOpen(e, "location")}>
-            Lahore
-          </Button>
+      
           <Button
             component={Link}
             href="#"
