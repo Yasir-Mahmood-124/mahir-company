@@ -10,30 +10,95 @@ const FloatingContactButtons = () => {
 
   return (
     <>
-      {/* Desktop Version - Hover to Expand */}
+      {/* Desktop Version - Hover to Expand - LEFT SIDE */}
       <Box
         sx={{
           position: "fixed",
-          right: 0,
+          left: 0,
           top: "50%",
           transform: "translateY(-50%)",
           zIndex: 9999,
-          display: { xs: "none", md: "flex" }, // Hide on mobile, show on desktop
+          display: { xs: "none", md: "flex" },
           alignItems: "center",
           transition: "all 0.3s ease",
         }}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
       >
+        {/* Collapsed Icons Bar */}
+        <Box
+          sx={{
+            backgroundColor: "transparent",
+            borderRadius: "0 30px 30px 0",
+            padding: "15px 8px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+          }}
+        >
+          <IconButton
+            component="a"
+            href="tel:03096661919"
+            sx={{
+              width: 50,
+              height: 50,
+              backgroundColor: "#2196F3",
+              "&:hover": {
+                backgroundColor: "#1976D2",
+                transform: "scale(1.1)",
+              },
+              transition: "all 0.3s ease",
+            }}
+          >
+            <PhoneIcon sx={{ color: "white", fontSize: 24 }} />
+          </IconButton>
+
+          <IconButton
+            component="a"
+            href="https://wa.me/923096661919"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              width: 50,
+              height: 50,
+              backgroundColor: "#25D366",
+              "&:hover": {
+                backgroundColor: "#1EBE57",
+                transform: "scale(1.1)",
+              },
+              transition: "all 0.3s ease",
+            }}
+          >
+            <WhatsAppIcon sx={{ color: "white", fontSize: 24 }} />
+          </IconButton>
+
+          <IconButton
+            component="a"
+            href="#chat"
+            sx={{
+              width: 50,
+              height: 50,
+              backgroundColor: "#FF6B6B",
+              "&:hover": {
+                backgroundColor: "#FF5252",
+                transform: "scale(1.1)",
+              },
+              transition: "all 0.3s ease",
+            }}
+          >
+            <ChatIcon sx={{ color: "white", fontSize: 24 }} />
+          </IconButton>
+        </Box>
+
         {/* Expanded Content */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             gap: 2,
-            mr: 1,
+            ml: 1,
             opacity: isExpanded ? 1 : 0,
-            transform: isExpanded ? "translateX(0)" : "translateX(20px)",
+            transform: isExpanded ? "translateX(0)" : "translateX(-20px)",
             transition: "all 0.3s ease",
             pointerEvents: isExpanded ? "all" : "none",
           }}
@@ -175,82 +240,17 @@ const FloatingContactButtons = () => {
             </Typography>
           </Box>
         </Box>
-
-        {/* Collapsed Icons Bar */}
-        <Box
-          sx={{
-            backgroundColor: "transparent",
-            borderRadius: "30px 0 0 30px",
-            padding: "15px 8px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-          }}
-        >
-          <IconButton
-            component="a"
-            href="tel:03096661919"
-            sx={{
-              width: 50,
-              height: 50,
-              backgroundColor: "#2196F3",
-              "&:hover": {
-                backgroundColor: "#1976D2",
-                transform: "scale(1.1)",
-              },
-              transition: "all 0.3s ease",
-            }}
-          >
-            <PhoneIcon sx={{ color: "white", fontSize: 24 }} />
-          </IconButton>
-
-          <IconButton
-            component="a"
-            href="https://wa.me/923096661919"
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-              width: 50,
-              height: 50,
-              backgroundColor: "#25D366",
-              "&:hover": {
-                backgroundColor: "#1EBE57",
-                transform: "scale(1.1)",
-              },
-              transition: "all 0.3s ease",
-            }}
-          >
-            <WhatsAppIcon sx={{ color: "white", fontSize: 24 }} />
-          </IconButton>
-
-          <IconButton
-            component="a"
-            href="#chat"
-            sx={{
-              width: 50,
-              height: 50,
-              backgroundColor: "#FF6B6B",
-              "&:hover": {
-                backgroundColor: "#FF5252",
-                transform: "scale(1.1)",
-              },
-              transition: "all 0.3s ease",
-            }}
-          >
-            <ChatIcon sx={{ color: "white", fontSize: 24 }} />
-          </IconButton>
-        </Box>
       </Box>
 
-      {/* Mobile Version - All Buttons on Left Side */}
+      {/* Mobile Version - All Buttons on RIGHT SIDE */}
       <Box
         sx={{
           position: "fixed",
-          left: 0,
+          right: 0,
           top: "50%",
           transform: "translateY(-50%)",
           zIndex: 9999,
-          display: { xs: "flex", md: "none" }, // Show on mobile, hide on desktop
+          display: { xs: "flex", md: "none" },
           flexDirection: "column",
           gap: 2,
           backgroundColor: "transparent",
