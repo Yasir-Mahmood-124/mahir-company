@@ -6,13 +6,14 @@ import NavBar from "@/Components/beauticianNavabr";
 import Footer from "@/Components/BeauticianFooter";
 import CopyrightSection from "@/Components/CopyrightSection";
 import Banner from "@/Components/banners/mani-pedi-banner";
+import Menipedi from "@/Components/Cards/Menipedi"
+
 export default function Home() {
   return (
     <div>
       <NavBar></NavBar>
       <Banner></Banner>
-      <br></br>
-      <br></br>
+     <Menipedi></Menipedi>
       <Footer></Footer>
       <CopyrightSection></CopyrightSection>
     </div>
