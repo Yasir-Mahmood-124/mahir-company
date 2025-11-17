@@ -49,22 +49,29 @@ const CleaningServiceNavBar: React.FC = () => {
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center" }}>
-          <Box component="span" sx={{ mr: 1 }}>
-            {/* Your SVG logo
-            <svg
-              width="88"
-              height="35"
-              viewBox="0 0 88 35"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M41.9193 25.6143H40.9681C36.4671 25.6143 33.3701 23.0835 33.3701 19.6016C33.3701 16.2272 35.833 13.6568 42.7969 13.6568H44.4501V13.4133C44.4501 10.741 43.1819 9.93136 40.368 9.93136C36.954 9.93136 35.0573 11.2336 34.3553 12.1111H34.1797V10.5938C34.1797 8.48196 36.0764 5.95117 41.0757 5.95117C45.2994 5.95117 49.0927 7.92145 49.0927 14.4607V18.8202C49.0984 22.8344 46.1429 25.6143 41.9193 25.6143Z"
-                fill="black"
-              />
-            </svg> */}
-            <Image src={logo} alt="logo"></Image>
+           {/* Logo */}
+        <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+          <Box 
+            component="span" 
+            sx={{ 
+              display: "flex", 
+              alignItems: "center",
+              height: "60px",
+              py: 1
+            }}
+          >
+            <Image
+              src={logo} 
+              alt="UstadOnCall Logo"
+              width={250}
+              height={250}
+              style={{ 
+                objectFit: "contain",
+                height: "auto",
+                // maxHeight: "60px"
+              }}
+              priority
+            />
           </Box>
         </Link>
 
