@@ -1,6 +1,4 @@
-// ============================================
-// WaxingServicesHero.tsx
-// ============================================
+
 'use client';
 
 import React from 'react';
@@ -115,7 +113,7 @@ const MakeupService: React.FC = () => {
                 mb: 2
               }}
             >
-                Mani Pedi
+              Makeup Services
             </Typography>
             <Typography
               variant="h5"
