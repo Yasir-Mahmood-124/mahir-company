@@ -11,8 +11,6 @@ export default function Home() {
     <div>
       <NavBar></NavBar>
       <Banner></Banner>
-      <br></br>
-      <br></br>
       <Footer></Footer>
       <CopyrightSection></CopyrightSection>
     </div>
