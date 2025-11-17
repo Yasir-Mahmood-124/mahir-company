@@ -179,7 +179,7 @@ const NavBar: React.FC = () => {
             href="#"
             sx={{
               color: "white",
-              backgroundColor: "#b8858a",
+              backgroundColor: "c",
               textTransform: "none",
               fontWeight: 500,
               padding: "8px 24px",
