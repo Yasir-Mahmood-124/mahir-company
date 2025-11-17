@@ -45,10 +45,29 @@ const NavBar: React.FC = () => {
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center" }}>
-          <Box component="span" sx={{ mr: 1 }}>
-            <Image src={logo} alt="logo" />
+             {/* Logo */}
+        <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+          <Box 
+            component="span" 
+            sx={{ 
+              display: "flex", 
+              alignItems: "center",
+              height: "60px",
+              py: 1
+            }}
+          >
+            <Image
+              src={logo} 
+              alt="UstadOnCall Logo"
+              width={250}
+              height={250}
+              style={{ 
+                objectFit: "contain",
+                height: "auto",
+                // maxHeight: "60px"
+              }}
+              priority
+            />
           </Box>
         </Link>
 

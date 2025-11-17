@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IconButton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import {Box} from "@mui/material"
 
 // ✅ Image imports
 import handyman from "@/assests/Images/handyman1.webp";
@@ -14,7 +15,7 @@ import solar from "@/assests/Images/solar.webp";
 import inspection from "@/assests/Images/home-inspection.webp";
 import banner1 from "@/assests/Images/banner-homeservice.webp";
 import banner3 from "@/assests/Images/banner-homecare.webp";
-import Logoes from "@/assests/Images/navlogo.png";
+import logo from "@/assests/Images/logo.png";
 
 // ❌ Remove this old import (it breaks routing)
 // import home from "../(pages)/Home/handyman";
@@ -156,15 +157,30 @@ export default function WelcomePage() {
             boxSizing: "border-box",
           }}
         >
-          {/* Logo */}
-          <Link href="/" style={{ display: "flex", alignItems: "center" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+          <Box 
+            component="span" 
+            sx={{ 
+              display: "flex", 
+              alignItems: "center",
+              height: "60px",
+              py: 1
+            }}
+          >
             <Image
-              src={Logoes}
-              alt="Mahir Company Logo"
-              width={isMobile ? 140 : 180}
-              height={isMobile ? 40 : 60}
+              src={logo} 
+              alt="UstadOnCall Logo"
+              width={200}
+              height={200}
+              style={{ 
+                objectFit: "contain",
+                height: "auto",
+                // maxHeight: "60px"
+              }}
+              priority
             />
-          </Link>
+          </Box>
+        </Link>
 
           {/* Login Button */}
           <Link href="/login">
