@@ -27,7 +27,7 @@ const GeyserServicesDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Are you looking for a professional to install or repair your geyser before the arrival of winter? If yes, you are in luck! Mahir's Company (Mr Mahir) online platform is designed to connect customers like you to the best professionals.
+          Are you looking for a professional to install or repair your geyser before the arrival of winter? If yes, you are in luck! UstadonCall's Company (Mr UstadonCall) online platform is designed to connect customers like you to the best professionals.
         </Typography>
 
         <Typography paragraph>
@@ -35,11 +35,11 @@ const GeyserServicesDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Why Book Mahir's Company (Mr Mahir) Geyser Repair & Install Services?
+          Why Book UstadonCall's Company (Mr UstadonCall) Geyser Repair & Install Services?
         </Typography>
 
         <Typography paragraph>
-          Because we are the best service providers. How? Continue reading to know the best features of Mahir's Company (Mr Mahir) geyser services.
+          Because we are the best service providers. How? Continue reading to know the best features of UstadonCall's Company (Mr UstadonCall) geyser services.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -56,7 +56,7 @@ const GeyserServicesDescription: React.FC = () => {
           We pledge that no one in the market can match the professionalism of plumbers we connect you to. We verify our plumbers during the registration process to ensure the safety of your family and the sanctity of your home.
         </Typography>
         <Typography paragraph>
-          If you need reliable and safe <strong>instant geyser installation</strong>, book through the Mahir's Company (Mr Mahir) app. Our plumber will inspect your geyser, suggest the best mode of action, and get the installation done with utmost professionalism.
+          If you need reliable and safe <strong>instant geyser installation</strong>, book through the UstadonCall's Company (Mr UstadonCall) app. Our plumber will inspect your geyser, suggest the best mode of action, and get the installation done with utmost professionalism.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -77,7 +77,7 @@ const GeyserServicesDescription: React.FC = () => {
           5. Unparalleled Affordability
         </Typography>
         <Typography paragraph>
-          Our prices are market competitive and even lower than market price with the 10% discount that you can get by booking <strong>geyser installation services</strong> through Mahir's Company (Mr Mahir) App.
+          Our prices are market competitive and even lower than market price with the 10% discount that you can get by booking <strong>geyser installation services</strong> through UstadonCall's Company (Mr UstadonCall) App.
         </Typography>
 
         <Typography paragraph fontWeight="bold" sx={{ mt: 4 }}>
@@ -144,7 +144,7 @@ const GeyserServicesDescription: React.FC = () => {
           Geyser Repair Services
         </Typography>
         <Typography paragraph>
-          Mahir Company (Mr Mahir) offers various geyser repair services such as <strong>instant geyser repairing</strong>, <strong>gas geyser repairing</strong>, and <strong>electric geyser repairing</strong>. Our skilled professionals can fix any issue your geyser might be facing.
+          UstadonCall Company (Mr UstadonCall) offers various geyser repair services such as <strong>instant geyser repairing</strong>, <strong>gas geyser repairing</strong>, and <strong>electric geyser repairing</strong>. Our skilled professionals can fix any issue your geyser might be facing.
         </Typography>
 
         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
@@ -162,7 +162,7 @@ const GeyserServicesDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph fontStyle="italic" sx={{ mt: 4 }}>
-          From installation and servicing to repair & support, we do it all. Book through the Mahir's Company (Mr Mahir) app today and get your geyser ready for winter!
+          From installation and servicing to repair & support, we do it all. Book through the UstadonCall's Company (Mr Mahir) app today and get your geyser ready for winter!
         </Typography>
       </Container>
     </Box>

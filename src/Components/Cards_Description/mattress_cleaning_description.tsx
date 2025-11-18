@@ -57,7 +57,7 @@ const MattressCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          We ensure that our expert cleaners reach your doorstep in just 60 mins, and you do not have to wait. So, booking Mahir mattress cleaning helps you get your mattress spotless the same day without waiting.
+          We ensure that our expert cleaners reach your doorstep in just 60 mins, and you do not have to wait. So, booking UstadonCall mattress cleaning helps you get your mattress spotless the same day without waiting.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -81,7 +81,7 @@ const MattressCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Our cleaners are verified by Tasdeeq Pakistan, which means that you will never have any security or safety concerns when you book a cleaner through the Mahir Company App.
+          Our cleaners are verified by Tasdeeq Pakistan, which means that you will never have any security or safety concerns when you book a cleaner through the UstadonCall Company App.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -105,7 +105,7 @@ const MattressCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Now you have enough reasons to book mattress cleaning through us. You can search for us with the keywords mattress cleaning services near me or download the Mahir Company App to book in just three clicks.
+          Now you have enough reasons to book mattress cleaning through us. You can search for us with the keywords mattress cleaning services near me or download the UstadonCall Company App to book in just three clicks.
         </Typography>
       </Container>
     </Box>

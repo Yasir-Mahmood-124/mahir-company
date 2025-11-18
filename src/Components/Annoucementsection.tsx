@@ -15,8 +15,8 @@ type AnnouncementProps = {
 };
 
 export default function AnnouncementSection({
-  title = "Mr. Mahir is Now Mahir Company!",
-  description = "Previously known as Mr. Mahir. Mahir Company is your go-to and on-demand expert for all your Home & Personal Care Services. We are serving you 24/7 since 2019. The trust and love you have shown us over this period, has inspired us to go bigger & better. Now accelerating & expanding our operations to become even more accessible, reliable, fast, safe, and pocket-friendly for you, our users. And a pioneer of enablement and empowerment to our vendors.",
+  title = "Mr. UstadonCall is Now UstadonCall Company!",
+  description = "Previously known as Mr. UstadonCall. UstadonCall Company is your go-to and on-demand expert for all your Home & Personal Care Services. We are serving you 24/7 since 2019. The trust and love you have shown us over this period, has inspired us to go bigger & better. Now accelerating & expanding our operations to become even more accessible, reliable, fast, safe, and pocket-friendly for you, our users. And a pioneer of enablement and empowerment to our vendors.",
   buttonText = "Read more",
   onReadMore,
   megaphoneIcon,

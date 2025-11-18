@@ -33,11 +33,11 @@ const CementTankCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Mahir Company offers to connect you with experts in your area in a hassle-free and easy-on-the-pocket way. So, you don't have to put your family's life at risk anymore. If it has been more than six months since you booked a professional, don't wait anymore and book cement water tank cleaning services now.
+          UstadonCall Company offers to connect you with experts in your area in a hassle-free and easy-on-the-pocket way. So, you don't have to put your family's life at risk anymore. If it has been more than six months since you booked a professional, don't wait anymore and book cement water tank cleaning services now.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
-          How Booking through Mahir Company App is the Easiest?
+          How Booking through UstadonCall Company App is the Easiest?
         </Typography>
 
         <Typography paragraph>
@@ -45,23 +45,23 @@ const CementTankCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
-          How Booking through Mahir Company App is the Safest?
+          How Booking through UstadonCall Company App is the Safest?
         </Typography>
 
         <Typography paragraph>
-          And with us, you don't need to have any safety concerns. Our cleaners are verified by Tasdeeq Pakistan. There will be no fear of fraudulent activity when you let our Mahir cleaner inside your home.
+          And with us, you don't need to have any safety concerns. Our cleaners are verified by Tasdeeq Pakistan. There will be no fear of fraudulent activity when you let our UstadonCall cleaner inside your home.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
-          How Booking through Mahir Company App is the Quickest?
+          How Booking through UstadonCall Company App is the Quickest?
         </Typography>
 
         <Typography paragraph>
-          Also, to make booking easy and accessible for all kinds of users, we are available on multiple online platforms. You can book us through the website, Mahir Company App, and social media sites.
+          Also, to make booking easy and accessible for all kinds of users, we are available on multiple online platforms. You can book us through the website, UstadonCall Company App, and social media sites.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
-          How Booking through Mahir Company App is the Most Affordable?
+          How Booking through UstadonCall Company App is the Most Affordable?
         </Typography>
 
         <Typography paragraph>

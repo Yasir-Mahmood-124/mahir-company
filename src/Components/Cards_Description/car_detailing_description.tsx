@@ -29,15 +29,15 @@ const CarDetailingDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          No worries, Mahir Company (Mr Mahir) App has made it easiest for you to care for your car by offering car detailing services at home. You can book the best professionals in Lahore online.
+          No worries, UstadonCall Company (Mr UstadonCall) App has made it easiest for you to care for your car by offering car detailing services at home. You can book the best professionals in Lahore online.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Mahir Car Detailing Services
+          UstadonCall Car Detailing Services
         </Typography>
 
         <Typography paragraph>
-          Mahir Company (Mr Mahir) is Pakistan's 1st App to offer car detailing service at home that promises a sparkling exterior and a spotless interior most easily and affordably.
+          UstadonCall Company (Mr UstadonCall) is Pakistan's 1st App to offer car detailing service at home that promises a sparkling exterior and a spotless interior most easily and affordably.
         </Typography>
 
         <Typography paragraph>
@@ -45,7 +45,7 @@ const CarDetailingDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Here are some of the perks of availing of Mahir's car detailing services:
+          Here are some of the perks of availing of UstadonCall's car detailing services:
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -53,7 +53,7 @@ const CarDetailingDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Yes, there is no need to take time out of your busy routine and drive to a service station. You can get the best car detailing experts at your home using the Mahir Company (Mr Mahir) App. I mean, it can't get any easier, right?
+          Yes, there is no need to take time out of your busy routine and drive to a service station. You can get the best car detailing experts at your home using the UstadonCall Company (Mr UstadonCall) App. I mean, it can't get any easier, right?
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -61,7 +61,7 @@ const CarDetailingDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Yes, our Mahir partners have years of experience and the hands-on skills needed to make your car as good as new. Our car detailing experts have been certified by Tasqeed Pakistan, which means that you will never have security concerns with us.
+          Yes, our UstadonCall partners have years of experience and the hands-on skills needed to make your car as good as new. Our car detailing experts have been certified by Tasqeed Pakistan, which means that you will never have security concerns with us.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -69,7 +69,7 @@ const CarDetailingDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Yes, we ensure the best customer experience by providing routine training sessions for developing and refining technical and soft skills in our Mahir's. The professionals you book through us will identify and adhere to your car's unique needs.
+          Yes, we ensure the best customer experience by providing routine training sessions for developing and refining technical and soft skills in our UstadonCall. The professionals you book through us will identify and adhere to your car's unique needs.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -89,11 +89,11 @@ const CarDetailingDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Book Mahir's Car Detailing at Home
+          Book UstadonCall Car Detailing at Home
         </Typography>
 
         <Typography paragraph>
-          You can search for us with the keywords car detailing near me and book our services in a hassle-free and efficient way. You can also go to the app store and download the Mahir Company (Mr Mahir) App for your android and IOS devices. No reason to wait anymore. Download now and book the best professionals at home in just three clicks.
+          You can search for us with the keywords car detailing near me and book our services in a hassle-free and efficient way. You can also go to the app store and download the UstadonCall Company (Mr UstadonCall) App for your android and IOS devices. No reason to wait anymore. Download now and book the best professionals at home in just three clicks.
         </Typography>
 
         <Typography paragraph fontWeight="bold" sx={{ mt: 4 }}>

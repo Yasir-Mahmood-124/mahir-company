@@ -49,11 +49,11 @@ const ACServicesDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Searching for those experts is a difficult task itself. That's where Mahir Company (Mr Mahir) jumps in, offering the best AC services in Lahore and Karachi,&nbsp; helping you find the best AC Technicians to do your job.
+          Searching for those experts is a difficult task itself. That's where UstadonCall Company (Mr UstadonCall) jumps in, offering the best AC services in Lahore and Karachi,&nbsp; helping you find the best AC Technicians to do your job.
         </Typography>
 
         <Typography paragraph>
-          Mahir Company (Mr Mahir) <strong>AC Repair Services</strong>&nbsp;has established itself as the leading channel that provides AC Service in Lahore and Karachi. We do all kinds of AC Repair, AC Technician Services, AC Installation, AC Maintenance, AC Gas Refilling, AC Advanced Piping Services, AC Mounting, and Dismounting &amp; all types of Air Conditioner Service &amp; Split AC Repair in Lahore and Karachi.
+          UstadonCall Company (Mr UstadonCall) <strong>AC Repair Services</strong>&nbsp;has established itself as the leading channel that provides AC Service in Lahore and Karachi. We do all kinds of AC Repair, AC Technician Services, AC Installation, AC Maintenance, AC Gas Refilling, AC Advanced Piping Services, AC Mounting, and Dismounting &amp; all types of Air Conditioner Service &amp; Split AC Repair in Lahore and Karachi.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -121,7 +121,7 @@ const ACServicesDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Mahir Company (Mr Mahir) offers various AC General Services such as AC Installation, AC Maintenance, AC Gas refilling, etc.
+          UstadonCall Company (Mr UstadonCall) offers various AC General Services such as AC Installation, AC Maintenance, AC Gas refilling, etc.
         </Typography>
 
         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
@@ -137,7 +137,7 @@ const ACServicesDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Mahir Company (Mr Mahir) has extensive experience and vast knowledge of <strong>AC maintenance services</strong>. Our skilled technicians can work on all the prevailing AC Brands in the market.
+          UstadonCall Company (Mr UstadonCall) has extensive experience and vast knowledge of <strong>AC maintenance services</strong>. Our skilled technicians can work on all the prevailing AC Brands in the market.
         </Typography>
 
         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>

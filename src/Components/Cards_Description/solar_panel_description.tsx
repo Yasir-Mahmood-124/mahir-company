@@ -25,11 +25,11 @@ const SolarPanelCleaningDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Welcome to our one-stop destination for top-notch solar panel cleaning services! At Mahir Company, we understand the significance of clean and well-maintained solar panels in optimizing energy generation and ensuring maximum efficiency. With our expert team and cutting-edge techniques, we are here to take your solar panels from dull to dazzling, helping you harness the full potential of solar energy.
+          Welcome to our one-stop destination for top-notch solar panel cleaning services! At UstadonCall Company, we understand the significance of clean and well-maintained solar panels in optimizing energy generation and ensuring maximum efficiency. With our expert team and cutting-edge techniques, we are here to take your solar panels from dull to dazzling, helping you harness the full potential of solar energy.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Why Choose Mahir Solar Panel Cleaning?
+          Why Choose UstadonCall Solar Panel Cleaning?
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -57,7 +57,7 @@ const SolarPanelCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          At Mahir Company, we take pride in our team of experienced and trained professionals who are dedicated to providing the best solar panel cleaning services. Their expertise and attention to detail guarantee exceptional results every time.
+          At UstadonCall Company, we take pride in our team of experienced and trained professionals who are dedicated to providing the best solar panel cleaning services. Their expertise and attention to detail guarantee exceptional results every time.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -109,7 +109,7 @@ const SolarPanelCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Experience the Difference with Mahir Company
+          Experience the Difference with UstadonCall Company
         </Typography>
 
         <Typography paragraph>
@@ -121,7 +121,7 @@ const SolarPanelCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Don't wait for your solar panels to lose their efficiency. Experience the power of sparkling clean solar panels with Mahir Company. Contact us now to schedule your solar panel cleaning service and harness the true potential of solar energy!
+          Don't wait for your solar panels to lose their efficiency. Experience the power of sparkling clean solar panels with UstadonCall Company. Contact us now to schedule your solar panel cleaning service and harness the true potential of solar energy!
         </Typography>
       </Container>
     </Box>

@@ -51,7 +51,7 @@ const testimonials: Testimonial[] = [
   {
     id: 5,
     name: 'Zahid Raza Khan',
-    comment: 'It was very convenient to engage a technician and get things done through Mahir',
+    comment: 'It was very convenient to engage a technician and get things done through ',
     rating: 5,
     date: '24-04-2021 10:14',
   },

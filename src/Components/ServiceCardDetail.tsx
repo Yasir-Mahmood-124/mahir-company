@@ -185,7 +185,7 @@ const ServiceCardDetail: React.FC<Props> = ({ service }) => {
           {service.title} in Pakistan
         </Typography>
         <Typography variant="body1" color="text.secondary" paragraph>
-          Book {service.title} anywhere in Pakistan with Mahir Company (MrMahir).
+          Book {service.title} anywhere in Pakistan with UstadonCall Company .
           Best rates, verified professionals.
         </Typography>
 

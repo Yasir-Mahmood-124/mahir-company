@@ -43,7 +43,7 @@ const MobileAppSection = () => {
                 lineHeight: 1.1,
               }}
             >
-              Book a Mahir
+              Book a  UstadonCall
             </Typography>
 
             {/* Paragraph */}
@@ -56,7 +56,7 @@ const MobileAppSection = () => {
                 lineHeight: 1.5,
               }}
             >
-              Experience convenience like never before! Download the Mahir App to
+              Experience convenience like never before! Download the UstadonCall App to
               book trusted professionals for home maintenance, repairs, and services —
               anytime, anywhere.
             </Typography>

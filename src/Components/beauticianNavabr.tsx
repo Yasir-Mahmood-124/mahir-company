@@ -14,7 +14,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/assests/Images/logo.png";
+import logo from "@/assests/Images/logo design-02.png";
 
 const NavBar: React.FC = () => {
   const [anchorElServices, setAnchorElServices] = useState<null | HTMLElement>(null);

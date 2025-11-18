@@ -33,19 +33,19 @@ const DeepCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Mahir Company App is here to take care of all these and other hectic tasks that take a toll on you.
+          UstadonCall Company App is here to take care of all these and other hectic tasks that take a toll on you.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Why Do You Need Mahir Deep Cleaning Services?
+          Why Do You Need UstadonCall Deep Cleaning Services?
         </Typography>
 
         <Typography paragraph>
-          Cleaning services can help you clean your house from top to bottom, including windows and cupboards. Booking the whole house deep cleaning services of Mahir Company saves you time, money, and hassle.
+          Cleaning services can help you clean your house from top to bottom, including windows and cupboards. Booking the whole house deep cleaning services of UstadonCall Company saves you time, money, and hassle.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
-          Mahir Deep Cleaning Saves You Time
+          UstadonCall Deep Cleaning Saves You Time
         </Typography>
 
         <Typography paragraph>
@@ -53,7 +53,7 @@ const DeepCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Our Mahir cleaners will take over the task of cleaning every nook and corner of your washroom, kitchen, and other parts of your home, even your almirahs, and drawers.
+          Our UstadonCall cleaners will take over the task of cleaning every nook and corner of your washroom, kitchen, and other parts of your home, even your almirahs, and drawers.
         </Typography>
 
         <Typography paragraph>
@@ -61,11 +61,11 @@ const DeepCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Our Mahir's will be at your home 60 mins after the booking or the time you have selected for booking. So, with us, you will save your weekends and leisure time.
+          Our UstadonCall's will be at your home 60 mins after the booking or the time you have selected for booking. So, with us, you will save your weekends and leisure time.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
-          Mahir Deep Cleaning Saves You Money
+          UstadonCall Deep Cleaning Saves You Money
         </Typography>
 
         <Typography paragraph>
@@ -81,7 +81,7 @@ const DeepCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
-          Mahir Deep Cleaning Saves You Hassle
+          UstadonCall Deep Cleaning Saves You Hassle
         </Typography>
 
         <Typography paragraph>
@@ -93,7 +93,7 @@ const DeepCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Our Mahir's are certified and trained professionals; we have verified them from Tasdeeq Pakistan and provide them with weekly training sessions.
+          Our UstadonCall's are certified and trained professionals; we have verified them from Tasdeeq Pakistan and provide them with weekly training sessions.
         </Typography>
 
         <Typography paragraph>

@@ -37,7 +37,7 @@ const CurtainCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Reasons to Book Mahir Curtain Cleaning
+          Reasons to Book UstadonCall Curtain Cleaning
         </Typography>
 
         <Typography paragraph>

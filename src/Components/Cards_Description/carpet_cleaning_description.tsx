@@ -29,7 +29,7 @@ const CarpetCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Benefits of Booking Mahir Carpet Cleaning
+          Benefits of Booking UstadonCall Carpet Cleaning
         </Typography>
 
         <Typography paragraph>
@@ -41,7 +41,7 @@ const CarpetCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          We have made the booking process so simple that you do not have to move a step out of your home or comfort zone. You can book the best cleaners in your area affordably, safely, and easily by booking carpet cleaning in Lahore using our website and Mahir Company App. Our online platforms make it easiest to book a cleaner as you have to tap, tap, tap, and tap the booking is made.
+          We have made the booking process so simple that you do not have to move a step out of your home or comfort zone. You can book the best cleaners in your area affordably, safely, and easily by booking carpet cleaning in Lahore using our website and UstadonCall Company App. Our online platforms make it easiest to book a cleaner as you have to tap, tap, tap, and tap the booking is made.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -101,7 +101,7 @@ const CarpetCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph fontWeight="bold" sx={{ mt: 4 }}>
-          Search online with the keywords carpet cleaning near me or book through Mahir Company's website or app.
+          Search online with the keywords carpet cleaning near me or book through UstadonCall Company's website or app.
         </Typography>
       </Container>
     </Box>

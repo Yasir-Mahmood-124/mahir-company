@@ -36,7 +36,7 @@ const HomeAppliancesServiceDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          At Mahir Company (Mr Mahir), our expert technicians will pull your faulty appliances apart and then put them back together in working order before you even know it. So hey! before you attack the refrigerator with a screwdriver, let's walk you through the major appliances repair solution we provide at Mahir Company (Mr Mahir).
+          At UstadonCall Company (Mr UstadonCall), our expert technicians will pull your faulty appliances apart and then put them back together in working order before you even know it. So hey! before you attack the refrigerator with a screwdriver, let's walk you through the major appliances repair solution we provide at UstadonCall Company (Mr MahiUstadonCallr).
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -80,7 +80,7 @@ const HomeAppliancesServiceDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Our refrigerator repair technicians are qualified experts in fixing all major refrigerator brands. So if your refrigerator is making strange noises or there is an unknown leak, call Mahir Company (Mr Mahir), the best Refrigerator Repair in Lahore and Karachi!
+          Our refrigerator repair technicians are qualified experts in fixing all major refrigerator brands. So if your refrigerator is making strange noises or there is an unknown leak, call UstadonCall Company (Mr UstadonCall), the best Refrigerator Repair in Lahore and Karachi!
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -96,7 +96,7 @@ const HomeAppliancesServiceDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph fontWeight="bold" sx={{ mt: 4 }}>
-          Trust Mahir Company (Mr Mahir) for all your home appliances repair and installation needs. Book now and experience professional service at affordable rates!
+          Trust UstadonCall Company (Mr UstadonCall) for all your home appliances repair and installation needs. Book now and experience professional service at affordable rates!
         </Typography>
       </Container>
     </Box>

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Box, Container, Typography, Button } from "@mui/material";
-import becomeMahir from "@/assests/Images/become-mahir.webp";
+import becomUstadOnCall from "@/assests/Images/become-mahir.webp";
 import PlayStoreLogo from "@/assests/Images/playstore.svg"; // Add your Play Store logo here
 
 const BecomeMahirSection = () => {
@@ -61,8 +61,8 @@ const BecomeMahirSection = () => {
               />
 
               <Image
-                src={becomeMahir}
-                alt="Become Mahir"
+                src={becomUstadOnCall}
+                alt="Become UstadonCall"
                 fill
                 style={{
                   objectFit: "cover",
@@ -86,7 +86,7 @@ const BecomeMahirSection = () => {
                 color: "#000",
               }}
             >
-              Become a Mahir
+              Become a UstadonCall
             </Typography>
 
             <Typography
@@ -100,7 +100,7 @@ const BecomeMahirSection = () => {
             >
               Join Pakistan's fastest-growing platform for skilled professionals.
               Get access to thousands of customers, earn on your own terms, and
-              grow your business with the <strong>Book a Mahir</strong> app.
+              grow your business with the <strong>Book a UstadonCall</strong> app.
             </Typography>
 
             <Typography sx={{ mb: 1.5, fontSize: "1.2rem", color: "#000" }}>

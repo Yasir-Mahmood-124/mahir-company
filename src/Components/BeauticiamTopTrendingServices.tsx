@@ -180,7 +180,7 @@ const TrendingServicesSection: React.FC = () => {
                 lineHeight: 1.7,
               }}
             >
-              The high customer repeat rate & excellent reviews show how much our customers love these Mahir Company services!
+              The high customer repeat rate & excellent reviews show how much our customers love these UstadonCall Company services!
             </Typography>
           </Box>
 

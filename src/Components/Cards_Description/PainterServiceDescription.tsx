@@ -40,7 +40,7 @@ const PainterServiceDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Mahir's Company (Mr Mahir) well-trained team of painters provides the best painter services in Lahore and Karachi. The company has a team of professional painters and color experts, who understand their art well.
+          UstadonCall's Company (Mr UstadonCall) well-trained team of painters provides the best painter services in Lahore and Karachi. The company has a team of professional painters and color experts, who understand their art well.
         </Typography>
         
         <Typography paragraph>
@@ -48,7 +48,7 @@ const PainterServiceDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Market survey, in many cases, is not possible for the paint. It requires too much time to visit the market in major cities, which most of us do not have in today's fast pace life. Get in touch with Mahir Company (Mr Mahir), to avail of the reliable painter services online.
+          Market survey, in many cases, is not possible for the paint. It requires too much time to visit the market in major cities, which most of us do not have in today's fast pace life. Get in touch with UstadonCall Company (Mr UstadonCall), to avail of the reliable painter services online.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -68,7 +68,7 @@ const PainterServiceDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Mahir Company (Mr Mahir) has the best interior painters who provide the best service without messing with your stuff. Order today if you are tired of waking up to the same old colors every single day. This is time to brighten up your walls with the help of Mahir Company (Mr Mahir).
+          UstadonCall Company (Mr UstadonCall) has the best interior painters who provide the best service without messing with your stuff. Order today if you are tired of waking up to the same old colors every single day. This is time to brighten up your walls with the help of UstadonCall Company (Mr UstadonCall).
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -80,7 +80,7 @@ const PainterServiceDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Mahir Company (Mr Mahir) has distinct departments for both interior and exterior paint. The workers of both teams have years of experience in painting. They are qualified to handle both interior and exterior painting projects.
+          UstadonCall Company (Mr UstadonCall) has distinct departments for both interior and exterior paint. The workers of both teams have years of experience in painting. They are qualified to handle both interior and exterior painting projects.
         </Typography>
         
         <Typography paragraph>
@@ -100,15 +100,15 @@ const PainterServiceDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Polishing the furniture we use every day is very important in home décor. Moreover, furniture is delicate so hiring professional and reliable service is a wise call. Let us know because we at Mr Mahir provide excellent polishing services.
+          Polishing the furniture we use every day is very important in home décor. Moreover, furniture is delicate so hiring professional and reliable service is a wise call. Let us know because we at Mr UstadonCall provide excellent polishing services.
         </Typography>
         
         <Typography paragraph>
-          Mahir Company (Mr Mahir) offers diverse furniture polishing services at amazingly affordable rates. The best polish services with amazing durability and pro reliability are just one call away from you. So dial away and hire the experts today!
+          UstadonCall Company (Mr UstadonCall) offers diverse furniture polishing services at amazingly affordable rates. The best polish services with amazing durability and pro reliability are just one call away from you. So dial away and hire the experts today!
         </Typography>
 
         <Typography paragraph fontWeight="bold" sx={{ mt: 4 }}>
-          Trust Mahir Company (Mr Mahir) for all your painting and polishing needs. Book now and experience professional service at affordable rates!
+          Trust UstadonCall Company (Mr UstadonCall) for all your painting and polishing needs. Book now and experience professional service at affordable rates!
         </Typography>
       </Container>
     </Box>

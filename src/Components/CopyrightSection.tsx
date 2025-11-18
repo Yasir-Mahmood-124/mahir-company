@@ -2,7 +2,7 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
-import logo from "@/assests/Images/logo.png";
+import logo from "@/assests/Images/logo design-02.png";
 
 const CopyrightSection: React.FC = () => {
   return (
@@ -31,7 +31,7 @@ const CopyrightSection: React.FC = () => {
               textAlign: { xs: "center", sm: "left" },
             }}
           >
-            © Copyright {new Date().getFullYear()} Mrmahir.com (pvt) Ltd.
+            © Copyright {new Date().getFullYear()} UstadonCall.com (pvt) Ltd.
           </Typography>
           <Box
             sx={{
@@ -41,7 +41,7 @@ const CopyrightSection: React.FC = () => {
           >
             <Image
               src={logo}
-              alt="Mahir Company (Mr Mahir)"
+              alt=" UstadonCall"
               width={75}
               height={29}
               style={{

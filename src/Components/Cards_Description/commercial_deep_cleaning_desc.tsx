@@ -29,7 +29,7 @@ const CommercialDeepCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Mahir's Commercial Deep Cleaning | Best in Town
+          UstadonCall's Commercial Deep Cleaning | Best in Town
         </Typography>
 
         <Typography paragraph>
@@ -41,7 +41,7 @@ const CommercialDeepCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          You can book professionals through us in the easiest way through our online platforms, including websites, social media sites, and Mahir Company App.
+          You can book professionals through us in the easiest way through our online platforms, including websites, social media sites, and UstadonCall Company App.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>

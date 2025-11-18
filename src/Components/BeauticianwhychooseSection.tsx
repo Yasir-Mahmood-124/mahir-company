@@ -65,7 +65,7 @@ const WhyChooseSection: React.FC = () => {
             color: "#B76E79",
           }}
         >
-          Why choose Mahir Company (Mr Mahir)
+          Why choose UstadonCall Company 
         </Typography>
 
         <Box
@@ -106,7 +106,7 @@ const WhyChooseSection: React.FC = () => {
                   mb: 2,
                 }}
               >
-                Why choose Mahir Company (Mr Mahir)
+                Why choose UstadonCall Company 
               </Typography>
 
               <Typography
@@ -135,7 +135,7 @@ const WhyChooseSection: React.FC = () => {
                 before time? Take no risks. If you cannot manage to go to the
                 salon, let us come by and take care of you. We will cater to your
                 time and affordability concerns. Whether you are a mother,
-                daughter, or wife housewife or working lady.. Mahir Company's
+                daughter, or wife housewife or working lady..UstadonCall Company's
                 professionals will meet your unique needs
               </Typography>
             </Box>

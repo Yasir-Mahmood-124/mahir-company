@@ -188,7 +188,7 @@ const BeauticianAppSection: React.FC = () => {
                 mb: 1,
               }}
             >
-              Mahir Personal Care App
+              UstadonCall Personal Care App
             </Typography>
 
             <Typography

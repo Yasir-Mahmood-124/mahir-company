@@ -8,7 +8,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import Image from 'next/image';
-import Logoes from "@/assests/Images/logo1.webp"
+import Logoes from "../assests/Images/logofooter.png"
 
 const Footer = () => {
   return (
@@ -29,7 +29,7 @@ const Footer = () => {
                 About us
               </Typography>
               <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
-                Previously known as Mr. Mahir, Mahir Company is your go-to on-demand expert for all your Home & Personal Care needs. We are serving you 24/7 since 2019. Now as Mahir Company, we are offering more accessible, reliable, fast, safe, and pocket-friendly services to you.
+              Ustad on Call Company is your go-to on-demand expert for all your Home & Personal Care needs. We are serving you 24/7 since 2019. Now as UstadonCall Company, we are offering more accessible, reliable, fast, safe, and pocket-friendly services to you.
               </Typography>
             </Box>
 
@@ -40,7 +40,7 @@ const Footer = () => {
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                 {[
-                  'Home Services', 'Cleaning Services', 'Personal Care', 'Maintained by Mahir',
+                  'Home Services', 'Cleaning Services', 'Personal Care', 'Maintained by Ustad On Call',
                   'Contact Us', 'FAQs', 'About Us', 'Term & Conditions', 'Privacy Policy', 'Blogs'
                 ].map((item, index) => (
                   <Link
@@ -194,13 +194,13 @@ const Footer = () => {
         borderTop: '1px solid #ddd',
       }}>
         <Typography variant="body2" sx={{ fontSize: 13, textAlign: { xs: 'center', sm: 'left' } }}>
-          © Copyright 2022 Mrmahir.com (pvt) Ltd
+          © Copyright 2022 UstadonCall.com (pvt) Ltd
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {/* Logo */}
           <Image
             src={Logoes}
-            alt="Mahir Logo"
+            alt="Ustad on Call Logo"
             width={120}
             height={30}
           />

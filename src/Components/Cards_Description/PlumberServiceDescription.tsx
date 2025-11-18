@@ -20,7 +20,7 @@ const PestControlServiceDescription = () => {
         </p>
         
         <p style={{ marginBottom: '16px', lineHeight: '1.6' }}>
-          What could get worse than noticing seepage through your bedroom's ceiling due to a pipeline water leakage? Whether it's routine maintenance or an emergency at hand, Mahir's Company (Mr Mahir) plumbing services is your absolute need of the hour. We're just a call away to put all your worries to rest.
+          What could get worse than noticing seepage through your bedroom's ceiling due to a pipeline water leakage? Whether it's routine maintenance or an emergency at hand, UstadonCall's Company (Mr UstadonCall) plumbing services is your absolute need of the hour. We're just a call away to put all your worries to rest.
         </p>
 
         <p style={{ marginBottom: '16px', lineHeight: '1.6' }}>
@@ -108,11 +108,11 @@ const PestControlServiceDescription = () => {
         </h3>
         
         <p style={{ marginBottom: '16px', lineHeight: '1.6' }}>
-          Don't remember when was the last time you got your water tank cleaned? Let Mahir Company (Mr Mahir) experts do their magic for your peace and comfort.
+          Don't remember when was the last time you got your water tank cleaned? Let UstadonCall Company (Mr UstadonCall) experts do their magic for your peace and comfort.
         </p>
 
         <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginTop: '32px', marginBottom: '16px' }}>
-          Why Choose Mahir Company (Mr Mahir)?
+          Why Choose UstadonCall Company (Mr UstadonCall)?
         </h2>
         
         <div style={{ marginBottom: '16px', lineHeight: '1.8' }}>

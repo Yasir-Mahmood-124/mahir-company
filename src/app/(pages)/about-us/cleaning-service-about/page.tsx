@@ -123,28 +123,28 @@ const AboutUsPage: React.FC = () => {
             </Typography> */}
           </Box>
 
-          {/* Who is Mahir Company */}
+          {/* Who is UstadonCall Company */}
           <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, color: '#000' }}>
-            Who is Mahir Company?
+            Who is UstadonCall Company?
           </Typography>
           <Typography variant="body1" sx={{ color: '#777', mb: 5, lineHeight: 1.8 }}>
-            Mahir Company is Pakistan&apos;s no.1 online marketplace connecting service providers and seekers in a hassle-free and safe way. With our state-of-the-art website, Mahir Company App, and Mahir Partner App, we are bridging the gap between our customers (consumers and vendors). Now they can connect more efficiently, reliably, safely, and affordably, to enjoy a better living style.
+            UstadonCall Company is Pakistan&apos;s no.1 online marketplace connecting service providers and seekers in a hassle-free and safe way. With our state-of-the-art website, UstadonCall Company App, and UstadonCall Partner App, we are bridging the gap between our customers (consumers and vendors). Now they can connect more efficiently, reliably, safely, and affordably, to enjoy a better living style.
           </Typography>
 
-          {/* Mahir Company Website & App */}
+          {/* UstadonCallir Company Website & App */}
           <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, color: '#000' }}>
-            Mahir Company Website &amp; App
+            UstadonCall Company Website &amp; App
           </Typography>
           <Typography variant="body1" sx={{ color: '#777', mb: 5, lineHeight: 1.8 }}>
             These are designed to make the life of the common man and woman easy by providing them with a few-clicks everything-fix solution. From home maintenance to cleaning to personal care, our consumer apps help book and pre-book services with a 100% quality, security, and cost-effectiveness guarantee.
           </Typography>
 
-          {/* Mahir Partner App */}
+          {/* UstadonCall Partner App */}
           <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, color: '#000' }}>
-            Mahir Partner App
+            UstadonCall Partner App
           </Typography>
           <Typography variant="body1" sx={{ color: '#777', mb: 5, lineHeight: 1.8 }}>
-            To empower our service providers, we get them registered on Mahir Partner App after due diligence that includes but is not limited to verification and training sessions for soft and technical skills.
+            To empower our service providers, we get them registered on UstadonCall Partner App after due diligence that includes but is not limited to verification and training sessions for soft and technical skills.
           </Typography>
 
           {/* Our Empowerment Mission */}
@@ -152,7 +152,7 @@ const AboutUsPage: React.FC = () => {
             Our Empowerment Mission
           </Typography>
           <Typography variant="body1" sx={{ color: '#777', mb: 5, lineHeight: 1.8 }}>
-            Our goal is to help thousands of local technicians find reliable earning opportunities for a good livelihood. They register with us through the Mahir partner app and get training and support from the CS department, which make order-taking and order-completion easier for them. Through the implementation all SOPs, we make them the 1st choice of service seekers, enabling them to earn better and live with integrity.
+            Our goal is to help thousands of local technicians find reliable earning opportunities for a good livelihood. They register with us through the UstadonCall  partner app and get training and support from the CS department, which make order-taking and order-completion easier for them. Through the implementation all SOPs, we make them the 1st choice of service seekers, enabling them to earn better and live with integrity.
           </Typography>
 
           {/* Our Achievements */}
@@ -160,7 +160,7 @@ const AboutUsPage: React.FC = () => {
             Our Achievements
           </Typography>
           <Typography variant="body1" sx={{ color: '#777', mb: 3, lineHeight: 1.8 }}>
-            Launched as Mr. Mahir, Mahir Company has grown exponentially over three years. Indicators like service-wise growth, geographical expansion, number of downloads of the apps, and monthly traffic on the website validate the above claim.
+            Launched as Mr. UstadonCall, UstadonCall Company has grown exponentially over three years. Indicators like service-wise growth, geographical expansion, number of downloads of the apps, and monthly traffic on the website validate the above claim.
           </Typography>
 
           {/* Achievement Details */}
@@ -172,7 +172,7 @@ const AboutUsPage: React.FC = () => {
               <strong style={{ color: '#000' }}>Geographical Expansion:</strong> Starting from Lahore with home maintenance services only, we now offer home maintenance services in the four major cities of Pakistan (Lahore, Multan, Karachi, Islamabad, and Rawalpindi). Personal care services are provided in Lahore, Islamabad, and Rawalpindi.
             </Typography>
             <Typography variant="body1" sx={{ color: '#777', mb: 5, lineHeight: 1.8 }}>
-              <strong style={{ color: '#000' }}>Customer Acquisition &amp; Retention:</strong> We have 450k signups on our Customer App, 9k registrations on Mahir Partner App, 50k monthly traffic on the website, and 100,000 active users.
+              <strong style={{ color: '#000' }}>Customer Acquisition &amp; Retention:</strong> We have 450k signups on our Customer App, 9k registrations on UstadonCall Partner App, 50k monthly traffic on the website, and 100,000 active users.
             </Typography>
           </Box>
         </Container>

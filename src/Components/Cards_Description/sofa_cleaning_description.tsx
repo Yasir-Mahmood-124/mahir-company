@@ -37,7 +37,7 @@ const SofaCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          That's where Mahir Company (Mr. Mahir) comes to the rescue! The best-in-class Sofa Cleaning company in Lahore and Karachi.
+          That's where UstadonCall Company (Mr. UstadonCall) comes to the rescue! The best-in-class Sofa Cleaning company in Lahore and Karachi.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -45,7 +45,7 @@ const SofaCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Mahir Company (Mr. Mahir) provides professional online sofa cleaning services where our expert cleaners use real equipment to give your sofas a new look cleaning up all the mold, bacteria, dirt, stains, and so forth. The cleaners are equipped with a wide range of specific equipment, making sure the task gets finished speedily and to the optimum quality.
+          UstadonCall Company (Mr. UstadonCall) provides professional online sofa cleaning services where our expert cleaners use real equipment to give your sofas a new look cleaning up all the mold, bacteria, dirt, stains, and so forth. The cleaners are equipped with a wide range of specific equipment, making sure the task gets finished speedily and to the optimum quality.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -61,11 +61,11 @@ const SofaCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          There is great many sofa cleaning company in Lahore and Karachi but Mahir Company (Mr. Mahir) is one such service that is sure to clean the deepest stains, gentle enough not to damage furniture, and safe for your entire family. You can reach out to them by looking up 'sofa cleaning services near me' and rest assured, you will find your sofas look brand new after the detailed cleaning done by the cleaning professionals!
+          There is great many sofa cleaning company in Lahore and Karachi but UstadonCall Company (Mr. UstadonCall) is one such service that is sure to clean the deepest stains, gentle enough not to damage furniture, and safe for your entire family. You can reach out to them by looking up 'sofa cleaning services near me' and rest assured, you will find your sofas look brand new after the detailed cleaning done by the cleaning professionals!
         </Typography>
 
         <Typography paragraph>
-          In case you're considering the time it might take, don't! The procedure will be over in minimal time. Pick a day to hire the sofa cleaning experts at Mahir Company (Mr. Mahir) to limit any interruption to your normal and day-to-day life.
+          In case you're considering the time it might take, don't! The procedure will be over in minimal time. Pick a day to hire the sofa cleaning experts at UstadonCall Company (Mr. UstadonCall) to limit any interruption to your normal and day-to-day life.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -73,7 +73,7 @@ const SofaCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Mahir Company (Mr. Mahir) brings the most reasonable rates for all types of Sofas in Lahore and Karachi and If you go for regular maintenance of your sofas and hire a sofa cleaner in Lahore at the right time and right frequency, you will notice the improvement of the overall look of your space. Nevertheless, a clean and tidy interior marks the real beauty of your home.
+          UstadonCall Company (Mr. UstadonCall) brings the most reasonable rates for all types of Sofas in Lahore and Karachi and If you go for regular maintenance of your sofas and hire a sofa cleaner in Lahore at the right time and right frequency, you will notice the improvement of the overall look of your space. Nevertheless, a clean and tidy interior marks the real beauty of your home.
         </Typography>
 
         <Typography paragraph>

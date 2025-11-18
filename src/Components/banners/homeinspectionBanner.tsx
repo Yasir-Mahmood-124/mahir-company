@@ -126,7 +126,7 @@ const HomeAppliances: React.FC = () => {
                 fontWeight: 400,
               }}
             >
-1st Time in Pakistan Mahir Home Inspection Services
+1st Time in Pakistan UstadonCall Home Inspection Services
             </Typography>
 
             <Box

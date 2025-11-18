@@ -134,7 +134,7 @@ const BookServicesSection: React.FC = () => {
                   lineHeight: 1.3,
                 }}
               >
-                Book Mahir Company's personal care services for
+                Book a UstadonCall Company's personal care services for
               </Typography>
 
               <List

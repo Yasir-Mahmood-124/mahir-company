@@ -82,7 +82,7 @@ const allServices: Service[] = [
   { value: "home-inspection", name: "Home Inspection", image: inspection },
   {
     value: "mbm",
-    name: "Maintained by Mahir",
+    name: "Maintained by UstadonCall",
     image: handyman,
     chipLabel: "New",
   },

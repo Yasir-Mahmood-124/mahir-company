@@ -25,7 +25,7 @@ const PlasticTankCleaningDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          Finding a professional for plastic water tank cleaning can be done online through Mahir Company's website and app. Yes, you don't have to wait for days after booking a professional from the market or call him over and over before he finally arrives.
+          Finding a professional for plastic water tank cleaning can be done online through UstadonCall Company's website and app. Yes, you don't have to wait for days after booking a professional from the market or call him over and over before he finally arrives.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -65,7 +65,7 @@ const PlasticTankCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Booking water tank cleaning through Mahir Company brings many benefits like affordability and efficiency. The following are the most important benefits that you will enjoy with us:
+          Booking water tank cleaning through UstadonCall Company brings many benefits like affordability and efficiency. The following are the most important benefits that you will enjoy with us:
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>

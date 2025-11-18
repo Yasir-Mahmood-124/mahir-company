@@ -32,7 +32,7 @@ const PestControlServiceDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Reasons to Book Mahir Pest Control Services
+          Reasons to Book UstadonCall Pest Control Services
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -64,7 +64,7 @@ const PestControlServiceDescription: React.FC = () => {
         </Typography>
         
         <Typography paragraph>
-          We connect you to the best bed bug treatment providers through our online platforms, including the Mahir Company (Mr Mahir) App. Our professionals will help you stop the attacks and multiplication of these bed bugs in no time.
+          We connect you to the best bed bug treatment providers through our online platforms, including the MahUstadonCallir Company (Mr UstadonCall) App. Our professionals will help you stop the attacks and multiplication of these bed bugs in no time.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -92,7 +92,7 @@ const PestControlServiceDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Benefits of Booking Mahir Pest Control Services
+          Benefits of Booking UstadonCall Pest Control Services
         </Typography>
         
         <Typography component="div" paragraph>
@@ -105,7 +105,7 @@ const PestControlServiceDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph fontWeight="bold" sx={{ mt: 4 }}>
-          Trust Mahir Company (Mr Mahir) for all your pest control needs. Book now and experience professional service at affordable rates!
+          Trust UstadonCall Company (Mr UstadonCall) for all your pest control needs. Book now and experience professional service at affordable rates!
         </Typography>
       </Container>
     </Box>

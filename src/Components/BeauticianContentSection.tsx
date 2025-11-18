@@ -53,27 +53,27 @@ const ContentSection: React.FC = () => {
           }}
         >
           <Typography component="p">
-            Booking personal grooming services for routine upkeep and special occasions used to be a hassle. Finding the right professional was a challenge, and many of us have had experiences that left us less than satisfied. Additionally, the process of booking and paying for these services was often inconvenient and time-consuming. That's where Mahir Company steps in to make your life easier.
+            Booking personal grooming services for routine upkeep and special occasions used to be a hassle. Finding the right professional was a challenge, and many of us have had experiences that left us less than satisfied. Additionally, the process of booking and paying for these services was often inconvenient and time-consuming. That's where UstadonCall Company steps in to make your life easier.
           </Typography>
 
           <Typography component="h2" variant="h2">
-            Discover Mahir Salon - Your Solution
+            Discover UstadonCall Salon - Your Solution
           </Typography>
 
           <Typography component="p">
-            <strong>Are you tired of searching for 'Mahir Salon near me' or struggling with outdated booking methods?</strong> Mahir Company has revolutionized the way you take care of your personal grooming needs, whether it's a quick routine touch-up or a glamorous look for a special event.
+            <strong>Are you tired of searching for 'UstadonCall Salon near me' or struggling with outdated booking methods?</strong> UstadonCall  Company has revolutionized the way you take care of your personal grooming needs, whether it's a quick routine touch-up or a glamorous look for a special event.
           </Typography>
 
           <Typography component="p">
-            <strong>With Mahir Salon Services, you can enjoy routine beauty services and makeovers for events right from your home</strong>. We have a team of verified and trained professionals, ready to provide you with top-notch services that cater to all your beauty and grooming needs. No more wondering if you'll get what you paid for; we guarantee the quality of our products and the expertise of our professionals.
+            <strong>With UstadonCall Salon Services, you can enjoy routine beauty services and makeovers for events right from your home</strong>. We have a team of verified and trained professionals, ready to provide you with top-notch services that cater to all your beauty and grooming needs. No more wondering if you'll get what you paid for; we guarantee the quality of our products and the expertise of our professionals.
           </Typography>
 
           <Typography component="h2" variant="h2">
-            The Mahir Company App - Your Personal Grooming Assistant
+            The UstadonCall Company App - Your Personal Grooming Assistant
           </Typography>
 
           <Typography component="p">
-            <strong>Say goodbye to the stress of searching 'Mahir Salon online' or spending hours on the website as now you can download the Mahir Company app for easier and quicker service booking</strong>. Our user-friendly Mahir Company app is your all-in-one solution. Booking your preferred personal grooming services is as easy as a few taps on your smartphone.
+            <strong>Say goodbye to the stress of searching 'UstadonCall Salon online' or spending hours on the website as now you can download the UstadonCall  Company app for easier and quicker service booking</strong>. Our user-friendly UstadonCall Company app is your all-in-one solution. Booking your preferred personal grooming services is as easy as a few taps on your smartphone.
           </Typography>
 
           <Typography component="h3" variant="h3">
@@ -81,7 +81,7 @@ const ContentSection: React.FC = () => {
           </Typography>
 
           <Typography component="p">
-            At Mahir Company, we understand that quality should not come at an exorbitant price. Our services are not only top-notch but also affordable. Say hello to looking and feeling your best without breaking the bank.
+            At UstadonCall Company, we understand that quality should not come at an exorbitant price. Our services are not only top-notch but also affordable. Say hello to looking and feeling your best without breaking the bank.
           </Typography>
 
           <Typography component="h3" variant="h3">
@@ -105,7 +105,7 @@ const ContentSection: React.FC = () => {
           </Typography>
 
           <Typography component="p">
-            <strong>Mahir Salon professionals are not only highly trained but also experienced</strong>. You can trust them to give you the perfect look for any occasion, ensuring you walk out feeling confident and fabulous.
+            <strong>UstadonCall Salon professionals are not only highly trained but also experienced</strong>. You can trust them to give you the perfect look for any occasion, ensuring you walk out feeling confident and fabulous.
           </Typography>
 
           <Typography component="h2" variant="h2">
@@ -113,7 +113,7 @@ const ContentSection: React.FC = () => {
           </Typography>
 
           <Typography component="p">
-            Are you ready to redefine your grooming routine and elevate your look for those special moments? <strong>Download the Mahir Company app now and experience the convenience of at-home beautician and personal care services with 'Online Mahir Salon</strong>.' Your perfect look is just a tap away. Say goodbye to the old way of booking your grooming services and step into the future with Mahir Company – your trusted grooming partner.
+            Are you ready to redefine your grooming routine and elevate your look for those special moments? <strong>Download the UstadonCall Company app now and experience the convenience of at-home beautician and personal care services with 'Online UstadonCall Salon</strong>.' Your perfect look is just a tap away. Say goodbye to the old way of booking your grooming services and step into the future with UstadonCall Company – your trusted grooming partner.
           </Typography>
 
           <Typography component="h2" variant="h2">
@@ -137,7 +137,7 @@ const ContentSection: React.FC = () => {
             <Link href="https://mahircompany.com/makeup-services">
               <strong>makeup services at home</strong>
             </Link>
-            . No more traveling to salons before every event or compromising on your look because nobody is there to take you to the salon. Download the Mahir Company App or book through our website for hassle-free beautification for all events.
+            . No more traveling to salons before every event or compromising on your look because nobody is there to take you to the salon. Download the UstadonCall Company App or book through our website for hassle-free beautification for all events.
           </Typography>
 
           <Typography component="h3" variant="h3">

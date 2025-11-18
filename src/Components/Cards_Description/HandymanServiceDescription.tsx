@@ -31,7 +31,7 @@ const HandymanServiceDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          So much to do, and so little time! All you need is an all-rounder solution provider who can do it all in no time. Mahir's Company (Mr Mahir) reliable handyman services are all you need to make life easier for yourself.
+          So much to do, and so little time! All you need is an all-rounder solution provider who can do it all in no time. UstadonCall's Company (Mr UstadonCall) reliable handyman services are all you need to make life easier for yourself.
         </Typography>
 
         <Typography paragraph>
@@ -51,7 +51,7 @@ const HandymanServiceDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          It's super easy! You can simply book our service on the website with date and time and you'll be connected across with one of Mahir's Company (Mr Mahir) professional handyman to manage the task.
+          It's super easy! You can simply book our service on the website with date and time and you'll be connected across with one of UstadonCall's Company (Mr UstadonCall) professional handyman to manage the task.
         </Typography>
 
         <Typography paragraph>
@@ -71,7 +71,7 @@ const HandymanServiceDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Why still Google for painter services near me when we are just a call away! Selected only after passing a thorough selection process, Mahir's Company (Mr Mahir) team of vetted specialists come with years of experience and knowledge.
+          Why still Google for painter services near me when we are just a call away! Selected only after passing a thorough selection process, UstadonCall's Company (Mr UstadonCall) team of vetted specialists come with years of experience and knowledge.
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
@@ -110,7 +110,7 @@ const HandymanServiceDescription: React.FC = () => {
         </List>
 
         <Typography paragraph fontWeight="bold" sx={{ mt: 4 }}>
-          Trust Mahir Company (Mr Mahir) for all your handyman needs. Book now and experience professional service at affordable rates!
+          Trust UstadonCall Company (Mr UstadonCall) for all your handyman needs. Book now and experience professional service at affordable rates!
         </Typography>
       </Container>
     </Box>

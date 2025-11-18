@@ -29,7 +29,7 @@ const ChairCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ mt: 4 }}>
-          Why Mahir Chair Cleaning is Easier & More Reliable?
+          Why UstadonCall Chair Cleaning is Easier & More Reliable?
         </Typography>
 
         <Typography paragraph>
@@ -41,7 +41,7 @@ const ChairCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Mahir Company is an online marketplace with a vast digital media presence. It means you never have to trust our services blindly; instead, you can read our customer reviews before booking any of our cleaners.
+          UstadonCall Company is an online marketplace with a vast digital media presence. It means you never have to trust our services blindly; instead, you can read our customer reviews before booking any of our cleaners.
         </Typography>
 
         <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ mt: 3 }}>
@@ -89,7 +89,7 @@ const ChairCleaningDescription: React.FC = () => {
         </Typography>
 
         <Typography paragraph>
-          Is it not what you were looking for? No going to the market searching for a cleaner or asking your friends and family to help you find a good cleaner. Go online and book chair cleaning services in Lahore through our website, social media sites, or the Mahir Company App.
+          Is it not what you were looking for? No going to the market searching for a cleaner or asking your friends and family to help you find a good cleaner. Go online and book chair cleaning services in Lahore through our website, social media sites, or the UstadonCall Company App.
         </Typography>
       </Container>
     </Box>
