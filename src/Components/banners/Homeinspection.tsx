@@ -22,7 +22,7 @@ interface FormErrors {
   message?: string;
 }
 
-const SolarBannerSection: React.FC = () => {
+const HomeInspectionBanner: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phoneNumber: '',
@@ -150,33 +150,43 @@ const SolarBannerSection: React.FC = () => {
                 variant="h1"
                 sx={{
                   fontWeight: 900,
-                  fontSize: '42px',
-                  color: '#000000',
-                  marginBottom: '16px',
-                  lineHeight: 1.2,
-                  '@media (max-width: 900px)': {
-                    fontSize: '32px',
-                  },
-                  '@media (max-width: 600px)': {
-                    display: 'none',
-                  },
-                }}
-              >
-                Affordable Solar Panel Services
-              </Typography>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontWeight: 900,
                   fontSize: '34px',
                   color: '#000000',
+                  marginBottom: '24px',
+                  lineHeight: 1.2,
+                  '@media (max-width: 900px)': {
+                    fontSize: '28px',
+                  },
                   '@media (max-width: 600px)': {
                     display: 'none',
                   },
                 }}
               >
-                with Our Reliable Partners.
+                Mahir Home Inspection Services
               </Typography>
+              
+              {/* Bullet Points */}
+              <Box
+                component="ul"
+                sx={{
+                  fontSize: '18px',
+                  lineHeight: 1.8,
+                  color: '#000000',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  '@media (max-width: 600px)': {
+                    display: 'none',
+                  },
+                  '& li': {
+                    marginBottom: '12px',
+                    fontWeight: 500,
+                  },
+                }}
+              >
+                <li>Get Value for Money</li>
+                <li>For Rented & New Houses (furnished & unfurnished)</li>
+                <li>Book Before You Invest Your Life's Savings</li>
+              </Box>
             </div>
           </div>
 
@@ -341,4 +351,4 @@ const SolarBannerSection: React.FC = () => {
   ); 
 };
 
-export default SolarBannerSection;
+export default HomeInspectionBanner;

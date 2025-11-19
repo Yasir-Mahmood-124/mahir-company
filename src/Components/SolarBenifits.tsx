@@ -7,7 +7,6 @@ const SolarBenefitsSection: React.FC = () => {
   return (
     <Box
       sx={{
-        backgroundColor: '#f9f9f9',
         padding: '64px 0',
         '@media (max-width: 768px)': {
           padding: '32px 0',
@@ -15,27 +14,18 @@ const SolarBenefitsSection: React.FC = () => {
       }}
     >
       <Container maxWidth="lg">
-        <div
-          style={{
-            backgroundColor: '#ffffff',
-            padding: '40px',
-            borderRadius: '8px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-          }}
-        >
+        <div>
           {/* Main Title */}
           <Typography
             variant="h2"
             sx={{
               textAlign: 'center',
-              padding: '20px',
               fontSize: '32px',
               fontWeight: 'bold',
-              color: '#1976d2',
+              color: '#000000',
               marginBottom: '32px',
               '@media (max-width: 768px)': {
                 fontSize: '24px',
-                padding: '10px',
               },
             }}
           >
@@ -43,22 +33,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Typography>
 
           {/* Cost Savings */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Cost Savings:
@@ -68,7 +50,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Enjoy long-term cost savings by significantly reducing or eliminating monthly electricity bills, leading to financial savings over time.
@@ -76,22 +58,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Energy Independence */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Energy Independence:
@@ -101,7 +75,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Reduce reliance on traditional utility providers and gain greater control over energy consumption, providing peace of mind and protection against rising electricity costs and power outages.
@@ -109,22 +83,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Increased Property Value */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Increased Property Value:
@@ -134,7 +100,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Enhance the value of your property with solar system, making it more attractive to potential buyers due to cost savings and environmental benefits.
@@ -142,22 +108,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Durability */}
-          <Box
-            sx={{
-              marginBottom: '48px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '48px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Durability:
@@ -167,7 +125,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Solar system is durable, require minimal maintenance, and come with long warranties, ensuring reliable energy generation for many years.
@@ -179,15 +137,13 @@ const SolarBenefitsSection: React.FC = () => {
             variant="h2"
             sx={{
               textAlign: 'center',
-              padding: '20px',
               fontSize: '32px',
               fontWeight: 'bold',
-              color: '#1976d2',
+              color: '#000000',
               marginBottom: '32px',
               marginTop: '48px',
               '@media (max-width: 768px)': {
                 fontSize: '24px',
-                padding: '10px',
               },
             }}
           >
@@ -195,21 +151,13 @@ const SolarBenefitsSection: React.FC = () => {
           </Typography>
 
           {/* Quality Products */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '16px' }}>
             <Typography
               variant="body1"
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Our partners use quality and branded products.
@@ -217,21 +165,13 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* ISO Approved */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '16px' }}>
             <Typography
               variant="body1"
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Their solar products are ISO (International Organization for Standardization) approved and comes with a warranty.
@@ -239,22 +179,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* After-Sales Service Support */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               After-Sales Service Support:
@@ -264,7 +196,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               You can reach out to our customer support for concerns or queries during and after the residential and commercial solar system installation process.
@@ -272,22 +204,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Cost-Effectiveness */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Cost-Effectiveness:
@@ -297,7 +221,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Benefit from competitive pricing, transparent cost structures, and a commitment to long-term cost savings and return on investment.
@@ -305,22 +229,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Flexible Scheduling */}
-          <Box
-            sx={{
-              marginBottom: '48px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '48px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Flexible Scheduling:
@@ -330,7 +246,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Enjoy the convenience of scheduling solar system installation at a time that suits your needs, minimizing disruption to your routine.
@@ -342,15 +258,13 @@ const SolarBenefitsSection: React.FC = () => {
             variant="h2"
             sx={{
               textAlign: 'center',
-              padding: '20px',
               fontSize: '32px',
               fontWeight: 'bold',
-              color: '#1976d2',
+              color: '#000000',
               marginBottom: '32px',
               marginTop: '48px',
               '@media (max-width: 768px)': {
                 fontSize: '24px',
-                padding: '10px',
               },
             }}
           >
@@ -358,22 +272,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Typography>
 
           {/* Site Assessment */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Site Assessment:
@@ -383,7 +289,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Evaluate the feasibility of solar system installation based on factors like roof condition, orientation, shading, and available space for optimal sunlight exposure.
@@ -391,22 +297,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Design and Planning */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Design and Planning:
@@ -416,7 +314,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Customize a solar system that meets your energy needs and maximizes solar energy generation.
@@ -424,22 +322,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Procurement and Delivery */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Procurement and Delivery:
@@ -449,7 +339,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Procure solar system and necessary components, delivering them to your property for installation.
@@ -457,22 +347,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Roof Preparation */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Roof Preparation:
@@ -482,7 +364,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Prepare the roof, ensuring its stability and suitability for solar system installation.
@@ -490,22 +372,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Mounting and Installation */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Mounting and Installation:
@@ -515,7 +389,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Securely fix the solar system and mounting racks to the roof according to the predetermined design.
@@ -523,22 +397,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Electrical Wiring */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Electrical Wiring:
@@ -548,7 +414,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Connect the solar system to an inverter and integrate them with your home's electrical system.
@@ -556,22 +422,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* System Testing and Commissioning */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               System Testing and Commissioning:
@@ -581,7 +439,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Conduct rigorous testing to ensure proper functionality and safety.
@@ -589,22 +447,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Grid Connection */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Grid Connection (if applicable):
@@ -614,7 +464,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Establish a net metering or interconnection agreement with the utility company if you choose to connect your solar system to the grid.
@@ -622,22 +472,14 @@ const SolarBenefitsSection: React.FC = () => {
           </Box>
 
           {/* Monitoring and Maintenance */}
-          <Box
-            sx={{
-              marginBottom: '24px',
-              padding: '20px',
-              backgroundColor: '#f5f5f5',
-              borderLeft: '4px solid #1976d2',
-              borderRadius: '4px',
-            }}
-          >
+          <Box sx={{ marginBottom: '24px' }}>
             <Typography
               variant="h3"
               sx={{
-                fontSize: '23px',
+                fontSize: '20px',
                 fontWeight: 600,
-                marginBottom: '12px',
-                color: '#333',
+                marginBottom: '8px',
+                color: '#000000',
               }}
             >
               Monitoring and Maintenance:
@@ -647,7 +489,7 @@ const SolarBenefitsSection: React.FC = () => {
               sx={{
                 fontSize: '16px',
                 lineHeight: 1.6,
-                color: '#555',
+                color: '#000000',
               }}
             >
               Monitor the system's performance and perform regular maintenance to optimize efficiency and longevity.

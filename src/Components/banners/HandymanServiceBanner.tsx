@@ -6,7 +6,7 @@
 import React from "react";
 import { Box, Container, Typography, Paper } from "@mui/material";
 import { Star, CheckCircle } from "@mui/icons-material";
-
+ 
 interface StatItemProps {
   icon: React.ReactNode;
   rating: string;

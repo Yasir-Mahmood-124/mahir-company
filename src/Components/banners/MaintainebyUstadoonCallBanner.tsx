@@ -102,7 +102,10 @@ const BannerSection: React.FC = () => {
                 color: "#1a1a1a",
               }}
             >
-              Home Maintenance Made Easy!!
+Subscribe to Maintained By Mahir
+<br></br>
+6-Month Home Maintenance Package
+
             </Typography>
 
             {/* Subheading */}
@@ -115,8 +118,9 @@ const BannerSection: React.FC = () => {
                 lineHeight: 1.7,
               }}
             >
-              Connecting customers and technicians for quick, safe, and
-              affordable bookings.
+              Maintaining your home’s condition can be challenging with our busy schedules, but Mahir Company's 6-month home maintenance subscription makes it easy. With our tailored packages, you can ensure your home stays in perfect shape without the stress.
+
+
             </Typography>
 
             {/* Buttons */}
