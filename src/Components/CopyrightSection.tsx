@@ -2,7 +2,7 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
-import logo from "@/assests/Images/logo design-02.png";
+import logo from "@/assests/Images/120 x 30-02.png";
 
 const CopyrightSection: React.FC = () => {
   return (
@@ -42,11 +42,11 @@ const CopyrightSection: React.FC = () => {
             <Image
               src={logo}
               alt=" UstadonCall"
-              width={75}
-              height={29}
+              width={120}
+              height={30}
               style={{
                 width: "auto",
-                height: "29px",
+                height: "30px",
               }}
             />
           </Box>
