@@ -1,7 +1,9 @@
 "use client"
 
-import { Box, AppBar, Toolbar, Typography, CssBaseline } from '@mui/material';
+import { Box, AppBar, Toolbar, CssBaseline } from '@mui/material';
 import Sidebar from '@/components/Sidebar';
+import Image from 'next/image';
+import logo from '@/assests/Images/logo.png';
 
 export default function DashboardLayout({
   children,
@@ -13,12 +15,31 @@ export default function DashboardLayout({
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ 
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          bgcolor: '#fff',
+          height: 64,
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}
       >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Professional Dashboard
-          </Typography>
+        <Toolbar sx={{ minHeight: 64 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              height: '100%',
+              py: 1
+            }}
+          >
+            <Image 
+              src={logo}
+              alt="Logo" 
+              width={150}
+              height={150}
+              style={{ objectFit: 'contain' }}
+              priority
+            />
+          </Box>
         </Toolbar>
       </AppBar>
       <Sidebar />
@@ -27,7 +48,7 @@ export default function DashboardLayout({
         sx={{
           flexGrow: 1,
           p: 3,
-          mt: 8, // Account for AppBar height
+          mt: 8,
         }}
       >
         {children}
