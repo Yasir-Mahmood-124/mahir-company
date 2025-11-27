@@ -1,25 +1,26 @@
 // ============================================
-// AcServiceSectionCard.tsx
+// AcServiceSectionCard.tsx (or CarDetailing.tsx)
 // ============================================
 'use client';
 
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
+import ServiceCard from '@/Components/Card_Details/CleaningServicesCardDetails';
 
 interface ACServicesSectionProps {
   serviceIds?: number[];
   title?: string;
   subtitle?: string;
+  // ✅ onCartOpen prop removed - not needed with context!
 }
 
 const CarDetailing: React.FC<ACServicesSectionProps> = ({ 
   serviceIds,
   title = "Car Detailing",
-  subtitle = "Professional Car Detailing Services"
+  subtitle = "Professional Car Detailing Services",
+  // ✅ onCartOpen removed
 }) => {
-  const defaultACServiceIds =
- [198, 199, 200, 201, 202, 1614];;
+  const defaultACServiceIds = [198, 199, 200, 201, 202, 1614];
   const displayServiceIds = serviceIds || defaultACServiceIds;
 
   return (
@@ -57,6 +58,7 @@ const CarDetailing: React.FC<ACServicesSectionProps> = ({
                 minWidth: '280px',
               }}
             >
+              {/* ✅ ServiceCard ab khud context se cart control karega */}
               <ServiceCard serviceId={serviceId} />
             </Box>
           ))}
@@ -67,4 +69,3 @@ const CarDetailing: React.FC<ACServicesSectionProps> = ({
 };
 
 export default CarDetailing;
-
