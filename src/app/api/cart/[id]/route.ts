@@ -1,5 +1,6 @@
 // src/app/api/cart/[id]/route.ts
 // Single Cart Item API - GET, PATCH (update quantity), DELETE
+// Fixed for Next.js 15 - params is now async
 
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
@@ -9,12 +10,15 @@ import mongoose from 'mongoose';
 // GET - Fetch single cart item by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
     
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    // Await params in Next.js 15
+    const { id } = await params;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         {
           success: false,
@@ -24,7 +28,7 @@ export async function GET(
       );
     }
 
-    const cartItem = await Cart.findById(params.id);
+    const cartItem = await Cart.findById(id);
     
     if (!cartItem) {
       return NextResponse.json(
@@ -60,12 +64,15 @@ export async function GET(
 // PATCH - Update cart item quantity
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
     
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    // Await params in Next.js 15
+    const { id } = await params;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         {
           success: false,
@@ -78,18 +85,39 @@ export async function PATCH(
     const body = await request.json();
     const { quantity } = body;
 
-    if (!quantity || quantity < 1) {
+    // Validation
+    if (quantity === undefined || quantity === null) {
       return NextResponse.json(
         {
           success: false,
-          message: 'Valid quantity is required',
+          message: 'Quantity is required',
+        },
+        { status: 400 }
+      );
+    }
+
+    if (quantity < 1) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Quantity must be at least 1',
+        },
+        { status: 400 }
+      );
+    }
+
+    if (!Number.isInteger(quantity)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Quantity must be a whole number',
         },
         { status: 400 }
       );
     }
 
     const cartItem = await Cart.findByIdAndUpdate(
-      params.id,
+      id,
       { quantity },
       { new: true, runValidators: true }
     );
@@ -107,7 +135,7 @@ export async function PATCH(
     return NextResponse.json(
       {
         success: true,
-        message: 'Quantity updated!',
+        message: 'Quantity updated successfully!',
         cartItem: cartItem,
       },
       { status: 200 }
@@ -129,12 +157,15 @@ export async function PATCH(
 // DELETE - Remove item from cart
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
     
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    // Await params in Next.js 15
+    const { id } = await params;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         {
           success: false,
@@ -144,7 +175,7 @@ export async function DELETE(
       );
     }
 
-    const cartItem = await Cart.findByIdAndDelete(params.id);
+    const cartItem = await Cart.findByIdAndDelete(id);
     
     if (!cartItem) {
       return NextResponse.json(
@@ -159,7 +190,8 @@ export async function DELETE(
     return NextResponse.json(
       {
         success: true,
-        message: 'Item removed from cart!',
+        message: 'Item removed from cart successfully!',
+        cartItem: cartItem,
       },
       { status: 200 }
     );

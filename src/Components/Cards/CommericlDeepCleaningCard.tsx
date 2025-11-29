@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
+import ServiceCard from '@/Components/Card_Details/CleaningServicesCardDetails';
 
 interface ACServicesSectionProps {
   serviceIds?: number[];

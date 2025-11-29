@@ -1,5 +1,5 @@
 // src/Components/OrderFormModal.tsx
-// Order Form Modal Component
+// Order Form Modal Component with Contact Number
 
 'use client';
 
@@ -35,27 +35,53 @@ const OrderFormModal: React.FC<OrderFormModalProps> = ({
   const [formData, setFormData] = useState({
     name: '',
     address: '',
+    contactNumber: '',
   });
   const [errors, setErrors] = useState({
     name: '',
     address: '',
+    contactNumber: '',
   });
 
   const [createOrder, { isLoading }] = useCreateOrderMutation();
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  // Contact number validation function
+  const validateContactNumber = (contactNumber: string): boolean => {
+    const cleanNumber = contactNumber.replace(/\s/g, '');
+    // Pakistani phone format: 03XX-XXXXXXX or +92-3XX-XXXXXXX or 3XXXXXXXXX
+    return /^(03\d{2}-?\d{7}|\+92-?3\d{2}-?\d{7}|3\d{9})$/.test(cleanNumber);
+  };
+
   const validateForm = () => {
     let isValid = true;
-    const newErrors = { name: '', address: '' };
+    const newErrors = { name: '', address: '', contactNumber: '' };
 
+    // Name validation
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
       isValid = false;
+    } else if (formData.name.trim().length < 3) {
+      newErrors.name = 'Name must be at least 3 characters long';
+      isValid = false;
     }
 
+    // Address validation
     if (!formData.address.trim()) {
       newErrors.address = 'Address is required';
+      isValid = false;
+    } else if (formData.address.trim().length < 10) {
+      newErrors.address = 'Address must be at least 10 characters long';
+      isValid = false;
+    }
+
+    // Contact number validation
+    if (!formData.contactNumber.trim()) {
+      newErrors.contactNumber = 'Contact number is required';
+      isValid = false;
+    } else if (!validateContactNumber(formData.contactNumber)) {
+      newErrors.contactNumber = 'Invalid contact number (e.g., 03XX-XXXXXXX or +92-3XX-XXXXXXX)';
       isValid = false;
     }
 
@@ -80,8 +106,9 @@ const OrderFormModal: React.FC<OrderFormModalProps> = ({
 
     try {
       const orderData = {
-        name: formData.name,
-        address: formData.address,
+        name: formData.name.trim(),
+        address: formData.address.trim(),
+        contactNumber: formData.contactNumber.trim(),
         serviceName: serviceName,
       };
 
@@ -91,7 +118,7 @@ const OrderFormModal: React.FC<OrderFormModalProps> = ({
       setErrorMessage('');
       
       // Reset form
-      setFormData({ name: '', address: '' });
+      setFormData({ name: '', address: '', contactNumber: '' });
       
       // Close modal after 2 seconds
       setTimeout(() => {
@@ -106,8 +133,8 @@ const OrderFormModal: React.FC<OrderFormModalProps> = ({
   };
 
   const handleClose = () => {
-    setFormData({ name: '', address: '' });
-    setErrors({ name: '', address: '' });
+    setFormData({ name: '', address: '', contactNumber: '' });
+    setErrors({ name: '', address: '', contactNumber: '' });
     setSuccessMessage('');
     setErrorMessage('');
     onClose();
@@ -164,12 +191,12 @@ const OrderFormModal: React.FC<OrderFormModalProps> = ({
         <Box component="form" onSubmit={handleSubmit}>
           <TextField
             fullWidth
-            label="Your Name"
+            label="Your Name *"
             name="name"
             value={formData.name}
             onChange={handleChange}
             error={!!errors.name}
-            helperText={errors.name}
+            helperText={errors.name || 'Minimum 3 characters'}
             margin="normal"
             required
             disabled={isLoading}
@@ -178,12 +205,29 @@ const OrderFormModal: React.FC<OrderFormModalProps> = ({
 
           <TextField
             fullWidth
-            label="Delivery Address"
+            label="Contact Number *"
+            name="contactNumber"
+            value={formData.contactNumber}
+            onChange={handleChange}
+            error={!!errors.contactNumber}
+            helperText={errors.contactNumber || 'Format: 03XX-XXXXXXX or +92-3XX-XXXXXXX'}
+            margin="normal"
+            required
+            disabled={isLoading}
+            placeholder="03XX-XXXXXXX"
+            inputProps={{
+              inputMode: 'tel',
+            }}
+          />
+
+          <TextField
+            fullWidth
+            label="Delivery Address *"
             name="address"
             value={formData.address}
             onChange={handleChange}
             error={!!errors.address}
-            helperText={errors.address}
+            helperText={errors.address || 'Minimum 10 characters'}
             margin="normal"
             required
             multiline

@@ -1,9 +1,16 @@
 // src/app/api/orders/route.ts
-// App Router API - GET all orders & POST new order
+// App Router API - GET all orders & POST new order with validation
 
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Order from '@/models/Order';
+
+// Helper function for contact number validation
+function validateContactNumber(contactNumber: string): boolean {
+  const cleanNumber = contactNumber.replace(/\s/g, '');
+  // Pakistani phone number: 03XX-XXXXXXX or +92-3XX-XXXXXXX or 3XXXXXXXXX
+  return /^(03\d{2}-?\d{7}|\+92-?3\d{2}-?\d{7}|3\d{9})$/.test(cleanNumber);
+}
 
 // GET - Fetch all orders
 export async function GET() {
@@ -36,14 +43,58 @@ export async function POST(request: NextRequest) {
     await connectDB();
     
     const body = await request.json();
-    const { name, address, serviceName } = body;
+    const { name, address, contactNumber, serviceName } = body;
 
-    // Validation
-    if (!name || !address || !serviceName) {
+    // Validation - Check if all fields are provided
+    if (!name || !address || !contactNumber || !serviceName) {
       return NextResponse.json(
         {
           success: false,
-          message: 'Name, address aur service name zaroori hain!',
+          message: 'All fields are required! (Name, Address, Contact Number, Service Name)',
+        },
+        { status: 400 }
+      );
+    }
+
+    // Validate name length
+    if (name.trim().length < 3) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Name must be at least 3 characters long',
+        },
+        { status: 400 }
+      );
+    }
+
+    // Validate address length
+    if (address.trim().length < 10) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Address must be at least 10 characters long',
+        },
+        { status: 400 }
+      );
+    }
+
+    // Validate contact number format
+    if (!validateContactNumber(contactNumber)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Invalid contact number! Please use format: 03XX-XXXXXXX or +92-3XX-XXXXXXX',
+        },
+        { status: 400 }
+      );
+    }
+
+    // Validate service name length
+    if (serviceName.trim().length < 3) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Service name must be at least 3 characters long',
         },
         { status: 400 }
       );
@@ -51,9 +102,10 @@ export async function POST(request: NextRequest) {
 
     // Create order
     const order = await Order.create({
-      name,
-      address,
-      serviceName,
+      name: name.trim(),
+      address: address.trim(),
+      contactNumber: contactNumber.trim(),
+      serviceName: serviceName.trim(),
     });
     
     return NextResponse.json(
@@ -67,6 +119,19 @@ export async function POST(request: NextRequest) {
     
   } catch (error: any) {
     console.error('POST Order Error:', error);
+    
+    // Handle Mongoose validation errors
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map((err: any) => err.message);
+      return NextResponse.json(
+        {
+          success: false,
+          message: messages.join(', '),
+        },
+        { status: 400 }
+      );
+    }
+    
     return NextResponse.json(
       {
         success: false,

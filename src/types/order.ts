@@ -1,10 +1,11 @@
 // src/types/order.ts
-// TypeScript Interfaces for Order
+// TypeScript Interfaces for Order with Contact Number
 
 export interface IOrder {
   _id?: string;
   name: string;
   address: string;
+  contactNumber: string;
   serviceName: string;
   status?: 'pending' | 'processing' | 'completed' | 'cancelled';
   createdAt?: string;
@@ -14,6 +15,7 @@ export interface IOrder {
 export interface OrderFormData {
   name: string;
   address: string;
+  contactNumber: string;
   serviceName: string;
 }
 

@@ -1,56 +1,66 @@
 // src/Components/OrderList.tsx
+// Professional Order List - Full Material-UI (No Grid)
+
 'use client';
 import React, { useState } from 'react';
 import {
   Box,
   Container,
   Typography,
-  Card,
-  CardContent,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
   Chip,
   TextField,
-  InputAdornment,
   CircularProgress,
   Alert,
   Stack,
   IconButton,
   Menu,
   MenuItem,
-  Divider,
-  Fade,
-  Avatar,
+  Snackbar,
   Button,
-  Paper,
-  Grid,
-  Tooltip,
-  Badge,
-  alpha,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Divider,
 } from '@mui/material';
 import {
   Search,
-  MoreVert,
-  CheckCircle,
-  Schedule,
-  Cancel,
-  LocalShipping,
-  Person,
-  LocationOn,
-  CalendarToday,
   Refresh,
-  TrendingUp,
-  ShoppingBag,
-  AccessTime,
-  FilterList,
+  Delete,
+  Edit,
+  Warning,
+  Close,
 } from '@mui/icons-material';
-import { useGetOrdersQuery } from '@/redux/api/orderApi';
+import { useGetOrdersQuery, useUpdateOrderStatusMutation, useDeleteOrderMutation } from '@/redux/api/orderApi';
 import { IOrder } from '@/types/order';
 
 const OrderList = () => {
   const { data, isLoading, error, refetch } = useGetOrdersQuery();
+  const [updateStatus] = useUpdateOrderStatusMutation();
+  const [deleteOrder] = useDeleteOrderMutation();
+  
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedOrder, setSelectedOrder] = useState<IOrder | null>(null);
+  
+  // Delete confirmation dialog state
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [orderToDelete, setOrderToDelete] = useState<IOrder | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const [snackbar, setSnackbar] = useState({ 
+    open: false, 
+    message: '', 
+    severity: 'success' as 'success' | 'error' 
+  });
 
   const orders = data?.orders || [];
 
@@ -59,14 +69,15 @@ const OrderList = () => {
     const matchesSearch =
       order.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.serviceName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      order.address.toLowerCase().includes(searchQuery.toLowerCase());
+      order.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      order.contactNumber.toLowerCase().includes(searchQuery.toLowerCase());
     
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
     
     return matchesSearch && matchesStatus;
   });
 
-  // Status menu
+  // Status menu handlers
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>, order: IOrder) => {
     setAnchorEl(event.currentTarget);
     setSelectedOrder(order);
@@ -78,548 +89,291 @@ const OrderList = () => {
   };
 
   const handleStatusUpdate = async (newStatus: string) => {
-    console.log('Update status:', selectedOrder?._id, 'to', newStatus);
-    // TODO: API call here
-    handleMenuClose();
+    if (!selectedOrder?._id) return;
+    
+    try {
+      await updateStatus({ 
+        id: selectedOrder._id, 
+        status: newStatus 
+      }).unwrap();
+      
+      setSnackbar({ 
+        open: true, 
+        message: `Order status updated to ${newStatus}`, 
+        severity: 'success' 
+      });
+      handleMenuClose();
+    } catch (error: any) {
+      console.error('Failed to update status:', error);
+      setSnackbar({ 
+        open: true, 
+        message: error?.data?.message || 'Failed to update status', 
+        severity: 'error' 
+      });
+    }
   };
 
-  // Status configuration
-  const getStatusConfig = (status?: string) => {
-    const configs = {
-      completed: {
-        color: '#10b981',
-        bgcolor: alpha('#10b981', 0.1),
-        icon: CheckCircle,
-        label: 'Completed',
-        gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-      },
-      processing: {
-        color: '#3b82f6',
-        bgcolor: alpha('#3b82f6', 0.1),
-        icon: LocalShipping,
-        label: 'Processing',
-        gradient: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-      },
-      cancelled: {
-        color: '#ef4444',
-        bgcolor: alpha('#ef4444', 0.1),
-        icon: Cancel,
-        label: 'Cancelled',
-        gradient: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-      },
-      pending: {
-        color: '#f59e0b',
-        bgcolor: alpha('#f59e0b', 0.1),
-        icon: Schedule,
-        label: 'Pending',
-        gradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-      },
+  // Show delete confirmation dialog
+  const handleDeleteClick = (order: IOrder) => {
+    setOrderToDelete(order);
+    setDeleteDialogOpen(true);
+  };
+
+  // Close delete confirmation dialog
+  const handleCancelDelete = () => {
+    setDeleteDialogOpen(false);
+    setOrderToDelete(null);
+  };
+
+  // Confirm and execute delete
+  const confirmDelete = async () => {
+    if (!orderToDelete?._id) return;
+
+    setIsDeleting(true);
+  
+    try {
+      await deleteOrder(orderToDelete._id).unwrap();
+      setSnackbar({ 
+        open: true, 
+        message: 'Order deleted successfully', 
+        severity: 'success' 
+      });
+      setDeleteDialogOpen(false);
+      setOrderToDelete(null);
+    } catch (error: any) {
+      console.error('Delete order error:', error);
+      setSnackbar({ 
+        open: true, 
+        message: error?.data?.message || 'Failed to delete order', 
+        severity: 'error' 
+      });
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const clearFilters = () => {
+    setStatusFilter('all');
+    setSearchQuery('');
+  };
+
+  // Status styling
+  const getStatusColor = (status?: string) => {
+    const colors: Record<string, 'warning' | 'info' | 'success' | 'error'> = {
+      pending: 'warning',
+      processing: 'info',
+      completed: 'success',
+      cancelled: 'error',
     };
-    return configs[status as keyof typeof configs] || configs.pending;
+    return colors[status || 'pending'] || 'warning';
   };
-
-  // Statistics
-  const stats = [
-    {
-      label: 'Total Orders',
-      value: orders.length,
-      icon: ShoppingBag,
-      color: '#8b5cf6',
-      gradient: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-    },
-    {
-      label: 'Pending',
-      value: orders.filter((o: IOrder) => o.status === 'pending').length,
-      icon: AccessTime,
-      color: '#f59e0b',
-      gradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-    },
-    {
-      label: 'Processing',
-      value: orders.filter((o: IOrder) => o.status === 'processing').length,
-      icon: TrendingUp,
-      color: '#3b82f6',
-      gradient: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-    },
-    {
-      label: 'Completed',
-      value: orders.filter((o: IOrder) => o.status === 'completed').length,
-      icon: CheckCircle,
-      color: '#10b981',
-      gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-    },
-  ];
 
   if (isLoading) {
     return (
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '70vh',
-        }}
-      >
-        <CircularProgress size={60} thickness={4} />
-        <Typography sx={{ mt: 2, color: '#64748b', fontWeight: 500 }}>
-          Loading orders...
-        </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '70vh', flexDirection: 'column' }}>
+        <CircularProgress size={50} />
+        <Typography sx={{ mt: 2, color: 'text.secondary' }}>Loading orders...</Typography>
       </Box>
     );
   }
 
   if (error) {
     return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Alert severity="error" sx={{ borderRadius: 3 }}>
-          Failed to load orders. Please try again.
-        </Alert>
+      <Container maxWidth="xl" sx={{ py: 4 }}>
+        <Alert severity="error">Failed to load orders. Please try again.</Alert>
       </Container>
     );
   }
 
   return (
-    <Box
-      sx={{
-        background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
-        minHeight: '100vh',
-        py: 4,
-      }}
-    >
-      <Container maxWidth="lg">
-        {/* Animated Header */}
-        <Fade in timeout={500}>
-          <Box sx={{ mb: 4 }}>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              mb={1}
-            >
-              <Box>
-                <Typography
-                  variant="h3"
-                  sx={{
-                    fontWeight: 800,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  Order Dashboard
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ color: '#64748b', mt: 0.5, fontWeight: 500 }}
-                >
-                  Manage and track all your orders in one place
-                </Typography>
-              </Box>
-              <Tooltip title="Refresh Orders" arrow>
-                <IconButton
-                  onClick={() => refetch()}
-                  sx={{
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    color: 'white',
-                    width: 48,
-                    height: 48,
-                    boxShadow: '0 4px 14px 0 rgba(102, 126, 234, 0.39)',
-                    '&:hover': {
-                      background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
-                      transform: 'rotate(180deg)',
-                    },
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  <Refresh />
-                </IconButton>
-              </Tooltip>
-            </Stack>
+    <Box sx={{ width: '100%' }}>
+      <Container maxWidth="xl" sx={{ py: 3 }}>
+        {/* Header */}
+        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
+          <Box>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              All Orders List
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }}>
+              Total: {orders.length} orders
+            </Typography>
           </Box>
-        </Fade>
+        </Stack>
 
-        {/* Statistics Cards */}
-        <Grid container spacing={3} sx={{ mb: 4 }}>
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <Grid item xs={12} sm={6} md={3} key={index}>
-                <Fade in timeout={600 + index * 100}>
-                  <Card
-                    elevation={0}
+        {/* Filters */}
+        <Paper sx={{ p: 3, mb: 3 }}>
+          <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
+            <TextField
+              fullWidth
+              placeholder="Search orders..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              InputProps={{
+                startAdornment: <Search sx={{ color: 'text.secondary', mr: 1 }} />,
+              }}
+              sx={{ maxWidth: { md: 400 } }}
+            />
+            
+            <TextField
+              select
+              label="Status"
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              sx={{ minWidth: 150 }}
+            >
+              <MenuItem value="all">All Status</MenuItem>
+              <MenuItem value="pending">Pending</MenuItem>
+              <MenuItem value="processing">Processing</MenuItem>
+              <MenuItem value="completed">Completed</MenuItem>
+              <MenuItem value="cancelled">Cancelled</MenuItem>
+            </TextField>
+
+            <Button
+              variant="outlined"
+              onClick={clearFilters}
+              sx={{ minWidth: 120 }}
+            >
+              Clear Filters
+            </Button>
+
+            <Button
+              variant="contained"
+              startIcon={<Refresh />}
+              onClick={() => refetch()}
+              sx={{ minWidth: 120 }}
+            >
+              Refresh
+            </Button>
+          </Stack>
+        </Paper>
+
+        {/* Orders Table */}
+        {filteredOrders.length === 0 ? (
+          <Paper sx={{ p: 6, textAlign: 'center' }}>
+            <Typography variant="h6" sx={{ color: 'text.secondary' }}>
+              No orders found
+            </Typography>
+          </Paper>
+        ) : (
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow sx={{ bgcolor: 'grey.100' }}>
+                  <TableCell sx={{ fontWeight: 700, width: '5%' }}>#</TableCell>
+                  <TableCell sx={{ fontWeight: 700, width: '15%' }}>Customer</TableCell>
+                  <TableCell sx={{ fontWeight: 700, width: '12%' }}>Contact</TableCell>
+                  <TableCell sx={{ fontWeight: 700, width: '20%' }}>Service</TableCell>
+                  <TableCell sx={{ fontWeight: 700, width: '25%' }}>Address</TableCell>
+                  <TableCell sx={{ fontWeight: 700, width: '10%' }}>Status</TableCell>
+                  <TableCell sx={{ fontWeight: 700, width: '13%' }}>Date</TableCell>
+                  <TableCell sx={{ fontWeight: 700, width: '10%', textAlign: 'center' }}>Actions</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredOrders.map((order: IOrder, index: number) => (
+                  <TableRow
+                    key={order._id}
                     sx={{
-                      position: 'relative',
-                      overflow: 'hidden',
-                      borderRadius: 3,
-                      background: 'white',
-                      border: '1px solid rgba(0,0,0,0.08)',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: `0 12px 24px ${alpha(stat.color, 0.2)}`,
-                        '& .stat-icon': {
-                          transform: 'scale(1.1) rotate(10deg)',
-                        },
-                      },
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: 4,
-                        background: stat.gradient,
-                      },
+                      '&:hover': { bgcolor: 'grey.50' },
                     }}
                   >
-                    <CardContent sx={{ p: 3 }}>
-                      <Stack
-                        direction="row"
-                        justifyContent="space-between"
-                        alignItems="flex-start"
+                    <TableCell>
+                      <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 600 }}>
+                        {index + 1}
+                      </Typography>
+                    </TableCell>
+                    
+                    <TableCell>
+                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                        {order.name}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography variant="body2" sx={{ fontFamily: 'monospace' }}>
+                        {order.contactNumber}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography variant="body2">
+                        {order.serviceName}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          color: 'text.secondary',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                        }}
                       >
-                        <Box>
-                          <Typography
-                            variant="h3"
-                            sx={{
-                              fontWeight: 800,
-                              background: stat.gradient,
-                              WebkitBackgroundClip: 'text',
-                              WebkitTextFillColor: 'transparent',
-                              lineHeight: 1.2,
-                            }}
-                          >
-                            {stat.value}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              color: '#64748b',
-                              fontWeight: 600,
-                              mt: 0.5,
-                            }}
-                          >
-                            {stat.label}
-                          </Typography>
-                        </Box>
-                        <Avatar
-                          className="stat-icon"
+                        {order.address}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Chip
+                        label={order.status || 'pending'}
+                        size="small"
+                        color={getStatusColor(order.status)}
+                        sx={{ 
+                          fontWeight: 600,
+                          textTransform: 'capitalize',
+                        }}
+                      />
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography variant="body2">
+                        {new Date(order.createdAt || '').toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })}
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                        {new Date(order.createdAt || '').toLocaleTimeString('en-US', {
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell align="center">
+                      <Stack direction="row" spacing={1} justifyContent="center">
+                        <IconButton
+                          size="small"
+                          color="primary"
+                          onClick={(e) => handleMenuOpen(e, order)}
                           sx={{
-                            width: 56,
-                            height: 56,
-                            background: stat.gradient,
-                            boxShadow: `0 8px 16px ${alpha(stat.color, 0.3)}`,
-                            transition: 'transform 0.3s ease',
+                            '&:hover': { bgcolor: 'primary.light', color: 'primary.contrastText' },
                           }}
                         >
-                          <Icon sx={{ fontSize: 28 }} />
-                        </Avatar>
+                          <Edit fontSize="small" />
+                        </IconButton>
+                        <IconButton
+                          size="small"
+                          color="error"
+                          onClick={() => handleDeleteClick(order)}
+                          sx={{
+                            '&:hover': { bgcolor: 'error.light', color: 'error.contrastText' },
+                          }}
+                        >
+                          <Delete fontSize="small" />
+                        </IconButton>
                       </Stack>
-                    </CardContent>
-                  </Card>
-                </Fade>
-              </Grid>
-            );
-          })}
-        </Grid>
-
-        {/* Search and Filter Bar */}
-        <Fade in timeout={800}>
-          <Paper
-            elevation={0}
-            sx={{
-              p: 2,
-              mb: 3,
-              borderRadius: 3,
-              border: '1px solid rgba(0,0,0,0.08)',
-              background: 'white',
-            }}
-          >
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-              <TextField
-                fullWidth
-                placeholder="Search by name, service, or address..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Search sx={{ color: '#94a3b8' }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 2,
-                    bgcolor: '#f8fafc',
-                    '& fieldset': { border: 'none' },
-                    '&:hover': { bgcolor: '#f1f5f9' },
-                    '&.Mui-focused': { bgcolor: '#f1f5f9' },
-                  },
-                }}
-              />
-              <Stack direction="row" spacing={1}>
-                {['all', 'pending', 'processing', 'completed', 'cancelled'].map(
-                  (status) => (
-                    <Chip
-                      key={status}
-                      label={status.charAt(0).toUpperCase() + status.slice(1)}
-                      onClick={() => setStatusFilter(status)}
-                      sx={{
-                        fontWeight: 600,
-                        bgcolor:
-                          statusFilter === status
-                            ? '#667eea'
-                            : 'transparent',
-                        color: statusFilter === status ? 'white' : '#64748b',
-                        border: '1px solid',
-                        borderColor:
-                          statusFilter === status ? '#667eea' : '#e2e8f0',
-                        '&:hover': {
-                          bgcolor:
-                            statusFilter === status ? '#764ba2' : '#f8fafc',
-                        },
-                      }}
-                    />
-                  )
-                )}
-              </Stack>
-            </Stack>
-          </Paper>
-        </Fade>
-
-        {/* Orders Grid */}
-        {filteredOrders.length === 0 ? (
-          <Fade in timeout={1000}>
-            <Paper
-              elevation={0}
-              sx={{
-                p: 8,
-                textAlign: 'center',
-                borderRadius: 3,
-                border: '2px dashed #e2e8f0',
-              }}
-            >
-              <ShoppingBag sx={{ fontSize: 80, color: '#cbd5e1', mb: 2 }} />
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#1e293b' }}>
-                No orders found
-              </Typography>
-              <Typography sx={{ color: '#64748b', mt: 1 }}>
-                {searchQuery || statusFilter !== 'all'
-                  ? 'Try adjusting your filters'
-                  : 'No orders have been placed yet'}
-              </Typography>
-            </Paper>
-          </Fade>
-        ) : (
-          <Grid container spacing={3}>
-            {filteredOrders.map((order: IOrder, index: number) => {
-              const statusConfig = getStatusConfig(order.status);
-              const StatusIcon = statusConfig.icon;
-
-              return (
-                <Grid item xs={12} md={6} key={order._id}>
-                  <Fade in timeout={900 + index * 100}>
-                    <Card
-                      elevation={0}
-                      sx={{
-                        position: 'relative',
-                        overflow: 'hidden',
-                        borderRadius: 3,
-                        background: 'white',
-                        border: '1px solid rgba(0,0,0,0.08)',
-                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        '&:hover': {
-                          transform: 'translateY(-4px)',
-                          boxShadow: `0 12px 24px ${alpha(statusConfig.color, 0.15)}`,
-                          '& .order-menu-btn': {
-                            opacity: 1,
-                          },
-                        },
-                        '&::before': {
-                          content: '""',
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          height: 4,
-                          background: statusConfig.gradient,
-                        },
-                      }}
-                    >
-                      <CardContent sx={{ p: 3 }}>
-                        {/* Header */}
-                        <Stack
-                          direction="row"
-                          justifyContent="space-between"
-                          alignItems="flex-start"
-                          mb={2}
-                        >
-                          <Stack direction="row" spacing={2} alignItems="center">
-                            <Avatar
-                              sx={{
-                                width: 56,
-                                height: 56,
-                                background: statusConfig.gradient,
-                                boxShadow: `0 4px 12px ${alpha(
-                                  statusConfig.color,
-                                  0.3
-                                )}`,
-                              }}
-                            >
-                              <StatusIcon sx={{ fontSize: 28 }} />
-                            </Avatar>
-                            <Box>
-                              <Typography
-                                variant="h6"
-                                sx={{
-                                  fontWeight: 700,
-                                  color: '#1e293b',
-                                  lineHeight: 1.3,
-                                }}
-                              >
-                                {order.serviceName}
-                              </Typography>
-                              <Chip
-                                label={statusConfig.label}
-                                size="small"
-                                sx={{
-                                  mt: 0.5,
-                                  height: 24,
-                                  bgcolor: statusConfig.bgcolor,
-                                  color: statusConfig.color,
-                                  fontWeight: 700,
-                                  fontSize: '0.7rem',
-                                  border: `1px solid ${alpha(statusConfig.color, 0.3)}`,
-                                }}
-                              />
-                            </Box>
-                          </Stack>
-
-                          <IconButton
-                            className="order-menu-btn"
-                            onClick={(e) => handleMenuOpen(e, order)}
-                            sx={{
-                              opacity: 0,
-                              transition: 'all 0.2s',
-                              bgcolor: alpha('#000', 0.04),
-                              '&:hover': { bgcolor: alpha('#000', 0.08) },
-                            }}
-                          >
-                            <MoreVert />
-                          </IconButton>
-                        </Stack>
-
-                        <Divider sx={{ my: 2 }} />
-
-                        {/* Details */}
-                        <Stack spacing={2}>
-                          <Stack direction="row" spacing={1.5} alignItems="center">
-                            <Person
-                              sx={{ fontSize: 20, color: statusConfig.color }}
-                            />
-                            <Box>
-                              <Typography
-                                variant="caption"
-                                sx={{ color: '#94a3b8', fontWeight: 600 }}
-                              >
-                                Customer
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ fontWeight: 600, color: '#1e293b' }}
-                              >
-                                {order.name}
-                              </Typography>
-                            </Box>
-                          </Stack>
-
-                          <Stack
-                            direction="row"
-                            spacing={1.5}
-                            alignItems="flex-start"
-                          >
-                            <LocationOn
-                              sx={{ fontSize: 20, color: statusConfig.color }}
-                            />
-                            <Box sx={{ flex: 1 }}>
-                              <Typography
-                                variant="caption"
-                                sx={{ color: '#94a3b8', fontWeight: 600 }}
-                              >
-                                Delivery Address
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{
-                                  fontWeight: 500,
-                                  color: '#475569',
-                                  lineHeight: 1.4,
-                                }}
-                              >
-                                {order.address}
-                              </Typography>
-                            </Box>
-                          </Stack>
-
-                          <Stack direction="row" spacing={1.5} alignItems="center">
-                            <CalendarToday
-                              sx={{ fontSize: 18, color: statusConfig.color }}
-                            />
-                            <Box>
-                              <Typography
-                                variant="caption"
-                                sx={{ color: '#94a3b8', fontWeight: 600 }}
-                              >
-                                Order Date
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ fontWeight: 500, color: '#475569' }}
-                              >
-                                {new Date(order.createdAt || '').toLocaleDateString(
-                                  'en-US',
-                                  {
-                                    month: 'short',
-                                    day: 'numeric',
-                                    year: 'numeric',
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                  }
-                                )}
-                              </Typography>
-                            </Box>
-                          </Stack>
-                        </Stack>
-
-                        {/* Order ID Badge */}
-                        <Box
-                          sx={{
-                            mt: 2,
-                            pt: 2,
-                            borderTop: '1px solid #f1f5f9',
-                          }}
-                        >
-                          <Typography
-                            variant="caption"
-                            sx={{
-                              color: '#94a3b8',
-                              fontWeight: 600,
-                              fontFamily: 'monospace',
-                            }}
-                          >
-                            Order ID: {order._id?.slice(-12).toUpperCase()}
-                          </Typography>
-                        </Box>
-                      </CardContent>
-                    </Card>
-                  </Fade>
-                </Grid>
-              );
-            })}
-          </Grid>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         )}
 
         {/* Status Update Menu */}
@@ -628,60 +382,128 @@ const OrderList = () => {
           open={Boolean(anchorEl)}
           onClose={handleMenuClose}
           PaperProps={{
-            elevation: 0,
-            sx: {
-              borderRadius: 2,
-              border: '1px solid rgba(0,0,0,0.08)',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-              mt: 1,
-              minWidth: 200,
-            },
+            elevation: 3,
+            sx: { minWidth: 200 },
           }}
         >
-          <MenuItem
-            onClick={() => handleStatusUpdate('pending')}
-            sx={{ py: 1.5, fontWeight: 600 }}
-          >
-            <Schedule sx={{ mr: 1.5, color: '#f59e0b' }} />
-            Pending
+          <MenuItem onClick={() => handleStatusUpdate('pending')}>
+            <Chip label="Pending" size="small" color="warning" sx={{ mr: 1.5 }} />
+            Set Pending
           </MenuItem>
-          <MenuItem
-            onClick={() => handleStatusUpdate('processing')}
-            sx={{ py: 1.5, fontWeight: 600 }}
-          >
-            <LocalShipping sx={{ mr: 1.5, color: '#3b82f6' }} />
-            Processing
+          <MenuItem onClick={() => handleStatusUpdate('processing')}>
+            <Chip label="Processing" size="small" color="info" sx={{ mr: 1.5 }} />
+            Set Processing
           </MenuItem>
-          <MenuItem
-            onClick={() => handleStatusUpdate('completed')}
-            sx={{ py: 1.5, fontWeight: 600 }}
-          >
-            <CheckCircle sx={{ mr: 1.5, color: '#10b981' }} />
-            Completed
+          <MenuItem onClick={() => handleStatusUpdate('completed')}>
+            <Chip label="Completed" size="small" color="success" sx={{ mr: 1.5 }} />
+            Set Completed
           </MenuItem>
           <Divider />
-          <MenuItem
-            onClick={() => handleStatusUpdate('cancelled')}
-            sx={{ py: 1.5, fontWeight: 600, color: '#ef4444' }}
-          >
-            <Cancel sx={{ mr: 1.5 }} />
+          <MenuItem onClick={() => handleStatusUpdate('cancelled')}>
+            <Chip label="Cancelled" size="small" color="error" sx={{ mr: 1.5 }} />
             Cancel Order
           </MenuItem>
         </Menu>
 
-        {/* Footer */}
-        {filteredOrders.length > 0 && (
-          <Fade in timeout={1200}>
-            <Box sx={{ mt: 4, textAlign: 'center' }}>
-              <Typography
-                variant="body2"
-                sx={{ color: '#64748b', fontWeight: 600 }}
+        {/* Delete Confirmation Dialog */}
+        <Dialog
+          open={deleteDialogOpen}
+          onClose={handleCancelDelete}
+          maxWidth="sm"
+          fullWidth
+        >
+          <DialogTitle>
+            <Stack direction="row" alignItems="center" spacing={2}>
+              <Box
+                sx={{
+                  bgcolor: 'error.light',
+                  borderRadius: '50%',
+                  p: 1.5,
+                  display: 'flex',
+                }}
               >
-                Showing {filteredOrders.length} of {orders.length} orders
-              </Typography>
-            </Box>
-          </Fade>
-        )}
+                <Warning sx={{ color: 'error.main' }} />
+              </Box>
+              <Box>
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                  Delete Order
+                </Typography>
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                  This action cannot be undone
+                </Typography>
+              </Box>
+              <IconButton
+                onClick={handleCancelDelete}
+                sx={{ ml: 'auto !important' }}
+              >
+                <Close />
+              </IconButton>
+            </Stack>
+          </DialogTitle>
+
+          <DialogContent>
+            {orderToDelete && (
+              <>
+                <Paper sx={{ p: 2, bgcolor: 'grey.50', mb: 2 }}>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+                    {orderToDelete.serviceName}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    Customer: {orderToDelete.name}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    Contact: {orderToDelete.contactNumber}
+                  </Typography>
+                </Paper>
+
+                <Alert severity="error" sx={{ mb: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
+                    Are you sure you want to delete this order?
+                  </Typography>
+                  <Typography variant="body2">
+                    This will permanently remove the order and all related information.
+                  </Typography>
+                </Alert>
+              </>
+            )}
+          </DialogContent>
+
+          <DialogActions sx={{ px: 3, pb: 2 }}>
+            <Button
+              onClick={handleCancelDelete}
+              disabled={isDeleting}
+              variant="outlined"
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={confirmDelete}
+              disabled={isDeleting}
+              variant="contained"
+              color="error"
+              startIcon={isDeleting ? <CircularProgress size={16} /> : <Delete />}
+            >
+              {isDeleting ? 'Deleting...' : 'Delete Order'}
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* Snackbar */}
+        <Snackbar
+          open={snackbar.open}
+          autoHideDuration={3000}
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert
+            onClose={() => setSnackbar({ ...snackbar, open: false })}
+            severity={snackbar.severity}
+            variant="filled"
+            sx={{ width: '100%' }}
+          >
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </Container>
     </Box>
   );

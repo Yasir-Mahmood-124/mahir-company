@@ -1,4 +1,6 @@
 // src/Components/ServiceCard.tsx
+// Service Card - Product add karne par cart automatically nahi khulega
+
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -10,15 +12,16 @@ import {
   Stack,
   Paper,
   CircularProgress,
+  Snackbar,
+  Alert,
 } from '@mui/material';
-import { Star, Add } from '@mui/icons-material';
+import { Star, Add, CheckCircle } from '@mui/icons-material';
 import { useAppSelector } from '@/redux/hooks';
 import {
   selectCartItemQuantity,
   selectServiceById,
 } from '@/redux/Data/Serviceslice';
 import { useAddToCartMutation } from '@/redux/api/cartApi';
-import CartDrawer from '@/Components/CartDrawer'; // ✅ Import drawer
 
 interface ServiceCardProps {
   serviceId: number;
@@ -31,7 +34,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
   );
 
   const [addToCartAPI, { isLoading }] = useAddToCartMutation();
-  const [cartOpen, setCartOpen] = useState(false); // ✅ Local cart drawer state
+  const [showSuccess, setShowSuccess] = useState(false);
 
   if (!service) return null;
 
@@ -48,16 +51,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
         quantity: 1,
       };
 
-      console.log('📦 Adding to cart:', cartData);
-
       await addToCartAPI(cartData).unwrap();
       
-      console.log('✅ Added successfully!');
-      
-      // Open cart drawer after adding
-      setTimeout(() => {
-        setCartOpen(true); // ✅ Open drawer
-      }, 100);
+      // Show success notification
+      setShowSuccess(true);
       
     } catch (error: any) {
       console.error('❌ Add to cart error:', error);
@@ -218,11 +215,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
         </Card>
       </Link>
 
-      {/* ✅ Cart Drawer - Integrated directly in ServiceCard */}
-      <CartDrawer 
-        open={cartOpen} 
-        onClose={() => setCartOpen(false)} 
-      />
+      {/* Success Notification */}
+      <Snackbar
+        open={showSuccess}
+        autoHideDuration={2000}
+        onClose={() => setShowSuccess(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      >
+        <Alert
+          icon={<CheckCircle fontSize="inherit" />}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          Added to cart!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
