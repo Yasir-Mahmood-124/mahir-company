@@ -8,12 +8,12 @@ interface Service {
 }
 
 const services: Service[] = [
-  { title: "Sofa Cleaning Services", slug: "/sofa-cleaning-services" },
-  { title: "Water Tank Cleaning", slug: "/water-tank-cleaning" },
-  { title: "Carpet Cleaning Services", slug: "/carpet-cleaning-services" },
-  { title: "Mattress Cleaning Services", slug: "/mattress-cleaning-services" },
-  { title: "Car Services", slug: "/car-services" },
-  { title: "Car Detailing Services", slug: "/car-detailing-services" },
+  { title: "Sofa Cleaning Services", slug: "/Home/cleaning-services/sofa-cleaning-services" },
+  { title: "Water Tank Cleaning", slug: " /Home/cleaning-services/sofa-cleaning-services" },
+  { title: "Carpet Cleaning Services", slug: "/Home/cleaning-services/carpet-cleaning-services" },
+  { title: "Mattress Cleaning Services", slug: "/Home/cleaning-services/mattress-cleaning-services" },
+  { title: "Car Services", slug: "/Home/cleaning-services/car-detailing-services" },
+  { title: "Car Detailing Services", slug: "/Home/cleaning-services/car-detailing-services" },
 ];
 
 

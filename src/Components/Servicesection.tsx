@@ -24,8 +24,8 @@ type Service = {
 
 const services: Service[] = [
   { id: "ac", name: "AC Services", href: "/Home/handyman/ac-services", img: "https://cdn.mrmahir.com/services/ac.svg", alt: "AC Services" },
-  { id: "plumber", name: "Plumber", href: "/Home/handyman/plumbing-services", img: "https://cdn.mrmahir.com/services/plumber.svg", alt: "Plumber" },
-  { id: "electrician", name: "Electrician", href: "/Home/electrician-services", img: "https://cdn.mrmahir.com/services/electrician.svg", alt: "Electrician" },
+  { id: "plumber", name: "Plumber", href: "/Home/handyman/plumber-services", img: "https://cdn.mrmahir.com/services/plumber.svg", alt: "Plumber" },
+  { id: "electrician", name: "Electrician", href: "/Home/handyman/electrician-services", img: "https://cdn.mrmahir.com/services/electrician.svg", alt: "Electrician" },
   { id: "handyman", name: "Handyman", href: "/Home/handyman/handyman-services", img: "https://cdn.mrmahir.com/services/handyman.svg", alt: "Handyman" },
   { id: "carpenter", name: "Carpenter", href: "/Home/handyman/carpenter-services", img: "https://cdn.mrmahir.com/services/carpenter.svg", alt: "Carpenter" },
   { id: "painter", name: "Painter", href: "/Home/handyman/painter-services", img: "https://cdn.mrmahir.com/services/painter.svg", alt: "Painter" },

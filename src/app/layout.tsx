@@ -4,7 +4,8 @@ import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FloatingContactButtons from "@/Components/floating_contact_buttons";
-import { StoreProvider } from "@/redux/StoreProvider"; // ✅ import Provider
+import { StoreProvider } from "@/redux/StoreProvider";
+import ConditionalFloatingButtons from "@/Components/ConditionalFloatingButtons";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +32,8 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <StoreProvider>
           {children}
-          <FloatingContactButtons></FloatingContactButtons>
-          </StoreProvider>
+          <ConditionalFloatingButtons />
+        </StoreProvider>
       </body>
     </html>
   );

@@ -1,6 +1,3 @@
-// src/Components/ServiceCard.tsx
-// Service Card - Product add karne par cart automatically nahi khulega
-
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -11,17 +8,11 @@ import {
   Box,
   Stack,
   Paper,
-  CircularProgress,
-  Snackbar,
-  Alert,
 } from '@mui/material';
-import { Star, Add, CheckCircle } from '@mui/icons-material';
+import { Star, Add } from '@mui/icons-material';
 import { useAppSelector } from '@/redux/hooks';
-import {
-  selectCartItemQuantity,
-  selectServiceById,
-} from '@/redux/Data/Serviceslice';
-import { useAddToCartMutation } from '@/redux/api/cartApi';
+import { selectServiceById } from '@/redux/Data/Serviceslice';
+import OrderFormModal from '@/Components/OrderFormModel';
 
 interface ServiceCardProps {
   serviceId: number;
@@ -29,37 +20,14 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
   const service = useAppSelector((state) => selectServiceById(state, serviceId));
-  const quantity = useAppSelector((state) =>
-    selectCartItemQuantity(state, serviceId)
-  );
-
-  const [addToCartAPI, { isLoading }] = useAddToCartMutation();
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [orderModalOpen, setOrderModalOpen] = useState(false);
 
   if (!service) return null;
 
-  const handleAddToCart = async (e: React.MouseEvent) => {
+  const handleBookClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
-    try {
-      const cartData = {
-        serviceId: service.id,
-        serviceName: service.title,
-        servicePrice: service.appPrice,
-        serviceImage: service.image,
-        quantity: 1,
-      };
-
-      await addToCartAPI(cartData).unwrap();
-      
-      // Show success notification
-      setShowSuccess(true);
-      
-    } catch (error: any) {
-      console.error('❌ Add to cart error:', error);
-      alert(error?.data?.message || 'Failed to add to cart');
-    }
+    setOrderModalOpen(true);
   };
 
   const handleCardClick = (e: React.MouseEvent) => {
@@ -174,17 +142,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
             </Stack>
           </Box>
 
-          {/* Add Button */}
+          {/* Book Button */}
           <Paper
             data-add-button="true"
             elevation={0}
             sx={{
               display: 'flex',
               alignItems: 'center',
-              bgcolor: isLoading ? '#666' : '#000',
+              bgcolor: '#000',
               color: 'white',
               borderRadius: 1,
-              cursor: isLoading ? 'not-allowed' : 'pointer',
+              cursor: 'pointer',
               px: 1.5,
               py: 0.5,
               height: 'fit-content',
@@ -193,44 +161,29 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
               userSelect: 'none',
               flexShrink: 0,
               '&:hover': {
-                bgcolor: isLoading ? '#666' : '#333',
+                bgcolor: '#333',
               },
             }}
-            onClick={handleAddToCart}
+            onClick={handleBookClick}
           >
-            {isLoading ? (
-              <CircularProgress size={20} sx={{ color: 'white' }} />
-            ) : (
-              <>
-                <Typography
-                  variant="body1"
-                  sx={{ fontWeight: 700, mr: 1, userSelect: 'none' }}
-                >
-                  Add
-                </Typography>
-                <Add sx={{ fontWeight: 700 }} />
-              </>
-            )}
+            <Typography
+              variant="body1"
+              sx={{ fontWeight: 700, mr: 1, userSelect: 'none' }}
+            >
+              Book
+            </Typography>
+            <Add sx={{ fontWeight: 700 }} />
           </Paper>
         </Card>
       </Link>
 
-      {/* Success Notification */}
-      <Snackbar
-        open={showSuccess}
-        autoHideDuration={2000}
-        onClose={() => setShowSuccess(false)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      >
-        <Alert
-          icon={<CheckCircle fontSize="inherit" />}
-          severity="success"
-          variant="filled"
-          sx={{ width: '100%' }}
-        >
-          Added to cart!
-        </Alert>
-      </Snackbar>
+      {/* Order Form Modal */}
+      <OrderFormModal
+        open={orderModalOpen}
+        onClose={() => setOrderModalOpen(false)}
+        serviceName={service.title}
+        servicePrice={service.appPrice}
+      />
     </>
   );
 };

@@ -20,16 +20,16 @@ type Service = {
 };
 
 const services: Service[] = [
-  { id: "makeup", name: "Makeup", href: "/makeup-services", img: "https://cdn.mrmahir.com/svgs/makeup3.svg", alt: "Makeup Services" },
-  { id: "hair-treatment", name: "Hair Treatment", href: "/hair-treatment-services", img: "https://cdn.mrmahir.com/services/hair.svg", alt: "Hair Treatment" },
-  { id: "waxing", name: "Waxing", href: "/waxing-services", img: "https://cdn.mrmahir.com/services/waxing.svg", alt: "Waxing Services" },
-  { id: "massage", name: "Massage for Women", href: "/massage-services", img: "https://cdn.mrmahir.com/services/massage.svg", alt: "Massage Services" },
-  { id: "mani-pedi", name: "Mani Pedi", href: "/mani-pedi-services", img: "https://cdn.mrmahir.com/services/nails.svg", alt: "Mani Pedi" },
-  { id: "facial", name: "Facial", href: "/facial-services", img: "https://cdn.mrmahir.com/services/facial.svg", alt: "Facial Services" },
-  { id: "mehndi", name: "Mehndi", href: "/mehndi-services", img: "https://cdn.mrmahir.com/services/mehndi.svg", alt: "Mehndi Services" },
-  { id: "hair-styling", name: "Hair Styling & Hair Cut", href: "/hair-styling-and-hair-cut", img: "https://cdn.mrmahir.com/svgs/hair-cut-logo.svg", alt: "Hair Styling & Hair Cut" },
-  { id: "beauty-deals", name: "Monthly Beauty Deals", href: "/monthly-beauty-deals", img: "https://cdn.mrmahir.com/services/service-packages.svg", alt: "Monthly Beauty Deals" },
-  { id: "salon-packages", name: "Salon Packages", href: "/salon-packages", img: "https://cdn.mrmahir.com/services/service-packages.svg", alt: "Salon Packages" },
+  { id: "makeup", name: "Makeup", href: "/Home/beautician/makeup-services", img: "https://cdn.mrmahir.com/svgs/makeup3.svg", alt: "Makeup Services" },
+  { id: "hair-treatment", name: "Hair Treatment", href: "/Home/beautician/hair-treatment-services", img: "https://cdn.mrmahir.com/services/hair.svg", alt: "Hair Treatment" },
+  { id: "waxing", name: "Waxing", href: "/Home/beautician/waxing-services", img: "https://cdn.mrmahir.com/services/waxing.svg", alt: "Waxing Services" },
+  { id: "massage", name: "Massage for Women", href: "/Home/beautician/massage-services", img: "https://cdn.mrmahir.com/services/massage.svg", alt: "Massage Services" },
+  { id: "mani-pedi", name: "Mani Pedi", href: "/Home/beautician/mani-pedi-services", img: "https://cdn.mrmahir.com/services/nails.svg", alt: "Mani Pedi" },
+  { id: "facial", name: "Facial", href: "/Home/beautician/facial-services", img: "https://cdn.mrmahir.com/services/facial.svg", alt: "Facial Services" },
+  { id: "mehndi", name: "Mehndi", href: "/Home/beautician/mehndi-services", img: "https://cdn.mrmahir.com/services/mehndi.svg", alt: "Mehndi Services" },
+  { id: "hair-styling", name: "Hair Styling & Hair Cut", href: "/Home/beautician/hair-styling-and-hair-cut", img: "https://cdn.mrmahir.com/svgs/hair-cut-logo.svg", alt: "Hair Styling & Hair Cut" },
+  { id: "beauty-deals", name: "Monthly Beauty Deals", href: "/Home/beautician/monthly-beauty-deals", img: "https://cdn.mrmahir.com/services/service-packages.svg", alt: "Monthly Beauty Deals" },
+  { id: "salon-packages", name: "Salon Packages", href: "/Home/beautician/salon-packages", img: "https://cdn.mrmahir.com/services/service-packages.svg", alt: "Salon Packages" },
 ];
 
 const ServicesSection: React.FC = () => {

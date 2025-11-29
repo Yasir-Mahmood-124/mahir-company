@@ -1,8 +1,6 @@
 // src/Components/OrderFormModal.tsx
 // Order Form Modal Component with Contact Number
-
 'use client';
-
 import React, { useState } from 'react';
 import {
   Dialog,
@@ -15,6 +13,7 @@ import {
   Typography,
   CircularProgress,
   Alert,
+  IconButton,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { useCreateOrderMutation } from '@/redux/api/orderApi';
@@ -37,6 +36,7 @@ const OrderFormModal: React.FC<OrderFormModalProps> = ({
     address: '',
     contactNumber: '',
   });
+
   const [errors, setErrors] = useState({
     name: '',
     address: '',
@@ -153,14 +153,27 @@ const OrderFormModal: React.FC<OrderFormModalProps> = ({
         },
       }}
     >
-      <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pb: 1 }}>
-        <Typography variant="h6" sx={{ fontWeight: 600 }}>
-          Place Order
-        </Typography>
-        <Close
-          sx={{ cursor: 'pointer', color: '#666' }}
+      <DialogTitle sx={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        pb: 1,
+        fontWeight: 600 
+      }}>
+        Place Order
+        <IconButton
+          aria-label="close"
           onClick={handleClose}
-        />
+          sx={{
+            color: '#666',
+            '&:hover': {
+              color: '#000',
+              bgcolor: 'rgba(0,0,0,0.05)',
+            },
+          }}
+        >
+          <Close />
+        </IconButton>
       </DialogTitle>
 
       <DialogContent>
