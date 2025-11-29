@@ -15,13 +15,16 @@ function validateContactNumber(contactNumber: string): boolean {
 // GET - Fetch order by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
     
+    // Await params in Next.js 16
+    const { id } = await params;
+    
     // Validate MongoDB ObjectId
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         {
           success: false,
@@ -31,7 +34,7 @@ export async function GET(
       );
     }
 
-    const order = await Order.findById(params.id);
+    const order = await Order.findById(id);
     
     if (!order) {
       return NextResponse.json(
@@ -72,7 +75,7 @@ export async function PATCH(
   try {
     await connectDB();
     
-    // Await params in Next.js 15
+    // Await params in Next.js 16
     const { id } = await params;
     
     // Validate MongoDB ObjectId
@@ -209,7 +212,7 @@ export async function DELETE(
   try {
     await connectDB();
     
-    // Await params in Next.js 15
+    // Await params in Next.js 16
     const { id } = await params;
     
     // Validate MongoDB ObjectId

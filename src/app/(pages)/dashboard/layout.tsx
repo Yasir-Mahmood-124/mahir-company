@@ -1,7 +1,7 @@
 "use client"
 
 import { Box, AppBar, Toolbar, CssBaseline } from '@mui/material';
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/Components/Sidebar';
 import Image from 'next/image';
 import logo from '@/assests/Images/logo.png';
 
