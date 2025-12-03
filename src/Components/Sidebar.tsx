@@ -213,7 +213,7 @@ export default function Sidebar({ mobileOpen = false, onMobileClose }: SidebarPr
               fontSize: { xs: '0.7rem', sm: '0.75rem' },
             }}
           >
-            © 2024 Mahir Company
+            © 2024 UstadonCall Company
           </Typography>
         </Box>
       )}
