@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# anlalytics json file
+ustadoncall-018fbea786a0.json
+*-ustadoncall-018fbea786a0.json

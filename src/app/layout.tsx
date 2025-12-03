@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 import FloatingContactButtons from "@/Components/floating_contact_buttons";
 import { StoreProvider } from "@/redux/StoreProvider";
 import ConditionalFloatingButtons from "@/Components/ConditionalFloatingButtons";
+import Script from "next/script";
+import Analytics from "@/Components/Analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,9 +29,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics Script */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_MEASUREMENT_ID}', {
+                    page_path: window.location.pathname,
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/* Page View Tracking Component */}
+        <Analytics />
+
         <StoreProvider>
           {children}
           <ConditionalFloatingButtons />
