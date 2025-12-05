@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
@@ -60,7 +61,9 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Page View Tracking Component */}
-        <Analytics />
+        <Suspense fallback={null}>
+    <Analytics />
+  </Suspense>
 
         <StoreProvider>
           {children}

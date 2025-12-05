@@ -1,4 +1,5 @@
 // components/SolarPanelCleaningDescription.tsx
+
 import React from 'react';
 import {
   Box,

@@ -11,8 +11,7 @@ import {
   Link
 } from '@mui/material';
 import {
-  VerifiedUser as VerifiedIcon,
-  CheckCircle as CheckCircleIcon,
+  VerifiedUser as VerifiedIcozcon,
   AttachMoney as MoneyIcon,
   Security as SecurityIcon,
   Phone as PhoneIcon,

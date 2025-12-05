@@ -1,4 +1,4 @@
-import React from "react";
+'use client';import React from "react";
 import Link from "next/link";
 import { Box, Typography, Container, Chip } from "@mui/material";
 

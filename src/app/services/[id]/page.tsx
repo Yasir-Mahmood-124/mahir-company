@@ -1,4 +1,4 @@
-'use client';
+"use client"; // <-- MUST be at the very top
 
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -9,6 +9,7 @@ import { useAppSelector } from '@/redux/hooks';
 import { selectServiceDetailById } from '@/redux/Data/Serviceslicedata';
 import { Container, Button, Box } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Suspense } from 'react';
 
 export default function ServiceDetailPage() {
   const params = useParams();
@@ -57,8 +58,10 @@ export default function ServiceDetailPage() {
           </Button>
         </Box>
 
-        {/* Service Detail Component */}
-        <ServiceCardDetail service={service} />
+        {/* Wrap ServiceCardDetail in Suspense for safety */}
+        <Suspense fallback={<div>Loading service details...</div>}>
+          <ServiceCardDetail service={service} />
+        </Suspense>
       </Container>
 
       <Footer />

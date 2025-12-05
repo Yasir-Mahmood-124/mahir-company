@@ -2,11 +2,21 @@
 import { BetaAnalyticsDataClient } from '@google-analytics/data'
 import { NextResponse } from 'next/server'
 
-const analyticsDataClient = new BetaAnalyticsDataClient({
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-})
+if (!process.env.GOOGLE_SERVICE_ACCOUNT) {
+  throw new Error('GOOGLE_SERVICE_ACCOUNT environment variable is missing')
+}
+if (!process.env.GA_PROPERTY_ID) {
+  throw new Error('GA_PROPERTY_ID environment variable is missing')
+}
 
+// Parse the JSON credentials from env variable
+const credentials = JSON.parse(
+  Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT, 'base64').toString('utf-8')
+)
 const propertyId = process.env.GA_PROPERTY_ID
+
+// Initialize GA Data Client
+const analyticsDataClient = new BetaAnalyticsDataClient({ credentials })
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -30,27 +40,18 @@ export async function GET(request: Request) {
   } catch (error: any) {
     console.error('Analytics API error:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch analytics', details: error.message }, 
+      { error: 'Failed to fetch analytics', details: error.message },
       { status: 500 }
     )
   }
 }
 
-// Overview data - Total views, users, sessions (Last 30 days)
+// Helper functions
 async function getOverviewData() {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '30daysAgo',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'date',
-      },
-    ],
+    dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+    dimensions: [{ name: 'date' }],
     metrics: [
       { name: 'activeUsers' },
       { name: 'sessions' },
@@ -68,25 +69,12 @@ async function getOverviewData() {
   return NextResponse.json({ data })
 }
 
-// Device data - Mobile vs Desktop vs Tablet
 async function getDeviceData() {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '30daysAgo',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'deviceCategory',
-      },
-    ],
-    metrics: [
-      { name: 'activeUsers' },
-      { name: 'sessions' },
-    ],
+    dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+    dimensions: [{ name: 'deviceCategory' }],
+    metrics: [{ name: 'activeUsers' }, { name: 'sessions' }],
   })
 
   const data = response.rows?.map((row) => ({
@@ -98,36 +86,13 @@ async function getDeviceData() {
   return NextResponse.json({ data })
 }
 
-// Traffic sources - Where visitors came from
 async function getSourceData() {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '30daysAgo',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'sessionSource',
-      },
-      {
-        name: 'sessionMedium',
-      },
-    ],
-    metrics: [
-      { name: 'activeUsers' },
-      { name: 'sessions' },
-    ],
-    orderBys: [
-      {
-        metric: {
-          metricName: 'sessions',
-        },
-        desc: true,
-      },
-    ],
+    dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+    dimensions: [{ name: 'sessionSource' }, { name: 'sessionMedium' }],
+    metrics: [{ name: 'activeUsers' }, { name: 'sessions' }],
+    orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
     limit: 10,
   })
 
@@ -141,36 +106,13 @@ async function getSourceData() {
   return NextResponse.json({ data })
 }
 
-// Most visited pages
 async function getPageData() {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '30daysAgo',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'pageTitle',
-      },
-      {
-        name: 'pagePath',
-      },
-    ],
-    metrics: [
-      { name: 'screenPageViews' },
-      { name: 'averageSessionDuration' },
-    ],
-    orderBys: [
-      {
-        metric: {
-          metricName: 'screenPageViews',
-        },
-        desc: true,
-      },
-    ],
+    dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+    dimensions: [{ name: 'pageTitle' }, { name: 'pagePath' }],
+    metrics: [{ name: 'screenPageViews' }, { name: 'averageSessionDuration' }],
+    orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
     limit: 10,
   })
 
@@ -184,16 +126,12 @@ async function getPageData() {
   return NextResponse.json({ data })
 }
 
-// Real-time active users
 async function getRealtimeData() {
   const [response] = await analyticsDataClient.runRealtimeReport({
     property: `properties/${propertyId}`,
-    metrics: [
-      { name: 'activeUsers' },
-    ],
+    metrics: [{ name: 'activeUsers' }],
   })
 
   const activeUsers = parseInt(response.rows?.[0]?.metricValues?.[0]?.value || '0')
-
   return NextResponse.json({ activeUsers })
 }
