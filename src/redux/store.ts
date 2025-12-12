@@ -6,9 +6,12 @@ import servicesReducer from './Data/Serviceslice';
 import ServicesslicedataReducer from './Data/Serviceslicedata';
 import { orderApi } from './api/orderApi';
 import { cartApi } from './api/cartApi';
+import productReducer from './productSlice';
 
 export const store = configureStore({
   reducer: {
+    products: productReducer,
+
     // Existing reducers
     services: servicesReducer,
     Servicesslice: ServicesslicedataReducer,
