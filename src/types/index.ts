@@ -10,10 +10,10 @@ export interface Product {
   reviews: number;
   includes: string[];
   notIncludes: string[];
+  image?: string; // ✅ Add this field
   createdAt?: string;
   updatedAt?: string;
 }
-
 export interface Category {
   name: string;
   subCategories: {

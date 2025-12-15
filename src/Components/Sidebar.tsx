@@ -35,6 +35,7 @@ const menuItems: MenuItem[] = [
   { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
   { text: 'Orders', icon: <ShoppingCartIcon />, path: '/dashboard/orders' },
   { text: 'Analytics', icon: <AnalyticsIcon />, path: '/dashboard/analytics' },
+  { text: 'Products', icon: <AnalyticsIcon />, path: '/dashboard/products' },
 ];
 
 interface SidebarProps {
