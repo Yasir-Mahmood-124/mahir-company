@@ -1,7 +1,6 @@
-// components/NavBar.tsx
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import {
   AppBar,
   Toolbar,
@@ -10,15 +9,65 @@ import {
   MenuItem,
   IconButton,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assests/Images/logo.png";
 
+type Service = {
+  id: string;
+  name: string;
+  currentPrice: number;
+  discountPrice: number;
+  mainCategory: string;
+  subCategory: string;
+  service: string;
+  description: string;
+  reviews: number;
+  includes: string[];
+  notIncludes: string[];
+  image?: string;
+  subCategoryImage?: string;
+};
+
 const NavBar: React.FC = () => {
   const [anchorElServices, setAnchorElServices] = useState<null | HTMLElement>(null);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [subCategories, setSubCategories] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSubCategories = async () => {
+      try {
+        const res = await fetch("/api/products");
+        const data: { success: boolean; data: Service[] } = await res.json();
+
+        if (data.success && Array.isArray(data.data)) {
+          const homeServices: Service[] = data.data.filter(
+            (service: Service) => service.mainCategory === "Home Services"
+          );
+
+          const uniqueSubCats: string[] = Array.from(
+            new Set(
+              homeServices
+                .map((service: Service) => service.subCategory)
+                .filter((subCat): subCat is string => Boolean(subCat))
+            )
+          );
+
+          setSubCategories(uniqueSubCats.sort());
+        }
+      } catch (error) {
+        console.error("Error fetching subcategories:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSubCategories();
+  }, []);
 
   const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElServices(event.currentTarget);
@@ -26,6 +75,39 @@ const NavBar: React.FC = () => {
 
   const handleClose = () => {
     setAnchorElServices(null);
+  };
+
+  const renderServicesMenu = (): ReactNode[] => {
+    if (loading) {
+      return [
+        <MenuItem key="loading">
+          <CircularProgress size={20} />
+          <Box sx={{ ml: 2 }}>Loading...</Box>
+        </MenuItem>,
+      ];
+    }
+
+    if (subCategories.length === 0) {
+      return [
+        <MenuItem key="no-services" disabled>
+          No services available
+        </MenuItem>,
+      ];
+    }
+
+    return subCategories.map((subCategory: string) => {
+      const slug = subCategory.toLowerCase().replace(/\s+/g, "-");
+      return (
+        <MenuItem key={subCategory} onClick={handleClose}>
+          <Link
+            href={`/Home/handyman/${slug}`}
+            style={{ textDecoration: "none", color: "black", width: "100%" }}
+          >
+            {subCategory}
+          </Link>
+        </MenuItem>
+      );
+    });
   };
 
   return (
@@ -39,39 +121,13 @@ const NavBar: React.FC = () => {
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-          <Box 
-            component="span" 
-            sx={{ 
-              display: "flex", 
-              alignItems: "center",
-              height: "60px",
-              py: 1
-            }}
-          >
-            <Image
-              src={logo} 
-              alt="UstadOnCall Logo"
-              width={250}
-              height={250}
-              style={{ 
-                objectFit: "contain",
-                height: "auto",
-              }}
-              priority
-            />
+          <Box component="span" sx={{ display: "flex", alignItems: "center", height: "60px", py: 1 }}>
+            <Image src={logo} alt="UstadOnCall Logo" width={250} height={250} style={{ objectFit: "contain", height: "auto" }} priority />
           </Box>
         </Link>
 
-        {/* Desktop Menu */}
-        <Box
-          sx={{
-            display: { xs: "none", md: "flex" },
-            alignItems: "center",
-            gap: 3,
-          }}
-        >
+        <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 3 }}>
           <Button component={Link} href="/Home/handyman" sx={{ color: "black" }}>
             Home
           </Button>
@@ -79,39 +135,11 @@ const NavBar: React.FC = () => {
             About Us
           </Button>
 
-          {/* Services Dropdown */}
-          <Button
-            onClick={handleOpen}
-            sx={{ color: "black" }}
-          >
+          <Button onClick={handleOpen} sx={{ color: "black" }}>
             Services
           </Button>
-          <Menu
-            anchorEl={anchorElServices}
-            open={Boolean(anchorElServices)}
-            onClose={handleClose}
-          >
-            {[
-              "AC Services",
-              "Carpenter Services",
-              "Electrician Services",
-              "Geyser Services",
-              "Handyman Services",
-              "Home Appliances Repair",
-              "Home Inspection Services",
-              "Painter Services",
-              "Pest Control Services",
-              "Plumber Services",
-            ].map((service) => (
-              <MenuItem key={service} onClick={handleClose}>
-                <Link
-                  href={`/Home/handyman/${service.toLowerCase().replace(/ /g, "-")}`}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  {service}
-                </Link>
-              </MenuItem>
-            ))}
+          <Menu anchorEl={anchorElServices} open={Boolean(anchorElServices)} onClose={handleClose}>
+            {renderServicesMenu()}
           </Menu>
 
           <Button
@@ -127,37 +155,27 @@ const NavBar: React.FC = () => {
           </Button>
         </Box>
 
-        {/* Mobile Menu Icon */}
-        <IconButton
-          sx={{ display: { xs: "flex", md: "none" }, color: "black" }}
-          onClick={() => setMobileMenu(!mobileMenu)}
-        >
+        <IconButton sx={{ display: { xs: "flex", md: "none" }, color: "black" }} onClick={() => setMobileMenu(!mobileMenu)}>
           <MenuIcon />
         </IconButton>
       </Toolbar>
 
-      {/* Mobile Dropdown Menu */}
       {mobileMenu && (
-        <Box
-          sx={{
-            display: { xs: "flex", md: "none" },
-            flexDirection: "column",
-            backgroundColor: "#f2f2f2",
-            px: 2,
-            pb: 2,
-          }}
-        >
+        <Box sx={{ display: { xs: "flex", md: "none" }, flexDirection: "column", backgroundColor: "#f2f2f2", px: 2, pb: 2 }}>
           <Button component={Link} href="/Home/handyman" sx={{ color: "black" }}>
             Home
           </Button>
-
           <Button component={Link} href="/about-us/handyman-about" sx={{ color: "black" }}>
             About Us
           </Button>
+
           <Button sx={{ color: "black" }} onClick={handleOpen}>
             Services
           </Button>
-        
+          <Menu anchorEl={anchorElServices} open={Boolean(anchorElServices)} onClose={handleClose}>
+            {renderServicesMenu()}
+          </Menu>
+
           <Button
             component={Link}
             href="#"

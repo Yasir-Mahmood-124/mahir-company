@@ -21,6 +21,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import CloseIcon from '@mui/icons-material/Close';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import CategoryIcon from '@mui/icons-material/Category';
+import BuildIcon from '@mui/icons-material/Build';
 
 const DRAWER_WIDTH = 260;
 const DRAWER_WIDTH_COLLAPSED = 70;
@@ -32,10 +34,14 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
+
   { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
+    { text: 'Add Services', icon:   <CategoryIcon />, path: '/dashboard/products' },
+
+    { text: 'Services', icon:   <BuildIcon  />, path: '/dashboard/serviceproducts' },
+
   { text: 'Orders', icon: <ShoppingCartIcon />, path: '/dashboard/orders' },
   { text: 'Analytics', icon: <AnalyticsIcon />, path: '/dashboard/analytics' },
-  { text: 'Products', icon: <AnalyticsIcon />, path: '/dashboard/products' },
 ];
 
 interface SidebarProps {

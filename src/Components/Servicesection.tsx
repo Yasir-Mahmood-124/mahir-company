@@ -1,144 +1,3 @@
-// // ============================================
-// // ServicesSection.tsx
-// // ============================================
-// "use client";
-
-// import React from "react";
-// import Image from "next/image";
-// import Link from "next/link";
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   useTheme,
-//   useMediaQuery,
-// } from "@mui/material";
-
-// type Service = {
-//   id: string;
-//   name: string;
-//   href: string;
-//   img: string;
-//   alt: string;
-// };
-
-// const services: Service[] = [
-//   { id: "ac", name: "AC Services", href: "/Home/handyman/ac-services", img: "https://cdn.mrmahir.com/services/ac.svg", alt: "AC Services" },
-//   { id: "plumber", name: "Plumber", href: "/Home/handyman/plumber-services", img: "https://cdn.mrmahir.com/services/plumber.svg", alt: "Plumber" },
-//   { id: "electrician", name: "Electrician", href: "/Home/handyman/electrician-services", img: "https://cdn.mrmahir.com/services/electrician.svg", alt: "Electrician" },
-//   { id: "handyman", name: "Handyman", href: "/Home/handyman/handyman-services", img: "https://cdn.mrmahir.com/services/handyman.svg", alt: "Handyman" },
-//   { id: "carpenter", name: "Carpenter", href: "/Home/handyman/carpenter-services", img: "https://cdn.mrmahir.com/services/carpenter.svg", alt: "Carpenter" },
-//   { id: "painter", name: "Painter", href: "/Home/handyman/painter-services", img: "https://cdn.mrmahir.com/services/painter.svg", alt: "Painter" },
-//   { id: "appliances", name: "Home Appliances", href: "/Home/handyman/home-appliances-repair", img: "https://cdn.mrmahir.com/services/appliance-repair.svg", alt: "Home Appliances" },
-//   { id: "geyser", name: "Geyser", href: "/Home/handyman/geyser-services", img: "https://cdn.mrmahir.com/services/geyser.svg", alt: "Geyser" },
-//   { id: "pest", name: "Pest Control", href: "/Home/handyman/pest-control-services", img: "https://cdn.mrmahir.com/svgs/pest-control.svg", alt: "Pest Control" },
-//   { id: "inspection", name: "Home Inspection", href: "/Home/handyman/home-inspection-services", img: "https://cdn.mrmahir.com/svgs/house_inspection_updated.svg", alt: "Home Inspection" },
-// ];
-
-// const ServicesSection: React.FC = () => {
-//   const theme = useTheme();
-//   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
-
-//   return (
-//     <Box
-//       component="section"
-//       sx={{
-//         py: { xs: 6, md: 10 },
-//         textAlign: "center",
-//         backgroundColor: "#fff",
-//       }}
-//     >
-//       <Container maxWidth="lg">
-//         {/* Section Title */}
-//         <Typography
-//           component="h2"
-//           sx={{
-//             fontWeight: 700,
-//             fontSize: { xs: "2rem", md: "2.5rem" },
-//             mb: 1,
-//           }}
-//         >
-//           Services
-//         </Typography>
-//         <Typography
-//           sx={{
-//             color: "#6b7280",
-//             fontSize: { xs: "1rem", md: "1.1rem" },
-//             mb: { xs: 5, md: 7 },
-//           }}
-//         >
-//           Choose from our wide range of services
-//         </Typography>
-
-//         {/* Service Grid using Flexbox */}
-//         <Box
-//           sx={{
-//             display: "flex",
-//             flexWrap: "wrap",
-//             gap: { xs: 3, sm: 4, md: 5 },
-//             justifyContent: "center",
-//           }}
-//         >
-//           {services.map((service) => (
-//             <Box
-//               key={service.id}
-//               sx={{
-//                 width: {
-//                   xs: "calc(50% - 12px)",
-//                   sm: "calc(33.333% - 21.33px)",
-//                   md: "calc(25% - 30px)",
-//                   lg: "calc(16.666% - 33.33px)",
-//                 },
-//                 display: "flex",
-//                 justifyContent: "center",
-//               }}
-//             >
-//               <Link href={service.href} style={{ textDecoration: "none" }}>
-//                 <Box
-//                   sx={{
-//                     display: "flex",
-//                     flexDirection: "column",
-//                     alignItems: "center",
-//                     gap: 1.5,
-//                     transition: "transform 0.25s ease, opacity 0.25s ease",
-//                     "&:hover": {
-//                       transform: "translateY(-6px)",
-//                       opacity: 0.9,
-//                     },
-//                   }}
-//                 >
-//                   <Image
-//                     src={service.img}
-//                     alt={service.alt}
-//                     width={80}
-//                     height={80}
-//                     style={{ objectFit: "contain" }}
-//                   />
-//                   <Typography
-//                     sx={{
-//                       mt: 1,
-//                       color: "#000",
-//                       fontSize: { xs: "0.95rem", md: "1rem" },
-//                       fontWeight: 600,
-//                       textAlign: "center",
-//                     }}
-//                   >
-//                     {service.name}
-//                   </Typography>
-//                 </Box>
-//               </Link>
-//             </Box>
-//           ))}
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -165,55 +24,54 @@ type Product = {
   reviews: number;
   includes: string[];
   notIncludes: string[];
-  image?: string; // Product image
+  image?: string;
+  subCategoryImage?: string; // ✅ NEW - For service cards
 };
 
 type ServicesSectionProps = {
-  categorySlug?: string; // e.g., "home-services"
+  mainCategoryName?: string;
 };
 
-const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-services" }) => {
+const ServicesSection: React.FC<ServicesSectionProps> = ({ 
+  mainCategoryName = "Home Services" 
+}) => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
-  const [products, setProducts] = useState<Product[]>([]);
+  const [services, setServices] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch products from backend
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchServices = async () => {
       try {
         const res = await fetch('/api/products');
         const data = await res.json();
 
         if (data.success) {
-          // Filter products by main category
-          const filteredProducts = data.data.filter(
-            (product: Product) => product.mainCategory.toLowerCase().replace(/\s+/g, '-') === categorySlug
+          const filteredServices = data.data.filter(
+            (service: Product) => service.mainCategory === mainCategoryName
           );
-          setProducts(filteredProducts);
+          setServices(filteredServices);
         }
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching services:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProducts();
-  }, [categorySlug]);
+    fetchServices();
+  }, [mainCategoryName]);
 
-  // Group products by subCategory
-  const groupedBySubCategory = products.reduce((acc: { [key: string]: Product[] }, product) => {
-    const subCat = product.subCategory;
+  // Get unique subCategories with their first service for image
+  const uniqueSubCategoriesMap = services.reduce((acc: { [key: string]: Product }, service) => {
+    const subCat = service.subCategory;
     if (!acc[subCat]) {
-      acc[subCat] = [];
+      acc[subCat] = service;
     }
-    acc[subCat].push(product);
     return acc;
   }, {});
 
-  // Get unique subcategories for display
-  const uniqueSubCategories = Object.keys(groupedBySubCategory);
+  const uniqueSubCategories = Object.keys(uniqueSubCategoriesMap);
 
   if (loading) {
     return (
@@ -223,7 +81,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
     );
   }
 
-  if (products.length === 0) {
+  if (services.length === 0) {
     return (
       <Box
         component="section"
@@ -234,8 +92,18 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="h5" color="text.secondary">
-            No services available yet. Add products from the dashboard!
+          <Typography
+            component="h2"
+            sx={{
+              fontWeight: 700,
+              fontSize: { xs: "2rem", md: "2.5rem" },
+              mb: 1,
+            }}
+          >
+            Services
+          </Typography>
+          <Typography variant="h6" color="text.secondary" sx={{ mt: 4 }}>
+            No services available yet for "{mainCategoryName}". Add Service from the dashboard!
           </Typography>
         </Container>
       </Box>
@@ -252,7 +120,6 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
       }}
     >
       <Container maxWidth="lg">
-        {/* Section Title */}
         <Typography
           component="h2"
           sx={{
@@ -273,7 +140,6 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
           Choose from our wide range of services
         </Typography>
 
-        {/* Service Grid - Showing SubCategories */}
         <Box
           sx={{
             display: "flex",
@@ -283,11 +149,13 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
           }}
         >
           {uniqueSubCategories.map((subCategory) => {
-            const firstProduct = groupedBySubCategory[subCategory][0];
-            const productCount = groupedBySubCategory[subCategory].length;
+            const firstService = uniqueSubCategoriesMap[subCategory];
             
-            // Create slug from subcategory name
+            const mainCategorySlug = mainCategoryName.toLowerCase().replace(/\s+/g, '-');
             const subCategorySlug = subCategory.toLowerCase().replace(/\s+/g, '-');
+
+            // ✅ Priority: subCategoryImage > image > fallback CDN
+            const displayImage = firstService.subCategoryImage || firstService.image;
 
             return (
               <Box
@@ -304,7 +172,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
                 }}
               >
                 <Link 
-                  href={`/Home/${categorySlug}/${subCategorySlug}`} 
+                  href={`/Home/${mainCategorySlug}/${subCategorySlug}`} 
                   style={{ textDecoration: "none", width: "100%" }}
                 >
                   <Box
@@ -315,48 +183,22 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
                       gap: 1.5,
                       transition: "transform 0.25s ease, opacity 0.25s ease",
                       cursor: "pointer",
-                      position: "relative",
                       "&:hover": {
                         transform: "translateY(-6px)",
                         opacity: 0.9,
                       },
                     }}
                   >
-                    {/* Badge showing number of products */}
-                    {productCount > 1 && (
-                      <Box
-                        sx={{
-                          position: "absolute",
-                          top: -10,
-                          right: -10,
-                          background: "#667eea",
-                          color: "#fff",
-                          borderRadius: "50%",
-                          width: 28,
-                          height: 28,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: "0.75rem",
-                          fontWeight: 700,
-                          zIndex: 1,
-                        }}
-                      >
-                        {productCount}
-                      </Box>
-                    )}
-
-                    {/* Service Image */}
-                    {firstProduct.image ? (
+                    {/* ✅ Service Image with priority */}
+                    {displayImage ? (
                       <Image
-                        src={firstProduct.image}
+                        src={displayImage}
                         alt={subCategory}
                         width={80}
                         height={80}
                         style={{ objectFit: "contain" }}
                       />
                     ) : (
-                      // Fallback default image based on category
                       <Image
                         src={`https://cdn.mrmahir.com/services/${subCategorySlug}.svg`}
                         alt={subCategory}
@@ -364,13 +206,11 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
                         height={80}
                         style={{ objectFit: "contain" }}
                         onError={(e) => {
-                          // If CDN image fails, use placeholder
                           e.currentTarget.src = "https://via.placeholder.com/80?text=" + subCategory.charAt(0);
                         }}
                       />
                     )}
 
-                    {/* Service Name */}
                     <Typography
                       sx={{
                         mt: 1,
@@ -382,19 +222,6 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ categorySlug = "home-
                     >
                       {subCategory}
                     </Typography>
-
-                    {/* Price Range (optional) */}
-                    {productCount > 0 && (
-                      <Typography
-                        sx={{
-                          fontSize: "0.85rem",
-                          color: "#667eea",
-                          fontWeight: 600,
-                        }}
-                      >
-                        Starting from PKR {Math.min(...groupedBySubCategory[subCategory].map(p => p.discountPrice))}
-                      </Typography>
-                    )}
                   </Box>
                 </Link>
               </Box>

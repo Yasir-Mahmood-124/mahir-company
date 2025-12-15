@@ -11,16 +11,38 @@ import {
 } from '@mui/material';
 import { Star, Add } from '@mui/icons-material';
 import { useAppSelector } from '@/redux/hooks';
-import { selectServiceById } from '@/redux/Data/Serviceslice';
 import OrderFormModal from '@/Components/OrderFormModel';
 
 interface ServiceCardProps {
-  serviceId: number;
+  serviceId: string | number;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
-  const service = useAppSelector((state) => selectServiceById(state, serviceId));
   const [orderModalOpen, setOrderModalOpen] = useState(false);
+
+  // Get service from Redux products store
+  const service = useAppSelector((state) => {
+    const product = state.products.products.find(
+      (p) => p._id === serviceId || p.id === serviceId
+    );
+    
+    // Transform product to service format
+    if (product) {
+      return {
+        id: product._id || product.id || '',
+        title: product.name,
+        image: product.subCategoryImage || product.image || '/placeholder-service.png',
+        priceComment: product.service || product.description?.substring(0, 50) || 'Professional service',
+        appPrice: product.discountPrice,
+        price: product.currentPrice,
+        rating: product.reviews || 4.5,
+        description: product.description,
+        includes: product.includes,
+        notIncludes: product.notIncludes,
+      };
+    }
+    return null;
+  });
 
   if (!service) return null;
 
@@ -39,7 +61,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
   return (
     <>
       <Link 
-        href={`/services/${serviceId}`} 
+        href={`/services/${service.id}`} 
         style={{ textDecoration: 'none', display: 'block', height: '100%' }}
         onClick={handleCardClick}
       >

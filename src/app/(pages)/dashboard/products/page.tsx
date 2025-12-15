@@ -1,11 +1,11 @@
 
-import Orders from '@/views/products/index'
+import Products from '@/views/products/index'
 import { Typography, Paper, Box } from '@mui/material';
 
-export default function OrdersPage() {
+export default function Product() {
   return (
     <Box>
-      <Orders/>
+      <Products></Products>
     </Box>
   );
 }

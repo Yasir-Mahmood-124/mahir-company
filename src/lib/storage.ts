@@ -1,6 +1,5 @@
 import { Product } from '@/types';
 
-// Shared in-memory storage
 class ProductStorage {
   private products: Product[] = [];
 
@@ -34,7 +33,18 @@ class ProductStorage {
     this.products = this.products.filter(p => p.id !== id);
     return this.products.length < initialLength;
   }
+
+  // ✅ NEW - Get products by main category
+  getByMainCategory(mainCategory: string): Product[] {
+    return this.products.filter(p => p.mainCategory === mainCategory);
+  }
+
+  // ✅ NEW - Get products by subcategory
+  getBySubCategory(mainCategory: string, subCategory: string): Product[] {
+    return this.products.filter(
+      p => p.mainCategory === mainCategory && p.subCategory === subCategory
+    );
+  }
 }
 
-// Singleton instance
 export const productStorage = new ProductStorage();

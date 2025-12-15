@@ -1,13 +1,21 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@/redux/store';
+import {
+  fetchProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+  clearError,
+} from '@/redux/slices/productSlice';
 import {
   Box,
   TextField,
   Button,
   Typography,
   Paper,
-  Grid,
   MenuItem,
   Chip,
   IconButton,
@@ -21,31 +29,55 @@ import {
 } from '@mui/material';
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 
-interface Product {
-  id: string;
-  name: string;
-  currentPrice: number;
-  discountPrice: number;
-  mainCategory: string;
-  subCategory: string;
-  service: string;
-  description: string;
-  reviews: number;
-  includes: string[];
-  notIncludes: string[];
-  image?: string;
-}
-
 interface MainCategory {
   id: string;
   slug: string;
   name: string;
 }
 
+const subcategoriesByMainCategory: { [key: string]: string[] } = {
+  "Home Services": [
+    "AC Services",
+    "Plumber",
+    "Electrician",
+    "Handyman",
+    "Carpenter",
+    "Painter",
+    "Home Appliances",
+    "Geyser",
+    "Pest Control",
+    "Home Inspection"
+  ],
+  "Cleaning Services": [
+    "Deep Cleaning",
+    "Regular Cleaning",
+    "Carpet Cleaning",
+    "Disinfection"
+  ],
+  "Personal Care": [
+    "Salon Services",
+    "Spa Services",
+    "Bridal Services"
+  ],
+  "Solar Installation Services": [
+    "Solar Installation",
+    "Solar Maintenance"
+  ],
+  "Home Inspection": [
+    "Pre-Purchase Inspection",
+    "Structural Inspection"
+  ],
+  "Maintained by UstadonCall": [
+    "MBM Service 1",
+    "MBM Service 2"
+  ]
+};
+
 const ProductDashboard = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const { products, loading, error } = useSelector((state: RootState) => state.products);
+  
   const [mainCategories, setMainCategories] = useState<MainCategory[]>([]);
-  const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState({ open: false, message: '', type: 'success' as 'success' | 'error' });
   
   const [formData, setFormData] = useState({
@@ -58,6 +90,7 @@ const ProductDashboard = () => {
     description: '',
     reviews: 0,
     image: '',
+    subCategoryImage: '',
   });
   
   const [includes, setIncludes] = useState<string[]>([]);
@@ -65,12 +98,27 @@ const ProductDashboard = () => {
   const [includeInput, setIncludeInput] = useState('');
   const [notIncludeInput, setNotIncludeInput] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [imageUploadMode, setImageUploadMode] = useState<'url' | 'upload'>('url');
+  const [imagePreview, setImagePreview] = useState<string>('');
+  const [availableSubCategories, setAvailableSubCategories] = useState<string[]>([]);
+  const [subCategoryImageUploadMode, setSubCategoryImageUploadMode] = useState<'url' | 'upload'>('url');
+  const [subCategoryImagePreview, setSubCategoryImagePreview] = useState<string>('');
 
-  // Fetch main categories
   useEffect(() => {
     fetchMainCategories();
-    fetchProducts();
-  }, []);
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (error) {
+      setNotification({
+        open: true,
+        message: error,
+        type: 'error'
+      });
+      dispatch(clearError());
+    }
+  }, [error, dispatch]);
 
   const fetchMainCategories = async () => {
     try {
@@ -81,18 +129,6 @@ const ProductDashboard = () => {
       }
     } catch (error) {
       console.error('Error fetching categories:', error);
-    }
-  };
-
-  const fetchProducts = async () => {
-    try {
-      const res = await fetch('/api/products');
-      const data = await res.json();
-      if (data.success) {
-        setProducts(data.data);
-      }
-    } catch (error) {
-      console.error('Error fetching products:', error);
     }
   };
 
@@ -118,9 +154,95 @@ const ProductDashboard = () => {
     setNotIncludes(notIncludes.filter((_, i) => i !== index));
   };
 
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        setNotification({
+          open: true,
+          message: 'Image size should be less than 5MB',
+          type: 'error'
+        });
+        return;
+      }
+
+      if (!file.type.startsWith('image/')) {
+        setNotification({
+          open: true,
+          message: 'Please upload an image file',
+          type: 'error'
+        });
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setFormData({ ...formData, image: base64String });
+        setImagePreview(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageUrlChange = (url: string) => {
+    setFormData({ ...formData, image: url });
+    setImagePreview(url);
+  };
+
+  const clearImage = () => {
+    setFormData({ ...formData, image: '' });
+    setImagePreview('');
+  };
+
+  const handleSubCategoryImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        setNotification({
+          open: true,
+          message: 'Image size should be less than 5MB',
+          type: 'error'
+        });
+        return;
+      }
+
+      if (!file.type.startsWith('image/')) {
+        setNotification({
+          open: true,
+          message: 'Please upload an image file',
+          type: 'error'
+        });
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setFormData({ ...formData, subCategoryImage: base64String });
+        setSubCategoryImagePreview(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubCategoryImageUrlChange = (url: string) => {
+    setFormData({ ...formData, subCategoryImage: url });
+    setSubCategoryImagePreview(url);
+  };
+
+  const clearSubCategoryImage = () => {
+    setFormData({ ...formData, subCategoryImage: '' });
+    setSubCategoryImagePreview('');
+  };
+
+  const handleMainCategoryChange = (categoryName: string) => {
+    setFormData({ ...formData, mainCategory: categoryName, subCategory: '' });
+    setAvailableSubCategories(subcategoriesByMainCategory[categoryName] || []);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
 
     const productData = {
       name: formData.name,
@@ -134,51 +256,32 @@ const ProductDashboard = () => {
       includes: includes,
       notIncludes: notIncludes,
       image: formData.image,
+      subCategoryImage: formData.subCategoryImage,
     };
 
     try {
-      let res;
       if (editingId) {
-        // Update existing product
-        res = await fetch(`/api/products/${editingId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(productData),
-        });
-      } else {
-        // Create new product
-        res = await fetch('/api/products', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(productData),
-        });
-      }
-
-      const data = await res.json();
-      
-      if (data.success) {
+        await dispatch(updateProduct({ id: editingId, updates: productData })).unwrap();
         setNotification({
           open: true,
-          message: editingId ? 'Product updated successfully!' : 'Product added successfully!',
+          message: 'Product updated successfully!',
           type: 'success'
         });
-        
-        // Refresh products list
-        fetchProducts();
-        
-        // Reset form
-        resetForm();
       } else {
-        throw new Error(data.error || 'Failed to save product');
+        await dispatch(createProduct(productData)).unwrap();
+        setNotification({
+          open: true,
+          message: 'Product added successfully!',
+          type: 'success'
+        });
       }
-    } catch (error) {
+      resetForm();
+    } catch (error: any) {
       setNotification({
         open: true,
-        message: error instanceof Error ? error.message : 'Failed to save product',
+        message: error || 'Failed to save product',
         type: 'error'
       });
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -193,13 +296,19 @@ const ProductDashboard = () => {
       description: '',
       reviews: 0,
       image: '',
+      subCategoryImage: '',
     });
     setIncludes([]);
     setNotIncludes([]);
     setEditingId(null);
+    setImagePreview('');
+    setImageUploadMode('url');
+    setSubCategoryImagePreview('');
+    setSubCategoryImageUploadMode('url');
+    setAvailableSubCategories([]);
   };
 
-  const editProduct = (product: Product) => {
+  const editProductHandler = (product: any) => {
     setFormData({
       name: product.name,
       currentPrice: product.currentPrice.toString(),
@@ -210,37 +319,32 @@ const ProductDashboard = () => {
       description: product.description,
       reviews: product.reviews,
       image: product.image || '',
+      subCategoryImage: product.subCategoryImage || '',
     });
     setIncludes(product.includes);
     setNotIncludes(product.notIncludes);
-    setEditingId(product.id);
+    setEditingId(product._id || product.id);
+    setImagePreview(product.image || '');
+    setSubCategoryImagePreview(product.subCategoryImage || '');
+    setAvailableSubCategories(subcategoriesByMainCategory[product.mainCategory] || []);
     
-    // Scroll to form
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const deleteProduct = async (id: string) => {
+  const deleteProductHandler = async (id: string) => {
     if (!confirm('Are you sure you want to delete this product?')) return;
 
     try {
-      const res = await fetch(`/api/products/${id}`, {
-        method: 'DELETE',
-      });
-      
-      const data = await res.json();
-      
-      if (data.success) {
-        setNotification({
-          open: true,
-          message: 'Product deleted successfully!',
-          type: 'success'
-        });
-        fetchProducts();
-      }
-    } catch (error) {
+      await dispatch(deleteProduct(id)).unwrap();
       setNotification({
         open: true,
-        message: 'Failed to delete product',
+        message: 'Product deleted successfully!',
+        type: 'success'
+      });
+    } catch (error: any) {
+      setNotification({
+        open: true,
+        message: error || 'Failed to delete product',
         type: 'error'
       });
     }
@@ -249,16 +353,27 @@ const ProductDashboard = () => {
   return (
     <Box sx={{ p: 4, maxWidth: 1400, mx: 'auto', bgcolor: '#f5f5f5', minHeight: '100vh' }}>
       <Typography variant="h3" gutterBottom sx={{ mb: 4, fontWeight: 700, color: '#1976d2' }}>
-        Product Management Dashboard
+        Product Dashboard
       </Typography>
 
-      <Grid container spacing={4}>
+      {/* Main Container */}
+      <div style={{ 
+        display: 'flex', 
+        flexWrap: 'wrap', 
+        gap: '32px',
+        alignItems: 'flex-start'
+      }}>
+        
         {/* Form Section */}
-        <Grid item xs={12} md={6}>
+        <div style={{ 
+          flex: '1 1 500px',
+          minWidth: '300px',
+          maxWidth: '100%'
+        }}>
           <Paper elevation={3} sx={{ p: 4, position: 'sticky', top: 20 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
               <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                {editingId ? 'Edit Product' : 'Add New Product'}
+                {editingId ? 'Edit Product' : 'Add New Service'}
               </Typography>
               {editingId && (
                 <Button 
@@ -272,102 +387,276 @@ const ProductDashboard = () => {
             </Box>
             
             <form onSubmit={handleSubmit}>
-              <Grid container spacing={3}>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Product Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                  />
-                </Grid>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                
+                <TextField
+                  fullWidth
+                  label="Service Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                />
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Current Price (PKR)"
-                    type="number"
-                    value={formData.currentPrice}
-                    onChange={(e) => setFormData({ ...formData, currentPrice: e.target.value })}
-                    required
-                  />
-                </Grid>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+                  <div style={{ flex: '1 1 200px' }}>
+                    <TextField
+                      fullWidth
+                      label="Current Price (PKR)"
+                      type="number"
+                      value={formData.currentPrice}
+                      onChange={(e) => setFormData({ ...formData, currentPrice: e.target.value })}
+                      required
+                    />
+                  </div>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Discount Price (PKR)"
-                    type="number"
-                    value={formData.discountPrice}
-                    onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
-                    required
-                  />
-                </Grid>
+                  <div style={{ flex: '1 1 200px' }}>
+                    <TextField
+                      fullWidth
+                      label="Discount Price (PKR)"
+                      type="number"
+                      value={formData.discountPrice}
+                      onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
+                      required
+                    />
+                  </div>
+                </div>
 
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    select
-                    label="Main Category"
-                    value={formData.mainCategory}
-                    onChange={(e) => setFormData({ ...formData, mainCategory: e.target.value })}
-                    required
-                  >
-                    {mainCategories.map((cat) => (
-                      <MenuItem key={cat.id} value={cat.name}>
-                        {cat.name}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </Grid>
+                <TextField
+                  fullWidth
+                  select
+                  label="Main Category"
+                  value={formData.mainCategory}
+                  onChange={(e) => handleMainCategoryChange(e.target.value)}
+                  required
+                >
+                  {mainCategories.map((cat) => (
+                    <MenuItem key={cat.id} value={cat.name}>
+                      {cat.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Sub Category"
-                    value={formData.subCategory}
-                    onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
-                    placeholder="e.g., AC Services"
-                    required
-                  />
-                </Grid>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+                  <div style={{ flex: '1 1 200px' }}>
+                    <TextField
+                      fullWidth
+                      select
+                      label="Sub Category"
+                      value={formData.subCategory}
+                      onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+                      disabled={!formData.mainCategory}
+                      required
+                      helperText={!formData.mainCategory ? "Select main category first" : ""}
+                    >
+                      {availableSubCategories.map((subCat) => (
+                        <MenuItem key={subCat} value={subCat}>
+                          {subCat}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Service"
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    placeholder="e.g., Installation"
-                    required
-                  />
-                </Grid>
+                  <div style={{ flex: '1 1 200px' }}>
+                    <TextField
+                      fullWidth
+                      label="Service"
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      placeholder="e.g., Installation"
+                      required
+                    />
+                  </div>
+                </div>
 
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Image URL"
-                    value={formData.image}
-                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                    placeholder="https://cdn.example.com/image.svg"
-                    helperText="Paste image URL from CDN or image hosting"
-                  />
-                </Grid>
+                <Box sx={{ mb: 2 }}>
+                  <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600 }}>
+                    Service Image
+                  </Typography>
+                  
+                  <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+                    <Button
+                      variant={imageUploadMode === 'url' ? 'contained' : 'outlined'}
+                      size="small"
+                      onClick={() => setImageUploadMode('url')}
+                    >
+                      Image URL
+                    </Button>
+                    <Button
+                      variant={imageUploadMode === 'upload' ? 'contained' : 'outlined'}
+                      size="small"
+                      onClick={() => setImageUploadMode('upload')}
+                    >
+                      Upload Image
+                    </Button>
+                  </Box>
 
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    multiline
-                    rows={4}
-                    label="Description"
-                    value={formData.description}
-                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    required
-                  />
-                </Grid>
+                  {imageUploadMode === 'url' && (
+                    <TextField
+                      fullWidth
+                      label="Image URL"
+                      value={formData.image.startsWith('data:') ? '' : formData.image}
+                      onChange={(e) => handleImageUrlChange(e.target.value)}
+                      placeholder="https://cdn.example.com/image.svg"
+                      helperText="Paste image URL from CDN or image hosting"
+                    />
+                  )}
 
-                <Grid item xs={12}>
+                  {imageUploadMode === 'upload' && (
+                    <Box>
+                      <Button
+                        variant="outlined"
+                        component="label"
+                        fullWidth
+                        sx={{ py: 2 }}
+                      >
+                        Choose Image File
+                        <input
+                          type="file"
+                          hidden
+                          accept="image/*"
+                          onChange={handleImageUpload}
+                        />
+                      </Button>
+                      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+                        Supports: JPG, PNG, SVG, WEBP (Max 5MB)
+                      </Typography>
+                    </Box>
+                  )}
+
+                  {imagePreview && (
+                    <Box sx={{ mt: 2, position: 'relative', display: 'inline-block' }}>
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        style={{
+                          width: 120,
+                          height: 120,
+                          objectFit: 'contain',
+                          border: '2px solid #ddd',
+                          borderRadius: 8,
+                          padding: 8,
+                          background: '#f5f5f5'
+                        }}
+                      />
+                      <IconButton
+                        size="small"
+                        onClick={clearImage}
+                        sx={{
+                          position: 'absolute',
+                          top: -8,
+                          right: -8,
+                          bgcolor: 'error.main',
+                          color: 'white',
+                          '&:hover': { bgcolor: 'error.dark' }
+                        }}
+                      >
+                        <DeleteIcon fontSize="small" />
+                      </IconButton>
+                    </Box>
+                  )}
+                </Box>
+
+                <Divider sx={{ my: 2 }} />
+                
+                <Box sx={{ mb: 2 }}>
+                  <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600 }}>
+                    SubCategory Image (For Service Cards)
+                  </Typography>
+                  
+                  <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+                    <Button
+                      variant={subCategoryImageUploadMode === 'url' ? 'contained' : 'outlined'}
+                      size="small"
+                      onClick={() => setSubCategoryImageUploadMode('url')}
+                    >
+                      Image URL
+                    </Button>
+                    <Button
+                      variant={subCategoryImageUploadMode === 'upload' ? 'contained' : 'outlined'}
+                      size="small"
+                      onClick={() => setSubCategoryImageUploadMode('upload')}
+                    >
+                      Upload Image
+                    </Button>
+                  </Box>
+
+                  {subCategoryImageUploadMode === 'url' && (
+                    <TextField
+                      fullWidth
+                      label="SubCategory Image URL"
+                      value={formData.subCategoryImage.startsWith('data:') ? '' : formData.subCategoryImage}
+                      onChange={(e) => handleSubCategoryImageUrlChange(e.target.value)}
+                      placeholder="https://cdn.mrmahir.com/services/ac.svg"
+                      helperText="This image will show in service cards"
+                    />
+                  )}
+
+                  {subCategoryImageUploadMode === 'upload' && (
+                    <Box>
+                      <Button
+                        variant="outlined"
+                        component="label"
+                        fullWidth
+                        sx={{ py: 2 }}
+                      >
+                        Choose SubCategory Image
+                        <input
+                          type="file"
+                          hidden
+                          accept="image/*"
+                          onChange={handleSubCategoryImageUpload}
+                        />
+                      </Button>
+                      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+                        Supports: JPG, PNG, SVG, WEBP (Max 5MB)
+                      </Typography>
+                    </Box>
+                  )}
+
+                  {subCategoryImagePreview && (
+                    <Box sx={{ mt: 2, position: 'relative', display: 'inline-block' }}>
+                      <img
+                        src={subCategoryImagePreview}
+                        alt="SubCategory Preview"
+                        style={{
+                          width: 120,
+                          height: 120,
+                          objectFit: 'contain',
+                          border: '2px solid #ddd',
+                          borderRadius: 8,
+                          padding: 8,
+                          background: '#f5f5f5'
+                        }}
+                      />
+                      <IconButton
+                        size="small"
+                        onClick={clearSubCategoryImage}
+                        sx={{
+                          position: 'absolute',
+                          top: -8,
+                          right: -8,
+                          bgcolor: 'error.main',
+                          color: 'white',
+                          '&:hover': { bgcolor: 'error.dark' }
+                        }}
+                      >
+                        <DeleteIcon fontSize="small" />
+                      </IconButton>
+                    </Box>
+                  )}
+                </Box>
+
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={4}
+                  label="Description"
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  required
+                />
+
+                <Box>
                   <Typography variant="subtitle2" sx={{ mb: 1 }}>
                     Reviews Rating
                   </Typography>
@@ -377,10 +666,11 @@ const ProductDashboard = () => {
                     size="large"
                     precision={0.5}
                   />
-                </Grid>
+                </Box>
 
-                <Grid item xs={12}>
-                  <Divider sx={{ my: 2 }} />
+                <Divider sx={{ my: 2 }} />
+                
+                <Box>
                   <Typography variant="h6" gutterBottom>
                     Includes
                   </Typography>
@@ -407,9 +697,9 @@ const ProductDashboard = () => {
                       />
                     ))}
                   </Box>
-                </Grid>
+                </Box>
 
-                <Grid item xs={12}>
+                <Box>
                   <Typography variant="h6" gutterBottom>
                     Not Includes
                   </Typography>
@@ -436,174 +726,212 @@ const ProductDashboard = () => {
                       />
                     ))}
                   </Box>
-                </Grid>
+                </Box>
 
-                <Grid item xs={12}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    size="large"
-                    fullWidth
-                    disabled={loading}
-                    sx={{ mt: 2, py: 1.5 }}
-                  >
-                    {loading ? (
-                      <CircularProgress size={24} color="inherit" />
-                    ) : editingId ? (
-                      'Update Product'
-                    ) : (
-                      'Add Product'
-                    )}
-                  </Button>
-                </Grid>
-              </Grid>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  size="large"
+                  fullWidth
+                  disabled={loading}
+                  sx={{ mt: 2, py: 1.5 }}
+                >
+                  {loading ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : editingId ? (
+                    'Update Product'
+                  ) : (
+                    'Add Product'
+                  )}
+                </Button>
+              </div>
             </form>
           </Paper>
-        </Grid>
+        </div>
 
         {/* Products List Section */}
-        <Grid item xs={12} md={6}>
+        <div style={{ 
+          flex: '1 1 500px',
+          minWidth: '300px',
+          maxWidth: '100%'
+        }}>
           <Paper elevation={3} sx={{ p: 4 }}>
             <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: 600 }}>
               Products List ({products.length})
             </Typography>
             
             <Box sx={{ maxHeight: '80vh', overflowY: 'auto' }}>
-              {products.length === 0 ? (
+              {loading && products.length === 0 ? (
+                <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+                  <CircularProgress />
+                </Box>
+              ) : products.length === 0 ? (
                 <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
                   No products added yet. Start by adding your first product!
                 </Typography>
               ) : (
-                <Grid container spacing={2}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   {products.map((product) => (
-                    <Grid item xs={12} key={product.id}>
-                      <Card variant="outlined" sx={{ position: 'relative' }}>
-                        <CardContent>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', mb: 2 }}>
-                            <Typography variant="h6" sx={{ fontWeight: 600, flex: 1 }}>
-                              {product.name}
-                            </Typography>
-                            <Box sx={{ display: 'flex', gap: 1 }}>
-                              <IconButton
-                                color="primary"
-                                size="small"
-                                onClick={() => editProduct(product)}
-                              >
-                                <EditIcon />
-                              </IconButton>
-                              <IconButton
-                                color="error"
-                                size="small"
-                                onClick={() => deleteProduct(product.id)}
-                              >
-                                <DeleteIcon />
-                              </IconButton>
-                            </Box>
-                          </Box>
-
-                          <Box sx={{ mb: 2 }}>
-                            <Typography variant="body2" color="text.secondary">
-                              {product.mainCategory} → {product.subCategory} → {product.service}
-                            </Typography>
-                          </Box>
-
-                          <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-                            <Box>
-                              <Typography variant="caption" color="text.secondary">
-                                Current Price
-                              </Typography>
-                              <Typography variant="h6" color="error" sx={{ textDecoration: 'line-through' }}>
-                                PKR {product.currentPrice}
-                              </Typography>
-                            </Box>
-                            <Box>
-                              <Typography variant="caption" color="text.secondary">
-                                Discount Price
-                              </Typography>
-                              <Typography variant="h6" color="success.main">
-                                PKR {product.discountPrice}
-                              </Typography>
-                            </Box>
-                          </Box>
-
-                          <Box sx={{ mb: 2 }}>
-                            <Rating value={product.reviews} readOnly size="small" />
-                          </Box>
-
-                          <Typography variant="body2" sx={{ mb: 2 }}>
-                            {product.description}
+                    <Card key={product._id || product.id} variant="outlined">
+                      <CardContent>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', mb: 2 }}>
+                          <Typography variant="h6" sx={{ fontWeight: 600, flex: 1 }}>
+                            {product.name}
                           </Typography>
+                          <Box sx={{ display: 'flex', gap: 1 }}>
+                            <IconButton
+                              color="primary"
+                              size="small"
+                              onClick={() => editProductHandler(product)}
+                            >
+                              <EditIcon />
+                            </IconButton>
+                            <IconButton
+                              color="error"
+                              size="small"
+                              onClick={() => deleteProductHandler(product._id || product.id!)}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </Box>
+                        </Box>
 
-                          {product.image && (
-                            <Box sx={{ mb: 2 }}>
-                              <img 
-                                src={product.image} 
-                                alt={product.name} 
-                                style={{ 
-                                  width: 80, 
-                                  height: 80, 
-                                  objectFit: 'contain',
-                                  border: '1px solid #ddd',
-                                  borderRadius: 8,
-                                  padding: 8
-                                }} 
-                              />
+                        <Box sx={{ mb: 2 }}>
+                          <Typography variant="body2" color="text.secondary">
+                            {product.mainCategory} → {product.subCategory} → {product.service}
+                          </Typography>
+                        </Box>
+
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
+                          <Box>
+                            <Typography variant="caption" color="text.secondary">
+                              Current Price
+                            </Typography>
+                            <Typography variant="h6" color="error" sx={{ textDecoration: 'line-through' }}>
+                              PKR {product.currentPrice}
+                            </Typography>
+                          </Box>
+                          <Box>
+                            <Typography variant="caption" color="text.secondary">
+                              Discount Price
+                            </Typography>
+                            <Typography variant="h6" color="success.main">
+                              PKR {product.discountPrice}
+                            </Typography>
+                          </Box>
+                        </div>
+
+                        <Box sx={{ mb: 2 }}>
+                          <Rating value={product.reviews} readOnly size="small" />
+                        </Box>
+
+                        <Typography variant="body2" sx={{ mb: 2 }}>
+                          {product.description}
+                        </Typography>
+
+                        {product.image && (
+                          <Box sx={{ mb: 2 }}>
+                            <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', mb: 1 }}>
+                              Service Image:
+                            </Typography>
+                            <img 
+                              src={product.image} 
+                              alt={product.name} 
+                              style={{ 
+                                width: 80, 
+                                height: 80, 
+                                objectFit: 'contain',
+                                border: '1px solid #ddd',
+                                borderRadius: 8,
+                                padding: 8
+                              }} 
+                            />
+                          </Box>
+                        )}
+
+                        {product.subCategoryImage && (
+                          <Box sx={{ mb: 2 }}>
+                            <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', mb: 1 }}>
+                              SubCategory Image (Service Card):
+                            </Typography>
+                            <img 
+                              src={product.subCategoryImage} 
+                              alt={product.subCategory} 
+                              style={{ 
+                                width: 80, 
+                                height: 80, 
+                                objectFit: 'contain',
+                                border: '1px solid #4CAF50',
+                                borderRadius: 8,
+                                padding: 8,
+                                background: '#f1f8f4'
+                              }} 
+                            />
+                          </Box>
+                        )}
+
+                        {product.includes.length > 0 && (
+                          <Box sx={{ mb: 1 }}>
+                            <Typography variant="caption" sx={{ fontWeight: 600 }}>
+                              Includes:
+                            </Typography>
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 0.5 }}>
+                              {product.includes.map((item, idx) => (
+                                <Chip key={idx} label={item} size="small" color="success" />
+                              ))}
                             </Box>
-                          )}
-
-                          {product.includes.length > 0 && (
-                            <Box sx={{ mb: 1 }}>
-                              <Typography variant="caption" sx={{ fontWeight: 600 }}>
-                                Includes:
-                              </Typography>
-                              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 0.5 }}>
-                                {product.includes.map((item, idx) => (
-                                  <Chip key={idx} label={item} size="small" color="success" />
-                                ))}
-                              </Box>
-                            </Box>
-                          )}
-
+                          </Box>
+                        )}
                           {product.notIncludes.length > 0 && (
-                            <Box>
-                              <Typography variant="caption" sx={{ fontWeight: 600 }}>
-                                Not Includes:
-                              </Typography>
-                              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 0.5 }}>
-                                {product.notIncludes.map((item, idx) => (
-                                  <Chip key={idx} label={item} size="small" color="error" />
-                                ))}
-                              </Box>
-                            </Box>
-                          )}
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  ))}
-                </Grid>
-              )}
-            </Box>
-          </Paper>
-        </Grid>
-      </Grid>
-
-      {/* Notification Snackbar */}
-      <Snackbar
-        open={notification.open}
-        autoHideDuration={4000}
-        onClose={() => setNotification({ ...notification, open: false })}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        <Alert 
-          onClose={() => setNotification({ ...notification, open: false })} 
-          severity={notification.type}
-          sx={{ width: '100%' }}
-        >
-          {notification.message}
-        </Alert>
-      </Snackbar>
+  <Box sx={{ mb: 1 }}>
+    <Typography variant="caption" sx={{ fontWeight: 600 }}>
+      Not Includes:
+    </Typography>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 0.5 }}>
+      {product.notIncludes.map((item, idx) => (
+        <Chip
+          key={idx}
+          label={item}
+          size="small"
+          color="error"
+        />
+      ))}
     </Box>
-  );
+  </Box>
+)}
+                       </CardContent>
+                     </Card>
+                   ))}
+                 </div>
+               )}
+             </Box>
+           </Paper>
+         </div>
+       </div>
+
+       {/* Notifications */}
+       <Snackbar
+         open={notification.open}
+         autoHideDuration={4000}
+         onClose={() =>
+           setNotification({ ...notification, open: false })
+         }
+         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+       >
+         <Alert
+           severity={notification.type}
+           variant="filled"
+           onClose={() =>
+             setNotification({ ...notification, open: false })
+           }
+           sx={{ width: '100%' }}
+         >
+           {notification.message}
+         </Alert>
+       </Snackbar>
+     </Box>
+   );
 };
 
 export default ProductDashboard;
+                            
