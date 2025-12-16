@@ -1,26 +1,75 @@
-
-// ============================================
-// ElectrionServiceCard.tsx
-// ============================================
 'use client';
 
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
 import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchProducts } from '@/redux/slices/productSlice';
 
-interface ElectrionServicesSectionProps {
-  serviceIds?: number[];
+interface ACServicesSectionProps {
+  subCategory?: string;
   title?: string;
   subtitle?: string;
+  maxItems?: number;
 }
 
-const ElectrionServicesSection: React.FC<ElectrionServicesSectionProps> = ({ 
-  serviceIds,
-  title = "Electrician Services",
-  subtitle = "Professional Electrician services at your home"
+const ACServicesSection: React.FC<ACServicesSectionProps> = ({ 
+  subCategory = "Electricon",
+  title = "AC Services",
+  subtitle = "Professional Electrition services at your doorstep",
+  maxItems
 }) => {
-  const defaultElectrionServiceIds = [23, 24, 25];
-  const displayServiceIds = serviceIds || defaultElectrionServiceIds;
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
+
+  useEffect(() => {
+    // Fetch products from Redux if not already loaded
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  // Filter products by subCategory
+  const filteredServices = products.filter(
+    (product) => product.subCategory === subCategory
+  );
+
+  // Limit items if maxItems is specified
+  const displayServices = maxItems 
+    ? filteredServices.slice(0, maxItems) 
+    : filteredServices;
+
+  if (loading && products.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <CircularProgress size={60} />
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="error">{error}</Alert>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (displayServices.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="info">No {subCategory} available at the moment.</Alert>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -49,15 +98,15 @@ const ElectrionServicesSection: React.FC<ElectrionServicesSectionProps> = ({
             gap: 3,
           }}
         >
-          {displayServiceIds.map((serviceId) => (
+          {displayServices.map((service) => (
             <Box 
-              key={serviceId}
+              key={service._id || service.id}
               sx={{
                 width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                 minWidth: '280px',
               }}
             >
-              <ServiceCard serviceId={serviceId} />
+              <ServiceCard serviceId={service._id || service.id || ''} />
             </Box>
           ))}
         </Box>
@@ -66,4 +115,4 @@ const ElectrionServicesSection: React.FC<ElectrionServicesSectionProps> = ({
   );
 };
 
-export default ElectrionServicesSection;
+export default ACServicesSection;

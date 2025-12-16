@@ -1,26 +1,75 @@
-
-// ============================================
-// PlumberServiceCard.tsx
-// ============================================
 'use client';
 
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
 import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchProducts } from '@/redux/slices/productSlice';
 
-interface PlumberProps {
-  serviceIds?: number[];
+interface ACServicesSectionProps {
+  subCategory?: string;
   title?: string;
   subtitle?: string;
+  maxItems?: number;
 }
 
-const Plumber: React.FC<PlumberProps> = ({ 
-  serviceIds,
+const ACServicesSection: React.FC<ACServicesSectionProps> = ({ 
+  subCategory = "Plumber",
   title = "Plumber Services",
-  subtitle = "Professional Plumber Services for your home"
+  subtitle = "Professional Plumber services at your Home",
+  maxItems
 }) => {
-  const defaultServiceIds = [73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 110, 111, 112, 116, 120, 128, 144];
-  const displayServiceIds = serviceIds || defaultServiceIds;
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
+
+  useEffect(() => {
+    // Fetch products from Redux if not already loaded
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  // Filter products by subCategory
+  const filteredServices = products.filter(
+    (product) => product.subCategory === subCategory
+  );
+
+  // Limit items if maxItems is specified
+  const displayServices = maxItems 
+    ? filteredServices.slice(0, maxItems) 
+    : filteredServices;
+
+  if (loading && products.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <CircularProgress size={60} />
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="error">{error}</Alert>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (displayServices.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="info">No {subCategory} available at the moment.</Alert>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -49,15 +98,15 @@ const Plumber: React.FC<PlumberProps> = ({
             gap: 3,
           }}
         >
-          {displayServiceIds.map((serviceId) => (
+          {displayServices.map((service) => (
             <Box 
-              key={serviceId}
+              key={service._id || service.id}
               sx={{
                 width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                 minWidth: '280px',
               }}
             >
-              <ServiceCard serviceId={serviceId} />
+              <ServiceCard serviceId={service._id || service.id || ''} />
             </Box>
           ))}
         </Box>
@@ -66,4 +115,4 @@ const Plumber: React.FC<PlumberProps> = ({
   );
 };
 
-export default Plumber;
+export default ACServicesSection;

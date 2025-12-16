@@ -1,33 +1,75 @@
-// ============================================
-// CarpanterServiceCard.tsx
-// ============================================
 'use client';
 
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
 import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchProducts } from '@/redux/slices/productSlice';
 
 interface ACServicesSectionProps {
-  serviceIds?: number[];
+  subCategory?: string;
   title?: string;
   subtitle?: string;
+  maxItems?: number;
 }
 
-const CarpenterService: React.FC<ACServicesSectionProps> = ({ 
-  serviceIds,
-  title = "Carpenter Services",
-  subtitle = "Professional Carpenter Service"
+const ACServicesSection: React.FC<ACServicesSectionProps> = ({ 
+  subCategory = "Carpanter",
+  title = "Carpanter Services",
+  subtitle = "Professional Carpanter services at your doorstep",
+  maxItems
 }) => {
-  const defaultACServiceIds = [164,
-168,
-167,
-177,
-204,
-210,
-236,
-237,
-238];
-  const displayServiceIds = serviceIds || defaultACServiceIds;
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
+
+  useEffect(() => {
+    // Fetch products from Redux if not already loaded
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  // Filter products by subCategory
+  const filteredServices = products.filter(
+    (product) => product.subCategory === subCategory
+  );
+
+  // Limit items if maxItems is specified
+  const displayServices = maxItems 
+    ? filteredServices.slice(0, maxItems) 
+    : filteredServices;
+
+  if (loading && products.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <CircularProgress size={60} />
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="error">{error}</Alert>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (displayServices.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="info">No {subCategory} available at the moment.</Alert>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -56,15 +98,15 @@ const CarpenterService: React.FC<ACServicesSectionProps> = ({
             gap: 3,
           }}
         >
-          {displayServiceIds.map((serviceId) => (
+          {displayServices.map((service) => (
             <Box 
-              key={serviceId}
+              key={service._id || service.id}
               sx={{
                 width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                 minWidth: '280px',
               }}
             >
-              <ServiceCard serviceId={serviceId} />
+              <ServiceCard serviceId={service._id || service.id || ''} />
             </Box>
           ))}
         </Box>
@@ -73,4 +115,4 @@ const CarpenterService: React.FC<ACServicesSectionProps> = ({
   );
 };
 
-export default CarpenterService;
+export default ACServicesSection;
