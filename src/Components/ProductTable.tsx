@@ -266,7 +266,7 @@ const ProductManager: React.FC = () => {
   return (
     <Box sx={{ p: 4, maxWidth: 1400, mx: 'auto', bgcolor: '#f5f5f5', minHeight: '100vh' }}>
       <Typography variant="h3" gutterBottom sx={{ mb: 4, fontWeight: 700, color: '#1976d2' }}>
-MANAGE YOUR SERVICE
+MANAGE YOUR SERVICES
       </Typography>
 
       {showForm && (
