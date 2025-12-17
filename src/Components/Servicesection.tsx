@@ -11,9 +11,11 @@ import {
   useMediaQuery,
   CircularProgress,
 } from "@mui/material";
+import { getSubCategoryImage, getSubCategorySlug } from "@/lib/subcategoryConfig";
 
 type Product = {
-  id: string;
+  _id?: string;
+  id?: string;
   name: string;
   currentPrice: number;
   discountPrice: number;
@@ -25,7 +27,6 @@ type Product = {
   includes: string[];
   notIncludes: string[];
   image?: string;
-  subCategoryImage?: string; // ✅ NEW - For service cards
 };
 
 type ServicesSectionProps = {
@@ -62,7 +63,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
     fetchServices();
   }, [mainCategoryName]);
 
-  // Get unique subCategories with their first service for image
+  // ✅ Get unique subCategories
   const uniqueSubCategoriesMap = services.reduce((acc: { [key: string]: Product }, service) => {
     const subCat = service.subCategory;
     if (!acc[subCat]) {
@@ -152,10 +153,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
             const firstService = uniqueSubCategoriesMap[subCategory];
             
             const mainCategorySlug = mainCategoryName.toLowerCase().replace(/\s+/g, '-');
-            const subCategorySlug = subCategory.toLowerCase().replace(/\s+/g, '-');
+            const subCategorySlug = getSubCategorySlug(subCategory);
 
-            // ✅ Priority: subCategoryImage > image > fallback CDN
-            const displayImage = firstService.subCategoryImage || firstService.image;
+            // ✅ Get CDN image automatically
+            const cdnImage = getSubCategoryImage(subCategory);
 
             return (
               <Box
@@ -189,27 +190,18 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                       },
                     }}
                   >
-                    {/* ✅ Service Image with priority */}
-                    {displayImage ? (
-                      <Image
-                        src={displayImage}
-                        alt={subCategory}
-                        width={80}
-                        height={80}
-                        style={{ objectFit: "contain" }}
-                      />
-                    ) : (
-                      <Image
-                        src={`https://cdn.mrmahir.com/services/${subCategorySlug}.svg`}
-                        alt={subCategory}
-                        width={80}
-                        height={80}
-                        style={{ objectFit: "contain" }}
-                        onError={(e) => {
-                          e.currentTarget.src = "https://via.placeholder.com/80?text=" + subCategory.charAt(0);
-                        }}
-                      />
-                    )}
+                    {/* ✅ Auto CDN Image */}
+                    <Image
+                      src={cdnImage}
+                      alt={subCategory}
+                      width={80}
+                      height={80}
+                      style={{ objectFit: "contain" }}
+                      onError={(e) => {
+                        // Fallback to placeholder
+                        e.currentTarget.src = "https://via.placeholder.com/80?text=" + subCategory.charAt(0);
+                      }}
+                    />
 
                     <Typography
                       sx={{

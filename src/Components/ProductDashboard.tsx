@@ -20,14 +20,17 @@ import {
   Chip,
   IconButton,
   Divider,
-  Card,
-  CardContent,
   Rating,
   Alert,
   Snackbar,
   CircularProgress,
 } from '@mui/material';
-import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
+import { Add as AddIcon, Delete as DeleteIcon } from '@mui/icons-material';
+import { 
+  getSubCategoriesByMainCategory, 
+  getSubCategoryImage,
+  subcategoriesByMainCategory 
+} from '@/lib/subcategoryConfig';
 
 interface MainCategory {
   id: string;
@@ -35,50 +38,16 @@ interface MainCategory {
   name: string;
 }
 
-const subcategoriesByMainCategory: { [key: string]: string[] } = {
-  "Home Services": [
-    "AC Services",
-    "Plumber",
-    "Electrician",
-    "Handyman",
-    "Carpenter",
-    "Painter",
-    "Home Appliances",
-    "Geyser",
-    "Pest Control",
-    "Home Inspection"
-  ],
-  "Cleaning Services": [
-    "Deep Cleaning",
-    "Regular Cleaning",
-    "Carpet Cleaning",
-    "Disinfection"
-  ],
-  "Personal Care": [
-    "Salon Services",
-    "Spa Services",
-    "Bridal Services"
-  ],
-  "Solar Installation Services": [
-    "Solar Installation",
-    "Solar Maintenance"
-  ],
-  "Home Inspection": [
-    "Pre-Purchase Inspection",
-    "Structural Inspection"
-  ],
-  "Maintained by UstadonCall": [
-    "MBM Service 1",
-    "MBM Service 2"
-  ]
-};
-
 const ProductDashboard = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { products, loading, error } = useSelector((state: RootState) => state.products);
   
   const [mainCategories, setMainCategories] = useState<MainCategory[]>([]);
-  const [notification, setNotification] = useState({ open: false, message: '', type: 'success' as 'success' | 'error' });
+  const [notification, setNotification] = useState({ 
+    open: false, 
+    message: '', 
+    type: 'success' as 'success' | 'error' 
+  });
   
   const [formData, setFormData] = useState({
     name: '',
@@ -90,7 +59,6 @@ const ProductDashboard = () => {
     description: '',
     reviews: 0,
     image: '',
-    subCategoryImage: '',
   });
   
   const [includes, setIncludes] = useState<string[]>([]);
@@ -101,7 +69,8 @@ const ProductDashboard = () => {
   const [imageUploadMode, setImageUploadMode] = useState<'url' | 'upload'>('url');
   const [imagePreview, setImagePreview] = useState<string>('');
   const [availableSubCategories, setAvailableSubCategories] = useState<string[]>([]);
-  const [subCategoryImageUploadMode, setSubCategoryImageUploadMode] = useState<'url' | 'upload'>('url');
+  
+  // ✅ Auto CDN image preview for selected subcategory
   const [subCategoryImagePreview, setSubCategoryImagePreview] = useState<string>('');
 
   useEffect(() => {
@@ -195,50 +164,28 @@ const ProductDashboard = () => {
     setImagePreview('');
   };
 
-  const handleSubCategoryImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        setNotification({
-          open: true,
-          message: 'Image size should be less than 5MB',
-          type: 'error'
-        });
-        return;
-      }
-
-      if (!file.type.startsWith('image/')) {
-        setNotification({
-          open: true,
-          message: 'Please upload an image file',
-          type: 'error'
-        });
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setFormData({ ...formData, subCategoryImage: base64String });
-        setSubCategoryImagePreview(base64String);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleSubCategoryImageUrlChange = (url: string) => {
-    setFormData({ ...formData, subCategoryImage: url });
-    setSubCategoryImagePreview(url);
-  };
-
-  const clearSubCategoryImage = () => {
-    setFormData({ ...formData, subCategoryImage: '' });
+  const handleMainCategoryChange = (categoryName: string) => {
+    setFormData({ 
+      ...formData, 
+      mainCategory: categoryName, 
+      subCategory: '', 
+      service: '' 
+    });
+    setAvailableSubCategories(subcategoriesByMainCategory[categoryName] || []);
     setSubCategoryImagePreview('');
   };
 
-  const handleMainCategoryChange = (categoryName: string) => {
-    setFormData({ ...formData, mainCategory: categoryName, subCategory: '' });
-    setAvailableSubCategories(subcategoriesByMainCategory[categoryName] || []);
+  // ✅ NEW: Handle SubCategory change
+  const handleSubCategoryChange = (subCategoryName: string) => {
+    setFormData({ 
+      ...formData, 
+      subCategory: subCategoryName,
+      service: subCategoryName // ✅ Service Type = SubCategory Name
+    });
+    
+    // ✅ Auto-load CDN image for preview
+    const cdnImage = getSubCategoryImage(subCategoryName);
+    setSubCategoryImagePreview(cdnImage);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -250,13 +197,13 @@ const ProductDashboard = () => {
       discountPrice: parseFloat(formData.discountPrice),
       mainCategory: formData.mainCategory,
       subCategory: formData.subCategory,
-      service: formData.service,
+      service: formData.service, // ✅ This will be same as subCategory
       description: formData.description,
       reviews: formData.reviews,
       includes: includes,
       notIncludes: notIncludes,
       image: formData.image,
-      subCategoryImage: formData.subCategoryImage,
+      // ✅ subCategoryImage removed - will use CDN on frontend
     };
 
     try {
@@ -296,7 +243,6 @@ const ProductDashboard = () => {
       description: '',
       reviews: 0,
       image: '',
-      subCategoryImage: '',
     });
     setIncludes([]);
     setNotIncludes([]);
@@ -304,7 +250,6 @@ const ProductDashboard = () => {
     setImagePreview('');
     setImageUploadMode('url');
     setSubCategoryImagePreview('');
-    setSubCategoryImageUploadMode('url');
     setAvailableSubCategories([]);
   };
 
@@ -319,14 +264,16 @@ const ProductDashboard = () => {
       description: product.description,
       reviews: product.reviews,
       image: product.image || '',
-      subCategoryImage: product.subCategoryImage || '',
     });
     setIncludes(product.includes);
     setNotIncludes(product.notIncludes);
     setEditingId(product._id || product.id);
     setImagePreview(product.image || '');
-    setSubCategoryImagePreview(product.subCategoryImage || '');
     setAvailableSubCategories(subcategoriesByMainCategory[product.mainCategory] || []);
+    
+    // ✅ Load CDN image preview
+    const cdnImage = getSubCategoryImage(product.subCategory);
+    setSubCategoryImagePreview(cdnImage);
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -356,7 +303,6 @@ const ProductDashboard = () => {
         Product Dashboard
       </Typography>
 
-      {/* Main Container */}
       <div style={{ 
         display: 'flex', 
         flexWrap: 'wrap', 
@@ -364,7 +310,6 @@ const ProductDashboard = () => {
         alignItems: 'flex-start'
       }}>
         
-        {/* Form Section */}
         <div style={{ 
           flex: '1 1 500px',
           minWidth: '300px',
@@ -436,41 +381,69 @@ const ProductDashboard = () => {
                   ))}
                 </TextField>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-                  <div style={{ flex: '1 1 200px' }}>
-                    <TextField
-                      fullWidth
-                      select
-                      label="Sub Category"
-                      value={formData.subCategory}
-                      onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
-                      disabled={!formData.mainCategory}
-                      required
-                      helperText={!formData.mainCategory ? "Select main category first" : ""}
-                    >
-                      {availableSubCategories.map((subCat) => (
-                        <MenuItem key={subCat} value={subCat}>
-                          {subCat}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
+                <TextField
+                  fullWidth
+                  select
+                  label="Sub Category"
+                  value={formData.subCategory}
+                  onChange={(e) => handleSubCategoryChange(e.target.value)}
+                  disabled={!formData.mainCategory}
+                  required
+                  helperText={!formData.mainCategory ? "Select main category first" : "Service Type will auto-match"}
+                >
+                  {availableSubCategories.map((subCat) => (
+                    <MenuItem key={subCat} value={subCat}>
+                      {subCat}
+                    </MenuItem>
+                  ))}
+                </TextField>
 
-                  <div style={{ flex: '1 1 200px' }}>
-                    <TextField
-                      fullWidth
-                      label="Service"
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      placeholder="e.g., Installation"
-                      required
-                    />
-                  </div>
-                </div>
+                {/* ✅ Service Type (Auto-filled, read-only) */}
+                <TextField
+                  fullWidth
+                  label="Service Type"
+                  value={formData.service}
+                  disabled
+                  helperText="Auto-filled from SubCategory"
+                  sx={{ 
+                    '& .MuiInputBase-input.Mui-disabled': {
+                      WebkitTextFillColor: '#000',
+                      bgcolor: '#f5f5f5'
+                    }
+                  }}
+                />
+
+                {/* ✅ SubCategory Image Preview (CDN) */}
+                {subCategoryImagePreview && (
+                  <Box sx={{ mb: 2 }}>
+                    <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
+                      SubCategory Image (from CDN - Auto)
+                    </Typography>
+                    <Box sx={{ 
+                      bgcolor: '#f9f9f9', 
+                      p: 2, 
+                      borderRadius: 2,
+                      border: '2px dashed #ddd',
+                      display: 'inline-block'
+                    }}>
+                      <img
+                        src={subCategoryImagePreview}
+                        alt="SubCategory Preview"
+                        style={{
+                          width: 100,
+                          height: 100,
+                          objectFit: 'contain',
+                        }}
+                      />
+                    </Box>
+                  </Box>
+                )}
+
+                <Divider />
 
                 <Box sx={{ mb: 2 }}>
                   <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600 }}>
-                    Service Image
+                    Service Detail Image (Optional)
                   </Typography>
                   
                   <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
@@ -497,7 +470,7 @@ const ProductDashboard = () => {
                       value={formData.image.startsWith('data:') ? '' : formData.image}
                       onChange={(e) => handleImageUrlChange(e.target.value)}
                       placeholder="https://cdn.example.com/image.svg"
-                      helperText="Paste image URL from CDN or image hosting"
+                      helperText="For service detail page"
                     />
                   )}
 
@@ -541,96 +514,6 @@ const ProductDashboard = () => {
                       <IconButton
                         size="small"
                         onClick={clearImage}
-                        sx={{
-                          position: 'absolute',
-                          top: -8,
-                          right: -8,
-                          bgcolor: 'error.main',
-                          color: 'white',
-                          '&:hover': { bgcolor: 'error.dark' }
-                        }}
-                      >
-                        <DeleteIcon fontSize="small" />
-                      </IconButton>
-                    </Box>
-                  )}
-                </Box>
-
-                <Divider sx={{ my: 2 }} />
-                
-                <Box sx={{ mb: 2 }}>
-                  <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600 }}>
-                    SubCategory Image (For Service Cards)
-                  </Typography>
-                  
-                  <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-                    <Button
-                      variant={subCategoryImageUploadMode === 'url' ? 'contained' : 'outlined'}
-                      size="small"
-                      onClick={() => setSubCategoryImageUploadMode('url')}
-                    >
-                      Image URL
-                    </Button>
-                    <Button
-                      variant={subCategoryImageUploadMode === 'upload' ? 'contained' : 'outlined'}
-                      size="small"
-                      onClick={() => setSubCategoryImageUploadMode('upload')}
-                    >
-                      Upload Image
-                    </Button>
-                  </Box>
-
-                  {subCategoryImageUploadMode === 'url' && (
-                    <TextField
-                      fullWidth
-                      label="SubCategory Image URL"
-                      value={formData.subCategoryImage.startsWith('data:') ? '' : formData.subCategoryImage}
-                      onChange={(e) => handleSubCategoryImageUrlChange(e.target.value)}
-                      placeholder="https://cdn.mrmahir.com/services/ac.svg"
-                      helperText="This image will show in service cards"
-                    />
-                  )}
-
-                  {subCategoryImageUploadMode === 'upload' && (
-                    <Box>
-                      <Button
-                        variant="outlined"
-                        component="label"
-                        fullWidth
-                        sx={{ py: 2 }}
-                      >
-                        Choose SubCategory Image
-                        <input
-                          type="file"
-                          hidden
-                          accept="image/*"
-                          onChange={handleSubCategoryImageUpload}
-                        />
-                      </Button>
-                      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
-                        Supports: JPG, PNG, SVG, WEBP (Max 5MB)
-                      </Typography>
-                    </Box>
-                  )}
-
-                  {subCategoryImagePreview && (
-                    <Box sx={{ mt: 2, position: 'relative', display: 'inline-block' }}>
-                      <img
-                        src={subCategoryImagePreview}
-                        alt="SubCategory Preview"
-                        style={{
-                          width: 120,
-                          height: 120,
-                          objectFit: 'contain',
-                          border: '2px solid #ddd',
-                          borderRadius: 8,
-                          padding: 8,
-                          background: '#f5f5f5'
-                        }}
-                      />
-                      <IconButton
-                        size="small"
-                        onClick={clearSubCategoryImage}
                         sx={{
                           position: 'absolute',
                           top: -8,
@@ -751,7 +634,6 @@ const ProductDashboard = () => {
 
        </div>
 
-       {/* Notifications */}
        <Snackbar
          open={notification.open}
          autoHideDuration={4000}
@@ -776,4 +658,3 @@ const ProductDashboard = () => {
 };
 
 export default ProductDashboard;
-                            

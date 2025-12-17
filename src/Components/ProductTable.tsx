@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import {
   Box, Paper, Typography, Table, TableHead, TableBody, TableRow, TableCell,
   TableContainer, TextField, IconButton, Button, CircularProgress, MenuItem,
-  Divider, Chip, Rating, Alert, Snackbar, Card, CardContent
+  Divider, Chip, Rating, Alert, Snackbar
 } from "@mui/material";
 import {
   Edit as EditIcon,
@@ -42,11 +42,27 @@ const subcategoriesByMainCategory: { [key: string]: string[] } = {
   "Maintained by UstadonCall": ["MBM Service 1", "MBM Service 2"]
 };
 
-const ProductManager: React.FC = () => {
+// CDN images mapping for subcategories
+const getSubCategoryImage = (subCategory: string): string => {
+  const imageMap: { [key: string]: string } = {
+    "AC Services": "https://cdn.example.com/ac-service.svg",
+    "Plumber": "https://cdn.example.com/plumber.svg",
+    "Electrician": "https://cdn.example.com/electrician.svg",
+    "Deep Cleaning": "https://cdn.example.com/cleaning.svg",
+    // Add more mappings as needed
+  };
+  return imageMap[subCategory] || "https://cdn.example.com/default.svg";
+};
+
+const UnifiedProductManager: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [notification, setNotification] = useState({ open: false, message: '', type: 'success' as 'success' | 'error' });
+  const [notification, setNotification] = useState({ 
+    open: false, 
+    message: '', 
+    type: 'success' as 'success' | 'error' 
+  });
 
   const [formData, setFormData] = useState<any>({
     name: "",
@@ -58,7 +74,6 @@ const ProductManager: React.FC = () => {
     description: "",
     reviews: 0,
     image: "",
-    subCategoryImage: "",
   });
 
   const [includes, setIncludes] = useState<string[]>([]);
@@ -72,7 +87,6 @@ const ProductManager: React.FC = () => {
 
   const [imageUploadMode, setImageUploadMode] = useState<'url' | 'upload'>('url');
   const [imagePreview, setImagePreview] = useState<string>('');
-  const [subCategoryImageUploadMode, setSubCategoryImageUploadMode] = useState<'url' | 'upload'>('url');
   const [subCategoryImagePreview, setSubCategoryImagePreview] = useState<string>('');
 
   const fetchProducts = async () => {
@@ -119,13 +133,16 @@ const ProductManager: React.FC = () => {
       description: product.description || "",
       reviews: product.reviews || 0,
       image: product.image || "",
-      subCategoryImage: product.subCategoryImage || "",
     });
     setIncludes(product.includes || []);
     setNotIncludes(product.notIncludes || []);
     setAvailableSubCategories(subcategoriesByMainCategory[product.mainCategory] || []);
     setImagePreview(product.image || '');
-    setSubCategoryImagePreview(product.subCategoryImage || '');
+    
+    // Load CDN image preview
+    const cdnImage = getSubCategoryImage(product.subCategory);
+    setSubCategoryImagePreview(cdnImage);
+    
     setEditingId(product._id);
     setShowForm(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -142,7 +159,6 @@ const ProductManager: React.FC = () => {
       description: "",
       reviews: 0,
       image: "",
-      subCategoryImage: "",
     });
     setIncludes([]);
     setNotIncludes([]);
@@ -153,12 +169,24 @@ const ProductManager: React.FC = () => {
     setImagePreview('');
     setSubCategoryImagePreview('');
     setImageUploadMode('url');
-    setSubCategoryImageUploadMode('url');
   };
 
   const handleMainCategoryChange = (value: string) => {
-    setFormData({ ...formData, mainCategory: value, subCategory: "" });
+    setFormData({ ...formData, mainCategory: value, subCategory: "", service: "" });
     setAvailableSubCategories(subcategoriesByMainCategory[value] || []);
+    setSubCategoryImagePreview('');
+  };
+
+  const handleSubCategoryChange = (value: string) => {
+    setFormData({ 
+      ...formData, 
+      subCategory: value,
+      service: value // Auto-fill service with subcategory
+    });
+    
+    // Auto-load CDN image preview
+    const cdnImage = getSubCategoryImage(value);
+    setSubCategoryImagePreview(cdnImage);
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -182,27 +210,6 @@ const ProductManager: React.FC = () => {
     }
   };
 
-  const handleSubCategoryImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        setNotification({ open: true, message: 'Image size should be less than 5MB', type: 'error' });
-        return;
-      }
-      if (!file.type.startsWith('image/')) {
-        setNotification({ open: true, message: 'Please upload an image file', type: 'error' });
-        return;
-      }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setFormData({ ...formData, subCategoryImage: base64String });
-        setSubCategoryImagePreview(base64String);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const payload = {
@@ -214,17 +221,15 @@ const ProductManager: React.FC = () => {
     };
 
     try {
-      if (editingId) {
-        const res = await fetch(`/api/products/${editingId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        const data = await res.json();
-        if (data.success) {
-          fetchProducts();
-          setNotification({ open: true, message: 'Product updated successfully!', type: 'success' });
-        }
+      const res = await fetch(`/api/products/${editingId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (data.success) {
+        fetchProducts();
+        setNotification({ open: true, message: 'Product updated successfully!', type: 'success' });
       }
       resetForm();
       setShowForm(false);
@@ -266,7 +271,7 @@ const ProductManager: React.FC = () => {
   return (
     <Box sx={{ p: 4, maxWidth: 1400, mx: 'auto', bgcolor: '#f5f5f5', minHeight: '100vh' }}>
       <Typography variant="h3" gutterBottom sx={{ mb: 4, fontWeight: 700, color: '#1976d2' }}>
-MANAGE YOUR SERVICES
+        MANAGE YOUR SERVICES
       </Typography>
 
       {showForm && (
@@ -322,32 +327,65 @@ MANAGE YOUR SERVICES
                 ))}
               </TextField>
 
-              <Box sx={{ display: 'flex', gap: 2 }}>
-                <TextField
-                  fullWidth
-                  select
-                  label="Sub Category"
-                  value={formData.subCategory}
-                  onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
-                  disabled={!formData.mainCategory}
-                  required
-                >
-                  {availableSubCategories.map((sub) => (
-                    <MenuItem key={sub} value={sub}>{sub}</MenuItem>
-                  ))}
-                </TextField>
-                <TextField
-                  fullWidth
-                  label="Service"
-                  value={formData.service}
-                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  required
-                />
-              </Box>
+              <TextField
+                fullWidth
+                select
+                label="Sub Category"
+                value={formData.subCategory}
+                onChange={(e) => handleSubCategoryChange(e.target.value)}
+                disabled={!formData.mainCategory}
+                required
+                helperText={!formData.mainCategory ? "Select main category first" : "Service Type will auto-match"}
+              >
+                {availableSubCategories.map((sub) => (
+                  <MenuItem key={sub} value={sub}>{sub}</MenuItem>
+                ))}
+              </TextField>
+
+              <TextField
+                fullWidth
+                label="Service Type"
+                value={formData.service}
+                disabled
+                helperText="Auto-filled from SubCategory"
+                sx={{ 
+                  '& .MuiInputBase-input.Mui-disabled': {
+                    WebkitTextFillColor: '#000',
+                    bgcolor: '#f5f5f5'
+                  }
+                }}
+              />
+
+              {subCategoryImagePreview && (
+                <Box>
+                  <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
+                    SubCategory Image (from CDN - Auto)
+                  </Typography>
+                  <Box sx={{ 
+                    bgcolor: '#f9f9f9', 
+                    p: 2, 
+                    borderRadius: 2,
+                    border: '2px dashed #ddd',
+                    display: 'inline-block'
+                  }}>
+                    <img
+                      src={subCategoryImagePreview}
+                      alt="SubCategory Preview"
+                      style={{
+                        width: 100,
+                        height: 100,
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </Box>
+                </Box>
+              )}
+
+              <Divider />
 
               <Box>
                 <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600 }}>
-                  Service Image
+                  Service Detail Image (Optional)
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
                   <Button
@@ -394,65 +432,6 @@ MANAGE YOUR SERVICES
                     <IconButton
                       size="small"
                       onClick={() => { setFormData({ ...formData, image: '' }); setImagePreview(''); }}
-                      sx={{ position: 'absolute', top: -8, right: -8, bgcolor: 'error.main', color: 'white' }}
-                    >
-                      <DeleteIcon fontSize="small" />
-                    </IconButton>
-                  </Box>
-                )}
-              </Box>
-
-              <Divider />
-
-              <Box>
-                <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600 }}>
-                  SubCategory Image (For Service Cards)
-                </Typography>
-                <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-                  <Button
-                    variant={subCategoryImageUploadMode === 'url' ? 'contained' : 'outlined'}
-                    size="small"
-                    onClick={() => setSubCategoryImageUploadMode('url')}
-                  >
-                    Image URL
-                  </Button>
-                  <Button
-                    variant={subCategoryImageUploadMode === 'upload' ? 'contained' : 'outlined'}
-                    size="small"
-                    onClick={() => setSubCategoryImageUploadMode('upload')}
-                  >
-                    Upload Image
-                  </Button>
-                </Box>
-
-                {subCategoryImageUploadMode === 'url' ? (
-                  <TextField
-                    fullWidth
-                    label="SubCategory Image URL"
-                    value={formData.subCategoryImage.startsWith('data:') ? '' : formData.subCategoryImage}
-                    onChange={(e) => {
-                      setFormData({ ...formData, subCategoryImage: e.target.value });
-                      setSubCategoryImagePreview(e.target.value);
-                    }}
-                    placeholder="https://cdn.example.com/service.svg"
-                  />
-                ) : (
-                  <Button variant="outlined" component="label" fullWidth sx={{ py: 2 }}>
-                    Choose SubCategory Image
-                    <input type="file" hidden accept="image/*" onChange={handleSubCategoryImageUpload} />
-                  </Button>
-                )}
-
-                {subCategoryImagePreview && (
-                  <Box sx={{ mt: 2, position: 'relative', display: 'inline-block' }}>
-                    <img
-                      src={subCategoryImagePreview}
-                      alt="SubCategory Preview"
-                      style={{ width: 120, height: 120, objectFit: 'contain', border: '2px solid #ddd', borderRadius: 8, padding: 8 }}
-                    />
-                    <IconButton
-                      size="small"
-                      onClick={() => { setFormData({ ...formData, subCategoryImage: '' }); setSubCategoryImagePreview(''); }}
                       sx={{ position: 'absolute', top: -8, right: -8, bgcolor: 'error.main', color: 'white' }}
                     >
                       <DeleteIcon fontSize="small" />
@@ -620,4 +599,4 @@ MANAGE YOUR SERVICES
   );
 };
 
-export default ProductManager;
+export default UnifiedProductManager;
