@@ -1,9 +1,6 @@
-// components/CleaningServiceNavBar.tsx
-// NavBar without Cart
-
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -12,20 +9,53 @@ import {
   MenuItem,
   IconButton,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assests/Images/logo.png";
+import { getSubCategorySlug } from "@/lib/subcategoryConfig";
+
+interface SubCategory {
+  name: string;
+  slug: string;
+}
 
 const CleaningServiceNavBar: React.FC = () => {
   const [anchorElServices, setAnchorElServices] = useState<null | HTMLElement>(null);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleOpen = (
-    event: React.MouseEvent<HTMLButtonElement>,
-    type: "services"
-  ) => {
+  useEffect(() => {
+    fetchSubCategories();
+  }, []);
+
+  const fetchSubCategories = async () => {
+    try {
+      const res = await fetch('/api/products?mainCategory=Cleaning Services');
+      const data = await res.json();
+
+      if (data.success && data.data) {
+        // Get unique subcategories from products
+        const uniqueSubCats = Array.from(
+          new Set(data.data.map((product: any) => product.subCategory))
+        ).map((subCat: any) => ({
+          name: subCat,
+          slug: getSubCategorySlug(subCat)
+        }));
+
+        setSubCategories(uniqueSubCats);
+      }
+    } catch (error) {
+      console.error('Error fetching subcategories:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElServices(event.currentTarget);
   };
 
@@ -90,38 +120,35 @@ const CleaningServiceNavBar: React.FC = () => {
 
           {/* Services Dropdown */}
           <Button
-            onClick={(e) => handleOpen(e, "services")}
+            onClick={handleOpen}
             sx={{ color: "black" }}
           >
-            Services
+            Services {loading && <CircularProgress size={16} sx={{ ml: 1 }} />}
           </Button>
           <Menu
             anchorEl={anchorElServices}
             open={Boolean(anchorElServices)}
             onClose={handleClose}
           >
-            {[
-              "Car Detailing Services",
-              "Carpet Cleaning Services",
-              "Cement Water Tank Cleaning Services",
-              "Chair Cleaning Services",
-              "Commercial Deep Cleaning Services",
-              "Curtain Cleaning Services",
-              "Deep Cleaning Services",
-              "Mattress Cleaning Services",
-              "Plastic Water Tank Cleaning Services",
-              "Sofa Cleaning Services",
-              "Solar Panel Cleaning Services",
-            ].map((service) => (
-              <MenuItem key={service} onClick={handleClose}>
-                <Link
-                  href={`/Home/cleaning-services/${service.toLowerCase().replace(/ /g, "-")}`}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  {service}
-                </Link>
+            {loading ? (
+              <MenuItem disabled>
+                <CircularProgress size={20} sx={{ mr: 1 }} />
+                Loading services...
               </MenuItem>
-            ))}
+            ) : subCategories.length > 0 ? (
+              subCategories.map((subCat) => (
+                <MenuItem key={subCat.slug} onClick={handleClose}>
+                  <Link
+                    href={`/Home/cleaning-services/${subCat.slug}`}
+                    style={{ textDecoration: "none", color: "black", width: "100%" }}
+                  >
+                    {subCat.name}
+                  </Link>
+                </MenuItem>
+              ))
+            ) : (
+              <MenuItem disabled>No services available</MenuItem>
+            )}
           </Menu>
 
           <Button
@@ -170,9 +197,9 @@ const CleaningServiceNavBar: React.FC = () => {
           </Button>
           <Button
             sx={{ color: "black" }}
-            onClick={(e) => handleOpen(e, "services")}
+            onClick={handleOpen}
           >
-            Services
+            Services {loading && <CircularProgress size={16} sx={{ ml: 1 }} />}
           </Button>
           
           <Button

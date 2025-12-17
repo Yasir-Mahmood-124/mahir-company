@@ -1,10 +1,6 @@
-
-// ============================================
-// CleaningServices.tsx
-// ============================================
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,33 +9,98 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
+  CircularProgress,
 } from "@mui/material";
+import { getSubCategoryImage, getSubCategorySlug } from "@/lib/subcategoryConfig";
 
-type Service = {
-  id: string;
+type Product = {
+  _id?: string;
+  id?: string;
   name: string;
-  href: string;
-  img: string;
-  alt: string;
+  currentPrice: number;
+  discountPrice: number;
+  mainCategory: string;
+  subCategory: string;
+  service: string;
+  description: string;
+  reviews: number;
+  includes: string[];
+  notIncludes: string[];
+  image?: string;
 };
-
-const services: Service[] = [
-  { id: "sofa-cleaning", name: "Sofa Cleaning", href: "/Home/cleaning-services/sofa-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/sofa.svg", alt: "Sofa Cleaning Service" },
-  { id: "chair-cleaning", name: "Chair Cleaning", href: "/Home/cleaning-services/chair-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/chair.svg", alt: "Chair Cleaning" },
-  { id: "carpet-cleaning", name: "Carpet Cleaning", href: "/Home/cleaning-services/carpet-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/carpet.svg", alt: "Carpet Cleaning" },
-  { id: "curtain-cleaning", name: "Curtain Cleaning", href: "/Home/cleaning-services/curtain-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/curtain.svg", alt: "Curtain Cleaning" },
-  { id: "mattress-cleaning", name: "Mattress Cleaning", href: "/Home/cleaning-services/mattress-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/mattress.svg", alt: "Mattress Cleaning" },
-  { id: "plastic-water-tank-cleaning", name: "Plastic Water Tank Cleaning", href: "/Home/cleaning-services/plastic-water-tank-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_plastic.svg", alt: "Plastic Water Tank Cleaning" },
-  { id: "cement-water-tank-cleaning", name: "Cement Water Tank Cleaning", href: "/Home/cement-water-tank-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_cement.svg", alt: "Cement Water Tank Cleaning" },
-  { id: "deep-cleaning", name: "Deep Cleaning", href: "/Home/cleaning-services/house-deep-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg", alt: "Deep Cleaning" },
-  { id: "car-detailing", name: "Car Detailing", href: "/Home/cleaning-services/car-detailing-services", img: "https://cdn.mrmahir.com/svgs/detailing.svg", alt: "Car Detailing" },
-  { id: "commercial-deep-cleaning", name: "Commercial Deep Cleaning", href: "/Home/cleaning-services/commercial-deep-cleaning-services", img: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg", alt: "Commercial Deep Cleaning" },
-  { id: "solar-panel-cleaning", name: "Solar Panel Cleaning", href: "/Home/cleaning-services/solar-panel-cleaning-services", img: "https://cdn.mrmahir.com/svgs/solar_cleaning.svg", alt: "Solar Panel Cleaning" },
-];
 
 const CleaningServices: React.FC = () => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const [services, setServices] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
+  const fetchServices = async () => {
+    try {
+      const res = await fetch('/api/products?mainCategory=Cleaning Services');
+      const data = await res.json();
+
+      if (data.success) {
+        setServices(data.data);
+      }
+    } catch (error) {
+      console.error('Error fetching services:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ✅ Get unique subCategories
+  const uniqueSubCategoriesMap = services.reduce((acc: { [key: string]: Product }, service) => {
+    const subCat = service.subCategory;
+    if (!acc[subCat]) {
+      acc[subCat] = service;
+    }
+    return acc;
+  }, {});
+
+  const uniqueSubCategories = Object.keys(uniqueSubCategoriesMap);
+
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', py: 10 }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (services.length === 0) {
+    return (
+      <Box
+        component="section"
+        sx={{
+          py: { xs: 6, md: 10 },
+          textAlign: "center",
+          backgroundColor: "#fff",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography
+            component="h2"
+            sx={{
+              fontWeight: 700,
+              fontSize: { xs: "2rem", md: "2.5rem" },
+              mb: 1,
+            }}
+          >
+            Services
+          </Typography>
+          <Typography variant="h6" color="text.secondary" sx={{ mt: 4 }}>
+            No cleaning services available yet. Add services from the dashboard!
+          </Typography>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box
@@ -68,7 +129,7 @@ const CleaningServices: React.FC = () => {
             mb: { xs: 5, md: 7 },
           }}
         >
-          Choose from our wide range of services
+          Choose from our wide range of cleaning services
         </Typography>
 
         <Box
@@ -84,46 +145,60 @@ const CleaningServices: React.FC = () => {
             justifyItems: "center",
           }}
         >
-          {services.map((service) => (
-            <Link 
-              key={service.id} 
-              href={service.href} 
-              style={{ textDecoration: "none", width: "100%" }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 1.5,
-                  transition: "transform 0.25s ease, opacity 0.25s ease",
-                  "&:hover": {
-                    transform: "translateY(-6px)",
-                    opacity: 0.9,
-                  },
-                }}
+          {uniqueSubCategories.map((subCategory) => {
+            const firstService = uniqueSubCategoriesMap[subCategory];
+            const subCategorySlug = getSubCategorySlug(subCategory);
+            
+            // ✅ Get CDN image automatically
+            const cdnImage = getSubCategoryImage(subCategory);
+
+            return (
+              <Link 
+                key={subCategory} 
+                href={`/Home/cleaning-services/${subCategorySlug}`} 
+                style={{ textDecoration: "none", width: "100%" }}
               >
-                <Image
-                  src={service.img}
-                  alt={service.alt}
-                  width={80}
-                  height={80}
-                  style={{ objectFit: "contain" }}
-                />
-                <Typography
+                <Box
                   sx={{
-                    mt: 1,
-                    color: "#000",
-                    fontSize: { xs: "0.95rem", md: "1rem" },
-                    fontWeight: 600,
-                    textAlign: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 1.5,
+                    transition: "transform 0.25s ease, opacity 0.25s ease",
+                    cursor: "pointer",
+                    "&:hover": {
+                      transform: "translateY(-6px)",
+                      opacity: 0.9,
+                    },
                   }}
                 >
-                  {service.name}
-                </Typography>
-              </Box>
-            </Link>
-          ))}
+                  {/* ✅ Auto CDN Image */}
+                  <Image
+                    src={cdnImage}
+                    alt={subCategory}
+                    width={80}
+                    height={80}
+                    style={{ objectFit: "contain" }}
+                    onError={(e) => {
+                      // Fallback to placeholder
+                      e.currentTarget.src = "https://via.placeholder.com/80?text=" + subCategory.charAt(0);
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      mt: 1,
+                      color: "#000",
+                      fontSize: { xs: "0.95rem", md: "1rem" },
+                      fontWeight: 600,
+                      textAlign: "center",
+                    }}
+                  >
+                    {subCategory}
+                  </Typography>
+                </Box>
+              </Link>
+            );
+          })}
         </Box>
       </Container>
     </Box>

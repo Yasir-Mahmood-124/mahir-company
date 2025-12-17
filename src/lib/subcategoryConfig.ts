@@ -74,47 +74,131 @@ export const SUBCATEGORY_CONFIG: SubCategoryConfig[] = [
 
   // Cleaning Services
   {
-    name: "Deep Cleaning",
-    slug: "deep-cleaning",
-    image: "https://cdn.mrmahir.com/services/deep-cleaning.svg",
+    name: "Sofa Cleaning Services",
+    slug: "sofa-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/sofa.svg",
     mainCategory: "Cleaning Services"
   },
   {
-    name: "Regular Cleaning",
-    slug: "regular-cleaning",
-    image: "https://cdn.mrmahir.com/services/regular-cleaning.svg",
+    name: "Chair Cleaning Services",
+    slug: "chair-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/chair.svg",
     mainCategory: "Cleaning Services"
   },
   {
-    name: "Carpet Cleaning",
-    slug: "carpet-cleaning",
-    image: "https://cdn.mrmahir.com/services/carpet-cleaning.svg",
+    name: "Carpet Cleaning Services",
+    slug: "carpet-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/carpet.svg",
     mainCategory: "Cleaning Services"
   },
   {
-    name: "Disinfection",
-    slug: "disinfection",
-    image: "https://cdn.mrmahir.com/services/disinfection.svg",
+    name: "Curtain Cleaning Services",
+    slug: "curtain-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/curtain.svg",
+    mainCategory: "Cleaning Services"
+  },
+  {
+    name: "Mattress Cleaning Services",
+    slug: "mattress-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/mattress.svg",
+    mainCategory: "Cleaning Services"
+  },
+  {
+    name: "Plastic Water Tank Cleaning Services",
+    slug: "plastic-water-tank-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_plastic.svg",
+    mainCategory: "Cleaning Services"
+  },
+  {
+    name: "Cement Water Tank Cleaning Services",
+    slug: "cement-water-tank-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/water_tank_cement.svg",
+    mainCategory: "Cleaning Services"
+  },
+  {
+    name: "Deep Cleaning Services",
+    slug: "house-deep-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg",
+    mainCategory: "Cleaning Services"
+  },
+  {
+    name: "Car Detailing Services",
+    slug: "car-detailing-services",
+    image: "https://cdn.mrmahir.com/svgs/detailing.svg",
+    mainCategory: "Cleaning Services"
+  },
+  {
+    name: "Commercial Deep Cleaning Services",
+    slug: "commercial-deep-cleaning-services",
+    image: "https://cdn-sapce-sqp1.sgp1.digitaloceanspaces.com/svgs/commercial_deep_cleaning.svg",
+    mainCategory: "Cleaning Services"
+  },
+  {
+    name: "Solar Panel Cleaning Services",
+    slug: "solar-panel-cleaning-services",
+    image: "https://cdn.mrmahir.com/svgs/solar_cleaning.svg",
     mainCategory: "Cleaning Services"
   },
 
-  // Personal Care
+  // ✅ Personal Care (Beautician Services)
   {
-    name: "Salon Services",
-    slug: "salon-services",
-    image: "https://cdn.mrmahir.com/services/salon-services.svg",
+    name: "Makeup Services",
+    slug: "makeup-services",
+    image: "https://cdn.mrmahir.com/svgs/makeup3.svg",
     mainCategory: "Personal Care"
   },
   {
-    name: "Spa Services",
-    slug: "spa-services",
-    image: "https://cdn.mrmahir.com/services/spa-services.svg",
+    name: "Hair Treatment",
+    slug: "hair-treatment-services",
+    image: "https://cdn.mrmahir.com/services/hair.svg",
     mainCategory: "Personal Care"
   },
   {
-    name: "Bridal Services",
-    slug: "bridal-services",
-    image: "https://cdn.mrmahir.com/services/bridal-services.svg",
+    name: "Waxing Services",
+    slug: "waxing-services",
+    image: "https://cdn.mrmahir.com/services/waxing.svg",
+    mainCategory: "Personal Care"
+  },
+  {
+    name: "Massage Services for Women",
+    slug: "massage-services",
+    image: "https://cdn.mrmahir.com/services/massage.svg",
+    mainCategory: "Personal Care"
+  },
+  {
+    name: "Mani Pedi",
+    slug: "mani-pedi-services",
+    image: "https://cdn.mrmahir.com/services/nails.svg",
+    mainCategory: "Personal Care"
+  },
+  {
+    name: "Facial Services",
+    slug: "facial-services",
+    image: "https://cdn.mrmahir.com/services/facial.svg",
+    mainCategory: "Personal Care"
+  },
+  {
+    name: "Mehndi Services",
+    slug: "mehndi-services",
+    image: "https://cdn.mrmahir.com/services/mehndi.svg",
+    mainCategory: "Personal Care"
+  },
+  {
+    name: "Hair Styling & Hair Cut",
+    slug: "hair-styling-and-hair-cut",
+    image: "https://cdn.mrmahir.com/svgs/hair-cut-logo.svg",
+    mainCategory: "Personal Care"
+  },
+  {
+    name: "Monthly Beauty Deals",
+    slug: "monthly-beauty-deals",
+    image: "https://cdn.mrmahir.com/services/service-packages.svg",
+    mainCategory: "Personal Care"
+  },
+  {
+    name: "Salon Packages",
+    slug: "salon-packages",
+    image: "https://cdn.mrmahir.com/services/service-packages.svg",
     mainCategory: "Personal Care"
   },
 
@@ -132,7 +216,7 @@ export const SUBCATEGORY_CONFIG: SubCategoryConfig[] = [
     mainCategory: "Solar Installation Services"
   },
 
-  // Home Inspection (duplicate category, different services)
+  // Home Inspection
   {
     name: "Pre-Purchase Inspection",
     slug: "pre-purchase-inspection",
@@ -195,15 +279,29 @@ export const subcategoriesByMainCategory: { [key: string]: string[] } = {
     "Home Inspection"
   ],
   "Cleaning Services": [
-    "Deep Cleaning",
-    "Regular Cleaning",
-    "Carpet Cleaning",
-    "Disinfection"
+    "Sofa Cleaning Services",
+    "Chair Cleaning Services",
+    "Carpet Cleaning Services",
+    "Curtain Cleaning Services",
+    "Mattress Cleaning Services",
+    "Plastic Water Tank Cleaning Services",
+    "Cement Water Tank Cleaning Services",
+    "Deep Cleaning Services",
+    "Car Detailing Services",
+    "Commercial Deep Cleaning Services",
+    "Solar Panel Cleaning Services"
   ],
   "Personal Care": [
-    "Salon Services",
-    "Spa Services",
-    "Bridal Services"
+    "Makeup Services",
+    "Hair Treatment",
+    "Waxing Services",
+    "Massage Services for Women",
+    "Mani Pedi",
+    "Facial Services",
+    "Mehndi Services",
+    "Hair Styling & Hair Cut",
+    "Monthly Beauty Deals",
+    "Salon Packages"
   ],
   "Solar Installation Services": [
     "Solar Installation",
