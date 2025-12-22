@@ -1,34 +1,75 @@
-
+// ============================================
+// MonthlyBeautyDeals.tsx
+// ============================================
 'use client';
 
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
+import React, { useEffect } from 'react';
+import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
+import ServiceCard from '@/Components/Card_Details/BeauticianServiceCardDetails';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchProducts } from '@/redux/slices/productSlice';
 
-interface ACServicesSectionProps {
-  serviceIds?: number[];
+interface MonthlyBeautyDealsCardProps {
   title?: string;
   subtitle?: string;
+  maxItems?: number;
 }
 
-const MonthlyBeautyDealsCard: React.FC<ACServicesSectionProps> = ({ 
-  serviceIds,
+const MonthlyBeautyDealsCard: React.FC<MonthlyBeautyDealsCardProps> = ({ 
   title = "Monthly Beauty Deals",
-//   subtitle = "Professional Commercial Deep Cleaning Services"
+  subtitle = "Best Monthly Beauty Packages",
+  maxItems
 }) => {
-  const defaultACServiceIds = [
-  60110,
-  60112,
-  60115,
-  60153,
-  60170,
-  60172,
-  60173,
-  60186,
-  60187
-]
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
 
-  const displayServiceIds = serviceIds || defaultACServiceIds;
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  // Filter products by subCategory
+  const filteredServices = products.filter(
+    (product) => product.subCategory === "Monthly Beauty Deals"
+  );
+
+  // Limit items if maxItems is specified
+  const displayServices = maxItems 
+    ? filteredServices.slice(0, maxItems) 
+    : filteredServices;
+
+  if (loading && products.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <CircularProgress size={60} />
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="error">{error}</Alert>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (displayServices.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="info">No Monthly Beauty Deals available at the moment. Add services from the dashboard!</Alert>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -45,9 +86,11 @@ const MonthlyBeautyDealsCard: React.FC<ACServicesSectionProps> = ({
           >
             {title}
           </Typography>
-          {/* <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
-            {subtitle}
-          </Typography> */}
+          {subtitle && (
+            <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
+              {subtitle}
+            </Typography>
+          )}
         </Box>
 
         <Box
@@ -57,15 +100,15 @@ const MonthlyBeautyDealsCard: React.FC<ACServicesSectionProps> = ({
             gap: 3,
           }}
         >
-          {displayServiceIds.map((serviceId) => (
+          {displayServices.map((service) => (
             <Box 
-              key={serviceId}
+              key={service._id || service.id}
               sx={{
                 width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                 minWidth: '280px',
               }}
             >
-              <ServiceCard serviceId={serviceId} />
+              <ServiceCard serviceId={service._id || service.id || ''} />
             </Box>
           ))}
         </Box>

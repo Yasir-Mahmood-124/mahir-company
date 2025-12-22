@@ -1,27 +1,75 @@
 // ============================================
-// AcServiceSectionCard.tsx (or CarDetailing.tsx)
+// CarDetailingServicecard.tsx
 // ============================================
 'use client';
 
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
 import ServiceCard from '@/Components/Card_Details/CleaningServicesCardDetails';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchProducts } from '@/redux/slices/productSlice';
 
-interface ACServicesSectionProps {
-  serviceIds?: number[];
+interface CarDetailingProps {
   title?: string;
   subtitle?: string;
-  // ✅ onCartOpen prop removed - not needed with context!
+  maxItems?: number;
 }
 
-const CarDetailing: React.FC<ACServicesSectionProps> = ({ 
-  serviceIds,
+const CarDetailing: React.FC<CarDetailingProps> = ({ 
   title = "Car Detailing",
   subtitle = "Professional Car Detailing Services",
-  // ✅ onCartOpen removed
+  maxItems
 }) => {
-  const defaultACServiceIds = [198, 199, 200, 201, 202, 1614];
-  const displayServiceIds = serviceIds || defaultACServiceIds;
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
+
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  // Filter products by subCategory
+  const filteredServices = products.filter(
+    (product) => product.subCategory === "Car Detailing Services"
+  );
+
+  // Limit items if maxItems is specified
+  const displayServices = maxItems 
+    ? filteredServices.slice(0, maxItems) 
+    : filteredServices;
+
+  if (loading && products.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <CircularProgress size={60} />
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="error">{error}</Alert>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (displayServices.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="info">No Car Detailing Services available at the moment. Add services from the dashboard!</Alert>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -50,16 +98,15 @@ const CarDetailing: React.FC<ACServicesSectionProps> = ({
             gap: 3,
           }}
         >
-          {displayServiceIds.map((serviceId) => (
+          {displayServices.map((service) => (
             <Box 
-              key={serviceId}
+              key={service._id || service.id}
               sx={{
                 width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                 minWidth: '280px',
               }}
             >
-              {/* ✅ ServiceCard ab khud context se cart control karega */}
-              <ServiceCard serviceId={serviceId} />
+              <ServiceCard serviceId={service._id || service.id || ''} />
             </Box>
           ))}
         </Box>

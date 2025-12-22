@@ -1,43 +1,75 @@
-
+// ============================================
+// HairTreatment.tsx
+// ============================================
 'use client';
 
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
+import React, { useEffect } from 'react';
+import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
+import ServiceCard from '@/Components/Card_Details/BeauticianServiceCardDetails';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchProducts } from '@/redux/slices/productSlice';
 
-interface ACServicesSectionProps {
-  serviceIds?: number[];
+interface HairTreatmentProps {
   title?: string;
   subtitle?: string;
+  maxItems?: number;
 }
 
-const HaiirTreatment: React.FC<ACServicesSectionProps> = ({ 
-  serviceIds,
-  title = "HairTreatment Services",
-//   subtitle = "Professional Commercial Deep Cleaning Services"
+const HaiirTreatment: React.FC<HairTreatmentProps> = ({ 
+  title = "Hair Treatment Services",
+  subtitle = "Professional Hair Treatment Services",
+  maxItems
 }) => {
-  const defaultACServiceIds = [
-  60010,
-  60012,
-  60032,
-  60136,
-  60137,
-  60138,
-  60139,
-  60140,
-  60141,
-  60142,
-  60143,
-  60144,
-  60145,
-  60146,
-  60147,
-  60148,
-  60149,
-  60150
-];
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
 
-  const displayServiceIds = serviceIds || defaultACServiceIds;
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  // Filter products by subCategory
+  const filteredServices = products.filter(
+    (product) => product.subCategory === "Hair Treatment"
+  );
+
+  // Limit items if maxItems is specified
+  const displayServices = maxItems 
+    ? filteredServices.slice(0, maxItems) 
+    : filteredServices;
+
+  if (loading && products.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <CircularProgress size={60} />
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="error">{error}</Alert>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (displayServices.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="info">No Hair Treatment Services available at the moment. Add services from the dashboard!</Alert>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -54,9 +86,11 @@ const HaiirTreatment: React.FC<ACServicesSectionProps> = ({
           >
             {title}
           </Typography>
-          {/* <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
-            {subtitle}
-          </Typography> */}
+          {subtitle && (
+            <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
+              {subtitle}
+            </Typography>
+          )}
         </Box>
 
         <Box
@@ -66,15 +100,15 @@ const HaiirTreatment: React.FC<ACServicesSectionProps> = ({
             gap: 3,
           }}
         >
-          {displayServiceIds.map((serviceId) => (
+          {displayServices.map((service) => (
             <Box 
-              key={serviceId}
+              key={service._id || service.id}
               sx={{
                 width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                 minWidth: '280px',
               }}
             >
-              <ServiceCard serviceId={serviceId} />
+              <ServiceCard serviceId={service._id || service.id || ''} />
             </Box>
           ))}
         </Box>

@@ -61,7 +61,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ serviceId }) => {
   return (
     <>
       <Link 
-        href={`/services/Cleaning/${service.id}`} 
+        href={`/services/beautician/${service.id}`} 
         style={{ textDecoration: 'none', display: 'block', height: '100%' }}
         onClick={handleCardClick}
       >

@@ -1,23 +1,23 @@
 // ============================================
-// CementTankServicecard.tsx
+// MakeupServiceCard.tsx
 // ============================================
 'use client';
 
 import React, { useEffect } from 'react';
 import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/CleaningServicesCardDetails';
+import ServiceCard from '@/Components/Card_Details/BeauticianServiceCardDetails';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { fetchProducts } from '@/redux/slices/productSlice';
 
-interface CementTankServiceProps {
+interface MakeupServiceProps {
   title?: string;
   subtitle?: string;
   maxItems?: number;
 }
 
-const CementTankService: React.FC<CementTankServiceProps> = ({ 
-  title = "Cement Tank Services",
-  subtitle = "Professional Cement Tank Service",
+const MakeupService: React.FC<MakeupServiceProps> = ({ 
+  title = "Makeup Services",
+  subtitle = "Professional Makeup & Beauty Services",
   maxItems
 }) => {
   const dispatch = useAppDispatch();
@@ -31,7 +31,7 @@ const CementTankService: React.FC<CementTankServiceProps> = ({
 
   // Filter products by subCategory
   const filteredServices = products.filter(
-    (product) => product.subCategory === "Cement Water Tank Cleaning Services"
+    (product) => product.subCategory === "Makeup Services"
   );
 
   // Limit items if maxItems is specified
@@ -65,7 +65,7 @@ const CementTankService: React.FC<CementTankServiceProps> = ({
     return (
       <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
         <Container maxWidth="lg">
-          <Alert severity="info">No Cement Tank Services available at the moment. Add services from the dashboard!</Alert>
+          <Alert severity="info">No Makeup Services available at the moment. Add services from the dashboard!</Alert>
         </Container>
       </Box>
     );
@@ -86,9 +86,11 @@ const CementTankService: React.FC<CementTankServiceProps> = ({
           >
             {title}
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
-            {subtitle}
-          </Typography>
+          {subtitle && (
+            <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
+              {subtitle}
+            </Typography>
+          )}
         </Box>
 
         <Box
@@ -115,4 +117,4 @@ const CementTankService: React.FC<CementTankServiceProps> = ({
   );
 };
 
-export default CementTankService;
+export default MakeupService;

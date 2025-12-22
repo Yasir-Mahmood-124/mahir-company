@@ -1,27 +1,75 @@
-
 // ============================================
-// CommercialDeepCleaningCard.tsx
+// CommericlDeepCleaningCard.tsx
 // ============================================
 'use client';
 
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
 import ServiceCard from '@/Components/Card_Details/CleaningServicesCardDetails';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchProducts } from '@/redux/slices/productSlice';
 
-interface ACServicesSectionProps {
-  serviceIds?: number[];
+interface CommercialDeepCleaningServiceProps {
   title?: string;
   subtitle?: string;
+  maxItems?: number;
 }
 
-const CommercialDeepCleaningService: React.FC<ACServicesSectionProps> = ({ 
-  serviceIds,
+const CommercialDeepCleaningService: React.FC<CommercialDeepCleaningServiceProps> = ({ 
   title = "Commercial Deep Cleaning Services",
-  subtitle = "Professional Commercial Deep Cleaning Services"
+  subtitle = "Professional Commercial Deep Cleaning Services",
+  maxItems
 }) => {
-  const defaultACServiceIds = [1622, 1623, 1624, 1625, 1626];
-;
-  const displayServiceIds = serviceIds || defaultACServiceIds;
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
+
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  // Filter products by subCategory
+  const filteredServices = products.filter(
+    (product) => product.subCategory === "Commercial Deep Cleaning Services"
+  );
+
+  // Limit items if maxItems is specified
+  const displayServices = maxItems 
+    ? filteredServices.slice(0, maxItems) 
+    : filteredServices;
+
+  if (loading && products.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <CircularProgress size={60} />
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="error">{error}</Alert>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (displayServices.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="info">No Commercial Deep Cleaning Services available at the moment. Add services from the dashboard!</Alert>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -50,15 +98,15 @@ const CommercialDeepCleaningService: React.FC<ACServicesSectionProps> = ({
             gap: 3,
           }}
         >
-          {displayServiceIds.map((serviceId) => (
+          {displayServices.map((service) => (
             <Box 
-              key={serviceId}
+              key={service._id || service.id}
               sx={{
                 width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                 minWidth: '280px',
               }}
             >
-              <ServiceCard serviceId={serviceId} />
+              <ServiceCard serviceId={service._id || service.id || ''} />
             </Box>
           ))}
         </Box>

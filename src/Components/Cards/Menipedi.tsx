@@ -1,31 +1,75 @@
-
+// ============================================
+// Menipedi.tsx
+// ============================================
 'use client';
 
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
-import ServiceCard from '@/Components/Card_Details/HandymanServiceCardDetails';
+import React, { useEffect } from 'react';
+import { Container, Typography, Box, CircularProgress, Alert } from '@mui/material';
+import ServiceCard from '@/Components/Card_Details/BeauticianServiceCardDetails';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchProducts } from '@/redux/slices/productSlice';
 
-interface ACServicesSectionProps {
-  serviceIds?: number[];
+interface MenipediProps {
   title?: string;
   subtitle?: string;
+  maxItems?: number;
 }
 
-const Menipedi: React.FC<ACServicesSectionProps> = ({ 
-  serviceIds,
+const Menipedi: React.FC<MenipediProps> = ({ 
   title = "Menipedi Services",
-//   subtitle = "Professional Commercial Deep Cleaning Services"
+  subtitle = "Professional Mani Pedi Services",
+  maxItems
 }) => {
-  const defaultACServiceIds = [
-60020,
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
 
-60021,
-60083,
-60084,
-60125
-];
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
 
-  const displayServiceIds = serviceIds || defaultACServiceIds;
+  // Filter products by subCategory
+  const filteredServices = products.filter(
+    (product) => product.subCategory === "Mani Pedi"
+  );
+
+  // Limit items if maxItems is specified
+  const displayServices = maxItems 
+    ? filteredServices.slice(0, maxItems) 
+    : filteredServices;
+
+  if (loading && products.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+            <CircularProgress size={60} />
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="error">{error}</Alert>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (displayServices.length === 0) {
+    return (
+      <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Alert severity="info">No Mani Pedi Services available at the moment. Add services from the dashboard!</Alert>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ py: 6, bgcolor: '#f5f5f5' }}>
@@ -42,9 +86,11 @@ const Menipedi: React.FC<ACServicesSectionProps> = ({
           >
             {title}
           </Typography>
-          {/* <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
-            {subtitle}
-          </Typography> */}
+          {subtitle && (
+            <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
+              {subtitle}
+            </Typography>
+          )}
         </Box>
 
         <Box
@@ -54,15 +100,15 @@ const Menipedi: React.FC<ACServicesSectionProps> = ({
             gap: 3,
           }}
         >
-          {displayServiceIds.map((serviceId) => (
+          {displayServices.map((service) => (
             <Box 
-              key={serviceId}
+              key={service._id || service.id}
               sx={{
                 width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                 minWidth: '280px',
               }}
             >
-              <ServiceCard serviceId={serviceId} />
+              <ServiceCard serviceId={service._id || service.id || ''} />
             </Box>
           ))}
         </Box>

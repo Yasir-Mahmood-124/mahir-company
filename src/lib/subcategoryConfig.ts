@@ -304,15 +304,9 @@ export const subcategoriesByMainCategory: { [key: string]: string[] } = {
     "Salon Packages"
   ],
   "Solar Installation Services": [
-    "Solar Installation",
-    "Solar Maintenance"
   ],
   "Home Inspection": [
-    "Pre-Purchase Inspection",
-    "Structural Inspection"
   ],
   "Maintained by UstadonCall": [
-    "MBM Service 1",
-    "MBM Service 2"
   ]
 };

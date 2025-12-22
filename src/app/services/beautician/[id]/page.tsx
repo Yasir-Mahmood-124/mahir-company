@@ -3,8 +3,8 @@
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import ServiceCardDetail from '@/Components/ServiceCardDetail';
-import NavBar from '@/Components/CleaningServiceNavbar';
-import Footer from '@/Components/HandymanFooter';
+import NavBar from '@/Components/beauticianNavabr';
+import Footer from '@/Components/BeauticianFooter';
 import { Container, Button, Box } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
