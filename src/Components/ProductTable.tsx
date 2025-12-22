@@ -13,6 +13,10 @@ import {
   Add as AddIcon,
   Close as CloseIcon
 } from "@mui/icons-material";
+import { 
+  getSubCategoryImage,
+  subcategoriesByMainCategory 
+} from '@/lib/subcategoryConfig';
 
 interface Product {
   _id: string;
@@ -27,32 +31,7 @@ interface Product {
   includes?: string[];
   notIncludes?: string[];
   image?: string;
-  subCategoryImage?: string;
 }
-
-const subcategoriesByMainCategory: { [key: string]: string[] } = {
-  "Home Services": [
-    "AC Services", "Plumber", "Electrician", "Handyman", "Carpenter",
-    "Painter", "Home Appliances", "Geyser", "Pest Control", "Home Inspection"
-  ],
-  "Cleaning Services": ["Deep Cleaning", "Regular Cleaning", "Carpet Cleaning", "Disinfection"],
-  "Personal Care": ["Salon Services", "Spa Services", "Bridal Services"],
-  "Solar Installation Services": ["Solar Installation", "Solar Maintenance"],
-  "Home Inspection": ["Pre-Purchase Inspection", "Structural Inspection"],
-  "Maintained by UstadonCall": ["MBM Service 1", "MBM Service 2"]
-};
-
-// CDN images mapping for subcategories
-const getSubCategoryImage = (subCategory: string): string => {
-  const imageMap: { [key: string]: string } = {
-    "AC Services": "https://cdn.example.com/ac-service.svg",
-    "Plumber": "https://cdn.example.com/plumber.svg",
-    "Electrician": "https://cdn.example.com/electrician.svg",
-    "Deep Cleaning": "https://cdn.example.com/cleaning.svg",
-    // Add more mappings as needed
-  };
-  return imageMap[subCategory] || "https://cdn.example.com/default.svg";
-};
 
 const UnifiedProductManager: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -89,7 +68,7 @@ const UnifiedProductManager: React.FC = () => {
   const [imagePreview, setImagePreview] = useState<string>('');
   const [subCategoryImagePreview, setSubCategoryImagePreview] = useState<string>('');
 
-  const fetchProducts = async () => {
+  const fetchProductsData = async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/products");
@@ -104,7 +83,7 @@ const UnifiedProductManager: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchProductsData();
   }, []);
 
   const handleDelete = async (id: string) => {
@@ -181,7 +160,7 @@ const UnifiedProductManager: React.FC = () => {
     setFormData({ 
       ...formData, 
       subCategory: value,
-      service: value // Auto-fill service with subcategory
+      service: value
     });
     
     // Auto-load CDN image preview
@@ -210,6 +189,16 @@ const UnifiedProductManager: React.FC = () => {
     }
   };
 
+  const handleImageUrlChange = (url: string) => {
+    setFormData({ ...formData, image: url });
+    setImagePreview(url);
+  };
+
+  const clearImage = () => {
+    setFormData({ ...formData, image: '' });
+    setImagePreview('');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const payload = {
@@ -228,7 +217,7 @@ const UnifiedProductManager: React.FC = () => {
       });
       const data = await res.json();
       if (data.success) {
-        fetchProducts();
+        fetchProductsData();
         setNotification({ open: true, message: 'Product updated successfully!', type: 'success' });
       }
       resetForm();
@@ -271,7 +260,7 @@ const UnifiedProductManager: React.FC = () => {
   return (
     <Box sx={{ p: 4, maxWidth: 1400, mx: 'auto', bgcolor: '#f5f5f5', minHeight: '100vh' }}>
       <Typography variant="h3" gutterBottom sx={{ mb: 4, fontWeight: 700, color: '#1976d2' }}>
-        MANAGE YOUR SERVICES
+        Product Dashboard
       </Typography>
 
       {showForm && (
@@ -295,23 +284,27 @@ const UnifiedProductManager: React.FC = () => {
                 required
               />
 
-              <Box sx={{ display: 'flex', gap: 2 }}>
-                <TextField
-                  fullWidth
-                  label="Current Price (PKR)"
-                  type="number"
-                  value={formData.currentPrice}
-                  onChange={(e) => setFormData({ ...formData, currentPrice: e.target.value })}
-                  required
-                />
-                <TextField
-                  fullWidth
-                  label="Discount Price (PKR)"
-                  type="number"
-                  value={formData.discountPrice}
-                  onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
-                  required
-                />
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                <Box sx={{ flex: '1 1 200px' }}>
+                  <TextField
+                    fullWidth
+                    label="Current Price (PKR)"
+                    type="number"
+                    value={formData.currentPrice}
+                    onChange={(e) => setFormData({ ...formData, currentPrice: e.target.value })}
+                    required
+                  />
+                </Box>
+                <Box sx={{ flex: '1 1 200px' }}>
+                  <TextField
+                    fullWidth
+                    label="Discount Price (PKR)"
+                    type="number"
+                    value={formData.discountPrice}
+                    onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
+                    required
+                  />
+                </Box>
               </Box>
 
               <TextField
@@ -357,7 +350,7 @@ const UnifiedProductManager: React.FC = () => {
               />
 
               {subCategoryImagePreview && (
-                <Box>
+                <Box sx={{ mb: 2 }}>
                   <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
                     SubCategory Image (from CDN - Auto)
                   </Typography>
@@ -383,10 +376,11 @@ const UnifiedProductManager: React.FC = () => {
 
               <Divider />
 
-              <Box>
+              <Box sx={{ mb: 2 }}>
                 <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600 }}>
                   Service Detail Image (Optional)
                 </Typography>
+                
                 <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
                   <Button
                     variant={imageUploadMode === 'url' ? 'contained' : 'outlined'}
@@ -404,22 +398,37 @@ const UnifiedProductManager: React.FC = () => {
                   </Button>
                 </Box>
 
-                {imageUploadMode === 'url' ? (
+                {imageUploadMode === 'url' && (
                   <TextField
                     fullWidth
                     label="Image URL"
                     value={formData.image.startsWith('data:') ? '' : formData.image}
-                    onChange={(e) => {
-                      setFormData({ ...formData, image: e.target.value });
-                      setImagePreview(e.target.value);
-                    }}
+                    onChange={(e) => handleImageUrlChange(e.target.value)}
                     placeholder="https://cdn.example.com/image.svg"
+                    helperText="For service detail page"
                   />
-                ) : (
-                  <Button variant="outlined" component="label" fullWidth sx={{ py: 2 }}>
-                    Choose Image File
-                    <input type="file" hidden accept="image/*" onChange={handleImageUpload} />
-                  </Button>
+                )}
+
+                {imageUploadMode === 'upload' && (
+                  <Box>
+                    <Button
+                      variant="outlined"
+                      component="label"
+                      fullWidth
+                      sx={{ py: 2 }}
+                    >
+                      Choose Image File
+                      <input
+                        type="file"
+                        hidden
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                      />
+                    </Button>
+                    <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+                      Supports: JPG, PNG, SVG, WEBP (Max 5MB)
+                    </Typography>
+                  </Box>
                 )}
 
                 {imagePreview && (
@@ -427,12 +436,27 @@ const UnifiedProductManager: React.FC = () => {
                     <img
                       src={imagePreview}
                       alt="Preview"
-                      style={{ width: 120, height: 120, objectFit: 'contain', border: '2px solid #ddd', borderRadius: 8, padding: 8 }}
+                      style={{
+                        width: 120,
+                        height: 120,
+                        objectFit: 'contain',
+                        border: '2px solid #ddd',
+                        borderRadius: 8,
+                        padding: 8,
+                        background: '#f5f5f5'
+                      }}
                     />
                     <IconButton
                       size="small"
-                      onClick={() => { setFormData({ ...formData, image: '' }); setImagePreview(''); }}
-                      sx={{ position: 'absolute', top: -8, right: -8, bgcolor: 'error.main', color: 'white' }}
+                      onClick={clearImage}
+                      sx={{
+                        position: 'absolute',
+                        top: -8,
+                        right: -8,
+                        bgcolor: 'error.main',
+                        color: 'white',
+                        '&:hover': { bgcolor: 'error.dark' }
+                      }}
                     >
                       <DeleteIcon fontSize="small" />
                     </IconButton>
@@ -451,7 +475,9 @@ const UnifiedProductManager: React.FC = () => {
               />
 
               <Box>
-                <Typography variant="subtitle2" sx={{ mb: 1 }}>Reviews Rating</Typography>
+                <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                  Reviews Rating
+                </Typography>
                 <Rating
                   value={formData.reviews}
                   onChange={(_, newValue) => setFormData({ ...formData, reviews: newValue || 0 })}
@@ -460,10 +486,12 @@ const UnifiedProductManager: React.FC = () => {
                 />
               </Box>
 
-              <Divider />
+              <Divider sx={{ my: 2 }} />
 
               <Box>
-                <Typography variant="h6" gutterBottom>Includes</Typography>
+                <Typography variant="h6" gutterBottom>
+                  Includes
+                </Typography>
                 <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
                   <TextField
                     fullWidth
@@ -477,15 +505,22 @@ const UnifiedProductManager: React.FC = () => {
                     <AddIcon />
                   </IconButton>
                 </Box>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                  {includes.map((item, i) => (
-                    <Chip key={i} label={item} onDelete={() => removeInclude(i)} color="success" />
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
+                  {includes.map((item, index) => (
+                    <Chip
+                      key={index}
+                      label={item}
+                      onDelete={() => removeInclude(index)}
+                      color="success"
+                    />
                   ))}
                 </Box>
               </Box>
 
               <Box>
-                <Typography variant="h6" gutterBottom>Not Includes</Typography>
+                <Typography variant="h6" gutterBottom>
+                  Not Includes
+                </Typography>
                 <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
                   <TextField
                     fullWidth
@@ -500,14 +535,30 @@ const UnifiedProductManager: React.FC = () => {
                   </IconButton>
                 </Box>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                  {notIncludes.map((item, i) => (
-                    <Chip key={i} label={item} onDelete={() => removeNotInclude(i)} color="error" />
+                  {notIncludes.map((item, index) => (
+                    <Chip
+                      key={index}
+                      label={item}
+                      onDelete={() => removeNotInclude(index)}
+                      color="error"
+                    />
                   ))}
                 </Box>
               </Box>
 
-              <Button type="submit" variant="contained" size="large" fullWidth sx={{ mt: 2, py: 1.5 }}>
-                Update Product
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                fullWidth
+                disabled={loading}
+                sx={{ mt: 2, py: 1.5 }}
+              >
+                {loading ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : (
+                  'Update Product'
+                )}
               </Button>
             </Box>
           </form>
@@ -560,7 +611,9 @@ const UnifiedProductManager: React.FC = () => {
                         <TableCell>
                           {product.image ? (
                             <img src={product.image} alt={product.name} width={50} height={50} style={{ objectFit: "contain" }} />
-                          ) : "No Image"}
+                          ) : (
+                            <Typography variant="caption" color="text.secondary">No Image</Typography>
+                          )}
                         </TableCell>
                         <TableCell>{product.name}</TableCell>
                         <TableCell>{product.mainCategory}</TableCell>
@@ -568,8 +621,12 @@ const UnifiedProductManager: React.FC = () => {
                         <TableCell>PKR {product.currentPrice}</TableCell>
                         <TableCell>PKR {product.discountPrice}</TableCell>
                         <TableCell>
-                          <IconButton color="primary" onClick={() => handleEdit(product)}><EditIcon /></IconButton>
-                          <IconButton color="error" onClick={() => handleDelete(product._id)}><DeleteIcon /></IconButton>
+                          <IconButton color="primary" onClick={() => handleEdit(product)}>
+                            <EditIcon />
+                          </IconButton>
+                          <IconButton color="error" onClick={() => handleDelete(product._id)}>
+                            <DeleteIcon />
+                          </IconButton>
                         </TableCell>
                       </TableRow>
                     ))
@@ -591,8 +648,9 @@ const UnifiedProductManager: React.FC = () => {
           severity={notification.type}
           variant="filled"
           onClose={() => setNotification({ ...notification, open: false })}
+          sx={{ width: '100%' }}
         >
-          {notification.message}
+          {String(notification.message)}
         </Alert>
       </Snackbar>
     </Box>

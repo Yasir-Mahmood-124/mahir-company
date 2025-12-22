@@ -15,7 +15,7 @@ interface ACServicesSectionProps {
 
 const ACServicesSection: React.FC<ACServicesSectionProps> = ({ 
   subCategory = "Painter",
-  title = "Painter  Services",
+title = "Painter Services",
   subtitle = "Professional Painter services at your doorstep",
   maxItems
 }) => {

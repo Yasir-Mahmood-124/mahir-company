@@ -15,6 +15,8 @@ import {
   useMediaQuery,
   Typography,
   Avatar,
+  Divider,
+  Button,
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -23,6 +25,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import CategoryIcon from '@mui/icons-material/Category';
 import BuildIcon from '@mui/icons-material/Build';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useAppDispatch } from '@/redux/hooks';
+import { logout } from '@/redux/slices/authslices';
 
 const DRAWER_WIDTH = 260;
 const DRAWER_WIDTH_COLLAPSED = 70;
@@ -34,12 +39,9 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-
   { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
-    { text: 'Add Services', icon:   <CategoryIcon />, path: '/dashboard/products' },
-
-    { text: 'Services', icon:   <BuildIcon  />, path: '/dashboard/serviceproducts' },
-
+  { text: 'Add Services', icon: <CategoryIcon />, path: '/dashboard/products' },
+  { text: 'Services', icon: <BuildIcon />, path: '/dashboard/serviceproducts' },
   { text: 'Orders', icon: <ShoppingCartIcon />, path: '/dashboard/orders' },
   { text: 'Analytics', icon: <AnalyticsIcon />, path: '/dashboard/analytics' },
 ];
@@ -52,14 +54,40 @@ interface SidebarProps {
 export default function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [collapsed, setCollapsed] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
 
   const handleNavigation = (path: string) => {
     router.push(path);
     if (isMobile && onMobileClose) {
       onMobileClose();
+    }
+  };
+
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    try {
+      // ✅ Pehle API call karke cookie delete karo
+      await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+      
+      // ✅ Redux state clear karo
+      dispatch(logout());
+      
+      console.log('✅ Logout completed');
+      
+      // ✅ Home page pe redirect with force reload
+      window.location.href = '/';
+      
+    } catch (error) {
+      console.error('❌ Logout error:', error);
+      // Error ho bhi to redirect kar do
+      window.location.href = '/';
     }
   };
 
@@ -205,6 +233,54 @@ export default function Sidebar({ mobileOpen = false, onMobileClose }: SidebarPr
         })}
       </List>
 
+      {/* Logout Button */}
+      <Box sx={{ px: { xs: 1, sm: 1.5 }, pb: { xs: 1, sm: 1.5 } }}>
+        <Divider sx={{ mb: { xs: 1, sm: 1.5 } }} />
+        
+        {collapsed && !isMobile ? (
+          <IconButton
+            onClick={handleLogout}
+            disabled={loggingOut}
+            sx={{
+              width: '100%',
+              color: '#f44336',
+              bgcolor: 'rgba(244, 67, 54, 0.08)',
+              '&:hover': {
+                bgcolor: 'rgba(244, 67, 54, 0.15)',
+              },
+            }}
+          >
+            <LogoutIcon />
+          </IconButton>
+        ) : (
+          <Button
+            fullWidth
+            variant="outlined"
+            startIcon={<LogoutIcon />}
+            onClick={handleLogout}
+            disabled={loggingOut}
+            sx={{
+              py: { xs: 1, sm: 1.2 },
+              borderColor: '#f44336',
+              color: '#f44336',
+              fontWeight: 600,
+              fontSize: { xs: '0.875rem', sm: '0.95rem' },
+              textTransform: 'none',
+              borderRadius: 2,
+              '&:hover': {
+                borderColor: '#d32f2f',
+                bgcolor: 'rgba(244, 67, 54, 0.08)',
+              },
+              '&:disabled': {
+                opacity: 0.6,
+              },
+            }}
+          >
+            {loggingOut ? 'Logging out...' : 'Logout'}
+          </Button>
+        )}
+      </Box>
+
       {/* Footer */}
       {(!collapsed || isMobile) && (
         <Box
@@ -236,7 +312,7 @@ export default function Sidebar({ mobileOpen = false, onMobileClose }: SidebarPr
           open={mobileOpen}
           onClose={onMobileClose}
           ModalProps={{
-            keepMounted: true, // Better mobile performance
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', md: 'none' },

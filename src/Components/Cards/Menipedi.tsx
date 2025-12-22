@@ -16,7 +16,7 @@ interface MenipediProps {
 }
 
 const Menipedi: React.FC<MenipediProps> = ({ 
-  title = "Menipedi Services",
+title = "Mani Pedi Services",
   subtitle = "Professional Mani Pedi Services",
   maxItems
 }) => {

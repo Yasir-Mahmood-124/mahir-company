@@ -16,7 +16,7 @@ interface ACServicesSectionProps {
 const ACServicesSection: React.FC<ACServicesSectionProps> = ({ 
   subCategory = "Home Appliances",
   title = "Home Appliances",
-  subtitle = "Professional Home Appliances services at your  home",
+subtitle = "Professional Home Appliances services at your home",
   maxItems
 }) => {
   const dispatch = useAppDispatch();

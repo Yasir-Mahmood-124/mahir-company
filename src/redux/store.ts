@@ -7,10 +7,12 @@ import ServicesslicedataReducer from './Data/Serviceslicedata';
 import { orderApi } from './api/orderApi';
 import { cartApi } from './api/cartApi';
 import productReducer from './slices/productSlice';
+import authReducer from './slices/authslices';
 
 export const store = configureStore({
   reducer: {
     products: productReducer,
+    auth: authReducer,
 
     // Existing reducers
     services: servicesReducer,
